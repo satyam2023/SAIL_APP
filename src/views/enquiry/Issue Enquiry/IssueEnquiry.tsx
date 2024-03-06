@@ -2,20 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   FlatList,
   Image,
-  StatusBar,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./Styles";
 import { LocationData, DataOfIssue } from "./Data/IssueData";
 import DetailsCard from "./component/DetailCard/DetailsCard";
 import Glyphs from "assets/Glyphs";
-import { WindowHeight, WindowWidth } from "libs";
+
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
+import CustomButton from "components/CustomButton";
+import { darkgrey, lightgrey } from "commonStyles/RNColor.style";
 
 const IssueEnquiry = () => {
   const [CurrentLocation, setCurrentLocation] = useState<String>(
@@ -144,20 +144,7 @@ const IssueEnquiry = () => {
         />
       )}
 
-      <TouchableOpacity
-        style={!SearchBtnStatus ? styles.searchbtn : styles.searchbtns}
-        onPress={SearchingData}
-      >
-        <Text
-          style={
-            !SearchBtnStatus
-              ? styles.searchBtnTxtNotFocus
-              : styles.searchBtnTxtFocus
-          }
-        >
-          Search
-        </Text>
-      </TouchableOpacity>
+      <CustomButton onPress={SearchingData} text={"Search"} buttonStyle={{backgroundColor:lightgrey}} textStyle={{color:darkgrey}}/>
       
       {searchresult ? (
         <DetailsCard

@@ -13,9 +13,10 @@ import MsgField from "./MsgField";
 import ForwardCard from "./ForwarnCard";
 import styles from "views/message/Style/Style";
 import Glyphs from "assets/Glyphs";
-import { grey, lightgrey } from "commonStyles/RNColor.style";
+import { blue, grey, lightgrey, white } from "commonStyles/RNColor.style";
 import { SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
+import CustomButton from "components/CustomButton";
 
 const MsgDetails= () => {
   return (
@@ -78,12 +79,8 @@ const MsgDetails= () => {
             placeholderTextColor={"black"}
           />
         </View>
-        <TouchableOpacity
-          style={styles.submitBox}
-          onPress={() => navigate(SCREENS.MAIN)}
-        >
-          <Text style={styles.submitTxt}>Submit</Text>
-        </TouchableOpacity>
+        <CustomButton text={"Submit"} buttonStyle={{backgroundColor:blue}} textStyle={{color:white}}        
+        />
       </ScrollView>
       </View>
     </SafeAreaView>

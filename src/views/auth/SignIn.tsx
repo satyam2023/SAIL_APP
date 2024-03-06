@@ -3,7 +3,7 @@ import { useTheme } from "@react-navigation/native";
 import { SCREENS } from "@shared-constants";
 import Glyphs from "assets/Glyphs";
 import CustomText from "components/TextWrapper";
-import Button from "components/button";
+import Button from "components/CustomButton";
 import React, { useMemo } from "react";
 import {  Image, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";

@@ -1,22 +1,17 @@
 import React from "react";
-import {
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import CustomerCommon from "../component/CustomerCommonDetails/CustomerCommon";
 import styles from "./Style/Style";
 import Data from "./Data/Data";
 import Glyphs from "assets/Glyphs";
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
+import CustomButton from "components/CustomButton";
+import { blue, white } from "commonStyles/RNColor.style";
 interface executedCustomerProps {
   handleCustomerClick: Function;
 }
-const ExecutedCustomer= ({handleCustomerClick}: executedCustomerProps) => {
-  
+const ExecutedCustomer = ({ handleCustomerClick }: executedCustomerProps) => {
   const renderItem = (item: any, index: number) => {
     if (index < 14) {
       return (
@@ -47,10 +42,7 @@ const ExecutedCustomer= ({handleCustomerClick}: executedCustomerProps) => {
   };
 
   return (
-    <ScrollView
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.customerContainer}>
         <Image source={Glyphs.Profile2userClicked} />
         <View>
@@ -62,7 +54,10 @@ const ExecutedCustomer= ({handleCustomerClick}: executedCustomerProps) => {
             handleCustomerClick(false);
           }}
         >
-          <Image source={Glyphs.Arrow} style={{transform:[{rotate:'270deg'}]}} />
+          <Image
+            source={Glyphs.Arrow}
+            style={{ transform: [{ rotate: "270deg" }] }}
+          />
         </TouchableOpacity>
       </View>
       {Data.map(renderItem)}
@@ -174,10 +169,7 @@ const ExecutedCustomer= ({handleCustomerClick}: executedCustomerProps) => {
       {Data.map(renderItems)}
 
       <View style={{ flexDirection: "row", marginTop: 12 }}>
-        <Image
-          source={Glyphs.Download}
-          style={{ marginLeft: 16 }}
-        />
+        <Image source={Glyphs.Download} style={{ marginLeft: 16 }} />
         <Text
           style={{
             textDecorationLine: "underline",
@@ -193,18 +185,11 @@ const ExecutedCustomer= ({handleCustomerClick}: executedCustomerProps) => {
         </Text>
       </View>
 
-      <TouchableOpacity
-        style={styles.submitBtnContainer}
-        onPress={() => {
-          navigate(SCREENS.MAIN)
-        }}
-      >
-        <Text
-          style={styles.submitBtn}
-        >
-          Submit
-        </Text>
-      </TouchableOpacity>
+      <CustomButton
+        text={"Submit"}
+        buttonStyle={{ backgroundColor: blue }}
+        textStyle={{ color: white }}
+      />
     </ScrollView>
   );
 };

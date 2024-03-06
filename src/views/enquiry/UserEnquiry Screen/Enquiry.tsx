@@ -12,6 +12,8 @@ import styles from "./Style";
 import { LocationData, DataOfPerson } from "./Data/LocationData";
 import Glyphs from "assets/Glyphs";
 import SearchResult from "./component/SearchResultBox/Searchresult";
+import { lightgrey, darkgrey } from "commonStyles/RNColor.style";
+import CustomButton from "components/CustomButton";
 
 const Enquiry = () => {
   const [CurrentLocation, setCurrentLocation] =
@@ -117,12 +119,7 @@ const Enquiry = () => {
       )}
 
       {!searchresult ? (
-        <TouchableOpacity
-          style={!SearchBtnStatus ? styles.searchbtn : styles.searchbtns}
-          onPress={SearchingData}
-        >
-          <Text style={styles.searchTxt}>Search</Text>
-        </TouchableOpacity>
+        <CustomButton onPress={SearchingData} text={"Search"} buttonStyle={{backgroundColor:lightgrey}} textStyle={{color:darkgrey}}/>
       ) : (
         <SearchResult name={data.name} place={data.place} phone={data.phone} />
       )}

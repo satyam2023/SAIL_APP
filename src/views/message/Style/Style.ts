@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     borderColor: "#E6E6E6",
     borderRadius: 33,
     height: 200,
-    paddingHorizontal:16
   },
   commentTxt: {
     color: "black",

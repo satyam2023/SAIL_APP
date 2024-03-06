@@ -6,7 +6,9 @@ import InputText from "components/InputText/InputText";
 import ModalAlert from "./component/ModalAlert";
 import Glyphs from "assets/Glyphs";
 import { SCREENS } from "@shared-constants";
-import { goBack, navigate } from "@navigation";
+import { navigate } from "@navigation";
+import { white, darkgrey, black, grey, lightWhite } from "commonStyles/RNColor.style";
+import CustomButton from "components/CustomButton";
 
 const SignIn = () => {
   const [personalnumber, setpersonalnumber] = useState(true);
@@ -90,7 +92,13 @@ const SignIn = () => {
             )}
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginBottom: 16,
+          }}
+        >
           <View style={{ flexDirection: "row" }}>
             {remembertick ? (
               <TouchableOpacity
@@ -116,19 +124,12 @@ const SignIn = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={[
-            styles.signbtn,
-            signinColor ? { backgroundColor: "#233972" } : {},
-          ]}
-          onPress={handlesignin}
-        >
-          <Text
-            style={[styles.txtofSign, signinColor ? { color: "#FFFFFF" } : {}]}
-          >
-            Sign In
-          </Text>
-        </TouchableOpacity>
+        <CustomButton
+          textStyle={{ color: darkgrey }}
+          buttonStyle={{ backgroundColor: lightWhite }}
+          onPress={() => navigate(SCREENS.TAB)}
+          text="Sign In"
+        />
         <View
           style={{
             width: 236,
@@ -175,15 +176,24 @@ const SignIn = () => {
           }}
         />
       </View>
-      <View style={{ flex: 0.3, justifyContent: "flex-end" ,paddingHorizontal:20}}>
-        <TouchableOpacity style={styles.authbtn}>
-          <Image source={Glyphs.FaceScan}  />
-          <Text style={styles.finger}>Sign in with Fingerprint</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.authbtn}>
-          <Image source={Glyphs.FaceScan}  />
-          <Text style={styles.finger}>Sign in with Face Recognition</Text>
-        </TouchableOpacity>
+      <View
+        style={{ flex: 0.3, justifyContent: "flex-end", paddingHorizontal: 20 }}
+      >
+        <CustomButton
+          textStyle={{ color: black,fontWeight:'400',fontSize:14}}
+          buttonStyle={{ backgroundColor: white,borderColor:grey,borderWidth:1}}
+          onPress={() => navigate(SCREENS.MAIN)}
+          text="Sign in with Fingerprint"
+          image={Glyphs.FaceScan}
+        />
+        
+        <CustomButton
+          textStyle={{ color: black,fontWeight:'400',fontSize:14}}
+          buttonStyle={{ backgroundColor: white,borderColor:grey,borderWidth:1}}
+          onPress={() => navigate(SCREENS.MAIN)}
+          text="Sign in with Face Recognition"
+          image={Glyphs.FingerScan}
+        />
         <ModalAlert
           visibilityStatus={visibilityStatus}
           SetModalScreen={SetModalScreen}

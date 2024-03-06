@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import * as NavigationService from "@navigation";
 import {
   Text,
   View,
   Image,
-  TouchableOpacity,
   SafeAreaView,
 } from "react-native";
 import styles from "./Style";
 import Splash from "views/Splash/Splash";
 import Glyphs from "assets/Glyphs";
 import { SCREENS } from "@shared-constants";
-import withGradientBackground from "components/HOCgradient/HOCgradient";
+import CustomButton from "components/CustomButton";
+import { navigate } from "@navigation";
+import { blue, white } from "commonStyles/RNColor.style";
 
 const HomeScreen = () => {
   const [splashscreen, setsplashscreen] = useState(true);
@@ -23,7 +23,7 @@ const HomeScreen = () => {
   return !splashscreen ? (
     <SafeAreaView style={styles.container}>
       {/* <StatusBar backgroundColor={"#FFF"} barStyle={"dark-content"} /> */}
-      <View style={{ flex: 0.3}}>
+      <View style={{ flex: 0.3 }}>
         <Image source={Glyphs.Sail} style={styles.imgsail} />
         <View style={styles.toptxtcontainer}>
           <Text style={styles.toptxt}>
@@ -37,25 +37,23 @@ const HomeScreen = () => {
       <View style={{ flex: 0.4 }}>
         <Image source={Glyphs.HandShake} style={styles.imghand} />
       </View>
-      <View
-        style={{ flex: 0.3, paddingHorizontal: 20 }}
-      >
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => {
-            NavigationService.navigate(SCREENS.SIGNUP);
+      <View style={{ flex: 0.3, paddingHorizontal: 20 }}>
+      <CustomButton
+          textStyle={
+            {color:white}
+          }
+          buttonStyle={{ backgroundColor: blue}}
+          onPress={() => navigate(SCREENS.SIGNUP)}
+          text="Create Account"
+        />
+        <CustomButton
+          textStyle={{
+            color: "#110F24",
           }}
-        >
-          <Text style={styles.txt}>Create Account</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.signbtn}
-          onPress={() => {
-            NavigationService.navigate(SCREENS.SIGNIN);
-          }}
-        >
-          <Text style={styles.txtofSign}>Sign In</Text>
-        </TouchableOpacity>
+          buttonStyle={{ backgroundColor: "#F9F9FC"}}
+          onPress={() => navigate(SCREENS.SIGNIN)}
+          text="Sign In"
+        />
       </View>
     </SafeAreaView>
   ) : (
