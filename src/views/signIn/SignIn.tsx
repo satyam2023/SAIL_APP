@@ -7,8 +7,11 @@ import ModalAlert from "./component/ModalAlert";
 import Glyphs from "assets/Glyphs";
 import { SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
-import { white, darkgrey, black, grey, lightWhite } from "commonStyles/RNColor.style";
+import { white, darkgrey, black, grey, lightWhite, Colors } from "commonStyles/RNColor.style";
 import CustomButton from "components/CustomButton";
+import InputTextField from "components/InputTextField";
+import CustomSwitch from "components/CustomSwitch";
+import TextWrapper from "components/TextWrapper";
 
 const SignIn = () => {
   const [personalnumber, setpersonalnumber] = useState(true);
@@ -46,52 +49,19 @@ const SignIn = () => {
       <View style={{ flex: 0.7, paddingHorizontal: 20 }}>
         <Text style={styles.signinText}>Sign In</Text>
         <Text style={styles.pleaseText}>Please enter details to sign in</Text>
-        <View style={personalnumber ? styles.inputbox : styles.inputboxno}>
-          <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-            <Image source={Glyphs.Contact} style={styles.img} />
-          </View>
-          <InputText
-            placeholder="Your Unique Personal No."
-            ChangeText={(text: any) => {
-              details.phoneNumber.current = text;
-              signincolor();
-            }}
-            keyboardType="numeric"
-            secureText={false}
-            maxLength={10}
-          />
-        </View>
-        <View style={passstatus ? styles.inputbox : styles.inputboxno}>
-          <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-            <Image source={Glyphs.Key} style={styles.img} />
-          </View>
-          <InputText
-            placeholder="Create Your Password"
-            ChangeText={(text: string) => {
-              details.passOne.current = text;
-            }}
-            keyboardType="default"
-            secureText={passeye}
-            maxLength={10}
-          />
-          <TouchableOpacity
-            style={{
-              backgroundColor: "#E6E6E6",
-              width: 0,
-              position: "absolute",
-              right: 30,
-            }}
-            onPress={() => {
-              setpasseye(!passeye);
-            }}
-          >
-            {passeye ? (
-              <Image source={Glyphs.EyeCut} style={styles.imgdrop} />
-            ) : (
-              <Image source={Glyphs.Eye} style={styles.imgdrop} />
-            )}
-          </TouchableOpacity>
-        </View>
+        <InputTextField
+         leftIcon={Glyphs.Contact}
+         placeholder="Your Unique Personal Number"
+         onChangeText={(text:string)=>details.phoneNumber.current=text}
+         maxlength={20}
+       />
+        <InputTextField
+         eyeIcon={Glyphs.Eye}
+         leftIcon={Glyphs.Key}
+         placeholder="Create Your Password"
+         onChangeText={(text:string)=>details.passOne.current=text}
+         maxlength={20}
+       />
         <View
           style={{
             flexDirection: "row",
@@ -99,24 +69,11 @@ const SignIn = () => {
             marginBottom: 16,
           }}
         >
+       
           <View style={{ flexDirection: "row" }}>
-            {remembertick ? (
-              <TouchableOpacity
-                onPress={() => {
-                  setremembertick(!remembertick);
-                }}
-              >
-                <Image source={Glyphs.Remember} />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity
-                style={styles.emptytick}
-                onPress={() => {
-                  setremembertick(!remembertick);
-                }}
-              />
-            )}
-            <Text style={styles.forgot}>Remember me</Text>
+               <CustomSwitch onPress={()=>{}}  isRectangular={true} status={true}/>
+          <TextWrapper style={styles.forgot}>Remember me</TextWrapper>
+            {/* <Text style={styles.forgot}>Remember me</Text> */}
           </View>
           <TouchableOpacity>
             <Text style={[styles.forgot, styles.forgotmargin]}>
@@ -177,7 +134,7 @@ const SignIn = () => {
         />
       </View>
       <View
-        style={{ flex: 0.3, justifyContent: "flex-end", paddingHorizontal: 20 }}
+        style={{ flex: 0.3, justifyContent: "flex-end", padding: 20 }}
       >
         <CustomButton
           textStyle={{ color: black,fontWeight:'400',fontSize:14}}

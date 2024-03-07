@@ -20,6 +20,7 @@ import Glyphs from "assets/Glyphs";
 import DropDown from "../Component/DropDown/DropDown";
 import RoleData from "../Component/Data/RoleData";
 import LocationData from "../Component/Data/LocationData";
+import InputTextField from "components/InputTextField";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setSecondscreen } from '../../Redux/Slice2';
 // import { setUserName } from "../../Redux/Slice";
@@ -122,36 +123,10 @@ const Second = forwardRef(({ setScreen }: SecondProps, ref) => {
   return (
     <ScrollView style={styles.container}>
       <CustomHeader details="Enter your personal information" />
-      <View style={name ? styles.inputbox : styles.inputboxno}>
-        <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-          <Image source={Glyphs.Contact} style={styles.imgverified} />
-        </View>
-        <InputText
-          placeholder="Your Name"
-          ChangeText={(text: string) => {
-            details.name.current = text;
-            handleUserName(text);
-          }}
-          keyboardType="default"
-          secureText={false}
-          maxLength={30}
-        />
-      </View>
-      <View style={email ? styles.inputbox : styles.inputboxno}>
-        <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-          <Image source={Glyphs.Email} style={styles.imgverified} />
-        </View>
-        <InputText
-          placeholder="Your Email Id"
-          ChangeText={(text: string) => {
-            details.email.current = text;
-            emailHandler(text);
-          }}
-          keyboardType="default"
-          secureText={false}
-          maxLength={30}
-        />
-      </View>
+      <InputTextField onChangeText={(text:string)=>{details.name.current=text}} placeholder={"Your Name"} maxlength={20}      
+        leftIcon={Glyphs.Contact}/>
+     <InputTextField onChangeText={(text:string)=>{details.email.current=text}} placeholder={"Your Email Id"} maxlength={20}      
+        leftIcon={Glyphs.Email}/>
       <DropDown
         data={LocationData}
         heading={"Location"}

@@ -46,7 +46,7 @@ const InputText=(props:InputProps) => {
             onChangeText={
                 (text: string) => {
                     props.ChangeText(text);
-                   
+    
                 }
             }
         

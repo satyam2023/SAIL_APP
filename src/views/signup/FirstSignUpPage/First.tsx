@@ -8,23 +8,16 @@ import React, {
 import CustomHeader from "../Component/CustomHeader/CustomHeader";
 
 import {
-  Alert,
   Image,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 import InputText from "components/InputText/InputText";
 import styles from "./Styles";
 // import { useDispatch, useSelector } from "react-redux";
 import Glyphs from "assets/Glyphs";
-// import { setfirstscreen } from "../../Redux/Slice2";
-// import { setPhone } from "../../Redux/Slice";
+import InputTextField from "components/InputTextField";
 
-//import DropdownList from './DropDownList';
+
 interface FirstProps {
   CurrentScreen: any;
   setScreen: any;
@@ -115,42 +108,19 @@ const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
   return (
     <View style={{flex:1,paddingHorizontal:20 }}>
       <CustomHeader details="Enter your personal information" />
-      <View style={personalnumber ? styles.inputbox : styles.inputboxno}>
-        <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-          <Image
-            source={Glyphs.Contact}
-            style={!false ? styles.img : styles.imgverified}
-          />
-        </View>
-        <InputText
-          placeholder="Enter Your Unique Personal No."
-          ChangeText={(text: any) => {
-            details.phoneNumber.current = text;
-            handlepersonalnumber(text);
-          }}
-          keyboardType="numeric"
-          secureText={false}
-          maxLength={10}
-        />
-      </View>
-      <View style={contactnumber ? styles.inputbox : styles.inputboxno}>
-        <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-          <Image
-            source={Glyphs.Phone}
-            style={!false ? styles.img : styles.imgverified}
-          />
-        </View>
-        <InputText
-          placeholder="Your Contact Number"
-          ChangeText={(text: any) => {
-            details.phoneNumber.current = text;
-            handlconatctnumber(text);
-          }}
-          keyboardType="numeric"
-          secureText={false}
-          maxLength={10}
-        />
-      </View>
+      <InputTextField
+        leftIcon={Glyphs.Mic}
+        onChangeText={(text: string) => details.contactnumber.current = text}
+        placeholder="Your Unique Personal No." 
+        maxlength={10}      
+      />
+       <InputTextField
+        leftIcon={Glyphs.Phone}
+        onChangeText={(text: string) => details.contactnumber.current = text}
+        placeholder="Your Contact Number"
+        maxlength={10}
+
+      />
     </View>
   );
 });

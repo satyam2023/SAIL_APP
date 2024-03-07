@@ -1,3 +1,4 @@
+import { Colors } from "commonStyles/RNColor.style";
 import React from "react";
 import { StyleSheet } from "react-native";
 const styles=StyleSheet.create({
@@ -66,11 +67,10 @@ imgdrop:{
     marginVertical:22,
  },
  forgot:{
-marginLeft:10,
- fontWeight:'400',
+ marginLeft:10,
  fontSize:14,
  lineHeight:17.5,
- color:'#233972',
+ color:Colors.sailBlue,
  
  },
  forgotmargin:{

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { GestureResponderEvent, SafeAreaView, ScrollView, Text, View } from "react-native";
 import {
   CustomerSegment,
   CustomerStatus,
@@ -10,10 +10,9 @@ import {
 import DropDown from "components/DropDown/DropDown";
 import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
 import styles from "./Style";
-import {blue } from "commonStyles/RNColor.style";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import UploadDocumnet from "components/UploadDocument/UploadDocument";
 import CustomerDetailHeader from "./CustomerDetailHeader";
+import LocateMe from "components/LocateMe";
 
 const CreateCustomerDetails = () => {
   const customerdetails = {
@@ -118,12 +117,7 @@ const CreateCustomerDetails = () => {
             maxLength={20}
           />
         </View>
-        <View style={styles.locateConainer}>
-            <View style={{height:16,width:16,borderRadius:9,backgroundColor:blue}}/>
-            <TouchableOpacity>
-            <Text style={styles.locateText}>Locate Me</Text>
-            </TouchableOpacity>
-        </View>
+       <LocateMe onPress={(e:GestureResponderEvent)=>{}}/>
         <View style={styles.inputbox}>
           <InputTextWithoutIcon
             placeholder="Add Tag Name to Selected Location"

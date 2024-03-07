@@ -29,6 +29,7 @@ const App = () => {
   });
   console.log(netInfo);
   React.useEffect(() => {
+
     StatusBar.setBarStyle(isDarkMode ? "light-content" : "dark-content");
     if (isAndroid) {
       StatusBar.setBackgroundColor("rgba(0,0,0,0)");

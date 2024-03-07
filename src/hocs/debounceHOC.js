@@ -7,7 +7,7 @@ export const debounceHOC = (WrappedComponent) => {
       this.props.onPress && this.props.onPress();
     };
 
-    onPress = debounce(this.debouncedOnPress, 2000, {
+    onPress = debounce(this.debouncedOnPress, 300, {
       leading: true,
       trailing: false,
     });

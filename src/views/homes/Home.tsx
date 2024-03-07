@@ -11,7 +11,8 @@ import Glyphs from "assets/Glyphs";
 import { SCREENS } from "@shared-constants";
 import CustomButton from "components/CustomButton";
 import { navigate } from "@navigation";
-import { blue, white } from "commonStyles/RNColor.style";
+import { Colors, blue, lightWhite, white } from "commonStyles/RNColor.style";
+import SafeAreaContainer from "components/SafeAreaContainer";
 
 const HomeScreen = () => {
   const [splashscreen, setsplashscreen] = useState(true);
@@ -21,7 +22,7 @@ const HomeScreen = () => {
   }
 
   return !splashscreen ? (
-    <SafeAreaView style={styles.container}>
+   <SafeAreaContainer style={{backgroundColor:Colors.white}}>
       {/* <StatusBar backgroundColor={"#FFF"} barStyle={"dark-content"} /> */}
       <View style={{ flex: 0.3 }}>
         <Image source={Glyphs.Sail} style={styles.imgsail} />
@@ -50,12 +51,12 @@ const HomeScreen = () => {
           textStyle={{
             color: "#110F24",
           }}
-          buttonStyle={{ backgroundColor: "#F9F9FC"}}
+          buttonStyle={{ backgroundColor: lightWhite}}
           onPress={() => navigate(SCREENS.SIGNIN)}
           text="Sign In"
         />
       </View>
-    </SafeAreaView>
+    </SafeAreaContainer>
   ) : (
     <Splash />
   );

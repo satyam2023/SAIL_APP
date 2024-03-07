@@ -24,6 +24,7 @@ import {
 import InputText from "components/InputText/InputText";
 import styles from "./Style";
 import Glyphs from "assets/Glyphs";
+import InputTextField from "components/InputTextField";
 
 //import DropdownList from './DropDownList';
 interface ThirdProps {
@@ -81,7 +82,7 @@ const Third = forwardRef(({ setScreen, props }: ThirdProps, ref) => {
   function validationcheck() {
     // console.log("Confirm password Statuis:::",confirmpassstatus)
     if (validatepassword) {
-      const secret = "secret";
+      // const secret = "secret";
       const data = {
         //   number:PHONENUMBER,
         password: password,
@@ -113,68 +114,22 @@ const Third = forwardRef(({ setScreen, props }: ThirdProps, ref) => {
   return (
     <ScrollView style={styles.container}>
       <CustomHeader details="Choose a passowrd" />
-      <View style={passstatus ? styles.inputbox : styles.inputboxno}>
-        <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-          <Image
-            source={Glyphs.Key}
-            style={!false ? styles.img : styles.imgverified}
-          />
-        </View>
-        <InputText
-          placeholder="Create Your Password"
-          ChangeText={(text: string) => {
-            details.passOne.current = text;
-            PasswordHandler(text);
-          }}
-          keyboardType="default"
-          secureText={passeye}
-          maxLength={10}
-        />
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#E6E6E6",
-            width: 0,
-            position: "absolute",
-            right:30,
-          }}
-          onPress={() => {
-            setpasseye(!passeye);
-          }}
-        >
-          <Image source={Glyphs.Eye} style={styles.imgdrop} />
-        </TouchableOpacity>
-      </View>
-      <View style={confirmpassstatus ? styles.inputbox : styles.inputboxno}>
-        <View style={{ backgroundColor: "#E6E6E6", width: 0 }}>
-          <Image
-            source={Glyphs.Key}
-            style={!false ? styles.img : styles.imgverified}
-          />
-        </View>
-        <InputText
-          placeholder="Confirm Your Password"
-          ChangeText={(text: string) => {
-            details.passTwo.current = text;
-            confirmPassword(text);
-          }}
-          keyboardType="default"
-          secureText={consfirmpasseye}
-          maxLength={16}
-        />
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#E6E6E6",
-            width: 0,
-            position: "absolute",
-            right:30,
-          }}
-          onPress={() => {
-            setconfirmpasseye(!consfirmpasseye);
-          }}
-        >
-          <Image source={Glyphs.Eye} style={styles.imgdrop} />
-        </TouchableOpacity>
-      </View>
+       <InputTextField
+         eyeIcon={Glyphs.Eye}
+         leftIcon={Glyphs.Key}
+         placeholder="Create Your Password"
+         onChangeText={(text:string)=>details.passOne.current=text}
+         maxlength={20}
+       />
+     <InputTextField
+      eyeIcon={Glyphs.Eye}
+      leftIcon={Glyphs.Key}
+      placeholder="Confirm Your Password"
+      onChangeText={(text:string)=>details.passTwo.current=text}
+      maxlength={20}
+    />
+
+
     </ScrollView>
   );
 });

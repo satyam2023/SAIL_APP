@@ -75,5 +75,7 @@ const Glyphs = {
   VisitDateandTime:require('../assets/images/VisitDateandTime.png'),
   VisitDateIcon:require('../assets/images/visitDateIcon.png'),
   Wifi:require('../assets/images/Wifi.png'),  
+  LocateMe:require('../assets/images/LocateMe.png'),
+  Tick:require('../assets/images/Tick.png')
 };
 export default Glyphs;
