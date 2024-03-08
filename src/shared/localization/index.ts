@@ -78,8 +78,8 @@ const StringConstants = {
   ENTER_BRANCH: "Enter you branch and role",
   LOCATION: "Location",
   YOUR_ROLE: "Your Role",
-  CHOOSE_PASSOWRD: "Choose a passowrd",
-  CREATE_PASSWOD: "Create Your Password",
+  CHOOSE_PASSWORD: "Choose a passowrd",
+  CREATE_PASSWORD: "Create Your Password",
   YOUR_PASSWOD: "Your Password",
   CONFIRM_PASSWORD: "Confirm Your Password",
   PLEASE_ENTER_SIGNIN: "Please enter details to sign in",
@@ -359,6 +359,7 @@ const StringConstants = {
   UPDATE_LOGOUT: "Your details has been updated, Please login again",
   SAP_CODE_UPDATE_MSG: "The customer code must be 10 digits.",
   ENTER_PAN_GST: "Please enter PAN and GST number",
+  BACK_TO_HOME:"Back to Home",
 };
 
 export default StringConstants;

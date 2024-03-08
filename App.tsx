@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StatusBar, useColorScheme, LogBox } from "react-native";
+import { StatusBar, useColorScheme, LogBox, View } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import { Provider } from "react-redux";
 
@@ -10,6 +10,10 @@ import { persistor, store } from "redux/store/Store";
 import { PersistGate } from "redux-persist/integration/react";
 import { isAndroid } from "libs";
 import StatusCode from "core/StatusCode";
+import CustomerType from "components/ExistingCustomer";
+import CustomerDetails from "components/CustomerDetails";
+import Data from "libs/mockData";
+import CustomToggleBox from "components/CustomToggleBox";
 
 LogBox.ignoreAllLogs();
 
@@ -46,6 +50,8 @@ const App = () => {
         <Navigation />
       </PersistGate>
     </Provider>
+   
+ 
   );
 };
 

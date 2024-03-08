@@ -5,3 +5,13 @@ export interface ICardItem {
   name: string;
   star: string;
 }
+interface IValue{
+  value:string
+
+}
+export interface IDropDownArray{
+ index:number,
+item:IValue
+
+
+}

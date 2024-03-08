@@ -1,4 +1,5 @@
 
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 
 const styles=StyleSheet.create({
@@ -8,13 +9,11 @@ const styles=StyleSheet.create({
       right: 0,
       bottom: 0,
       height:'22%',
-      backgroundColor:'#FFF'
+      backgroundColor:Colors.white
     },
 footercontainer:{
     width:'100%',
     height:'22%',
-    backgroundColor:'#FFFFFF',
-
 },
 signuptxt:{
   // height:20,
@@ -124,14 +123,13 @@ circleright:{
   marginTop:16,
 },
 progressbar:{
-    flexDirection:'row',
     width:'100%',
     height:6,
-    backgroundColor:'#F9F9FC',
+    backgroundColor:Colors.background2,
 },
 bar:{
-    backgroundColor:'#E67437',
-    width:'33.3%',
+    backgroundColor:Colors.orange,
+    height:6,
 },
 nobar:{
   backgroundColor:'#F9F9FC',
@@ -152,6 +150,11 @@ footerBottomTxt:{
   marginTop: 8,
   alignSelf: "center",
   flexDirection: "row",
+},
+innerFooterContainer:{
+  flexDirection: "row",
+  paddingHorizontal: 20,
+  justifyContent: "space-between",
 }
 }
 

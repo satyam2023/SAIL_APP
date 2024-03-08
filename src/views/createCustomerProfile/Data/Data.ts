@@ -1,53 +1,51 @@
 const CustomerSegment=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {key:1,segment:'A'},
+    {key:2,segment:'A'},
+    {key:3,segment:'A'},
+    {key:4,segment:'A'},
+    {key:5,segment:'A'},
+    {key:6,segment:'A'},
+    {key:7,segment:'A'},
     
 ];
 
 const CustomerSubSegment=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {key:1,segment:'A'},
+    {key:2,segment:'A'},
+    {key:3,segment:'A'},
+    {key:4,segment:'A'},
+    {key:5,segment:'A'},
+    {key:6,segment:'A'},
+    {key:7,segment:'A'},
     
 ];
 
 const CustomerSubType=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    
+    {key:1,segment:'A'},
+    {key:2,segment:'A'},
+    {key:3,segment:'A'},
+    {key:4,segment:'A'},
+    {key:5,segment:'A'},
+    {key:6,segment:'A'},
+    {key:7,segment:'A'},
 ];
 const CustomerType=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    
+    {key:1,segment:'A'},
+    {key:2,segment:'A'},
+    {key:3,segment:'A'},
+    {key:4,segment:'A'},
+    {key:5,segment:'A'},
+    {key:6,segment:'A'},
+    {key:7,segment:'A'},
 ];
 const CustomerStatus=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {key:1,segment:'A'},
+    {key:2,segment:'A'},
+    {key:3,segment:'A'},
+    {key:4,segment:'A'},
+    {key:5,segment:'A'},
+    {key:6,segment:'A'},
+    {key:7,segment:'A'},
     
 ];
 

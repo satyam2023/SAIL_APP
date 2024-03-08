@@ -1,30 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  FlatList,
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./Styles";
-import { LocationData, DataOfIssue } from "./Data/IssueData";
+import { DataOfIssue, LocationData } from "./Data/IssueData";
 import DetailsCard from "./component/DetailCard/DetailsCard";
-import Glyphs from "assets/Glyphs";
-
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
 import CustomButton from "components/CustomButton";
-import { darkgrey, lightgrey } from "commonStyles/RNColor.style";
+import { Colors, darkgrey, lightgrey } from "commonStyles/RNColor.style";
+import CustomDropDown from "components/CustomDropDown";
+import InputTextField from "components/InputTextField";
 
 const IssueEnquiry = () => {
-  const [CurrentLocation, setCurrentLocation] = useState<String>(
-    "Select Branch Location",
-  );
-  const [locationStatus, setLocationStatus] = useState<boolean>(false);
-  const [FocusStatus, setFocusStatus] = useState<boolean>(false);
-  const [LocationFOcusStatus, setLocationFocusStatus] =
-    useState<boolean>(false);
   const [SearchBtnStatus, setSearchBtnStatus] = useState<boolean>(false);
   const [searchresult, setsearchresult] = useState<boolean>(false);
   const [data, setdata] = useState({
@@ -35,36 +21,6 @@ const IssueEnquiry = () => {
   const details = {
     name: useRef(""),
   };
-
-  useEffect(() => {
-    if (
-      CurrentLocation != "Select Location" &&
-      details.name.current.length != 0
-    )
-      setSearchBtnStatus(true);
-  }, [CurrentLocation, FocusStatus]);
-
-  function RenderItem(item: any) {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          setCurrentLocation(item.item.location);
-          setLocationStatus(false);
-          setLocationFocusStatus(true);
-        }}
-      >
-        <Text
-          style={{
-            marginLeft: 16,
-            borderBottomWidth: 1,
-            borderColor: "#E6E6E6",
-          }}
-        >
-          {item.item.location}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
 
   function SearchingData() {
     for (let i = 0; i < DataOfIssue.length; i++) {
@@ -85,8 +41,12 @@ const IssueEnquiry = () => {
   }
 
   return (
-    <View style={{ backgroundColor: "#FCFCFC", flex: 1, paddingHorizontal: 20 ,marginTop:16}} >
-      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+    <View
+      style={styles.issueContainer}
+    >
+      <View
+        style={styles.issueType}
+      >
         <TouchableOpacity>
           <Text style={styles.openIssue}>Open Issues</Text>
           <View style={styles.line} />
@@ -96,56 +56,27 @@ const IssueEnquiry = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.TextInput}>
-        {FocusStatus && <Text style={styles.nameContainer}>Enter Name </Text>}
-        <TextInput
-          placeholder="Enter Name"
-          placeholderTextColor={!FocusStatus ? "#110F2480" : "#FFFFFF"}
-          style={!FocusStatus ? styles.nameNotFocus : styles.nameFocus}
-          onFocus={() => {
-            setFocusStatus(true);
-          }}
-          onChangeText={(text: string) => {
-            details.name.current = text;
-          }}
-        />
-      </View>
+      <InputTextField
+        onChangeText={(text: string) => {
+          details.name.current = text;
+        }}
+        placeholder={"Enter Name"}
+        maxlength={20}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
 
-      <View style={styles.location}>
-        {LocationFOcusStatus ? (
-          <Text style={styles.locationDropDown}>Select Location </Text>
-        ) : (
-          <></>
-        )}
-        <Text
-          style={
-            CurrentLocation == "Select Location"
-              ? styles.locationNotFocusText
-              : styles.locationFocusText
-          }
-        >
-          {CurrentLocation}
-        </Text>
+      <CustomDropDown
+        ArrayOfData={LocationData}
+        topheading="Select Branch Location"
+      />
 
-        <TouchableOpacity
-          onPress={() => {
-            setLocationStatus(!locationStatus);
-          }}
-        >
-          <Image source={Glyphs.Arrow} style={styles.arrow} />
-        </TouchableOpacity>
-      </View>
+      <CustomButton
+        onPress={SearchingData}
+        text={"Search"}
+        buttonStyle={{ backgroundColor: lightgrey }}
+        textStyle={{ color: darkgrey }}
+      />
 
-      {locationStatus == true && (
-        <FlatList
-          data={LocationData}
-          renderItem={RenderItem}
-          style={styles.locationList}
-        />
-      )}
-
-      <CustomButton onPress={SearchingData} text={"Search"} buttonStyle={{backgroundColor:lightgrey}} textStyle={{color:darkgrey}}/>
-      
       {searchresult ? (
         <DetailsCard
           issue={data.issue}

@@ -17,7 +17,6 @@ import { isReadyRef, navigationRef } from "@navigation";
 import SignUpScreenViewMOdel from "viewModels/SignUpViewModel";
 import MainScreenViewModel from "viewModels/MainScreenViewModel";
 import Glyphs from "assets/Glyphs";
-import { Text, TouchableOpacity, View } from "react-native";
 import BottomTabIcon from "components/BottomTabIcons/BottomTabIcon";
 import MessageScreenViewModel from "viewModels/MessageScreenViewModel";
 import VisitScreenViewModel from "viewModels/VisitScreenViewModel";
@@ -31,10 +30,10 @@ import NotificationViewModel from "viewModels/NotificationViewModel";
 import SettingViewModel from "viewModels/SettingViewModel";
 import BottomDrawer from "views/moreOptions/BottomDrawer/BottomDrawer";
 import CreateVisitPlanViewModel from "viewModels/CreateVisitPlanModel";
-import createCustomerViewModel from "viewModels/createCustomerViewModel";
 import CreateMetingDetailsViewModel from "viewModels/CreateMeetingDetailsViewModel";
 import ViewCustomerProfileViewModel from "viewModels/ViewCustomerProfileViewModel";
-import TabBar from "components/TabBar/TabBar";
+import CreateCustomerViewModel from "viewModels/CreateCustomerViewModel";
+import { View } from "react-native";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const HomeStack = createStackNavigator();
@@ -90,7 +89,7 @@ const HomeStackNavigator = () => {
       <HomeStack.Screen name={SCREENS.VISIT} component={VisitScreenViewModel} />
       <HomeStack.Screen name={SCREENS.SETTING} component={SettingViewModel} />
       <HomeStack.Screen name={SCREENS.CREATE_VISIT_PLAN} component={CreateVisitPlanViewModel} />
-      <HomeStack.Screen name={SCREENS.CREATE_CUSTOMER_VIEW_MODEL} component={createCustomerViewModel} />
+      <HomeStack.Screen name={SCREENS.CREATE_CUSTOMER_VIEW_MODEL} component={CreateCustomerViewModel} />
       <HomeStack.Screen name={SCREENS.CREATE_MEETING_DETAILS} component={CreateMetingDetailsViewModel} />
       <HomeStack.Screen name={SCREENS.VIEW_CUSTOMER_PROFILE} component={ViewCustomerProfileViewModel} />
     </HomeStack.Navigator>

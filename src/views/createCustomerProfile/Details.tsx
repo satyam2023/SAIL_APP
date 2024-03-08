@@ -20,7 +20,7 @@ const Details=()=>{
 
     function FooterExecuted(){
         setFooterStatus("")
-        CustomerRepresentativeRef.current.Clicked();
+        CustomerRepresentativeRef.current.Clicked() ;
     }
     
     return(

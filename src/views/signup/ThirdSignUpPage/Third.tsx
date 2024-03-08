@@ -25,6 +25,8 @@ import InputText from "components/InputText/InputText";
 import styles from "./Style";
 import Glyphs from "assets/Glyphs";
 import InputTextField from "components/InputTextField";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import StringConstants from "shared/localization";
 
 //import DropdownList from './DropDownList';
 interface ThirdProps {
@@ -112,25 +114,23 @@ const Third = forwardRef(({ setScreen, props }: ThirdProps, ref) => {
   }));
 
   return (
-    <ScrollView style={styles.container}>
-      <CustomHeader details="Choose a passowrd" />
+    <SafeAreaContainer >
+      <CustomHeader details={StringConstants.CHOOSE_PASSWORD}/>
        <InputTextField
          eyeIcon={Glyphs.Eye}
          leftIcon={Glyphs.Key}
-         placeholder="Create Your Password"
+         placeholder={StringConstants.CREATE_PASSWORD}
          onChangeText={(text:string)=>details.passOne.current=text}
          maxlength={20}
        />
      <InputTextField
       eyeIcon={Glyphs.Eye}
       leftIcon={Glyphs.Key}
-      placeholder="Confirm Your Password"
+      placeholder={StringConstants.CONFIRM_PASSWORD}
       onChangeText={(text:string)=>details.passTwo.current=text}
       maxlength={20}
     />
-
-
-    </ScrollView>
+    </SafeAreaContainer>
   );
 });
 

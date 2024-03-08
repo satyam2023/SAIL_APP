@@ -1,12 +1,12 @@
 const LocationData=[
-    {location:"New Delhi"},
-    {location:"Mumbai"},
-    {location:"Chennai"},
-    {location:"Noida"},
-    {location:"Shimla"},
-    {location:"Banglore"},
-    {location:"Gurgaon"},
-
+    {key:1,value:"New Delhi"},
+    {key:2,value:"Mumbai"},
+    {key:3,value:"Chennai"},
+    {key:4,value:"Noida"},
+    {key:5,value:"Shimla"},
+    {key:6,value:"Banglore"},
+    {key:7,value:"Gurgaon"},
+,
 ];
 const DataOfIssue=[
     {  issue:"Issue description",

@@ -76,6 +76,12 @@ const Glyphs = {
   VisitDateIcon:require('../assets/images/visitDateIcon.png'),
   Wifi:require('../assets/images/Wifi.png'),  
   LocateMe:require('../assets/images/LocateMe.png'),
-  Tick:require('../assets/images/Tick.png')
+  Tick:require('../assets/images/Tick.png'),
+  AddCustomer:require('../assets/images/newCustomer.png'),
+  ExistingCustomer:require('../assets/images/ExistingCustomer.png'),
+  Minus:require('../assets/images/minus.png'),
+  PlusToggle:require('../assets/images/plus copy.png'),
+  UpArrow:require('../assets/images/upArrow.png'),
+  DownArrow:require('../assets/images/DownArrow.png'),
 };
 export default Glyphs;

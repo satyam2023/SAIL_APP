@@ -1,96 +1,76 @@
 import React, { useState } from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-} from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import Header from "components/HeaderForMainScreen/HeaderMain";
-import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
-import styles from "./Style";
-import DropDown from "components/DropDown/DropDown";
-import Footer from "./component/Footer";
 import PlanCompleted from "./component/PlanCompleted";
+import InputTextField from "components/InputTextField";
+import StringConstants from "shared/localization";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomDropDown from "components/CustomDropDown";
+import CustomFooter from "components/CustomFooter";
 
-
-const CreateVisitPlan: React.FC<{}> = (props: any) => {
-  const [CurrentScreen, setCurrentScreen] = useState<string>("");
-  // const [open, setOpen] = useState(false)
-  // const [date, setDate] = useState(new Date())
-  // const [dateData, setDateData] = useState("Visit Date")
+const CreateVisitPlan = () => {
+  const [isVisitDetailFilled, setIsVisitDetailFilled] =
+    useState<boolean>(false);
   const Data = [
-    { segment: "A" },
-    { segment: "A" },
-    { segment: "A" },
-    { segment: "A" },
-    { segment: "A" },
-    { segment: "A" },
+    { key: 1, value: "A" },
+    { key: 2, value: "A" },
+    { key: 3, value: "A" },
+    { key: 4, value: "A" },
+    { key: 5, value: "A" },
+    { key: 6, value: "A" },
   ];
-  function setScreen(param: string) {
-    setCurrentScreen(param);
-  }
   return (
-    <SafeAreaView style={{flex:1}}>
-      {CurrentScreen != "Submitted" ? (
+    <SafeAreaView style={{ flex: 1 }}>
+      {!isVisitDetailFilled ? (
         <>
-          <ScrollView style={{ backgroundColor: "#F9F9FC"}}>
+          <ScrollView style={{ backgroundColor: "#F9F9FC" }}>
             <Header topheading="Create Visit Plan" />
-            <View style={{ marginVertical: 23,paddingHorizontal:20}}>
-              <View style={styles.inputbox}>
-                <InputTextWithoutIcon
-                  placeholder="Enter Customer Code"
-                  ChangeText={(text: any) => {}}
-                  keyboardType={"default"}
-                  secureText={false}
-                  maxLength={20}
-                />
-              </View>
-              <View style={styles.inputbox}>
-                <InputTextWithoutIcon
-                  placeholder="Enter Name"
-                  ChangeText={(text: any) => {}}
-                  keyboardType={"default"}
-                  secureText={false}
-                  maxLength={20}
-                />
-              </View>
-              <View style={styles.inputbox}>
-                <InputTextWithoutIcon
-                  placeholder="Enter Nick Name"
-                  ChangeText={(text: any) => {}}
-                  keyboardType={"default"}
-                  secureText={false}
-                  maxLength={20}
-                />
-              </View>
-
-              <DropDown
-                data={Data}
-                heading="Customer Region"
-                setReason={() => {}}
+            <View style={{ marginVertical: 23, paddingHorizontal: 20 }}>
+              <InputTextField
+                onChangeText={() => {}}
+                placeholder={StringConstants.ENTER_CUSTOMER_CODE}
+                containerStyle={{ backgroundColor: Colors.white }}
               />
-              <DropDown
-                data={Data}
-                heading="Select Visiting Executive"
-                setReason={() => {}}
+              <InputTextField
+                onChangeText={() => {}}
+                placeholder={StringConstants.ENTER_NAME}
+                containerStyle={{ backgroundColor: Colors.white }}
               />
-
-              <DropDown
-                data={Data}
-                heading="Select Reason"
-                setReason={() => {}}
+              <InputTextField
+                onChangeText={() => {}}
+                placeholder={StringConstants.ENTER_NICK_NAME}
+                containerStyle={{ backgroundColor: Colors.white }}
               />
-              <DropDown
-                data={Data}
-                heading="Select Mode of Contact"
-                setReason={() => {}}
+              <CustomDropDown
+                ArrayOfData={Data}
+                topheading={StringConstants.CUSTOMER_REGION}
+              />
+              <CustomDropDown
+                ArrayOfData={Data}
+                topheading={StringConstants.SELECT_VISITING_EXECUTIVE}
+              />
+              <CustomDropDown
+                ArrayOfData={Data}
+                topheading={StringConstants.SELECT_REASON}
+              />
+              <CustomDropDown
+                ArrayOfData={Data}
+                topheading={StringConstants.SELECT_MODE_OF_CONTACT}
               />
             </View>
           </ScrollView>
-          <Footer setScreen={setScreen} />
+          <CustomFooter
+            firstButtonText={StringConstants.CANCEL}
+            secondButtonText={StringConstants.SUBMIT}
+            firstButtonPress={() => {}}
+            secondButtonPress={() => {
+              setIsVisitDetailFilled(true);
+            }}
+          />
         </>
       ) : (
         <>
-          <Header topheading="Create Visit Plan" />
+          <Header topheading={StringConstants.CREATE_VISIT_PLAN} />
           <PlanCompleted />
         </>
       )}

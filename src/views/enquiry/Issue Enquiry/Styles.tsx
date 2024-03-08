@@ -138,6 +138,17 @@ const styles = StyleSheet.create({
    fontWeight: "500",
    fontSize: 14,
    lineHeight: 17.5,
- }
+ },
+ issueContainer:{
+  backgroundColor: "#FCFCFC",
+  flex: 1,
+  paddingHorizontal: 20,
+  marginTop: 16,
+},
+issueType:{
+  flexDirection: "row",
+  justifyContent: "space-between",
+  marginBottom: 16,
+}
 });
 export default styles;

@@ -23,7 +23,5 @@ export const SCREENS = {
   CREATE_CUSTOMER_VIEW_MODEL:'Create_Customer_View_Model',
   CREATE_MEETING_DETAILS:'Create_Meeting_Details',
   VIEW_CUSTOMER_PROFILE:'View_Customer_Profile'
-  
 
-  // Home:'Home'
 };

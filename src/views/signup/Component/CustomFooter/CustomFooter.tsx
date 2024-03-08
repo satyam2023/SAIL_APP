@@ -15,6 +15,8 @@ interface Footerprops {
 // import { useSelector } from "react-redux";
 import Glyphs from "assets/Glyphs";
 import { SCREENS } from "@shared-constants";
+import { WindowWidth } from "libs";
+import StringConstants from "shared/localization";
 
 const CustomFooter: React.FC<Footerprops> = ({
   CurrentScreen,
@@ -37,21 +39,12 @@ const CustomFooter: React.FC<Footerprops> = ({
   return (
     <View style={styles.footer}>
       <View style={styles.progressbar}>
-        <View style={styles.bar} />
-        <View
-          style={
-            CurrentScreen == 2 || CurrentScreen == 3 ? styles.bar : styles.nobar
-          }
-        />
-        <View style={CurrentScreen == 3 ? styles.bar : styles.nobar} />
+        <View style={[styles.bar,{width:`${CurrentScreen*33.4}%`}]}  />
       </View>
+
       <View style={styles.footercontainer}>
         <View
-          style={{
-            flexDirection: "row",
-            paddingHorizontal: 20,
-            justifyContent: "space-between",
-          }}
+          style={styles.innerFooterContainer}
         >
           {CurrentScreen >= 2 && (
             <TouchableOpacity
@@ -86,7 +79,7 @@ const CustomFooter: React.FC<Footerprops> = ({
               <Text
                 style={[styles.signuptxt, !false ? styles.txte : styles.txet]}
               >
-                Sign Up
+              {StringConstants.SIGN_UP}
               </Text>
             </TouchableOpacity>
           )}
@@ -118,14 +111,14 @@ const CustomFooter: React.FC<Footerprops> = ({
           )}
         </View>
         <View style={styles.footerBottomTxt}>
-          <Text style={styles.alreadyAccountTxt}>Already have an account?</Text>
+          <Text style={styles.alreadyAccountTxt}>{StringConstants.ALREADY_ACCOUNT}</Text>
 
           <TouchableOpacity
             onPress={() => {
               NavigationService.navigate(SCREENS.SIGNIN);
             }}
           >
-            <Text style={[styles.signInTxt]}> Sign in</Text>
+            <Text style={[styles.signInTxt]}>{StringConstants.SIGN_IN}</Text>
           </TouchableOpacity>
         </View>
       </View>

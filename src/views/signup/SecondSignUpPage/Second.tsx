@@ -7,20 +7,16 @@ import React, {
 } from "react";
 import styles from "./Style";
 import {
-  Image,
-  Modal,
   ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
 } from "react-native";
-import InputText from "components/InputText/InputText";
 import CustomHeader from "../Component/CustomHeader/CustomHeader";
 import Glyphs from "assets/Glyphs";
-import DropDown from "../Component/DropDown/DropDown";
 import RoleData from "../Component/Data/RoleData";
 import LocationData from "../Component/Data/LocationData";
 import InputTextField from "components/InputTextField";
+import CustomDropDown from "components/CustomDropDown";
+import { Colors, grey, lightgrey } from "commonStyles/RNColor.style";
+import SafeAreaContainer from "components/SafeAreaContainer";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setSecondscreen } from '../../Redux/Slice2';
 // import { setUserName } from "../../Redux/Slice";
@@ -121,19 +117,38 @@ const Second = forwardRef(({ setScreen }: SecondProps, ref) => {
   }));
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaContainer backgroundColor={Colors.white}>
       <CustomHeader details="Enter your personal information" />
-      <InputTextField onChangeText={(text:string)=>{details.name.current=text}} placeholder={"Your Name"} maxlength={20}      
-        leftIcon={Glyphs.Contact}/>
-     <InputTextField onChangeText={(text:string)=>{details.email.current=text}} placeholder={"Your Email Id"} maxlength={20}      
-        leftIcon={Glyphs.Email}/>
-      <DropDown
-        data={LocationData}
-        heading={"Location"}
-        imageurl={Glyphs.Location}
+      <InputTextField
+        onChangeText={(text: string) => {
+          details.name.current = text;
+        }}
+        placeholder={"Your Name"}
+        maxlength={20}
+        leftIcon={Glyphs.Contact}
       />
-      <DropDown data={RoleData} heading={"Your Role"} imageurl={Glyphs.Role} />
-    </ScrollView>
+      <InputTextField
+        onChangeText={(text: string) => {
+          details.email.current = text;
+        }}
+        placeholder={"Your Email Id"}
+        maxlength={20}
+        leftIcon={Glyphs.Email}
+      />
+      <CustomDropDown
+        ArrayOfData={LocationData}
+        topheading={"Location"}
+        leftIcon={Glyphs.Location}
+        style={{ backgroundColor: Colors.inputBG }}
+      />
+
+      <CustomDropDown
+        ArrayOfData={RoleData}
+        topheading={"Your Role"}
+        leftIcon={Glyphs.Role}
+        style={{ backgroundColor: Colors.inputBG }}
+      />
+    </SafeAreaContainer>
   );
 });
 export default Second;

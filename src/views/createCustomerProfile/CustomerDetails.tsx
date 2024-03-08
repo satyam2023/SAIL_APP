@@ -1,5 +1,10 @@
 import React, { useRef } from "react";
-import { GestureResponderEvent, SafeAreaView, ScrollView, Text, View } from "react-native";
+import {
+  GestureResponderEvent,
+  SafeAreaView,
+  ScrollView,
+  View,
+} from "react-native";
 import {
   CustomerSegment,
   CustomerStatus,
@@ -7,12 +12,12 @@ import {
   CustomerSubType,
   CustomerType,
 } from "./Data/Data";
-import DropDown from "components/DropDown/DropDown";
 import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
 import styles from "./Style";
 import UploadDocumnet from "components/UploadDocument/UploadDocument";
 import CustomerDetailHeader from "./CustomerDetailHeader";
 import LocateMe from "components/LocateMe";
+import CustomDropDown from "components/CustomDropDown";
 
 const CreateCustomerDetails = () => {
   const customerdetails = {
@@ -20,10 +25,14 @@ const CreateCustomerDetails = () => {
     CompanyName: useRef(""),
   };
   return (
-    <SafeAreaView style={{ flex: 1 ,marginBottom:130}}>
-         <CustomerDetailHeader heading={"Enter Customer Details"} CurrentScreen={1} topheading={"Create Customer Profile"}/>
+    <SafeAreaView style={{ flex: 1, marginBottom: 130 }}>
+      <CustomerDetailHeader
+        heading={"Enter Customer Details"}
+        CurrentScreen={1}
+        topheading={"Create Customer Profile"}
+      />
       <ScrollView style={{ paddingHorizontal: 20 }}>
-        <View style={{marginTop:16}}/>
+        <View style={{ marginTop: 16 }} />
         <View style={styles.inputbox}>
           <InputTextWithoutIcon
             placeholder="Enter Customer Code"
@@ -46,32 +55,28 @@ const CreateCustomerDetails = () => {
             maxLength={20}
           />
         </View>
-        <DropDown
-          data={CustomerSegment}
-          heading="Select Customer Segment"
-          setReason={() => {}}
+        <CustomDropDown
+          ArrayOfData={CustomerSegment}
+          topheading="Select Customer Segment"
         />
-        <DropDown
-          data={CustomerSubSegment}
-          heading="Select Customer Sub Segment"
-          setReason={() => {}}
+        <CustomDropDown
+          ArrayOfData={CustomerSubSegment}
+          topheading="Select Customer Sub Segment"
         />
-        <DropDown
-          data={CustomerType}
-          heading="Select Customer Type"
-          setReason={() => {}}
+        <CustomDropDown
+          ArrayOfData={CustomerType}
+          topheading="Select Customer Type"
         />
-        <DropDown
-          data={CustomerSubType}
-          heading="Select Customer Sub Type"
-          setReason={() => {}}
+        <CustomDropDown
+          ArrayOfData={CustomerSubType}
+          topheading="Select Customer Sub Type"
         />
-        <DropDown
-          data={CustomerStatus}
-          heading="Select Status of Customer"
-          setReason={() => {}}
+        <CustomDropDown
+          ArrayOfData={CustomerStatus}
+          topheading={"Select Status of Customer"}
         />
-        <View style={{marginTop:16}}/>
+
+        <View />
 
         <View style={styles.inputbox}>
           <InputTextWithoutIcon
@@ -117,7 +122,7 @@ const CreateCustomerDetails = () => {
             maxLength={20}
           />
         </View>
-       <LocateMe onPress={(e:GestureResponderEvent)=>{}}/>
+        <LocateMe onPress={(e: GestureResponderEvent) => {}} />
         <View style={styles.inputbox}>
           <InputTextWithoutIcon
             placeholder="Add Tag Name to Selected Location"
@@ -129,7 +134,7 @@ const CreateCustomerDetails = () => {
             maxLength={20}
           />
         </View>
-     <UploadDocumnet/>
+        <UploadDocumnet />
       </ScrollView>
     </SafeAreaView>
   );

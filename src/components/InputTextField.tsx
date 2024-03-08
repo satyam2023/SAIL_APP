@@ -14,6 +14,7 @@ import {
 import fonts from "@fonts";
 import Glyphs from "assets/Glyphs";
 import { debounceHOC } from "hocs/debounceHOC";
+import commonStyles from "commonStyles/CommonStyle";
 
 interface ITextField {
   onChangeText: (text: string) => void;
@@ -24,15 +25,14 @@ interface ITextField {
   containerStyle?: ViewStyle;
   labelStyle?: ViewStyle;
   isEditable?: boolean;
-  maxlength: number;
+  maxlength?: number;
   inputMode?: InputModeOptions;
   eyeIcon?: ImageURISource;
   onRighIconPress?: () => void;
   defaultValue?: string;
-  ref?: any;
 }
 
-const InputTextField = (props: ITextField) => {
+const InputTextField = ({maxlength=20,...props}: ITextField) => {
   const Press=debounceHOC(Pressable);
   const [secureText, setSecuretext] = useState<boolean>(false);
   const [textFocusStatus, setTextFocusStatus] = useState<boolean>(false);
@@ -50,7 +50,7 @@ const InputTextField = (props: ITextField) => {
         ]}
       >
         {props.leftIcon && (
-          <Image source={props.leftIcon} style={styles.leftIcon} />
+          <Image source={props.leftIcon} style={commonStyles.leftIcon} />
         )}
 
         <View>
@@ -58,7 +58,6 @@ const InputTextField = (props: ITextField) => {
             <Text style={styles.lable}>{props.placeholder}</Text>
           )}
           <TextInput
-            ref={props.ref}
             editable={props.isEditable}
             placeholder={!textFocusStatus ? props.placeholder : ""}
             onChangeText={(text: string) => {
@@ -69,12 +68,12 @@ const InputTextField = (props: ITextField) => {
               setTextFocusStatus(true);
             }}
             onBlur={() => {
-              setTextFocusStatus(false);
+              // setTextFocusStatus(false);
             }}
             inputMode={props.inputMode}
-            maxLength={props.maxlength}
+            maxLength={maxlength}
             secureTextEntry={secureText}
-            defaultValue={props?.defaultValue}
+            defaultValue={props?.defaultValue} 
           />
         </View>
         {props.eyeIcon && (
@@ -129,12 +128,6 @@ const styles = StyleSheet.create({
   },
   placeholderText: {
     color: Colors.greyDark,
-  },
-  leftIcon: {
-    height: 24,
-    width: 24,
-    resizeMode: "contain",
-    marginRight: 16,
   },
   rightIcon: {
     height: 15,

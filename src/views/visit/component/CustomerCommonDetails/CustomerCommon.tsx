@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text,  View } from "react-native";
 import { Image } from "react-native";
 import styles from "../../UpComingVisit/Style/Style";
 interface CommonProps {

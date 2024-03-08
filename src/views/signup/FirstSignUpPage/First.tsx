@@ -6,16 +6,11 @@ import React, {
   useState,
 } from "react";
 import CustomHeader from "../Component/CustomHeader/CustomHeader";
-
-import {
-  Image,
-  View,
-} from "react-native";
-import InputText from "components/InputText/InputText";
-import styles from "./Styles";
 // import { useDispatch, useSelector } from "react-redux";
 import Glyphs from "assets/Glyphs";
 import InputTextField from "components/InputTextField";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import StringConstants from "shared/localization";
 
 
 interface FirstProps {
@@ -106,22 +101,21 @@ const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
   }));
 
   return (
-    <View style={{flex:1,paddingHorizontal:20 }}>
-      <CustomHeader details="Enter your personal information" />
+    <SafeAreaContainer >
+      <CustomHeader details={StringConstants.ENTER_PERSONAL_INFO}/>
       <InputTextField
         leftIcon={Glyphs.Mic}
         onChangeText={(text: string) => details.contactnumber.current = text}
-        placeholder="Your Unique Personal No." 
+        placeholder={StringConstants.YOUR_UNIQUE} 
         maxlength={10}      
       />
        <InputTextField
         leftIcon={Glyphs.Phone}
         onChangeText={(text: string) => details.contactnumber.current = text}
-        placeholder="Your Contact Number"
+        placeholder={StringConstants.CONTACT_NUMBER}
         maxlength={10}
-
       />
-    </View>
+    </SafeAreaContainer>
   );
 });
 

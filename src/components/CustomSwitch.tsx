@@ -2,7 +2,7 @@ import Glyphs from "assets/Glyphs";
 import { Colors } from "commonStyles/RNColor.style";
 import { debounceHOC } from "hocs/debounceHOC";
 import { useState } from "react";
-import { Image } from "react-native";
+import { Image, Pressable } from "react-native";
 import { StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 
@@ -14,20 +14,21 @@ interface ICustomSwitch {
 
 const CustomSwitch = (props: ICustomSwitch) => {
   const [status, setStatus] = useState<boolean>(false);
-  const Press = debounceHOC(TouchableOpacity);
+  const Press = debounceHOC(Pressable);
   const handlePress = () => {
-    console.log("Switch Clicked");
+    console.log("Switch Clicked",status);
     setStatus(!status);
     props.onPress;
   };
   return (
-    <View
+    <Press
+    onPress={handlePress}
       style={[
         styles.switchContainer,
         { borderRadius: props.isRectangular ? 3 : 10 },
       ]}
     >
-      <Press onPress={handlePress}>
+      <Press>
         {!props.isRectangular ? (
           <View
             style={
@@ -40,7 +41,7 @@ const CustomSwitch = (props: ICustomSwitch) => {
           <Image style={styles.img} source={!status ? Glyphs.Tick : ""} />
         )}
       </Press>
-    </View>
+    </Press>
   );
 };
 

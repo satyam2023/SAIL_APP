@@ -1,55 +1,48 @@
+import fonts from "@fonts";
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
 import Glyphs from "assets/Glyphs";
+import commonStyles from "commonStyles/CommonStyle";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomButton from "components/CustomButton";
+import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet,View } from "react-native";
+import StringConstants from "shared/localization";
 
 const PlanCompleted = () => {
   return (
-    <View style={{ justifyContent: "center",alignItems:'center'}}>
+    <View style={commonStyles.center}>
       <Image source={Glyphs.PlannedFrame} />
-      <Text
-        style={{
-          width: 253,
-          height: 60,
-          fontWeight: "500",
-          fontSize: 20,
-          lineHeight: 30,
-          textAlign: "center",
-          color: "#233972",
-          marginTop: 24,
-        }}
+      <TextWrapper
+        style={styles.text}
       >
-        Visit plan created successfully.
-      </Text>
-      <TouchableOpacity
+        {StringConstants.VISIT_PLAN_CREATED}
+      </TextWrapper>
+      <CustomButton
         onPress={() => {
           navigate(SCREENS.MAIN);
         }}
-        style={{
-          alignSelf: "center",
-          height: 56,
-          width: '40%',
-          justifyContent:'center',
-          alignItems:'center',
-          gap: 10,
-          backgroundColor: "#233972",
-          marginTop: 32,
-          borderRadius: 100,
+        text={StringConstants.BACK_TO_HOME}
+        buttonStyle={{ backgroundColor: Colors.sailBlue, width: "40%" }}
+        textStyle={{
+          color: Colors.white,
+          fontFamily: fonts.type.regular,
+          fontSize: 16,
         }}
-      >
-        <Text
-          style={{
-            color: "#FFFFFF",
-            fontWeight: "500",
-            fontSize: 16,
-            lineHeight: 20,
-          }}
-        >
-          Back To Home
-        </Text>
-      </TouchableOpacity>
+      />
     </View>
   );
 };
 export default PlanCompleted;
+
+const styles=StyleSheet.create({
+  text:{
+    width: 253,
+    fontFamily:fonts.type.medium,
+    fontSize: 20,
+    textAlign: "center",
+    color: Colors.sailBlue,
+    marginTop: 24,
+  }
+})

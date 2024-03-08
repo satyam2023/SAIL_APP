@@ -6,7 +6,7 @@ export interface Idata{
 }
 
 const Data = [
-  {
+  {  
     image:Glyphs.Profile2User ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
