@@ -1,117 +1,50 @@
-import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
-import { DataOfIssue } from "../../Data/IssueData";
+import React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
 import Glyphs from "assets/Glyphs";
+import { Colors } from "commonStyles/RNColor.style";
+import TextWrapper from "components/TextWrapper";
+import StringConstants from "shared/localization";
+import commonStyles from "commonStyles/CommonStyle";
+
 interface CardProps {
   issue: string;
   pending: string;
   date: string;
 }
 
-const DetailsCard= ({
-  issue,
-  date,
-  pending,
-}: CardProps) => {
+const DetailsCard = ({ issue, date, pending }: CardProps) => {
   return (
-    <View
-      style={{
-        height: 123,
-        width: "100%",
-        borderRadius: 10,
-        backgroundColor: "#FFFFFF",
-        marginTop: 24,
-        padding: 16,
-        // alignItems:'center',
-      }}
-    >
-      <View>
-        <Text
-          style={{
-            // width: 71,
-            height: 14,
-            color: "#666666",
-            fontWeight: "400",
-            fontSize: 14,
-            lineHeight: 14,
-          }}
-        >
-          Issue Type
-        </Text>
-        <Text
-          style={{
-            fontWeight: "500",
-            fontSize: 14,
-            lineHeight: 16,
-            height: 16,
-            color: "#110F24",
-            marginTop: 8,
-          }}
-        >
-          {issue}
-        </Text>
-      </View>
+    <View style={styles.detailcardContainer}>
+      <TextWrapper style={commonStyles.font14RegularGray}>
+        {StringConstants.ISSUE_TYPE}
+      </TextWrapper>
+      <TextWrapper style={commonStyles.font14RegularBlack}>{issue}</TextWrapper>
 
-      <View style={{ flexDirection: "row" ,justifyContent:'space-between'}}>
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <View style={{ marginTop: 16, flexDirection: "row" }}>
-          <Image source={Glyphs.Pending}  />
-          <View>
-            <Text
-              style={{
-                height: 14,
-                marginLeft: 8,
-                color: "#666666",
-                fontWeight: "400",
-                fontSize: 12,
-                lineHeight: 14,
-              }}
-            >
-              Pending With
-            </Text>
-            <Text
-              style={{
-                fontWeight: "500",
-                fontSize: 14,
-                lineHeight: 16,
-                marginLeft: 8,
-                height: 16,
-                color: "#110F24",
-                marginTop: 8,
-              }}
+          <Image source={Glyphs.Pending} />
+          <View style={{ marginLeft: 8 }}>
+            <TextWrapper style={commonStyles.font12RegularGrey}>
+              {StringConstants.PENDING_WITH}
+            </TextWrapper>
+            <TextWrapper
+              style={[commonStyles.font14MediumBlack, { bottom: 8 }]}
             >
               {pending}
-            </Text>
+            </TextWrapper>
           </View>
         </View>
-
         <View style={{ marginTop: 16, flexDirection: "row" }}>
           <Image source={Glyphs.date} />
-          <View>
-            <Text
-              style={{
-                height: 14,
-                marginLeft: 8,
-                color: "#666666",
-                fontWeight: "400",
-                fontSize: 14,
-                lineHeight: 14,
-              }}
-            >
-              Issue Date
-            </Text>
-            <Text
-              style={{
-                fontWeight: "500",
-                fontSize: 14,
-                lineHeight: 16,
-                marginLeft: 8,
-                height: 16,
-                color: "#110F24",
-                marginTop: 8,
-              }}
+          <View style={{ marginLeft: 8 }}>
+            <TextWrapper style={commonStyles.font12RegularGrey}>
+              {StringConstants.ISSUE_DATE}
+            </TextWrapper>
+            <TextWrapper
+              style={[commonStyles.font14MediumBlack, { bottom: 8 }]}
             >
               {date}
-            </Text>
+            </TextWrapper>
           </View>
         </View>
       </View>
@@ -120,3 +53,14 @@ const DetailsCard= ({
 };
 
 export default DetailsCard;
+
+const styles = StyleSheet.create({
+  detailcardContainer: {
+    height: 123,
+    width: "100%",
+    borderRadius: 10,
+    backgroundColor: Colors.white,
+    marginTop: 24,
+    padding: 16,
+  },
+});

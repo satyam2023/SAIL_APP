@@ -1,15 +1,13 @@
 import React from "react";
 import styles from "../Style";
 import {
-  Image,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
-  TouchableOpacity,
-  View,
 } from "react-native";
-import Glyphs from "assets/Glyphs";
+import Header from "components/HeaderForMainScreen/HeaderMain";
+import StringConstants from "shared/localization";
+import SafeAreaContainer from "components/SafeAreaContainer";
 
 interface Props {
   setScreen: Function;
@@ -19,44 +17,8 @@ const Terms: React.FC<Props> = ({ setScreen }: Props) => {
   return (
     <ScrollView style={{ backgroundColor: "#F9F9FC", }}>
       <StatusBar backgroundColor={"#233972"} barStyle={"light-content"} />
-      <View
-        style={{
-          height: 60,
-          width: "100%",
-          backgroundColor: "#233972",
-          flexDirection: "row",
-        }}
-      >
-        <TouchableOpacity
-          style={{ marginLeft: 21, marginTop: 18 }}
-          onPress={() => {
-            setScreen("CMS");
-          }}
-        >
-          <Image
-            source={Glyphs.Arrow}
-            style={{
-              tintColor: "#FFFFFF",
-              width: 9,
-              height: 15,
-              transform: [{ rotate: "180deg" }],
-            }}
-          />
-        </TouchableOpacity>
-        <Text
-          style={{
-            marginTop: 13,
-            color: "#FFFFFF",
-            marginLeft: 16,
-            height: 36,
-            fontWeight: "600",
-            fontSize: 16,
-          }}
-        >
-          Terms and Conditions
-        </Text>
-      </View>
-      <View style={{paddingHorizontal:20}}>
+      <Header topheading={StringConstants.TERMS_AND_CONDITIONS} onPress={()=>setScreen(StringConstants.CMS)}/>
+      <SafeAreaContainer>
 
       <Text style={styles.privacytext}>
         Thank you for choosing our online sales meeting app! To ensure a smooth
@@ -127,7 +89,7 @@ const Terms: React.FC<Props> = ({ setScreen }: Props) => {
           not agree to these terms and conditions, please do not use our app.
         </Text>
       </Text>
-      </View>
+      </SafeAreaContainer>
     </ScrollView>
   );
 };

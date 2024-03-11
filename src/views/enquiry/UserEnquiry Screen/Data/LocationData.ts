@@ -22,7 +22,7 @@ const DataOfPerson=[
        phonenumber:"+91 9999 123 456"
     },
     {
-       name:"Satyam",
+       name:"Kiara Sharma",
        location:"New Delhi",
        phonenumber:"+91 9999 123 456"
 

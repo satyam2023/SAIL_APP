@@ -1,105 +1,75 @@
+import commonStyles from "commonStyles/CommonStyle";
+import { Colors } from "commonStyles/RNColor.style";
+import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { Text, View } from "react-native";
+import { StyleSheet,View } from "react-native";
+import StringConstants from "shared/localization";
 const ForwardCard = () => {
   return (
-    <View
-      style={{
-        backgroundColor: "#F9F9FC",
-        marginTop: 16,
-        borderWidth: 1,
-        borderColor: "#DFDEE1",
-        width:'100%',
-        height: 136,
-        paddingHorizontal:16
-      }}
-    >
-      <View style={{ marginBottom: 16 }}>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={{
+    <View style={styles.forwardCardContainer}>
+      <View style={{ flexDirection: "row" }}>
+        <TextWrapper style={[{}, commonStyles.font14RegularGray]}>
+          {StringConstants.FWD_BY}
+        </TextWrapper>
+        <TextWrapper
+          style={[
+            {
+              marginLeft: 11,
+            },
+            commonStyles.font14MediumBlack,
+          ]}
+        >
+          {StringConstants.USER_NAME}
+        </TextWrapper>
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <TextWrapper
+          style={[
+            {
               marginTop: 17,
-              fontWeight: "400",
-              fontSize: 14,
-              height: 14,
-            //   width: 78,
-              lineHeight: 14,
-              color: "#110F2480",
-            }}
-          >
-            Forward by
-          </Text>
-          <Text
-            style={{
+            },
+            commonStyles.font14RegularGray,
+          ]}
+        >
+          {StringConstants.FWD_TO}
+        </TextWrapper>
+        <TextWrapper
+          style={[
+            {
               marginLeft: 11,
               marginTop: 16,
-              fontWeight: "500",
-              fontSize: 12,
-              lineHeight: 16,
-              height: 16,
-            //   width: 132,
-            // alignSelf:'center',
-              color: "#110F24",
-            }}
-          >
-            John Doe
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={{
-              marginTop: 13,
-            //   width: 75,
-              height: 14,
-              fontWeight: "400",
-              fontSize: 14,
-              lineHeight: 14,
-              color: "#110F2480",
-            }}
-          >
-            Forward To
-          </Text>
-          <Text
-            style={{
-              marginLeft: 15,
-              marginTop: 12,
-              fontWeight: "500",
-              fontSize: 12,
-              lineHeight: 16,
-              height: 16,
-             
-              color: "#110F24",
-            }}
-          >
-            Kiara Sharma
-          </Text>
-        </View>
-        <Text
-          style={{
-            marginTop: 14,
-            fontWeight: "400",
-            fontSize: 14,
-            lineHeight: 14,
-            // width: 79,
-            color: "#110F2480",
-          }}
+            },
+            commonStyles.font14MediumBlack,
+          ]}
         >
-          Comments
-        </Text>
-        <Text
-          style={{
-            marginTop: 4,
-            fontWeight: "500",
-            color: "#110F24",
-            // width: 263,
-            fontSize: 12,
-            lineHeight: 16,
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea debitis
-          saepe.
-        </Text>
+          {StringConstants.KIARA_SHARMA}
+        </TextWrapper>
       </View>
+      <TextWrapper
+        style={[
+          {
+            marginTop: 17,
+          },
+          commonStyles.font14RegularGray,
+        ]}
+      >
+        {StringConstants.COMMENT}
+      </TextWrapper>
+      <TextWrapper style={commonStyles.font14MediumBlack}>
+        {StringConstants.LOREM_TEXT}
+      </TextWrapper>
     </View>
   );
 };
 export default ForwardCard;
+
+const styles = StyleSheet.create({
+  forwardCardContainer: {
+    backgroundColor: Colors.background2,
+    marginTop: 16,
+    borderWidth: 1,
+    borderColor: Colors.lightGray,
+    width: "100%",
+    padding: 16,
+  },
+});

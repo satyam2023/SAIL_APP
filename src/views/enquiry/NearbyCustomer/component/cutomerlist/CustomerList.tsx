@@ -1,5 +1,8 @@
+import commonStyles from "commonStyles/CommonStyle";
+import { Colors } from "commonStyles/RNColor.style";
+import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 interface IcustomerList {
   image: any;
   index: number;
@@ -9,44 +12,31 @@ interface IcustomerList {
 
 const CustomerList = ({ image, index, name, location }: IcustomerList) => {
   return (
-    <View
-      key={index}
-      style={{
-        height: 70,
-        width: "100%",
-        borderRadius: 10,
-        backgroundColor: "#FFFFFF",
-        marginTop: 12,
-        flexDirection: "row",
-        alignItems: "center",
-        paddingHorizontal: 22.5,
-      }}
-    >
-      <Image source={image} style={{}} />
-      <View style={{ marginLeft: 24.67 }}>
-        <Text
-          style={{
-            fontWeight: "400",
-            fontSize: 14,
-            lineHeight: 14,
-            color: "#110F24",
-          }}
-        >
+    <View key={index} style={styles.customerListContainer}>
+      <Image source={image} />
+      <View style={{ marginLeft: 25 }}>
+        <TextWrapper style={commonStyles.font14MediumBlackpearl}>
           {name}
-        </Text>
-        <Text
-          style={{
-            fontWeight: "400",
-            fontSize: 12,
-            lineHeight: 16,
-            color: "#110F2480",
-          }}
-        >
+        </TextWrapper>
+        <TextWrapper style={[commonStyles.font12RegularGrey, { marginTop: 6 }]}>
           {location}
-        </Text>
+        </TextWrapper>
       </View>
     </View>
   );
 };
 
 export default CustomerList;
+
+const styles = StyleSheet.create({
+  customerListContainer: {
+    height: 70,
+    width: "100%",
+    borderRadius: 10,
+    backgroundColor: Colors.white,
+    marginTop: 12,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 22.5,
+  },
+});

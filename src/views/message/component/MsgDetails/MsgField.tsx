@@ -1,3 +1,5 @@
+import commonStyles from "commonStyles/CommonStyle";
+import TextWrapper from "components/TextWrapper";
 import React from "react";
 import { View, Text } from "react-native";
 interface FieldProps {
@@ -8,20 +10,17 @@ interface FieldProps {
 const MsgField = ({ heading, body }: FieldProps) => {
   return (
     <View style={{ marginTop: 16 }}>
-      <Text style={{ fontWeight: "400", fontSize: 14, lineHeight: 14 }}>
-        {heading}
-      </Text>
-      <Text
-        style={{
-          fontWeight: "500",
-          fontSize: 12,
-          lineHeight: 16,
-          color: "#110F24",
-          marginTop: 8,
-        }}
+      <Text style={commonStyles.font14RegularGray}>{heading}</Text>
+      <TextWrapper
+        style={[
+          {
+            marginTop: 8,
+          },
+          commonStyles.font14MediumBlack,
+        ]}
       >
         {body}
-      </Text>
+      </TextWrapper>
     </View>
   );
 };

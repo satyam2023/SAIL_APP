@@ -13,13 +13,7 @@ import StringConstants from "shared/localization";
 import commonStyles from "commonStyles/CommonStyle";
 
 const HomeScreen = () => {
-  const [splashscreen, setsplashscreen] = useState(true);
-  setTimeout(controlsplash, 2000);
-  function controlsplash() {
-    setsplashscreen(false);
-  }
-
-  return !splashscreen ? (
+  return (
     <SafeAreaContainer backgroundColor={Colors.white}>
       <View style={[{ flex: 0.4 },commonStyles.center]}>
         <Image source={Glyphs.Sail} style={styles.imgsail} />
@@ -50,9 +44,7 @@ const HomeScreen = () => {
         />
       </View>
     </SafeAreaContainer>
-  ) : (
-    <Splash />
-  );
+  )  ;
 };
 
 export default HomeScreen;

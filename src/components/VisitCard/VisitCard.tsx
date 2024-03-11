@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-import styles from "./Style/Style";
+import { Image, StyleSheet,TouchableOpacity, View } from "react-native";
 import { SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
 import { useDispatch } from "react-redux";
 import { VisitType } from "redux/actions/UIAction";
+import commonStyles from "commonStyles/CommonStyle";
+import TextWrapper from "components/TextWrapper";
+import fonts from "@fonts";
 
 interface IvisitCard {
   count: number;
@@ -25,16 +27,15 @@ const VisitCard = ({
   const [visitNumber, setVisitNumber] = useState<String>("");
 
   function handleVisitClick(){
-     if(title=="Upcoming Visits"){
-        console.log('Button Clicked::')
+     if(title=="Upcoming Visit"){
        navigate(SCREENS.VISIT)
      }
-    else if(title=="Planned Visits"){
+    else if(title=="Planned Visit"){
     dispatch(VisitType(2));
       navigate(SCREENS.VISIT)
 
     }
-    else if(title=="Executed Visits"){
+    else if(title=="Executed Visit"){
       dispatch(VisitType(3));
       navigate(SCREENS.VISIT)
 
@@ -60,13 +61,33 @@ const VisitCard = ({
     >
       <View style={{ flexDirection: "row" }}>
         <Image source={image} style={styles.visitImg} />
-        <Text style={[styles.exedcutedNumber, { color: textColor }]}>
+        <TextWrapper style={[styles.exedcutedNumber, { color: textColor }]}>
           {visitNumber}
-        </Text>
+        </TextWrapper>
       </View>
-      <Text style={styles.upcomingVisit}>{title}</Text>
+      <TextWrapper style={[commonStyles.font14MediumBlack,{marginTop:8}]}>{title}</TextWrapper>
     </TouchableOpacity>
   );
 };
 
 export default VisitCard;
+
+const styles = StyleSheet.create({
+  visitContainer: {
+      width: '30%',
+      height: 108,
+      borderRadius: 4,
+      paddingHorizontal:16
+    },
+    visitImg: {
+      marginTop: 16,
+      marginRight:'10%'
+    },
+    exedcutedNumber: {
+      fontFamily:fonts.type.bold,
+      lineHeight: 36,
+      fontSize: 24,
+      marginTop: 16,
+    }
+
+});

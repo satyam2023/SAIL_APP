@@ -1,27 +1,69 @@
-import React from 'react'
-import { SafeAreaView, ScrollView, Text, View } from 'react-native'
-import Header from 'components/HeaderForMainScreen/HeaderMain';
-import CommonBox from './CommonBox/CommonBox';
-import styles from './Style/Styles';
+import React from "react";
+import { SafeAreaView, ScrollView,} from "react-native";
+import Header from "components/HeaderForMainScreen/HeaderMain";
+import TextWrapper from "components/TextWrapper";
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import CustomToggleBox from "components/CustomToggleBox";
+import Glyphs from "assets/Glyphs";
+import NotificationToggleBoxContent from "./component/NotificationToggleBoxContent";
+import StringConstants from "shared/localization";
 
-
-
-const Notification= (props:any) => {
+const NotificationScreen = () => {
   return (
- <SafeAreaView style={{flex:1,backgroundColor:'#F9F9FC',}}>
-  <Header topheading={'Notifications'}/>
-  <ScrollView>
-<Text style={styles.txt}>Today</Text>
-<CommonBox/>
-<Text style={styles.txt}>Yesterday</Text>
-<CommonBox/>
-<CommonBox/>
-<CommonBox/>
-<CommonBox/>
-<CommonBox/>
-</ScrollView>
- </SafeAreaView>
-  )
-}
+    <SafeAreaView>
+      <Header topheading={StringConstants.NOTIFICATIONS} />
+      <ScrollView>
+        <SafeAreaContainer>
+          <TextWrapper
+            fontFamily={fonts.type.regular}
+            color={Colors.blackPeral}
+            style={{ marginVertical: 8 }}
+          >
+            {StringConstants.TODAY}
+          </TextWrapper>
+          <CustomToggleBox
+            heading={StringConstants.VISIT_PLAN_WITH}
+            toggleContent={<NotificationToggleBoxContent />}
+            isNotificationDate={"24 Apr"}
+            leftIcon={Glyphs.Notify}
+          />
+          <TextWrapper
+            fontFamily={fonts.type.regular}
+            color={Colors.blackPeral}
+            style={{ marginBottom: 8 }}
+          >
+            {StringConstants.YESTERDAY}
+          </TextWrapper>
+          <CustomToggleBox
+            heading={StringConstants.VISIT_PLAN_WITH}
+            toggleContent={<NotificationToggleBoxContent />}
+            isNotificationDate={"24 Apr"}
+            leftIcon={Glyphs.Notify}
+          />
+          <CustomToggleBox
+            heading={StringConstants.VISIT_PLAN_WITH}
+            toggleContent={<NotificationToggleBoxContent />}
+            isNotificationDate={"24 Apr"}
+            leftIcon={Glyphs.Notify}
+          />
+          <CustomToggleBox
+            heading={StringConstants.VISIT_PLAN_WITH}
+            toggleContent={<NotificationToggleBoxContent />}
+            isNotificationDate={"24 Apr"}
+            leftIcon={Glyphs.Notify}
+          />
+          <CustomToggleBox
+            heading={StringConstants.VISIT_PLAN_WITH}
+            toggleContent={<NotificationToggleBoxContent />}
+            isNotificationDate={"24 Apr"}
+            leftIcon={Glyphs.Notify}
+          />
+        </SafeAreaContainer>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
-export default Notification;
+export default NotificationScreen;

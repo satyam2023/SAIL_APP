@@ -30,6 +30,12 @@ const styles=StyleSheet.create({
             lineHeight: 24,
             color: "#110F24",
             marginTop: 19,
+          },
+          img:{
+            height: 100,
+            width: 100,
+            resizeMode: "contain",
+            marginTop: 20,
           }
 
 });

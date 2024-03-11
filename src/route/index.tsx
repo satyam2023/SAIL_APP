@@ -1,10 +1,10 @@
 import React, {  } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
-  NavigationContainer,
+  NavigationContainer, useRoute,
 } from "@react-navigation/native";
 import {
-  createBottomTabNavigator,
+  createBottomTabNavigator, useBottomTabBarHeight,
 } from "@react-navigation/bottom-tabs";
 
 import { SCREENS } from "@shared-constants";
@@ -23,7 +23,7 @@ import VisitScreenViewModel from "viewModels/VisitScreenViewModel";
 import EnquiryViewModel from "viewModels/EnquiryViewModel";
 import ProductCatalougeViewModel from "viewModels/ProductCatalougeViewModel";
 import TabButton from "components/TabButton/TabButton";
-import { blue } from "commonStyles/RNColor.style";
+import { Colors, blue } from "commonStyles/RNColor.style";
 import MoreOptionsViewModel from "viewModels/MoreOptionsViewModel";
 import CMSViewModel from "viewModels/CMSViewModel";
 import NotificationViewModel from "viewModels/NotificationViewModel";
@@ -33,10 +33,11 @@ import CreateVisitPlanViewModel from "viewModels/CreateVisitPlanModel";
 import CreateMetingDetailsViewModel from "viewModels/CreateMeetingDetailsViewModel";
 import ViewCustomerProfileViewModel from "viewModels/ViewCustomerProfileViewModel";
 import CreateCustomerViewModel from "viewModels/CreateCustomerViewModel";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const HomeStack = createStackNavigator();
+
 
 const TabIcon = (route: any, focused: boolean) => {
   const getTabIcon = (tabRoute: any) => {
@@ -97,6 +98,7 @@ const HomeStackNavigator = () => {
 };
 
 const RenderTabNavigation = () => {
+  // const bottomTabheight=useBottomTabBarHeight();
   const isDarkMode = useSelector(
     (state: RootState) => state.themeReducer.isDarkMode,
   );
@@ -113,9 +115,11 @@ const RenderTabNavigation = () => {
         tabBarIcon: ({ focused }) => TabIcon(route, focused),
         tabBarActiveTintColor: blue,
         tabBarInactiveTintColor: "gray",
+        tabBarBackground:()=>{
+          return<Image source={Glyphs.BottomTabBar}  style={{width:'100%',resizeMode:'contain',bottom:15}}/>
+        },
         tabBarStyle: {
-          backgroundColor: isDarkMode ? palette.black : palette.white,
-          // justifyContent:'space-around',
+          backgroundColor: isDarkMode ? Colors.transparent : Colors.transparent,
           display:!isTabVisible
         },
         tabBarLabel: () => {

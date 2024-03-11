@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import React, {  useRef, useState } from "react";
+import {  TouchableOpacity, View } from "react-native";
 import styles from "./Styles";
 import { DataOfIssue, LocationData } from "./Data/IssueData";
 import DetailsCard from "./component/DetailCard/DetailsCard";
@@ -9,9 +9,10 @@ import CustomButton from "components/CustomButton";
 import { Colors, darkgrey, lightgrey } from "commonStyles/RNColor.style";
 import CustomDropDown from "components/CustomDropDown";
 import InputTextField from "components/InputTextField";
+import StringConstants from "shared/localization";
+import TextWrapper from "components/TextWrapper";
 
 const IssueEnquiry = () => {
-  const [SearchBtnStatus, setSearchBtnStatus] = useState<boolean>(false);
   const [searchresult, setsearchresult] = useState<boolean>(false);
   const [data, setdata] = useState({
     issue: "",
@@ -48,11 +49,11 @@ const IssueEnquiry = () => {
         style={styles.issueType}
       >
         <TouchableOpacity>
-          <Text style={styles.openIssue}>Open Issues</Text>
+          <TextWrapper style={[styles.openIssue]}>{StringConstants.OPEN_ISSUES}</TextWrapper>
           <View style={styles.line} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigate(SCREENS.MAIN)}>
-          <Text style={styles.resolvedIssue}>Resolved Issues</Text>
+          <TextWrapper style={styles.resolvedIssue}>{StringConstants.RESOLVED_ISSUES}</TextWrapper>
         </TouchableOpacity>
       </View>
 
@@ -60,19 +61,19 @@ const IssueEnquiry = () => {
         onChangeText={(text: string) => {
           details.name.current = text;
         }}
-        placeholder={"Enter Name"}
+        placeholder={StringConstants.ENTER_NAME}
         maxlength={20}
         containerStyle={{ backgroundColor: Colors.white }}
       />
 
       <CustomDropDown
         ArrayOfData={LocationData}
-        topheading="Select Branch Location"
+        topheading={StringConstants.SELECT_BRANCH_LOCATION}
       />
 
       <CustomButton
         onPress={SearchingData}
-        text={"Search"}
+        text={StringConstants.SEARCH}
         buttonStyle={{ backgroundColor: lightgrey }}
         textStyle={{ color: darkgrey }}
       />

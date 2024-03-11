@@ -13,12 +13,22 @@ const commonStyles = StyleSheet.create({
   font14RegularBlack: {
     fontSize: 14,
     fontFamily:fonts.type.regular, 
-    color: Colors.blackPeral,
+    color: Colors.black,
+  },
+  font14RegularGray: {
+    fontSize: 14,
+    fontFamily:fonts.type.regular, 
+    color: Colors.jetGray,
   },
   font14MediumBlack: {
     fontSize: 14,
     fontFamily:fonts.type.medium, 
-    color: Colors.charcoalBlack,
+    color: Colors.black,
+  },
+  font14MediumBlackpearl:{
+    fontSize: 14,
+    fontFamily:fonts.type.medium, 
+    color: Colors.blackPeral,
   },
   font12RegularGrey: {
     fontSize: 12,

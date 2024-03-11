@@ -1,7 +1,6 @@
 import React from "react";
 import fonts from "@fonts";
 import RNText, { IRNTextProps } from "components/RNText/RNText";
-import { ViewStyle } from "react-native";
 
 interface ITextWrapperProps extends IRNTextProps {
   children?: React.ReactNode;

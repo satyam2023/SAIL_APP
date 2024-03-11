@@ -80,8 +80,9 @@ const Glyphs = {
   AddCustomer:require('../assets/images/newCustomer.png'),
   ExistingCustomer:require('../assets/images/ExistingCustomer.png'),
   Minus:require('../assets/images/minus.png'),
-  PlusToggle:require('../assets/images/plus copy.png'),
+  PlusToggle:require('../assets/images/plusCopy.png'),
   UpArrow:require('../assets/images/upArrow.png'),
   DownArrow:require('../assets/images/DownArrow.png'),
+  BottomTabBar:require('../assets/images/bottom_nav_bg.png'),
 };
 export default Glyphs;

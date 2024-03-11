@@ -4,7 +4,6 @@ import { debounceHOC } from "hocs/debounceHOC";
 import { useState } from "react";
 import { Image, Pressable } from "react-native";
 import { StyleSheet, View } from "react-native";
-import { TouchableOpacity } from "react-native";
 
 interface ICustomSwitch {
   isRectangular?: boolean;

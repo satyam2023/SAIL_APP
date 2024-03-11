@@ -1,17 +1,11 @@
 import React from "react";
 import {
   FlatList,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  TouchableOpacity,
-  View,
 } from "react-native";
-import { Image } from "react-native";
 import Data from "./Data";
 import { Idata } from "./Data";
 import CustomerList from "./component/cutomerlist/CustomerList";
+import SafeAreaContainer from "components/SafeAreaContainer";
 
 interface Iuser {
   item: Idata;
@@ -24,14 +18,12 @@ const NearbyCustomer = () => {
   }
 
   return (
-    <View
-      style={{backgroundColor: "#F9F9FC", flex:1,paddingHorizontal:20}}
-    >
+    <SafeAreaContainer style={{marginBottom:20}} >
      <FlatList
      data={Data}
      renderItem={renderitem}
      />
-    </View>
+    </SafeAreaContainer>
   );
 };
 

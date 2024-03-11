@@ -1,28 +1,29 @@
-import React from "react";
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  name: {
+  visitContainer:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 16,
+    position: "relative",
+    bottom: 68,
+    paddingHorizontal:20
+  },
+  topContainer: {
     height: 128,
     borderBottomLeftRadius: 20,
     width: "100%",
-    backgroundColor: "#233972",
+    backgroundColor: Colors.sailBlue,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingHorizontal:20
   },
-  nameContainer: {
-    flexDirection: "column",
-    height: 48,
-    marginTop: 12,
-  },
-  Welcometext: {
-    fontWeight: "400",
+  welcometext: {
+    fontFamily:fonts.type.regular,
     fontSize: 16,
-    lineHeight: 24,
     color: "#FFFFFF",
-  },
-  Welcometextname: {
-    fontWeight: "600",
-    fontSize: 16,
-    lineHeight: 24,
-    color: "#FFFFFF",
+    marginTop:12
   },
   circle: {
     marginTop: 15,
@@ -32,17 +33,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#E67437",
     borderRadius: 18,
   },
-  // container: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
+
   circleTxt: {
     alignSelf: "center",
-    color: "#FFFFFF",
+    color:Colors.white,
     height: 15,
     width: 19,
-    fontWeight: "500",
+    fontFamily:fonts.type.medium,
     fontSize: 14,
     lineHeight: 14,
     marginVertical: 11,

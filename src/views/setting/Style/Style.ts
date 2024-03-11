@@ -1,63 +1,51 @@
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  inputbox: {
-    width: "100%",
-    height: 56,
-    borderRadius: 33,
-    backgroundColor:'#DFDEE1',
-    flexDirection: "row",
-    marginBottom: 16,
-  },
   circle: {
     width: 54,
     height: 54,
-    backgroundColor: "#E67437",
+    backgroundColor: Colors.orange,
     borderRadius: 27,
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   editContainer: {
     height: 36,
-    paddingHorizontal:16,
+    paddingHorizontal: 16,
     backgroundColor: "#233972",
     borderRadius: 100,
     gap: 10,
     flexDirection: "row",
-    justifyContent:'space-between',
-    alignItems:'center'
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-  editImg: { height: 16, width: 16 },
   editTxt: {
     height: 20,
-    fontWeight: "500",
+    fontFamily: fonts.type.medium,
     fontSize: 16,
-    lineHeight: 20,
-    color: "#FFFFFF"
+    color: Colors.white,
   },
   circleContent: {
-    color: "#FFFFFF",
+    color: Colors.white,
     fontWeight: "500",
     fontSize: 20,
   },
   userPost: {
-    fontWeight: "400",
+    fontFamily: fonts.type.regular,
     fontSize: 12,
-    lineHeight: 15,
-    marginLeft: 17,
-    color: "#233972",
+    color: Colors.sailBlue,
     marginTop: 7,
   },
-  userName: {
-    fontWeight: "500",
-    fontSize: 14,
-    lineHeight: 15,
-    marginLeft: 17,
-    alignContent:'center',
-    color: "#110F24",
+  detailContainer: {
+    flexDirection: "row",
+    marginVertical: 24,
   },
-  detailContainer: { 
-    flexDirection: "row", 
-    marginVertical:24
-},
+  infoContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "88%",
+    alignItems: "center",
+  },
 });
 export default styles;

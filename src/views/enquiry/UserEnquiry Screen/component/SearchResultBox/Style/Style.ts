@@ -1,3 +1,5 @@
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 
 const styles=StyleSheet.create({
@@ -13,11 +15,11 @@ const styles=StyleSheet.create({
         marginTop: 24,
       },
       searchText:{
-        fontWeight: "500",
+        fontFamily:fonts.type.medium,
         fontSize: 14,
         lineHeight: 16,
         height: 16,
-        color: "#110F24",
+        color: Colors.blackPeral,
       },
       searchPlace:{
         fontWeight: "500",

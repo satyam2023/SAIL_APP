@@ -1,26 +1,29 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import {  TouchableOpacity} from "react-native";
 import styles from "./Style/Style";
-interface IenquiryButton {
+import TextWrapper from "components/TextWrapper";
+import fonts from "@fonts";
+import StringConstants from "shared/localization";
+interface IEnquiryButton {
   backgrouncolor: string,
   textColor: string,
   tag:string,
-  handleEnquiryType:()=> void;
+  handleEnquiryType:(arg:string)=> void;
 
 }
 
-const EnquiryButton = ({ backgrouncolor, textColor,tag,handleEnquiryType}: IenquiryButton) => {
+const EnquiryButton = ({ backgrouncolor, textColor,tag,handleEnquiryType}: IEnquiryButton) => {
     function handleEnquiryClick(){
-        if(tag=="User Enquiry"){
-            handleEnquiryType("User Enquiry")
+        if(tag==StringConstants.USER_ENQUIRY){
+            handleEnquiryType(StringConstants.USER_ENQUIRY)
             
         }
-        else if(tag=="Issue Enquiry"){
-            handleEnquiryType("Issue Enquiry")
+        else if(tag==StringConstants.ISSUE_ENQUIRY){
+            handleEnquiryType(StringConstants.ISSUE_ENQUIRY)
            
         }
-        else if(tag=="Nearby Customer"){
-            handleEnquiryType("Nearby Customer")
+        else if(tag==StringConstants.NEARBY_CUSTOMERS){
+            handleEnquiryType(StringConstants.NEARBY_CUSTOMERS)
         }
     }
   return (
@@ -29,7 +32,7 @@ const EnquiryButton = ({ backgrouncolor, textColor,tag,handleEnquiryType}: Ienqu
       style={[styles.container, { backgroundColor: backgrouncolor }]}
       onPress={handleEnquiryClick}
     >
-      <Text style={{ color: textColor,fontSize:14,fontWeight:500 }}>{tag}</Text>
+      <TextWrapper color={textColor} fontFamily={fonts.type.medium}>{tag}</TextWrapper>
     </TouchableOpacity>
 
   );

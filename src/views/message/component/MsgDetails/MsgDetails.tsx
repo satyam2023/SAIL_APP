@@ -1,89 +1,94 @@
 import React from "react";
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, TextInput, View } from "react-native";
 import Header from "components/HeaderForMainScreen/HeaderMain";
 import MsgField from "./MsgField";
 import ForwardCard from "./ForwarnCard";
 import styles from "views/message/Style/Style";
 import Glyphs from "assets/Glyphs";
-import { blue, grey, lightgrey, white } from "commonStyles/RNColor.style";
-import { SCREENS } from "@shared-constants";
-import { navigate } from "@navigation";
 import CustomButton from "components/CustomButton";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import StringConstants from "shared/localization";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import TextWrapper from "components/TextWrapper";
+import commonStyles from "commonStyles/CommonStyle";
 
-const MsgDetails= () => {
+const MsgDetails = () => {
   return (
-    <SafeAreaView style={{marginBottom:50}} >
-      <Header
-        topheading="Message Details"
-      />
-      <View style={{paddingHorizontal:20}}>
-      <ScrollView
-        style={{
-          backgroundColor: "#FFFFFF",
-          width: '100%',
-          marginTop: 24,
-          borderRadius: 10,
-          paddingHorizontal:16,
-          marginBottom:70
-        }}
-      >
-        <MsgField heading="Customer Code" body="1234567" />
-        <MsgField heading="Customer Name" body="John Doe" />
-        <MsgField heading="Customer Type" body="Customer Type Title" />
-        <MsgField
-          heading="Reason"
-          body="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        />
-        <MsgField
-          heading="Issue"
-          body="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        />
-        <MsgField
-          heading="Issue Comment"
-          body="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        />
-        <ForwardCard />
-        <ForwardCard />
-        <ForwardCard />
-        <View style={styles.escalateBox}>
-          <View>
-            <Text style={{ marginTop: 5 ,color:grey}}>Escalate To</Text>
-            <Text style={{ fontWeight: "400", color: "#110F24", marginTop: 5 }}>
-              Title
-            </Text>
-          </View>
-          <Image
-            source={Glyphs.Arrow}
-            style={{
-              transform: [{ rotate: "90deg" }],
-              marginTop: 18,
-              marginLeft: 8,
-              tintColor: "gray",
-            }}
+    <>
+      <Header topheading={StringConstants.MESSAGE_DETAILS} />
+      <SafeAreaContainer>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={styles.container}
+        >
+          <MsgField
+            heading={StringConstants.CUSTOMER_CODE}
+            body={StringConstants.NUMBER}
           />
-        </View>
+          <MsgField
+            heading={StringConstants.CUSTOMER_NAME}
+            body={StringConstants.USER_NAME}
+          />
+          <MsgField
+            heading={StringConstants.CUSTOMER_TYPE}
+            body={StringConstants.CUSTOMER_TYPE_TITLE}
+          />
+          <MsgField
+            heading={StringConstants.REASON}
+            body={StringConstants.LOREM_TEXT}
+          />
+          <MsgField
+            heading={StringConstants.ISSUE}
+            body={StringConstants.LOREM_TEXT}
+          />
+          <MsgField
+            heading={StringConstants.ISSUE_CMNT}
+            body={StringConstants.LOREM_TEXT}
+          />
+          <ForwardCard />
+          <ForwardCard />
+          <ForwardCard />
+          <View style={styles.escalateBox}>
+            <View>
+              <TextWrapper style={commonStyles.font14RegularGray}>
+                {StringConstants.ESCALATED_TO}
+              </TextWrapper>
+              <TextWrapper
+                style={[commonStyles.font14RegularBlack, { marginTop: 5 }]}
+              >
+                {StringConstants.TITLE}
+              </TextWrapper>
+            </View>
 
-        <View style={styles.commentBox}>
-          <Text style={styles.commentTxt}>Add Comments</Text>
-          <TextInput
-            multiline={true}
-            placeholder="Remarks"
-            placeholderTextColor={"black"}
+            <Image
+              source={Glyphs.Arrow}
+              style={{
+                transform: [{ rotate: "90deg" }],
+                tintColor: Colors.grey,
+              }}
+            />
+          </View>
+
+          <View style={styles.commentBox}>
+            <TextWrapper
+              style={[{ marginTop: 8 }, commonStyles.font14RegularBlack]}
+            >
+              {StringConstants.ADD_COMMENT}
+            </TextWrapper>
+            <TextInput
+              multiline={true}
+              placeholder={StringConstants.REMARKS}
+              placeholderTextColor={Colors.black}
+            />
+          </View>
+          <CustomButton
+            text={StringConstants.SUBMIT}
+            buttonStyle={{ backgroundColor: Colors.sailBlue }}
+            textStyle={{ color: Colors.white }}
           />
-        </View>
-        <CustomButton text={"Submit"} buttonStyle={{backgroundColor:blue}} textStyle={{color:white}}        
-        />
-      </ScrollView>
-      </View>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaContainer>
+    </>
   );
 };
 export default MsgDetails;

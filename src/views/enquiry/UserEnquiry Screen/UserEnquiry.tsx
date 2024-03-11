@@ -1,21 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native";
-import styles from "./Style";
+import React, { useRef, useState } from "react";
 import { LocationData, DataOfPerson } from "./Data/LocationData";
 import SearchResult from "./component/SearchResultBox/Searchresult";
 import { lightgrey, darkgrey, Colors } from "commonStyles/RNColor.style";
 import CustomButton from "components/CustomButton";
 import CustomDropDown from "components/CustomDropDown";
 import InputTextField from "components/InputTextField";
-import Glyphs from "assets/Glyphs";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import StringConstants from "shared/localization";
 
-const Enquiry = () => {
-  const [CurrentLocation, setCurrentLocation] = useState<string>();
-  const [FocusStatus, setFocusStatus] = useState<boolean>(false);
-  const [SearchBtnStatus, setSearchBtnStatus] = useState<boolean>(false);
+const UserEnquiry = () => {
   const [searchresult, setsearchresult] = useState<boolean>(false);
-  console.log("Main UI E-REnder::");
+
   const [data, setdata] = useState({
     name: "",
     phone: "",
@@ -24,13 +19,7 @@ const Enquiry = () => {
   const details = {
     name: useRef(""),
   };
-  useEffect(() => {
-    if (
-      CurrentLocation != "Select Location" &&
-      details.name.current.length != 0
-    )
-      setSearchBtnStatus(true);
-  }, [CurrentLocation, FocusStatus]);
+ 
 
   function SearchingData() {
     for (let i = 0; i < DataOfPerson.length; i++) {
@@ -47,37 +36,35 @@ const Enquiry = () => {
   }
 
   const getData = (data: string) => {
-    setCurrentLocation(data);
+    // setCurrentLocation(data);
   };
 
   return (
-    <SafeAreaView
-      style={{ backgroundColor: "#F9F9FC", flex: 1, paddingHorizontal: 20 }}
-    >
+    <SafeAreaContainer >
       <InputTextField
         onChangeText={(text: string) => {
           details.name.current = text;
         }}
-        placeholder={"Enter Name"}
+        placeholder={StringConstants.ENTER_NAME}
         maxlength={20}
         containerStyle={{ backgroundColor: Colors.white }}
       />
       <CustomDropDown
         ArrayOfData={LocationData}
-        topheading="Location"
+        topheading={StringConstants.LOCATION}
       />
       {!searchresult ? (
         <CustomButton
           onPress={SearchingData}
-          text={"Search"}
+          text={StringConstants.SEARCH}
           buttonStyle={{ backgroundColor: lightgrey }}
           textStyle={{ color: darkgrey }}
         />
       ) : (
         <SearchResult name={data.name} place={data.place} phone={data.phone} />
       )}
-    </SafeAreaView>
+    </SafeAreaContainer>
   );
 };
 
-export default Enquiry;
+export default UserEnquiry;

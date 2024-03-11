@@ -6,21 +6,24 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import SettingHeader from "./component/SettingHeader";
 import InputTextField from "components/InputTextField";
 import { ITextFieldData, TextFieldData } from "./mockData/TextFieldData";
 import styles from "./Style/Style";
 import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native";
 import { Colors } from "commonStyles/RNColor.style";
-const Setting = () => {
+import Header from "components/HeaderForMainScreen/HeaderMain";
+import StringConstants from "shared/localization";
+import TextWrapper from "components/TextWrapper";
+import fonts from "@fonts";
+import commonStyles from "commonStyles/CommonStyle";
+import CustomButton from "components/CustomButton";
+const SettingScreen = () => {
   function renderItem(item: ITextFieldData) {
     return (
       <InputTextField
-        onChangeText={()=>{
-
-        }}
-        containerStyle={{backgroundColor:Colors.lightGray}}
+        onChangeText={() => {}}
+        containerStyle={{ backgroundColor: Colors.lightGray }}
         placeholder={item.placeholder}
         maxlength={20}
         defaultValue={item.value}
@@ -28,29 +31,34 @@ const Setting = () => {
     );
   }
   return (
-    <SafeAreaView style={{ backgroundColor: "#F9F9FC", flex: 1 }}>
-      <SettingHeader />
+    <SafeAreaView style={{ backgroundColor: Colors.background, flex: 1 }}>
+      <Header topheading={StringConstants.SETTINGS} isLogout={true} />
       <ScrollView style={{ paddingHorizontal: 20 }}>
         <View style={styles.detailContainer}>
           <View style={styles.circle}>
-            <Text style={styles.circleContent}>SV</Text>
+            <TextWrapper
+              color={Colors.white}
+              fontFamily={fonts.type.medium}
+              style={{ fontSize: 20 }}
+            >
+              {StringConstants.SV}
+            </TextWrapper>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              width: "82%",
-              alignItems: "center",
-            }}
-          >
-            <View>
-              <Text style={styles.userName}>Saransh Verma</Text>
-              <Text style={styles.userPost}>Branch Manager</Text>
+          <View style={styles.infoContainer}>
+            <View style={{ marginLeft: 16 }}>
+              <TextWrapper style={commonStyles.font14RegularBlack}>
+                {StringConstants.SARANSH}
+              </TextWrapper>
+              <TextWrapper style={styles.userPost}>
+                {StringConstants.BRANCH_MANAGER}
+              </TextWrapper>
             </View>
-            <TouchableOpacity style={styles.editContainer}>
-              <Image source={Glyphs.Editing} style={styles.editImg} />
-              <Text style={styles.editTxt}>Edit Profile</Text>
-            </TouchableOpacity>
+            <CustomButton
+              image={Glyphs.Editing}
+              text={StringConstants.EDIT_PROFILE}
+              buttonStyle={{ width: "auto", backgroundColor: Colors.sailBlue }}
+              textStyle={styles.editTxt}
+            />
           </View>
         </View>
         {TextFieldData.map(renderItem)}
@@ -59,4 +67,4 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+export default SettingScreen;

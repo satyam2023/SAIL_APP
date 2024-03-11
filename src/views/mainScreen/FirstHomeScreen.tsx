@@ -1,13 +1,10 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { StatusBar } from "react-native";
-
 import styles from "./Style/Style";
 import Product from "components/Product/Product";
-
 import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native-gesture-handler";
-import VisitCard from "./component/VisitCard/VisitCard";
+import VisitCard from "components/VisitCard/VisitCard";
 import {
   SkyBlue,
   lightgreen,
@@ -17,77 +14,65 @@ import {
 } from "commonStyles/RNColor.style";
 import { SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
-
-// import {setVisitType} from "../../Redux/Slice2"
-
+import TextWrapper from "components/TextWrapper";
+import StringConstants from "shared/localization";
 const FirstHomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      <StatusBar backgroundColor={"red"} />
-      <View style={styles.name}>
-        <View style={styles.topTxt}>
-          <View style={styles.nameContainer}>
-            <Text style={styles.Welcometext}>Welcome,</Text>
-            <Text style={styles.Welcometextname}>Saransh Verma</Text>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              onPress={() => {
-                navigate(SCREENS.MESSAGE);
-              }}
-            >
-              <Image source={Glyphs.Mail} style={{ marginTop: 21 }} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                navigate(SCREENS.NOTIFICATION);
-              }}
-            >
-              <Image
-                source={Glyphs.Notification}
-                style={{ marginTop: 21, marginLeft: 16 }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                navigate(SCREENS.SETTING);
-              }}
-            >
-              <View style={styles.circle}>
-                <Text style={styles.circleTxt}>SV</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+      <View style={styles.topContainer}>
+        <TextWrapper style={styles.welcometext}>
+          {StringConstants.WELCOME} {`\n`}
+          {StringConstants.SARANSH}
+        </TextWrapper>
+
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigate(SCREENS.MESSAGE);
+            }}
+          >
+            <Image source={Glyphs.Mail} style={{ marginTop: 21 }} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigate(SCREENS.NOTIFICATION);
+            }}
+          >
+            <Image
+              source={Glyphs.Notification}
+              style={{ marginTop: 21, marginLeft: 16 }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigate(SCREENS.SETTING);
+            }}
+          >
+            <View style={styles.circle}>
+              <Text style={styles.circleTxt}>SV</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
 
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
-          marginTop: 16,
-          position: "relative",
-          bottom: 68,
-        }}
-      >
+      <View style={styles.visitContainer}>
         <VisitCard
           count={11}
-          title={"Upcoming Visits"}
+          title={StringConstants.UPCOMING_VISIT}
           image={Glyphs.Visit}
           backgroundcolor={whitegreenish}
           textColor={SkyBlue}
         />
         <VisitCard
           count={12}
-          title={"Planned Visits"}
+          title={StringConstants.PLANNED_VISIT}
           image={Glyphs.Planned}
           backgroundcolor={"#EEF4FF"}
           textColor={blue}
         />
         <VisitCard
           count={26}
-          title={"Executed Visits"}
+          title={StringConstants.EXECUTED_VISIT}
           image={Glyphs.Executed}
           backgroundcolor={lightgreen}
           textColor={green}
@@ -95,37 +80,30 @@ const FirstHomeScreen = () => {
       </View>
       <View style={{ position: "relative", bottom: 70 }}>
         <Product
-          category="Product Catalogue"
+          category={StringConstants.PRODUCT_CATALOGUE}
           imagefirst={Glyphs.Steel}
           imagesecond={Glyphs.Rolled}
-          imagefirstinfo="Stainless Steel Products"
-          imagesecondinfo="Cold Rolled Products"
-          text="See All"
+          imagefirstinfo={StringConstants.STAINLESS}
+          imagesecondinfo={StringConstants.COLD_ROLLED}
+          text={StringConstants.SEE_ALL}
         />
         <Product
-          category="Customer Information"
+          category={StringConstants.CUSTOMER_INFORMATION}
           imagefirst={Glyphs.Customer}
           imagesecond={Glyphs.Customer}
-          imagefirstinfo="Sales Order Status"
-          imagesecondinfo="MOU Status"
-          text=""
+          imagefirstinfo={StringConstants.SALES_ORDER}
+          imagesecondinfo={StringConstants.MOU_STATUS}
+          text={StringConstants.EMPTY}
         />
         <Product
-          category="Category"
+          category={StringConstants.CATEGORY}
           imagefirst={Glyphs.Customer}
           imagesecond={Glyphs.Setting2}
-          imagefirstinfo="User Enquiry"
-          imagesecondinfo="Issue Enquiry"
-          text="View All"
+          imagefirstinfo={StringConstants.USER_ENQUIRY}
+          imagesecondinfo={StringConstants.ISSUE_ENQUIRY}
+          text={StringConstants.VIEW_ALL}
         />
       </View>
-
-      {/* <Footer
-        color="#F9F9FC"
-        navigationprops={props}
-        //    PlusClicked={PlusClicked}
-      /> */}
-      {/* <BottomDrawer Navigationprops={props} ref={BottomDrawerRef}/> */}
     </ScrollView>
   );
 };

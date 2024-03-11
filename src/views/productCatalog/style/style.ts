@@ -23,7 +23,11 @@ inputbox:{
  },
  img:{
     marginLeft:16,
-    marginTop:20
+    // marginTop:20,
+    width:20,
+    height:20,
+    resizeMode:'contain',
+    
     
 },
 card:{

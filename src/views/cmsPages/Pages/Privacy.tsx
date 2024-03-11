@@ -1,14 +1,11 @@
 import React from "react";
 import {
-  Image,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   Text,
-  TouchableOpacity,
-  View,
 } from "react-native";
-import Glyphs from "assets/Glyphs";
+import Header from "components/HeaderForMainScreen/HeaderMain";
+import StringConstants from "shared/localization";
 
 interface Props {
   setScreen: Function;
@@ -18,46 +15,8 @@ const Privacy: React.FC<Props> = ({ setScreen }: Props) => {
   return (
     <ScrollView style={{ backgroundColor: "#FAFAFA", height: "auto" }}>
       <SafeAreaView>
-        <StatusBar backgroundColor={"#233972"} barStyle={"light-content"} />
-        <View
-          style={{
-            height: 60,
-            width: "100%",
-            backgroundColor: "#233972",
-            flexDirection: "row",
-          }}
-        >
-          <TouchableOpacity
-            style={{ marginLeft: 21, marginTop: 18 }}
-            onPress={() => {
-              setScreen("CMS");
-            }}
-          >
-            <Image
-              source={Glyphs.Arrow}
-              style={{
-                tintColor: "#FFFFFF",
-                width: 9,
-                height: 15,
-                transform: [{ rotate: "180deg" }],
-              }}
-            />
-          </TouchableOpacity>
-          <Text
-            style={{
-              marginTop: 13,
-              color: "#FFFFFF",
-              marginLeft: 16,
-              height: 36,
-              fontWeight: "600",
-              fontSize: 16,
-            }}
-          >
-            Privacy
-          </Text>
-        </View>
+       <Header topheading={StringConstants.PRIVACY} onPress={()=>setScreen(StringConstants.CMS)}/>
       </SafeAreaView>
-
       <Text
         style={{
           marginHorizontal: 20,
