@@ -1,46 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import UpcomingVisit from "../UpComingVisit/Upcoming";
-import CustomerDetails from "../UpComingVisit/component/customerDetails/CustomerDetails";
-import { SafeAreaView } from "react-native";
-import styles from "./Style";
-import BottomBar from "./component/BottomBar/BottomBarPlanned";
-import FilterData from "./FilterData";
-import CustomerBox from "components/CustomerVisitBox/CustomerBox";
-import { BottomTabVisibility } from "redux/actions/UIAction";
-import { useDispatch } from "react-redux";
-import { useFocusEffect } from "@react-navigation/native";
-interface PlannedProps{
-    footerVisibility:Function
+import { ScrollView } from "react-native";
+import CustomerBox from "components/CustomerBox";
+import Data from "../UpComingVisit/mockData/DATA";
+import CustomerDetails from "components/CustomerDetails";
+
+interface PlannedProps {
+  footerVisibility: Function;
 }
 
-const Planned=({footerVisibility}:PlannedProps)=>{
-    
-    const [customerDetails, setCustomerDetails] = useState<boolean>(false);
-    useEffect(()=>{
-     footerVisibility(customerDetails);
-    },[customerDetails]);
-    function handleCustomerClick(param: boolean) {
-      setCustomerDetails(param);
-    }
-  
-    return (
-      <ScrollView style={{ paddingHorizontal: 20 }}>
-        {!customerDetails ? (
-          <>
-            <CustomerBox handleCustomerClick={handleCustomerClick} />
-            <CustomerBox handleCustomerClick={handleCustomerClick} />
-            <CustomerBox handleCustomerClick={handleCustomerClick} />
-          </>
-        ) : (
-          <>
+const Planned = ({ footerVisibility }: PlannedProps) => {
+  const [customerDetails, setCustomerDetails] = useState<boolean>(false);
+  useEffect(() => {
+    footerVisibility(customerDetails);
+  }, [customerDetails]);
+  const handleCustomerClick=()=>setCustomerDetails(!customerDetails);
 
-          <CustomerDetails handleCustomerClick={handleCustomerClick}  />
-          {/* <BottomBar status={undefined} /> */}
-          </>
-        )}
-        
-      </ScrollView>);
-}
+  return (
+    <ScrollView style={{ paddingHorizontal: 20,paddingBottom:'25%' }}>
+      {!customerDetails ? (
+        <>
+          <CustomerBox handleCustomerClick={handleCustomerClick} />
+          <CustomerBox handleCustomerClick={handleCustomerClick} />
+          <CustomerBox handleCustomerClick={handleCustomerClick} />
+        </>
+      ) : (
+        <>
+         <CustomerDetails CustomerData={Data} onPress={handleCustomerClick}/>
+         
+        </>
+      )}
+    </ScrollView>
+  );
+};
 
 export default Planned;

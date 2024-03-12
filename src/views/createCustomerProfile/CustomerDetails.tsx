@@ -14,7 +14,7 @@ import {
 } from "./Data/Data";
 import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
 import styles from "./Style";
-import UploadDocumnet from "components/UploadDocument/UploadDocument";
+import UploadDocumnet from "components/UploadDocument";
 import CustomerDetailHeader from "./CustomerDetailHeader";
 import LocateMe from "components/LocateMe";
 import CustomDropDown from "components/CustomDropDown";

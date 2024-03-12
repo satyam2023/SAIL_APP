@@ -104,8 +104,6 @@ const RenderTabNavigation = () => {
   );
   const isModalVisible=useSelector((state: any) => state.UIReducer.modalVisibility);
   const isTabVisible=useSelector((state: any) => state.UIReducer.tabVisibiity);
-
-  console.log("TAb Visible onside TAb route:::",isTabVisible)
   return (
 <>
     
@@ -113,13 +111,15 @@ const RenderTabNavigation = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarIcon: ({ focused }) => TabIcon(route, focused),
-        tabBarActiveTintColor: blue,
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: Colors.sailBlue,
+        tabBarInactiveTintColor: Colors.lightGrey,
         tabBarBackground:()=>{
-          return<Image source={Glyphs.BottomTabBar}  style={{width:'100%',resizeMode:'contain',bottom:15}}/>
+          return<Image source={Glyphs.BottomTabBar}  style={{width:'100%',resizeMode:'contain',bottom:47, tintColor:Colors.white}}/>
         },
         tabBarStyle: {
-          backgroundColor: isDarkMode ? Colors.transparent : Colors.transparent,
+          // backgroundColor: isDarkMode ? Colors.transpa : Colors.transparent,
+          height:0,
+          paddingBottom:40,
           display:!isTabVisible
         },
         tabBarLabel: () => {
@@ -175,8 +175,6 @@ const Navigation = () => {
         <Stack.Screen name={SCREENS.SIGNUP} component={SignUpScreenViewMOdel} />
         <Stack.Screen name={SCREENS.SIGNIN} component={SignInViewModel} />
         <Stack.Screen name={SCREENS.TAB} component={RenderTabNavigation} />
-        {/* <Stack.Screen name={SCREENS.MESSAGE} component={MessageScreenViewModel} />
-        <Stack.Screen name={SCREENS.NOTIFICATION} component={NotificationViewModel} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

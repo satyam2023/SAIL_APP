@@ -1,48 +1,57 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Header from "components/HeaderForMainScreen/HeaderMain";
-import { Image, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 import styles from "../Style";
-import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
-import UserCard from "./UserCard";
+import { useDispatch } from "react-redux";
 import Glyphs from "assets/Glyphs";
-import CustomerBox from "components/CustomerVisitBox/CustomerBox";
+import StringConstants from "shared/localization";
+import InputTextField from "components/InputTextField";
+import { Colors } from "commonStyles/RNColor.style";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import CustomerBox from "components/CustomerBox";
+import { setCustomerProfileButton } from "redux/actions/UIAction";
 
 const CustomerProfile = () => {
-  const [searchStatus, setSearchStatus] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const CustomerDetails = useRef("");
   return (
     <View>
       <>
-        <Header topheading={"Customer Profiles"} />
-        <View style={styles.searchContainer} />
-        <View style={{paddingHorizontal:20}}>
-        <View style={styles.floatingTextInput}>
-          <InputTextWithoutIcon
-            placeholder="Enter Customer Code or Name"
-            ChangeText={(text: any) => {
-              CustomerDetails.current = text;
-              if (CustomerDetails.current.length >= 5) {
-                setSearchStatus(true);
-              }
-            }}
-            keyboardType="default"
-            secureText={false}
-            maxLength={20}
+        <Header topheading={StringConstants.CUSTOMER_PROFILE} />
+        <View
+          style={{
+            width: "100%",
+            height: 30,
+            backgroundColor: Colors.sailBlue,
+          }}
+        />
+        <View style={{ paddingHorizontal: 20 }}>
+          <InputTextField
+            onChangeText={(text: string) => (CustomerDetails.current = text)}
+            placeholder={StringConstants.ENTER_CUST_CODE_OR_NAME}
+            rightIcon={Glyphs.Close}
+            containerStyle={styles.floatingTextInput}
           />
-          <TouchableOpacity>
-            <Image
-              source={Glyphs.Add}
-              style={{
-                transform: [{ rotate: "45deg" }],
-              }}
-            />
-          </TouchableOpacity>
         </View>
-        </View>
-
-        <UserCard name="John Doe" location="Customer Code: 123678" />
-        <UserCard name="Esha Sharma" location="Customer Code: 123678" />
-        <UserCard name="Sanjay Jain" location="Customer Code: 123678" />
+        <SafeAreaContainer>
+          <CustomerBox
+            heading={StringConstants.USER_NAME}
+            subHeading={StringConstants.CUSTOMER_NUMBERIC_CODE}
+            onPress={() => {
+              dispatch(setCustomerProfileButton(true));
+            }}
+          />
+          <CustomerBox
+            heading={StringConstants.USER_NAME}
+            subHeading={StringConstants.CUSTOMER_NUMBERIC_CODE}
+            onPress={() => {}}
+          />
+          <CustomerBox
+            heading={StringConstants.USER_NAME}
+            subHeading={StringConstants.CUSTOMER_NUMBERIC_CODE}
+            onPress={() => {}}
+          />
+        </SafeAreaContainer>
       </>
     </View>
   );

@@ -395,6 +395,20 @@ const StringConstants = {
   CONTACT:'Contact',
   WEBSITE:'Website',
   NEARBY_CUSTOMERS:'NearBy Customer',
+  ENTER_TEXT_TO_SEARCH:'Enter Text To Search',
+  UPCOMING:'Upcoming',
+  PLANNED:'Planned',
+  EXECUTED:'Executed',
+  XYZ_STEELWORKS:'XYZ Steelworks Private Limited',
+  CUSTOMER_VISIT_1:'Customer Visit 1',
+  ADD_UNPLANNED:'Add Unplanned Visit',
+  FOR_PLANNED:'For Planned Visit',
+  ENTER_PERSONAL_NAME:'Enter Personal Name',
+  SELECT_DEP:'Select Departement',
+  ENTER_NAME_NUMBER:'Enter Name Followed by 10 digits number',
+  SELECT_CUSTOMER_CONTACT_DETAILS:'Select Customer Contact Details',
+  CUSTOMER_NUMBERIC_CODE:"Customer Code: 123678",
+  CUSTOMER_PROFILE_UPDATED_SUCCESSFULLY:'Customer Profile Successfully Updated'
 
 };
 

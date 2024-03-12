@@ -1,15 +1,8 @@
-import Header from "components/HeaderForMainScreen/HeaderMain";
 import React from "react";
-import { SafeAreaView } from "react-native";
-import ProductCatalog from "views/productCatalog/ProductCatalog";
+import ProductCatalogScreen from "views/productCatalog/ProductCatalogScreen";
 
 const ProductCatalougeViewModel=()=>{
-return(
-    <SafeAreaView style={{flex:1}}>
-        <Header  topheading={"Product Catalouge"}/>
-        <ProductCatalog/>
-    </SafeAreaView>
-)
+return <ProductCatalogScreen/>;
 
 };
 export default ProductCatalougeViewModel;

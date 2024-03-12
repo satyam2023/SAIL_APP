@@ -11,11 +11,12 @@ interface ICustomFooter {
   secondButtonPress: () => void;
   isMovable?: boolean;
   isTracker?: DimensionValue;
+  style?:ViewStyle
 }
 
 const CustomFooter = (props: ICustomFooter) => {
   return (
-    <View style={styles.customFooterContainer}>
+    <View style={[styles.customFooterContainer,props?.style]}>
       {props.isTracker && (
         <View style={styles.trackerContainer}>
           <View
@@ -73,6 +74,8 @@ const styles = StyleSheet.create({
     width: "100%",
     position: "absolute",
     bottom: 0,
+    right:0,
+    left:0,
   },
   singleButtonFooter: {
     justifyContent: "center",

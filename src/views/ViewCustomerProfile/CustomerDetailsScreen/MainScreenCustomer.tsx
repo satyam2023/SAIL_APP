@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  ScrollView,View } from "react-native";
+import { ScrollView, View } from "react-native";
 import ProfileHeader from "../Component/ProfileHeader";
 import ProfileFooter from "../Component/ProfileFooter";
 import First from "./First";
@@ -13,13 +13,11 @@ import RepresentativeDetails from "./RepresentativeDetails/RepresentativeDetails
 import RepresentativeFooter from "./RepresentativeDetails/RepresentativeFooter";
 import { BottomTabVisibility } from "redux/actions/UIAction";
 import { useFocusEffect } from "@react-navigation/native";
-interface MainScreenCustomerProps {
-  props: any;
-}
+import StringConstants from "shared/localization";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomFooter from "components/CustomFooter";
 
-const MainScreenCustomer: React.FC<MainScreenCustomerProps> = ({
-  props,
-}: MainScreenCustomerProps) => {
+const MainScreenCustomer = () => {
   const dispatch = useDispatch();
   useFocusEffect(() => {
     dispatch(BottomTabVisibility(false));
@@ -35,8 +33,15 @@ const MainScreenCustomer: React.FC<MainScreenCustomerProps> = ({
   function RepresentativeScreen(param: boolean) {
     setRepresentative(param);
   }
-  function setScreen(param: number) {
-    setCurrentScreen(param);
+
+  const handleBackClick=()=>{
+    if(CurrentScreen>1 && CurrentScreen<=3)
+        setCurrentScreen(CurrentScreen-1)
+  }
+
+  const handleForwardClick=()=>{
+    if(CurrentScreen>=1 && CurrentScreen<=3)
+    setCurrentScreen(CurrentScreen+1)
   }
 
   const competitor = useSelector(
@@ -44,15 +49,12 @@ const MainScreenCustomer: React.FC<MainScreenCustomerProps> = ({
   );
 
   return (
-    <>
+    <View style={{flex:1}}>
       {!competitor ? (
-        <>
+        <View style={{flex:1}}>
           {CurrentScreen != 4 ? (
-            <View style={{ backgroundColor: "#F9F9FC" ,flex:1}}>
-              <ProfileHeader
-                navigationProps={props}
-                CurrentScreen={CurrentScreen}
-              />
+            <View style={{ backgroundColor: Colors.background2, flex: 1,flexGrow:1 }}>
+              <ProfileHeader CurrentScreen={CurrentScreen} />
               <ScrollView
                 style={
                   CurrentScreen == 1
@@ -68,18 +70,29 @@ const MainScreenCustomer: React.FC<MainScreenCustomerProps> = ({
                   <Third CompetitorScreen={CompetitorScreen} />
                 )}
               </ScrollView>
-              <ProfileFooter
-                CurrentScreen={CurrentScreen}
-                setScreen={setScreen}
+              <CustomFooter
+                firstButtonText={
+                  CurrentScreen == 1
+                    ? StringConstants.EDT
+                    : StringConstants.BACK
+                }
+                secondButtonText={
+                  CurrentScreen == 3
+                    ? StringConstants.SUBMIT
+                    : StringConstants.PROCEED
+                }
+                firstButtonPress={handleBackClick}
+                secondButtonPress={handleForwardClick}
+                 style={{backgroundColor:Colors.white,bottom:'-2%'}}
               />
             </View>
           ) : (
-            <LastScreen  />
+            <LastScreen />
           )}
-        </>
+        </View>
       ) : (
         <>
-          <Header topheading={"View Customer Profile"} />
+          <Header topheading={StringConstants.CUSTOMER_VIEW_PROFILE} />
           {Competitor && <AddCompetitor />}
           {Reprsentative && (
             <>
@@ -91,7 +104,7 @@ const MainScreenCustomer: React.FC<MainScreenCustomerProps> = ({
           )}
         </>
       )}
-    </>
+    </View>
   );
 };
 

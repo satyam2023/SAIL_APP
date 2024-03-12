@@ -1,42 +1,47 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./Style/Style";
+import StringConstants from "shared/localization";
+import TextWrapper from "components/TextWrapper";
+import fonts from "@fonts";
 interface IvisitButton {
-  backgrouncolor: string,
-  textColor: string,
-  tag:string,
-  visitnumber:number,
-  handleVisitType:Function
-
+  backgrouncolor: string;
+  textColor: string;
+  tag: string;
+  visitnumber: number;
+  handleVisitType: Function;
 }
 
-const VisitButton = ({ backgrouncolor, textColor,tag,visitnumber,handleVisitType}: IvisitButton) => {
-    function handleVisitClick(){
-        if(tag=="Upcoming"){
-            handleVisitType(1);
-        }
-        else if(tag=="Planned"){
-            handleVisitType(2)
-        }
-        else if(tag=="Executed"){
-         handleVisitType(3);
-        }
+const VisitButton = ({
+  backgrouncolor,
+  textColor,
+  tag,
+  visitnumber,
+  handleVisitType,
+}: IvisitButton) => {
+  function handleVisitClick() {
+    if (tag == StringConstants.UPCOMING) {
+      handleVisitType(1);
+    } else if (tag == StringConstants.PLANNED) {
+      handleVisitType(2);
+    } else if (tag == StringConstants.EXECUTED) {
+      handleVisitType(3);
     }
+  }
   return (
-    
     <TouchableOpacity
       style={[styles.container, { backgroundColor: backgrouncolor }]}
       onPress={handleVisitClick}
     >
-      <Text style={{ color: textColor }}>{tag}</Text>
-
+      <TextWrapper color={textColor} fontFamily={fonts.type.regular}>
+        {tag}
+      </TextWrapper>
       <View style={[styles.number, { backgroundColor: textColor }]}>
-        <Text style={{ color: backgrouncolor, fontSize: 12,fontWeight: 500 }}>
+        <TextWrapper color={backgrouncolor} fontFamily={fonts.type.medium}>
           {visitnumber}
-        </Text>
+        </TextWrapper>
       </View>
     </TouchableOpacity>
-
   );
 };
 

@@ -4,10 +4,9 @@ import CustomerCommon from "../component/CustomerCommonDetails/CustomerCommon";
 import styles from "./Style/Style";
 import Data from "./Data/Data";
 import Glyphs from "assets/Glyphs";
-import { navigate } from "@navigation";
-import { SCREENS } from "@shared-constants";
 import CustomButton from "components/CustomButton";
-import { blue, white } from "commonStyles/RNColor.style";
+import { Colors, blue, white } from "commonStyles/RNColor.style";
+import StringConstants from "shared/localization";
 interface executedCustomerProps {
   handleCustomerClick: Function;
 }
@@ -186,9 +185,9 @@ const ExecutedCustomer = ({ handleCustomerClick }: executedCustomerProps) => {
       </View>
 
       <CustomButton
-        text={"Submit"}
-        buttonStyle={{ backgroundColor: blue }}
-        textStyle={{ color: white }}
+        text={StringConstants.SUBMIT}
+        buttonStyle={{ backgroundColor: Colors.sailBlue }}
+        textStyle={{ color: Colors.white }}
       />
     </ScrollView>
   );

@@ -1,67 +1,48 @@
+import fonts from "@fonts";
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
 import Glyphs from "assets/Glyphs";
+import commonStyles from "commonStyles/CommonStyle";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomButton from "components/CustomButton";
+import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { SafeAreaView, StatusBar, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView,StyleSheet,} from "react-native";
 import { Image } from "react-native";
-import {useDispatch } from "react-redux";
-import { setCustomerProfileButton } from "redux/actions/UIAction";
-
-
+import StringConstants from "shared/localization";
 
 const LastScreen = () => {
-  const dispatch = useDispatch();
   return (
-    <SafeAreaView style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-      <Image
-        source={Glyphs.CreateCustomerLast}
+    <SafeAreaView
+      style={[commonStyles.center,{flex:1}]}
+    >
+      <Image source={Glyphs.CreateCustomerLast} />
+      <TextWrapper
+        style={styles.lastPageConatiner}
+      >
+        {StringConstants.CUSTOMER_PROFILE_UPDATED_SUCCESSFULLY}
+      </TextWrapper>
+      <CustomButton
+        onPress={() => navigate(SCREENS.MAIN)}
+        text={StringConstants.BACK_TO_HOME}
+        buttonStyle={{ width: "40%", backgroundColor: Colors.sailBlue }}
+        textStyle={{ fontFamily: fonts.type.medium, color: Colors.white }}
       />
-      <Text
-        style={{
-          width: 297,
-          height: 60,
-          fontWeight: "500",
-          fontSize: 20,
-          lineHeight: 30,
-          textAlign: "center",
-          color: "#233972",
-          marginTop: 45,
-        }}
-      >
-        Customer Profile Successfully Updated
-      </Text>
-      <TouchableOpacity
-        onPress={() => {
-          dispatch(setCustomerProfileButton(false));
-          navigate(SCREENS.MAIN);
-        }}
-        style={{
-          alignSelf: "center",
-          height: 56,
-          width: 168,
-          gap: 10,
-          backgroundColor: "#233972",
-          marginTop: 32,
-          borderRadius: 100,
-          justifyContent:'center',
-          alignItems:'center',
-        }}
-      >
-        <Text
-          style={{
-            color: "#FFFFFF",
-            fontWeight: "500",
-            fontSize: 16,
-            lineHeight: 20,
-            width: 111,
-            alignSelf: "center",
-          }}
-        >
-          Back To Home
-        </Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
 export default LastScreen;
+
+const styles=StyleSheet.create({
+  lastPageConatiner:{
+    width: 297,
+    height: 60,
+    fontFamily: fonts.type.medium,
+    fontSize: 20,
+    lineHeight: 30,
+    textAlign: "center",
+    color: Colors.sailBlue,
+    marginTop: 45,
+  }
+})

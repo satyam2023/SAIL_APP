@@ -122,6 +122,13 @@ lineHeight:14
     
 
     },
+    topHeaderContainer:{
+        flexDirection: "row",
+        paddingHorizontal:20,
+        justifyContent: "space-between",
+        paddingBottom:10,
+        
+      }
 
 });
 export default styles;

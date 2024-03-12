@@ -20,6 +20,17 @@ const commonStyles = StyleSheet.create({
     fontFamily:fonts.type.regular, 
     color: Colors.jetGray,
   },
+  font14RegularDarkGray: {
+    fontSize: 14,
+    fontFamily:fonts.type.regular, 
+    color: Colors.darkGrey,
+  },
+  font14MediumDarkGray: {
+    fontSize: 14,
+    fontFamily:fonts.type.medium, 
+    color: Colors.darkGrey,
+  },
+
   font14MediumBlack: {
     fontSize: 14,
     fontFamily:fonts.type.medium, 

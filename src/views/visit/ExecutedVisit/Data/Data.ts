@@ -1,7 +1,7 @@
 import Glyphs from "assets/Glyphs";
 
 const Data = [
-  {
+  { 
     uppertext: "Customer Code",
     lowertext: "987654321",
     imagepath: Glyphs.Profile2userClicked,

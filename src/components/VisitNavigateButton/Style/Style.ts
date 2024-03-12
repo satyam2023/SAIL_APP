@@ -12,11 +12,10 @@ const styles=StyleSheet.create({
          borderRadius:33
     },
     number:{
-        width:24,
-        height:24,
+         padding:2,
         alignItems:'center',
         justifyContent:'center',
-        borderRadius:12,
+        borderRadius:20,
         marginLeft:16
 
     },

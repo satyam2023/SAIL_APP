@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import Header from "components/HeaderForMainScreen/HeaderMain";
-import PlanCompleted from "./component/PlanCompleted";
+import PlanCompleted from "./PlanCompleted";
 import InputTextField from "components/InputTextField";
 import StringConstants from "shared/localization";
 import { Colors } from "commonStyles/RNColor.style";

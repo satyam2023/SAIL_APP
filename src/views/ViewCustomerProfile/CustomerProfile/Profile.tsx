@@ -4,72 +4,55 @@ import styles from "../Style";
 import Header from "components/HeaderForMainScreen/HeaderMain";
 import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
 import CustomerProfile from "./CustomerProfile";
-
+import StringConstants from "shared/localization";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import TextWrapper from "components/TextWrapper";
+import commonStyles from "commonStyles/CommonStyle";
+import CustomButton from "components/CustomButton";
+import { Colors } from "commonStyles/RNColor.style";
+import InputTextField from "components/InputTextField";
 const Profile = () => {
   const [searchStatus, setSearchStatus] = useState<boolean>(false);
   const [CurrentScreen, setCurrentScreen] = useState<boolean>(false);
   const CustomerDetails = useRef("");
 
   function handleSearch() {
-    console.log("Handle Search function called:::");
     if (searchStatus) {
       setCurrentScreen(true);
     }
   }
   return (
-    <View>
+    <View style={{flex:1}}>
       <>
         {!CurrentScreen ? (
             <>
-             <Header topheading={"Customer Information"} />
-          <View style={{paddingHorizontal:20}}>
-           
-            <Text style={styles.lastVisit}>
-              Last Visit details of the customer
-            </Text>
-            <View
-              style={[
-                styles.inputbox,
-                searchStatus ? { backgroundColor: "#E6E6E6" } : {},
-              ]}
-            >
-              <InputTextWithoutIcon
-                placeholder="Enter Customer Code or Name"
-                ChangeText={(text: any) => {
+             <Header topheading={StringConstants.CUSTOMER_INFORMATION} />
+          <SafeAreaContainer>
+            <TextWrapper style={[commonStyles.font14MediumBlack,{marginTop:16}]}>{StringConstants.LAST_VISIT}</TextWrapper>
+            <InputTextField onChangeText={(text: any) => {
                   CustomerDetails.current = text;
                   if (CustomerDetails.current.length >= 5) {
                     setSearchStatus(true);
                   }
-                }}
-                keyboardType="default"
-                secureText={false}
-                maxLength={20}
-              />
-            </View>
+                } } placeholder={StringConstants.ENTER_CUST_CODE_OR_NAME}
+                containerStyle={{backgroundColor:Colors.white,marginTop:16}}
+                />
 
-            <TouchableOpacity
-              style={[
+            <CustomButton  text={StringConstants.SEARCH}  onPress={handleSearch} buttonStyle={[
                 styles.searcchBox,
                 searchStatus
                   ? {
-                      backgroundColor: "#FFFFFF",
+                      backgroundColor: Colors.white,
                       borderWidth: 1,
-                      borderColor: "#233972",
+                      borderColor: Colors.sailBlue,
                     }
                   : {},
               ]}
-              onPress={handleSearch}
-            >
-              <Text
-                style={[
-                  styles.searchText,
-                  searchStatus ? { color: "#233972" } : {},
-                ]}
-              >
-                Search
-              </Text>
-            </TouchableOpacity>
-          </View>
+              textStyle={{
+                color:(!searchStatus?Colors.jetGray:Colors.sailBlue)
+              }}
+              />
+          </SafeAreaContainer>
         </>) : (
           <CustomerProfile />
         )}

@@ -4,7 +4,7 @@ import InputTextWithoutIcon from 'components/InputTextWithoutIcon/InputText';
 import styles from './Style';
 import DropDown from 'components/DropDown/DropDown';
 import { CustomerSegment,CustomerStatus,CustomerSubSegment,CustomerSubType,CustomerType } from './Data/Data';
-import UploadDocumnet from 'components/UploadDocument/UploadDocument';
+import UploadDocumnet from 'components/UploadDocument';
 
 const First :React.FC<{}>= () => {
   return (

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Image,
   SafeAreaView,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -14,8 +13,13 @@ import ForPlannedVisit from "./forPlannedVisit/ForPlannedVisit";
 import AddUnplannedVisit from "./addUnplannedVisit/AddUnplannedVisit";
 import MeetingCompleted from "./MeetingSuccess/MeetingCreationSucess";
 import Glyphs from "assets/Glyphs";
+import { Colors } from "commonStyles/RNColor.style";
+import StringConstants from "shared/localization";
+import InputTextField from "components/InputTextField";
+import SafeAreaContainer from "components/SafeAreaContainer";
+import CustomerBox from "components/CustomerBox";
 
-const Meeting: React.FC<{}> = (props: any) => {
+const Meeting = () => {
   const [click, setClicked] = useState<string>("For Planned Visit");
   const [SuccessStatus, setSuccessStatus] = useState<boolean>(false);
   function setVisitSuccess(param: any) {
@@ -25,60 +29,54 @@ const Meeting: React.FC<{}> = (props: any) => {
   return (
     <>
       {!SuccessStatus ? (
-        <SafeAreaView style={{ backgroundColor: "#F9F9FC" }}>
-          <Header topheading={"Create Meeting Details"} />
-          <View style={{ flexDirection: "row", marginLeft: 21 }}>
+        <SafeAreaView style={{ backgroundColor: Colors.background2 }}>
+          <Header topheading={StringConstants.CREATE_MEETING_DETAILS} />
+          <View
+            style={styles.topHeaderContainer}
+          >
             <TouchableOpacity
-              onPress={() => {
-                setClicked("For Planned Visit");
-              }}
+              onPress={() => setClicked(StringConstants.FOR_PLANNED)}
             >
               <CommonButton
-                text="For Planned Visit"
-                Clickedstatus={click == "For Planned Visit" ? true : false}
+                text={StringConstants.FOR_PLANNED}
+                Clickedstatus={
+                  click == StringConstants.FOR_PLANNED ? true : false
+                }
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => {
-                setClicked("Add Unplanned Visits");
-              }}
+              onPress={() => setClicked(StringConstants.ADD_UNPLANNED)}
             >
               <CommonButton
-                text="Add Unplanned Visits"
-                Clickedstatus={click == "Add Unplanned Visits" ? true : false}
+                text={StringConstants.ADD_UNPLANNED}
+                Clickedstatus={
+                  click == StringConstants.ADD_UNPLANNED ? true : false
+                }
               />
             </TouchableOpacity>
           </View>
 
-          {click == "For Planned Visit" ? (
-            <>
-              <View style={styles.searchbar}>
-                <TextInput
-                  placeholder="Enter Customer Code or Name"
-                  placeholderTextColor={"#00000080"}
-                  style={styles.textinput}
-                />
-                <TouchableOpacity>
-                  <Image
-                    source={Glyphs.Search}
-                    style={{ marginLeft: 8, marginTop: 18 }}
-                  />
-                </TouchableOpacity>
-              </View>
-              <ForPlannedVisit />
-              <ForPlannedVisit />
-              <ForPlannedVisit />
-            </>
+          {click == StringConstants.FOR_PLANNED ? (
+            <SafeAreaContainer>
+              <InputTextField
+                onChangeText={() => {}}
+                placeholder={StringConstants.ENTER_CUST_CODE_OR_NAME}
+                rightIcon={Glyphs.Search}
+                containerStyle={{ backgroundColor: Colors.white ,marginTop:16}}
+
+              />
+              <CustomerBox handleCustomerClick={() => {}} />
+              <CustomerBox handleCustomerClick={() => {}} />
+              <CustomerBox handleCustomerClick={() => {}} />
+              <CustomerBox handleCustomerClick={() => {}} />
+            </SafeAreaContainer>
           ) : (
-            <AddUnplannedVisit
-              navigationProps={props}
-              setVisitSuccess={setVisitSuccess}
-            />
+            <AddUnplannedVisit setVisitSuccess={setVisitSuccess} />
           )}
         </SafeAreaView>
       ) : (
         <>
-          <MeetingCompleted navigationProps={props} />
+          <MeetingCompleted />
         </>
       )}
     </>

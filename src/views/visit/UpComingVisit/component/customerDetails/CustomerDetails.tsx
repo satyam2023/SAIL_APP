@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import CustomerCommon from "../../../component/CustomerCommonDetails/CustomerCommon";
 import styles from "../../Style/Style";
-import Data from "../../Data/DATA";
+import Data from "../../mockData/DATA";
 import Glyphs from "assets/Glyphs";
-import CustomerBox from "components/CustomerVisitBox/CustomerBox";
+import CustomerBox from "components/CustomerBox";
 interface CustomerProps {
   handleCustomerClick: Function;
 }

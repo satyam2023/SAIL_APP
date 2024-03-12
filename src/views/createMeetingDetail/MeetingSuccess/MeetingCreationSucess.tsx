@@ -1,60 +1,44 @@
+import fonts from "@fonts";
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
 import Glyphs from "assets/Glyphs";
+import commonStyles from "commonStyles/CommonStyle";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomButton from "components/CustomButton";
+import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-interface Props {
-  navigationProps: any;
-}
-const MeetingCompleted: React.FC<Props> = ({ navigationProps }: Props) => {
+import { Image, StyleSheet,View } from "react-native";
+import StringConstants from "shared/localization";
+
+const MeetingCompleted = () => {
   return (
-    <View style={{ backgroundColor: "#FFFFFF", flex:1,justifyContent:'center',alignItems:'center'}}>
-      <Image
-        source={Glyphs.HandShake}
+    <View
+      style={[{ backgroundColor: Colors.white, flex: 1 }, commonStyles.center]}
+    >
+      <Image source={Glyphs.HandShake} />
+      <TextWrapper style={styles.meetingCompletedContainer}>
+        {StringConstants.MEETING_DETAILS_CREATED}
+      </TextWrapper>
+      <CustomButton
+        text={StringConstants.BACK_TO_HOME}
+        buttonStyle={{ backgroundColor: Colors.sailBlue, width: "40%" }}
+        textStyle={{ color: Colors.white }}
+        onPress={()=>navigate(SCREENS.MAIN)}
       />
-      <Text
-        style={{
-          width: 253,
-          height: 60,
-          fontWeight: "500",
-          fontSize: 20,
-          lineHeight: 30,
-          textAlign: "center",
-          color: "#233972",
-          marginTop: 45,
-        }}
-      >
-        Meeting Details created successfully.
-      </Text>
-      <TouchableOpacity
-        onPress={() => {
-          navigate(SCREENS.MAIN);
-        }}
-        style={{
-          alignSelf: "center",
-          height: 56,
-          width: 168,
-          gap: 10,
-          backgroundColor: "#233972",
-          marginTop: 32,
-          borderRadius: 100,
-        }}
-      >
-        <Text
-          style={{
-            color: "#FFFFFF",
-            fontWeight: "500",
-            fontSize: 16,
-            lineHeight: 20,
-            width: 111,
-            alignSelf: "center",
-            marginTop: 17,
-          }}
-        >
-          Back To Home
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 };
 export default MeetingCompleted;
+
+const styles = StyleSheet.create({
+  meetingCompletedContainer: {
+    width: 253,
+    height: 60,
+    fontFamily: fonts.type.medium,
+    fontSize: 20,
+    lineHeight: 30,
+    textAlign: "center",
+    color: Colors.sailBlue,
+    marginTop: 45,
+  },
+});

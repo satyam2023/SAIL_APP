@@ -2,14 +2,14 @@ import React, { useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import QR from "./QR";
 import Glyphs from "assets/Glyphs";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import SafeAreaContainer from "components/SafeAreaContainer";
 import StringConstants from "shared/localization";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import InputTextField from "components/InputTextField";
+import { SafeAreaView, View } from "react-native";
+import Header from "components/HeaderForMainScreen/HeaderMain";
 
-const ProductCatalog = () => {
-  const tabBarHeight = useBottomTabBarHeight() + 15;
+const ProductCatalogScreen = () => {
   const [qrStatus, setQrStatus] = useState<boolean>(false);
   const [dataToSend, setDataToSend] = useState("");
   const setQr = (param: boolean) => {
@@ -24,9 +24,10 @@ const ProductCatalog = () => {
     ProductRef.current.handleClicked();
   }
   return (
-    <SafeAreaContainer style={{ marginBottom: tabBarHeight }}>
+    <SafeAreaView style={{flex:1}}>
+      <Header  topheading={StringConstants.PRODUCT_CATALOGUE}/>
       {!qrStatus ? (
-        <>
+        <SafeAreaContainer >
           <InputTextField
             onChangeText={(text: string) => {
               details.searchDetails.current = text;
@@ -37,11 +38,12 @@ const ProductCatalog = () => {
             onRighIconPress={SearchClicked}
           />
           <ProductCard setQr={setQr} searchData={dataToSend} ref={ProductRef} />
-        </>
+        </SafeAreaContainer>
       ) : (
         <QR />
       )}
-    </SafeAreaContainer>
+
+    </SafeAreaView>
   );
 };
-export default ProductCatalog;
+export default ProductCatalogScreen;

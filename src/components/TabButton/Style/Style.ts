@@ -1,5 +1,4 @@
 import { orange } from "commonStyles/RNColor.style";
-import React from "react";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
@@ -11,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: orange,
     borderRadius: 28,
     position: "relative",
-    bottom: "10%",
+    bottom: "17%",
   },
 });
 

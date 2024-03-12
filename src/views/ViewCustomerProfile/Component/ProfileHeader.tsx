@@ -7,7 +7,7 @@ import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
 interface ProfileHeaderProps {
   CurrentScreen: number;
 }
-const ProfileHeader: React.FC<ProfileHeaderProps> = ({
+const ProfileHeader = ({
   CurrentScreen,
 }: ProfileHeaderProps) => {
   return (
