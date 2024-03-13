@@ -1,5 +1,7 @@
 import { useFocusEffect } from "@react-navigation/native";
+import { Colors } from "commonStyles/RNColor.style";
 import React, { useState } from "react";
+import { SafeAreaView } from "react-native";
 import { useDispatch } from "react-redux";
 import { BottomTabVisibility } from "redux/actions/UIAction";
 import Details from "views/createCustomerProfile/Details";
@@ -29,8 +31,9 @@ const CreateCustomerViewModel=()=>{
     //       {CurrentScreen==3 && <RegistrationCompleted/>}
     //       {CurrentScreen!==3 && <Footer CurrentScreen={CurrentScreen} setScreen={setScreen} FooterStatus={CurrentScreen==2?"Representative":""} FooterExecuted={FooterExecuted}/>}
     //   </>
- 
+ <SafeAreaView style={{backgroundColor:Colors.sailBlue,flex:1}}>
     <Details/>
+    </SafeAreaView>
 
       
     )

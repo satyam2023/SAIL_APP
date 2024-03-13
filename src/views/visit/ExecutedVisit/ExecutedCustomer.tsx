@@ -1,195 +1,99 @@
 import React from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import CustomerCommon from "../component/CustomerCommonDetails/CustomerCommon";
+import { Image, SafeAreaView,View } from "react-native";
 import styles from "./Style/Style";
 import Data from "./Data/Data";
 import Glyphs from "assets/Glyphs";
 import CustomButton from "components/CustomButton";
-import { Colors, blue, white } from "commonStyles/RNColor.style";
+import { Colors } from "commonStyles/RNColor.style";
 import StringConstants from "shared/localization";
+import CustomerDetails from "components/CustomerDetails";
+import TextWrapper from "components/TextWrapper";
+import CustomCheckBox from "components/CustomCheckBox";
+import commonStyles from "commonStyles/CommonStyle";
+import InputTextField from "components/InputTextField";
+import fonts from "@fonts";
+import { navigate } from "@navigation";
+import { SCREENS } from "@shared-constants";
 interface executedCustomerProps {
   handleCustomerClick: Function;
 }
 const ExecutedCustomer = ({ handleCustomerClick }: executedCustomerProps) => {
-  const renderItem = (item: any, index: number) => {
-    if (index < 14) {
-      return (
-        <View key={index}>
-          <CustomerCommon
-            uppertext={item.uppertext}
-            lowertext={item.lowertext}
-            imagepath={item.imagepath}
-          />
-        </View>
-      );
-    }
-  };
-
-  const renderItems = (item: any, index: number) => {
-    console.log("item details::", item.item);
-    if (index >= 14) {
-      return (
-        <View key={index}>
-          <CustomerCommon
-            uppertext={item.uppertext}
-            lowertext={item.lowertext}
-            imagepath={item.imagepath}
-          />
-        </View>
-      );
-    }
-  };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.customerContainer}>
-        <Image source={Glyphs.Profile2userClicked} />
-        <View>
-          <Text style={styles.customertext}>Customer Visit 1</Text>
-          <Text style={styles.companytext}>XYZ Steelworks Private Limited</Text>
-        </View>
-        <TouchableOpacity
-          onPress={() => {
-            handleCustomerClick(false);
-          }}
-        >
-          <Image
-            source={Glyphs.Arrow}
-            style={{ transform: [{ rotate: "270deg" }] }}
-          />
-        </TouchableOpacity>
-      </View>
-      {Data.map(renderItem)}
-      <View style={{ flexDirection: "row" }}>
-        <Text
-          style={{
-            marginLeft: 14,
-            fontWeight: "500",
-            fontSize: 14,
-            lineHeight: 16,
-            width: 200,
-            color: "#110F24",
-          }}
-        >
-          Mark Escalation as Resolved
-        </Text>
-        <View
-          style={{
-            height: 17,
-            width: 17,
-            borderWidth: 1,
-            borderColor: "#110F24",
-            marginLeft: 8,
-            borderRadius: 2,
-          }}
+    <SafeAreaView style={styles.container}>
+      <CustomerDetails
+        CustomerData={Data.filter((_, index) => index < 14)}
+        onPress={() => handleCustomerClick()}
+      />
+      <View style={{ flexDirection: "row", marginLeft: 16 }}>
+        <TextWrapper style={commonStyles.font14MediumBlackpearl}>
+          {StringConstants.MARKED_AS_RESOLVED}
+        </TextWrapper>
+        <CustomCheckBox
+          onPress={() => {}}
+          status={true}
+          isRectangular
+          style={{ marginLeft: 16 }}
         />
       </View>
-      <Text
-        style={{
-          marginLeft: 14,
-          fontWeight: "500",
-          fontSize: 14,
-          lineHeight: 16,
-          width: 241,
-          color: "#110F24",
-          marginTop: 32,
-        }}
-      >
-        Comments by Escalated Manager
-      </Text>
-      <View
-        style={{
-          backgroundColor: "#F9F9FC",
-          height: 64,
-          width: 321,
-          marginLeft: 14,
-          marginTop: 16,
-          borderRadius: 4,
-        }}
-      >
-        <Text
-          style={{
-            backgroundColor: "#F9F9FC",
-            height: 40,
-            width: 253,
-            marginLeft: 16,
-            lineHeight: 20,
-            marginTop: 9,
-            fontWeight: "400",
-            fontSize: 14,
-            color: "#110F2480",
-          }}
-        >
-          Comments by Escalated Manager comes here.
-        </Text>
-      </View>
-      <Text
-        style={{
-          marginLeft: 14,
-          fontWeight: "500",
-          fontSize: 14,
-          lineHeight: 16,
-          width: 241,
-          color: "#110F24",
-          marginTop: 24,
-        }}
-      >
-        Resolution Comment
-      </Text>
-      <View
-        style={{
-          backgroundColor: "#FFFFFF",
-          height: 64,
-          width: 321,
-          marginLeft: 14,
-          marginTop: 16,
-          borderRadius: 4,
-          borderWidth: 1,
-          borderColor: "#F9F9FC",
-        }}
-      >
-        <Text
-          style={{
-            backgroundColor: "#FFFFFF",
-            height: 20,
-            width: 208,
-            marginLeft: 16,
-            lineHeight: 20,
-            marginTop: 9,
-            fontWeight: "400",
-            fontSize: 14,
-            color: "#110F2480",
-          }}
-        >
-          Resolution Comment Come here.
-        </Text>
-      </View>
 
-      {Data.map(renderItems)}
-
-      <View style={{ flexDirection: "row", marginTop: 12 }}>
-        <Image source={Glyphs.Download} style={{ marginLeft: 16 }} />
-        <Text
-          style={{
-            textDecorationLine: "underline",
-            marginLeft: 4,
-            fontWeight: "500",
-            fontSize: 14,
-            lineHeight: 16,
-            width: 151,
-            color: "#233972",
+      <View style={{ paddingHorizontal: 20, marginTop: 25 }}>
+        <TextWrapper style={commonStyles.font14MediumBlackpearl}>
+          {StringConstants.COMMENT_BY_ESCALATED_MAN}
+        </TextWrapper>
+        <InputTextField
+          onChangeText={() => {}}
+          defaultValue={StringConstants.COMMENT_BY_ESCALATED_MAN_COMES_HERE}
+          containerStyle={{
+            borderRadius: 0,
+            backgroundColor: Colors.background2,
+            marginTop: 10,
           }}
+          textStyle={[commonStyles.font14RegularGray, { bottom: 13 }]}
+          placeholder={""}
+          multiline={true}
+        />
+
+        <TextWrapper style={commonStyles.font14MediumBlackpearl}>
+          {StringConstants.RESOLUTION_CMNT}
+        </TextWrapper>
+        <InputTextField
+          onChangeText={() => {}}
+          placeholder={StringConstants.RESOLUTION_CMNT_HERE}
+          containerStyle={{
+            borderRadius: 0,
+            backgroundColor: Colors.white,
+            borderWidth: 1,
+            borderColor: Colors.lightGray2,
+            marginTop: 10,
+          }}
+          textStyle={[commonStyles.font14RegularGray, { bottom: 13 }]}
+          isEditable={false}
+          multiline={true}
+        />
+      </View>
+      <CustomerDetails
+        CustomerData={Data.filter((_, index) => index >= 14)}
+        onPress={() => {}}
+        iSBreakeddetails={true}
+      />
+
+      <View style={{ flexDirection: "row", marginVertical: 12 }}>
+        <Image source={Glyphs.Download} style={{ marginHorizontal: 16 }} />
+        <TextWrapper
+         style={{fontFamily:fonts.type.medium,color:Colors.sailBlue,textDecorationLine:"underline"}}
         >
-          Download PDF Report
-        </Text>
+          {StringConstants.DOWNLOAD_PDF_REPORT}
+        </TextWrapper>
       </View>
 
       <CustomButton
         text={StringConstants.SUBMIT}
         buttonStyle={{ backgroundColor: Colors.sailBlue }}
         textStyle={{ color: Colors.white }}
+        onPress={()=>navigate(SCREENS.MAIN)}
       />
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 

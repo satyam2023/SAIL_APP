@@ -11,14 +11,14 @@ interface IUploadDocument {
 
 const UploadDocumnet = (props: IUploadDocument) => {
   return (
-    <View style={props?.style}>
+    <View >
       <Text style={[commonStyles.font14MediumDarkGray]}>{props.uploadType}</Text>
-      <TouchableOpacity style={styles.uploadDocumentContainer}>
+      <TouchableOpacity style={[styles.uploadDocumentContainer,props?.style]}>
         <Text
           style={commonStyles.font14MediumDarkGray}
         >{`+   ${props.uploadType}`}</Text>
         {props.mediaType && (
-          <Text style={commonStyles.font14RegularDarkGray}>
+          <Text style={commonStyles.font14MediumDarkGray}>
             {props.mediaType}
           </Text>
         )}

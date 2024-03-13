@@ -1,8 +1,9 @@
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 
 const styles=StyleSheet.create({
 container:{
-        backgroundColor: "#FFFFFF",
+        backgroundColor: Colors.white,
         width: '100%',
         marginTop: 16,
         borderRadius: 10,

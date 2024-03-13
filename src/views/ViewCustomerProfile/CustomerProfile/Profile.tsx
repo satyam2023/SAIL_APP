@@ -22,41 +22,53 @@ const Profile = () => {
     }
   }
   return (
-    <View style={{flex:1}}>
+    <View style={{ flex: 1 }}>
       <>
         {!CurrentScreen ? (
-            <>
-             <Header topheading={StringConstants.CUSTOMER_INFORMATION} />
-          <SafeAreaContainer>
-            <TextWrapper style={[commonStyles.font14MediumBlack,{marginTop:16}]}>{StringConstants.LAST_VISIT}</TextWrapper>
-            <InputTextField onChangeText={(text: any) => {
+          <>
+            <Header topheading={StringConstants.CUSTOMER_INFORMATION} />
+            <SafeAreaContainer>
+              <TextWrapper
+                style={[commonStyles.font14MediumBlack, { marginTop: 16 }]}
+              >
+                {StringConstants.LAST_VISIT}
+              </TextWrapper>
+              <InputTextField
+                onChangeText={(text: string) => {
                   CustomerDetails.current = text;
                   if (CustomerDetails.current.length >= 5) {
                     setSearchStatus(true);
                   }
-                } } placeholder={StringConstants.ENTER_CUST_CODE_OR_NAME}
-                containerStyle={{backgroundColor:Colors.white,marginTop:16}}
-                />
-
-            <CustomButton  text={StringConstants.SEARCH}  onPress={handleSearch} buttonStyle={[
-                styles.searcchBox,
-                searchStatus
-                  ? {
-                      backgroundColor: Colors.white,
-                      borderWidth: 1,
-                      borderColor: Colors.sailBlue,
-                    }
-                  : {},
-              ]}
-              textStyle={{
-                color:(!searchStatus?Colors.jetGray:Colors.sailBlue)
-              }}
+                }}
+                placeholder={StringConstants.ENTER_CUST_CODE_OR_NAME}
+                containerStyle={{
+                  backgroundColor: Colors.white,
+                  marginTop: 16,
+                }}
               />
-          </SafeAreaContainer>
-        </>) : (
+
+              <CustomButton
+                text={StringConstants.SEARCH}
+                onPress={handleSearch}
+                buttonStyle={[
+                  styles.searcchBox,
+                  searchStatus
+                    ? {
+                        backgroundColor: Colors.white,
+                        borderWidth: 1,
+                        borderColor: Colors.sailBlue,
+                      }
+                    : {},
+                ]}
+                textStyle={{
+                  color: !searchStatus ? Colors.jetGray : Colors.sailBlue,
+                }}
+              />
+            </SafeAreaContainer>
+          </>
+        ) : (
           <CustomerProfile />
         )}
-        
       </>
     </View>
   );

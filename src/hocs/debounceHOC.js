@@ -18,7 +18,7 @@ export const debounceHOC = (WrappedComponent) => {
   }
 
   PreventDoubleClick.displayName = `debounceHOC(${
-    WrappedComponent.displayName || WrappedComponent.name
+    WrappedComponent.displayName || WrappedComponent.name 
   })`;
   return PreventDoubleClick;
 };

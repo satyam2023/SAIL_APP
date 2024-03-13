@@ -1,6 +1,6 @@
 import { Colors } from "commonStyles/RNColor.style";
 import { Image, StyleSheet, View } from "react-native";
-import CustomSwitch from "./CustomSwitch";
+import CustomSwitch from "./CustomCheckBox";
 import Glyphs from "assets/Glyphs";
 import TextWrapper from "./TextWrapper";
 import fonts from "@fonts";

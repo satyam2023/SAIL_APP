@@ -1,106 +1,100 @@
 import React from "react";
 import Header from "components/HeaderForMainScreen/HeaderMain";
-import { Text, TouchableOpacity, View } from "react-native";
+import {View } from "react-native";
 import styles from "./Style";
-import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
+import StringConstants from "shared/localization";
+import TextWrapper from "components/TextWrapper";
+import InputTextField from "components/InputTextField";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomButton from "components/CustomButton";
+import fonts from "@fonts";
 
 interface ProfileHeaderProps {
   CurrentScreen: number;
 }
-const ProfileHeader = ({
-  CurrentScreen,
-}: ProfileHeaderProps) => {
+const ProfileHeader = ({ CurrentScreen }: ProfileHeaderProps) => {
   return (
     <View
       style={[
         styles.headerContainer,
         CurrentScreen != 1 ? { height: 121 } : {},
+        { flex: 1 },
       ]}
     >
-      <Header topheading="View Customer Profile" />
+      <Header topheading={StringConstants.VIEW_CUSTOMER_PROFILE} />
       <View style={styles.header}>
         <View style={styles.insideHeader}>
           <View
             style={[
-              styles.firstCircle,
-              CurrentScreen != 1 ? { backgroundColor: "#DADADA" } : {},
+              styles.circle,
+              CurrentScreen != 1 ? { backgroundColor: Colors.lightGray2 } : {},
             ]}
           >
-            <Text style={styles.numberstyle}>1</Text>
+            <TextWrapper style={styles.numberstyle}>
+              {StringConstants.ONE}
+            </TextWrapper>
           </View>
 
           <View style={styles.emptyLine} />
           <View
             style={[
-              styles.firstCircle,
-              CurrentScreen != 2 ? { backgroundColor: "#DADADA" } : {},
+              styles.circle,
+              CurrentScreen != 2 ? { backgroundColor: Colors.lightGray2 } : {},
             ]}
           >
-            <Text style={[styles.numberstyle, { width: 10 }]}>2</Text>
+            <TextWrapper style={[styles.numberstyle, { width: 10 }]}>
+              {StringConstants.TWO}
+            </TextWrapper>
           </View>
           <View style={styles.emptyLine} />
           <View
             style={[
-              styles.firstCircle,
-              CurrentScreen != 3 ? { backgroundColor: "#DADADA" } : {},
+              styles.circle,
+              CurrentScreen != 3 ? { backgroundColor: Colors.lightGray2 } : {},
             ]}
           >
-            <Text style={[styles.numberstyle, { width: 10 }]}>3</Text>
+            <TextWrapper style={[styles.numberstyle, { width: 10 }]}>
+              {StringConstants.THREE}
+            </TextWrapper>
           </View>
         </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[styles.circleBottomText, { marginLeft: 20, width: 88 }]}
-          >
-            Customer Details
-          </Text>
-          <Text
-            style={[
-              styles.circleBottomText,
-              { marginLeft: 30, width: 112, height: 15 },
-            ]}
-          >
-            Representative Details
-          </Text>
-          <Text
-            style={[styles.circleBottomText, { marginLeft: 40, width: 94 }]}
-          >
-            Competeitor
-          </Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <TextWrapper style={styles.circleBottomText}>
+            {StringConstants.CUSTOMER_DETAIL}
+          </TextWrapper>
+          <TextWrapper style={styles.circleBottomText}>
+            {StringConstants.REPRESENTATIVE_DETAILS}
+          </TextWrapper>
+          <TextWrapper style={styles.circleBottomText}>
+            {StringConstants.COMPETITOR}
+          </TextWrapper>
         </View>
 
         {CurrentScreen == 1 && (
-          <View style={{paddingHorizontal:20}}>
-          <View
-            style={[styles.inputbox, { marginTop: 8, flexDirection: "row" }]}
-          >
-            <InputTextWithoutIcon
-              placeholder="Enter SAP Customer Code"
-              ChangeText={(text: any) => {}}
-              keyboardType="numeric"
-              secureText={false}
-              maxLength={10}
-            />
-            <TouchableOpacity style={styles.updateHeaderBtn}>
-              <Text style={styles.updateTxt}>Update</Text>
-            </TouchableOpacity>
+          <View style={{ paddingHorizontal: 20, marginTop: 16 }}>
+            <View style={styles.sapCodeContainer}>
+              <InputTextField
+                onChangeText={() => {}}
+                placeholder={StringConstants.ENTER_SAP_CODE}
+                containerStyle={styles.inputContainer}
+              />
+              <CustomButton
+                text={StringConstants.UPDATE}
+                buttonStyle={{
+                  backgroundColor: Colors.sailBlue,
+                  width: "30%",
+                  height: 30,
+                }}
+                textStyle={{
+                  color: Colors.white,
+                  fontFamily: fonts.type.medium,
+                }}
+              />
+            </View>
+            <TextWrapper style={styles.plsText}>
+              {StringConstants.PLS_ENTER_GST_PAN}
+            </TextWrapper>
           </View>
-          </View>
-        )}
-
-        {CurrentScreen == 1 && (
-          <Text
-            style={{
-              color: "#FF2828",
-              fontWeight: "400",
-              fontSize: 14,
-              lineHeight: 17.5,
-              marginLeft: 16,
-              marginBottom: 5,
-            }}
-          >
-            *Please enter GST and PAN number
-          </Text>
         )}
       </View>
     </View>

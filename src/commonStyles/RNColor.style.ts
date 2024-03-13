@@ -53,6 +53,7 @@ export const Colors = {
     darkGrey: "rgba(17, 15, 36, 0.5)",
     dashed: "#E9EBF1",
     blueish: "rgba(17, 15, 36, 1)",
+    whitegreenish :'#EEFDFF',
   };
   
 

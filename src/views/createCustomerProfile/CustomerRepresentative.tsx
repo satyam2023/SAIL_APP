@@ -10,6 +10,8 @@ import Styles from "./Style";
 import RepresentativeDetails from "./RepresentativeDetails";
 import Glyphs from "assets/Glyphs";
 import CustomerDetailHeader from "./CustomerDetailHeader";
+import StringConstants from "shared/localization";
+import TextWrapper from "components/TextWrapper";
 interface RepresenatativeProps {
   SetFooter: Function;
   ref: any;
@@ -34,7 +36,7 @@ const CustomerRepresentative = forwardRef(
       <SafeAreaView>
         {customerRepresentative ? (
           <View>
-             <CustomerDetailHeader heading={"Add Customer Representative"} CurrentScreen={2} topheading={"Create Customer Profile"}/>
+             <CustomerDetailHeader heading={StringConstants.ADD_CUSTOMER_REP} CurrentScreen={2} topheading={StringConstants.CREATE_CUSTOMER_PROFILE}/>
             {!representativeAddStatus ? (
               <TouchableOpacity
                 style={Styles.addRepresentativeBtn}
@@ -47,9 +49,9 @@ const CustomerRepresentative = forwardRef(
                   style={[{ marginLeft: 24, marginTop: 21 }]}
                   source={Glyphs.Add}
                 />
-                <Text style={Styles.addBtnText}>
+                <TextWrapper style={Styles.addBtnText}>
                   Add Customer Representative
-                </Text>
+                </TextWrapper>
               </TouchableOpacity>
             ) : (
               <View style={{paddingHorizontal:20}}>

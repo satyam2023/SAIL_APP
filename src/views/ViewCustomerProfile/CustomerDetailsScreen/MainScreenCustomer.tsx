@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import ProfileHeader from "../Component/ProfileHeader";
-import ProfileFooter from "../Component/ProfileFooter";
 import First from "./First";
 import Second from "./Second";
 import Third from "./Third";
@@ -10,8 +9,10 @@ import Header from "components/HeaderForMainScreen/HeaderMain";
 import AddCompetitor from "./CompetitorDetails/AddCompetitor";
 import { useDispatch, useSelector } from "react-redux";
 import RepresentativeDetails from "./RepresentativeDetails/RepresentativeDetails";
-import RepresentativeFooter from "./RepresentativeDetails/RepresentativeFooter";
-import { BottomTabVisibility } from "redux/actions/UIAction";
+import {
+  BottomTabVisibility,
+  setCompetitorButtonStatus,
+} from "redux/actions/UIAction";
 import { useFocusEffect } from "@react-navigation/native";
 import StringConstants from "shared/localization";
 import { Colors } from "commonStyles/RNColor.style";
@@ -34,33 +35,40 @@ const MainScreenCustomer = () => {
     setRepresentative(param);
   }
 
-  const handleBackClick=()=>{
-    if(CurrentScreen>1 && CurrentScreen<=3)
-        setCurrentScreen(CurrentScreen-1)
-  }
+  const handleBackClick = () => {
+    if (CurrentScreen > 1 && CurrentScreen <= 3)
+      setCurrentScreen(CurrentScreen - 1);
+  };
 
-  const handleForwardClick=()=>{
-    if(CurrentScreen>=1 && CurrentScreen<=3)
-    setCurrentScreen(CurrentScreen+1)
-  }
+  const handleForwardClick = () => {
+    if (CurrentScreen >= 1 && CurrentScreen <= 3)
+      setCurrentScreen(CurrentScreen + 1);
+  };
 
   const competitor = useSelector(
     (state: any) => state.UIReducer.CompetitorButtonStatus,
   );
 
   return (
-    <View style={{flex:1}}>
+    <View style={{ flex: 1 }}>
       {!competitor ? (
-        <View style={{flex:1}}>
+        <View style={{ flex: 1 }}>
           {CurrentScreen != 4 ? (
-            <View style={{ backgroundColor: Colors.background2, flex: 1,flexGrow:1 }}>
+            <SafeAreaView
+              style={{
+                backgroundColor: Colors.background2,
+                flex: 1,
+                flexGrow: 1,
+              }}
+            >
               <ProfileHeader CurrentScreen={CurrentScreen} />
               <ScrollView
-                style={
+                style={[
                   CurrentScreen == 1
                     ? { top: 258, width: "100%", marginBottom: 250 }
-                    : { top: 180, width: "100%", marginBottom: 250 }
-                }
+                    : { top: 180, width: "100%", marginBottom: 250 },
+                  { flex: 1 },
+                ]}
               >
                 {CurrentScreen == 1 && <First />}
                 {CurrentScreen == 2 && (
@@ -83,9 +91,9 @@ const MainScreenCustomer = () => {
                 }
                 firstButtonPress={handleBackClick}
                 secondButtonPress={handleForwardClick}
-                 style={{backgroundColor:Colors.white,bottom:'-2%'}}
+                style={{ backgroundColor: Colors.white }}
               />
-            </View>
+            </SafeAreaView>
           ) : (
             <LastScreen />
           )}
@@ -93,12 +101,33 @@ const MainScreenCustomer = () => {
       ) : (
         <>
           <Header topheading={StringConstants.CUSTOMER_VIEW_PROFILE} />
-          {Competitor && <AddCompetitor />}
+          {Competitor &&
+          <>
+          
+          <AddCompetitor/>
+          <CustomFooter
+        firstButtonText={StringConstants.ADD_COMPETITOR}
+        firstButtonPress={() => {
+          dispatch(setCompetitorButtonStatus(false));
+        }}
+        singleButtonOnFooter
+        isMovable
+        isTracker={"33%"}
+      />
+          </>
+          }
           {Reprsentative && (
             <>
               <RepresentativeDetails />
-              <RepresentativeFooter
-                RepresentativeScreen={RepresentativeScreen}
+              <CustomFooter
+                firstButtonText={StringConstants.ADD_CUSTOMER_REP}
+                firstButtonPress={() => {
+                  dispatch(setCompetitorButtonStatus(false));
+                  RepresentativeScreen(false);
+                }}
+                singleButtonOnFooter
+                isMovable
+                isTracker={"67%"}
               />
             </>
           )}

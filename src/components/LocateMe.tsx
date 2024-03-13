@@ -18,8 +18,7 @@ const LocateMe=(props:ILocateMeProps)=>{
         <Image source={Glyphs.LocateMe} style={styles.locateMeImg}/>
         <TextWrapper color={Colors.sailBlue} fontSize={14} >
           {StringConstants.LOCATE_ME}
-        </TextWrapper>
-            
+        </TextWrapper>   
         </Press>
     
         </>

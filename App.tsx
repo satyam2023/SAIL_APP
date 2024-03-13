@@ -10,11 +10,8 @@ import { persistor, store } from "redux/store/Store";
 import { PersistGate } from "redux-persist/integration/react";
 import { isAndroid } from "libs";
 import StatusCode from "core/StatusCode";
-import CustomerType from "components/ExistingCustomer";
-import CustomerDetails from "components/CustomerDetails";
-import Data from "libs/mockData";
-import CustomToggleBox from "components/CustomToggleBox";
-
+import OOPS from "views/emptyState/OOPS";
+import PleaseWaitLoader from "views/emptyState/PleaseWaitLoader";
 LogBox.ignoreAllLogs();
 
 const App = () => {
@@ -50,6 +47,8 @@ const App = () => {
         <Navigation />
       </PersistGate>
     </Provider>
+
+    
    
  
   );

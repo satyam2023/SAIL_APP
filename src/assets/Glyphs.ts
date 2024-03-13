@@ -84,5 +84,8 @@ const Glyphs = {
   UpArrow:require('../assets/images/upArrow.png'),
   DownArrow:require('../assets/images/DownArrow.png'),
   BottomTabBar:require('../assets/images/bottom_nav_bg.png'),
+  OOPS:require('../assets/images/OOPS.png'),
+  SomethingWrong:require('../assets/images/SomethingWrong.png'),
+  Loader:require('../assets/images/Loader.png')
 };
 export default Glyphs;

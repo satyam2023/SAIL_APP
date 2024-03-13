@@ -11,6 +11,7 @@ import SafeAreaContainer from "components/SafeAreaContainer";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import commonStyles from "commonStyles/CommonStyle";
+import PleaseWaitLoader from "views/emptyState/PleaseWaitLoader";
 
 const HomeScreen = () => {
   return (

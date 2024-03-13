@@ -8,7 +8,7 @@ import StringConstants from "shared/localization";
 import InputTextField from "components/InputTextField";
 import { Colors } from "commonStyles/RNColor.style";
 import SafeAreaContainer from "components/SafeAreaContainer";
-import CustomerBox from "components/CustomerBox";
+import CustomerBox from "components/RectangularBox";
 import { setCustomerProfileButton } from "redux/actions/UIAction";
 
 const CustomerProfile = () => {
@@ -39,17 +39,19 @@ const CustomerProfile = () => {
             subHeading={StringConstants.CUSTOMER_NUMBERIC_CODE}
             onPress={() => {
               dispatch(setCustomerProfileButton(true));
-            }}
+            } } 
+            leftIcon={Glyphs.Profile2userClicked}          />
+          <CustomerBox
+            heading={StringConstants.USER_NAME}
+            subHeading={StringConstants.CUSTOMER_NUMBERIC_CODE}
+            onPress={() => {}}
+            leftIcon={Glyphs.Profile2userClicked} 
           />
           <CustomerBox
             heading={StringConstants.USER_NAME}
             subHeading={StringConstants.CUSTOMER_NUMBERIC_CODE}
             onPress={() => {}}
-          />
-          <CustomerBox
-            heading={StringConstants.USER_NAME}
-            subHeading={StringConstants.CUSTOMER_NUMBERIC_CODE}
-            onPress={() => {}}
+            leftIcon={Glyphs.Profile2userClicked} 
           />
         </SafeAreaContainer>
       </>

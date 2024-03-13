@@ -13,26 +13,17 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleAspectFit" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iPhone 14 Pro - 3 (1).png" translatesAutoresizingMaskIntoConstraints="NO" id="rHA-Uj-aLJ" userLabel="LaunchScreen">
-                                <rect key="frame" x="-250" y="1478" width="430" height="932"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" semanticContentAttribute="forceRightToLeft" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" image="1200px-SAIL_Logo 1 (1).png" highlightedImage="1200px-SAIL_Logo 1 (1).png" highlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNQ-5f-VGH">
-                                <rect key="frame" x="0.0" y="0.0" width="424" height="932"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="1200px-SAIL_Logo 1 (1).png" translatesAutoresizingMaskIntoConstraints="NO" id="GPW-UJ-BEz">
+                                <rect key="frame" x="121" y="367" width="182" height="191"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yLL-lF-X0j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rHA-Uj-aLJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Agg-UR-vEO"/>
-                            <constraint firstItem="rHA-Uj-aLJ" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="TEt-Vv-zVz"/>
-                            <constraint firstItem="rHA-Uj-aLJ" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="x57-4R-Azm"/>
-                            <constraint firstItem="rHA-Uj-aLJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="zzR-c0-HZJ"/>
-                        </constraints>
                     </view>
                     <size key="freeformSize" width="430" height="932"/>
                 </viewController>
@@ -41,9 +32,12 @@
             <point key="canvasLocation" x="47.441860465116278" y="372.74678111587986"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="linkColor"/>
     <resources>
         <image name="1200px-SAIL_Logo 1 (1).png" width="182" height="191"/>
-        <image name="iPhone 14 Pro - 3 (1).png" width="393" height="852"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

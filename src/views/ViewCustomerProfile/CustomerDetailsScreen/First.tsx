@@ -1,104 +1,77 @@
-import React from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import InputTextWithoutIcon from 'components/InputTextWithoutIcon/InputText';
-import styles from './Style';
-import DropDown from 'components/DropDown/DropDown';
-import { CustomerSegment,CustomerStatus,CustomerSubSegment,CustomerSubType,CustomerType } from './Data/Data';
-import UploadDocumnet from 'components/UploadDocument';
+import React from "react";
+import { ScrollView} from "react-native";
+import {
+  CustomerSegment,
+} from "./Data/Data";
+import UploadDocumnet from "components/UploadDocument";
+import InputTextField from "components/InputTextField";
+import StringConstants from "shared/localization";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomDropDown from "components/CustomDropDown";
+import LocateMe from "components/LocateMe";
 
-const First :React.FC<{}>= () => {
+const First = () => {
   return (
-   <ScrollView style={{paddingHorizontal:20,marginBottom:'30%'}} >
-    <View style={ [styles.inputbox,{marginTop:8}]} >
-            <InputTextWithoutIcon
-                placeholder="Customer Code"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="numeric"
-                secureText={false}
-                maxLength={10}
-            />
-        </View>
-        <View style={ [styles.inputbox,{marginBottom:0}]} >
-            <InputTextWithoutIcon
-                placeholder="Company Name"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="numeric"
-                secureText={false}
-                maxLength={10}
-            />
-            </View>
-            <DropDown data={CustomerSegment} heading={'Customer Segment'} setReason={()=>{}}/>
-            <DropDown data={CustomerSubSegment} heading={'Customer SubSegment'} setReason={()=>{}}/>
-            <DropDown data={CustomerType} heading={'Customer Type'} setReason={()=>{}}/>
-            <DropDown data={CustomerSubType} heading={'Customer Sub Type'} setReason={()=>{}}/>
-            <DropDown data={CustomerType} heading={'Select Status of Customer'} setReason={()=>{}}/>
-
-            <View style={ [styles.inputbox,{marginTop:16}]} >
-            <InputTextWithoutIcon
-                placeholder="PAN Card Number"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="numeric"
-                secureText={false}
-                maxLength={10}
-            />
-            </View>
-            <View style={ [styles.inputbox]} >
-            <InputTextWithoutIcon
-                placeholder="GST Number"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="numeric"
-                secureText={false}
-                maxLength={10}
-            />
-            </View>
-            <View style={ [styles.inputbox]} >
-            <InputTextWithoutIcon
-                placeholder="Customer Region"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="numeric"
-                secureText={false}
-                maxLength={10}
-            />
-            </View>
-            <View style={ [styles.inputbox]} >
-            <InputTextWithoutIcon
-                placeholder="Website Link"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="numeric"
-                secureText={false}
-                maxLength={10}
-            />
-            </View>
-            <View style={ [styles.inputbox]} >
-            <InputTextWithoutIcon
-                placeholder="Location Name"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="numeric"
-                secureText={false}
-                maxLength={10}
-            />
-            </View>
-           <UploadDocumnet/>
-            
-            
-    
-   </ScrollView>
-    
-  )
-}
+    <ScrollView style={{ paddingHorizontal: 20, marginBottom: "30%" }}>
+      <InputTextField
+        onChangeText={(text: string) => {}}
+        placeholder={StringConstants.CUSTOMER_CODE}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+      <InputTextField
+        onChangeText={(text: string) => {}}
+        placeholder={StringConstants.COMPANY_NAME}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+      <CustomDropDown
+        ArrayOfData={CustomerSegment}
+        topheading={StringConstants.CUSTOMER_SEG}
+      />
+      <CustomDropDown
+        ArrayOfData={CustomerSegment}
+        topheading={StringConstants.CUSTOMER_SUB_SEG}
+      />
+      <CustomDropDown
+        ArrayOfData={CustomerSegment}
+        topheading={StringConstants.CUSTOMER_TYPE}
+      />
+      <CustomDropDown
+        ArrayOfData={CustomerSegment}
+        topheading={StringConstants.CUSTOMER_SUB_TYPE}
+      />
+      <CustomDropDown
+        ArrayOfData={CustomerSegment}
+        topheading={StringConstants.SELECT_STATUS_CUSTOMER}
+      />
+      <InputTextField
+        onChangeText={(text: string) => {}}
+        placeholder={StringConstants.ENTER_PAN_CARD}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+      <InputTextField
+        onChangeText={(text: string) => {}}
+        placeholder={StringConstants.GST_NUMBER}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+      <InputTextField
+        onChangeText={(text: string) => {}}
+        placeholder={StringConstants.CUSTOMER_REGION}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+      <InputTextField
+        onChangeText={(text: string) => {}}
+        placeholder={StringConstants.WEBSITE_LINK}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+      <LocateMe onPress={() => {}} />
+      <InputTextField
+        onChangeText={(text: string) => {}}
+        placeholder={StringConstants.LOCATION_NAME}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+      <UploadDocumnet uploadType={StringConstants.UPLOAD_VIDEO_IMAGE} />
+    </ScrollView>
+  );
+};
 
 export default First;

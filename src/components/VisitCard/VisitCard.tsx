@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, StyleSheet,TouchableOpacity, View } from "react-native";
+import { Image, Pressable, StyleSheet,TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { VisitType } from "redux/actions/UIAction";
 import commonStyles from "commonStyles/CommonStyle";
 import TextWrapper from "components/TextWrapper";
 import fonts from "@fonts";
+import StringConstants from "shared/localization";
 
 interface IvisitCard {
   count: number;
@@ -27,15 +28,19 @@ const VisitCard = ({
   const [visitNumber, setVisitNumber] = useState<String>("");
 
   function handleVisitClick(){
-     if(title=="Upcoming Visit"){
+     if(title==StringConstants.UPCOMING_VISIT){
+      dispatch(VisitType(1));
+      console.log("Upcoming Visit called:::");
        navigate(SCREENS.VISIT)
      }
-    else if(title=="Planned Visit"){
+    else if(title==StringConstants.PLANNED_VISIT){
+      console.log("Planned Visit called:::");
     dispatch(VisitType(2));
-      navigate(SCREENS.VISIT)
+    navigate(SCREENS.VISIT)
 
     }
-    else if(title=="Executed Visit"){
+    else if(title==StringConstants.EXECUTED_VISIT){
+      console.log("Executed Visit called:::");
       dispatch(VisitType(3));
       navigate(SCREENS.VISIT)
 
@@ -66,6 +71,7 @@ const VisitCard = ({
         </TextWrapper>
       </View>
       <TextWrapper style={[commonStyles.font14MediumBlack,{marginTop:8}]}>{title}</TextWrapper>
+    
     </TouchableOpacity>
   );
 };

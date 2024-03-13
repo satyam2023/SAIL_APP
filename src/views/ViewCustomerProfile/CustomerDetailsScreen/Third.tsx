@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Image,
-  SafeAreaView,
-  Text,
+  Pressable,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -10,50 +9,54 @@ import styles from "./Style";
 import { useDispatch } from "react-redux";
 import { setCompetitorButtonStatus } from "redux/actions/UIAction";
 import Glyphs from "assets/Glyphs";
+import TextWrapper from "components/TextWrapper";
+import StringConstants from "shared/localization";
+import { Colors } from "commonStyles/RNColor.style";
+import CustomButton from "components/CustomButton";
+import fonts from "@fonts";
 
 interface ThirdProps {
   CompetitorScreen: Function;
 }
-const Third: React.FC<ThirdProps> = ({ CompetitorScreen }: ThirdProps) => {
-  // const [addCompetitorStatus,setAddCompetitorStatus]=useState<boolean>(false);
-  // console.log("Competitor Status::",addCompetitorStatus);
+const Third = ({ CompetitorScreen }: ThirdProps) => {
   const dispatch = useDispatch();
   function handleAddCompetitor() {
     dispatch(setCompetitorButtonStatus(true));
     CompetitorScreen(true);
-    //  setAddCompetitorStatus(true);
   }
   return (
     <>
       <View style={{ flex:1,paddingHorizontal:20 }}>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={[styles.Txt]}>Competitor 1</Text>
+      <Pressable style={styles.btn}>
+          <TextWrapper style={styles.Txt}>
+            {StringConstants.COMPETITOR_1}
+          </TextWrapper>
+        <View style={{ flexDirection: "row" }}>
           <TouchableOpacity>
-            <Image
-              source={Glyphs.Edit}
-              style={{ height: 16, width: 16, marginLeft: 176}}
-            />
+            <Image source={Glyphs.Edit} style={styles.img} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity style={{ marginLeft: 8 }}>
             <Image
               source={Glyphs.Arrow}
-              style={{
-                height: 24,
-                width: 24,
-                transform: [{ rotate: "90deg" }],
-                marginLeft: 8,
-              }}
+              style={[
+                styles.img,
+                {
+                  transform: [{ rotate: "90deg" }],
+                },
+              ]}
             />
           </TouchableOpacity>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.btn, { backgroundColor: "#E9EBF1", marginTop: 12 }]}
-          onPress={() => {
-            handleAddCompetitor();
-          }}
-        >
-          <Text style={[styles.Txt]}> +   Add Competitor</Text>
-        </TouchableOpacity>
+        </View>
+      </Pressable>
+      <CustomButton
+        text={StringConstants.PLUS__CUSTOMER_REP}
+        buttonStyle={{
+          backgroundColor: Colors.dashed,
+          justifyContent: "flex-start",
+        }}
+        textStyle={{ fontFamily: fonts.type.regular }}
+        onPress={handleAddCompetitor}
+      />
       </View>
     </>
   );

@@ -9,8 +9,10 @@ import { navigate } from "@navigation";
 import { white, darkgrey, black, grey, lightWhite,} from "commonStyles/RNColor.style";
 import CustomButton from "components/CustomButton";
 import InputTextField from "components/InputTextField";
-import CustomSwitch from "components/CustomSwitch";
+import CustomSwitch from "components/CustomCheckBox";
 import TextWrapper from "components/TextWrapper";
+import StringConstants from "shared/localization";
+import commonStyles from "commonStyles/CommonStyle";
 
 const SignIn = () => {
   const [personalnumber, setpersonalnumber] = useState(true);
@@ -136,18 +138,18 @@ const SignIn = () => {
         style={{ flex: 0.3, justifyContent: "flex-end", padding: 20 }}
       >
         <CustomButton
-          textStyle={{ color: black,fontWeight:'400',fontSize:14}}
+          textStyle={commonStyles.font14RegularBlack}
           buttonStyle={{ backgroundColor: white,borderColor:grey,borderWidth:1}}
           onPress={() => navigate(SCREENS.MAIN)}
-          text="Sign in with Fingerprint"
+          text={StringConstants.SIGNIN_FINGERPRINT}
           image={Glyphs.FaceScan}
         />
         
         <CustomButton
-          textStyle={{ color: black,fontWeight:'400',fontSize:14}}
+          textStyle={commonStyles.font14RegularBlack}
           buttonStyle={{ backgroundColor: white,borderColor:grey,borderWidth:1}}
           onPress={() => navigate(SCREENS.MAIN)}
-          text="Sign in with Face Recognition"
+          text={StringConstants.SIGNIN_FACE_RECOGNITION}
           image={Glyphs.FingerScan}
         />
         <ModalAlert

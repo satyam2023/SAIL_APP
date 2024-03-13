@@ -1,3 +1,5 @@
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
 import React from "react";
 import { StyleSheet } from "react-native";
 const styles=StyleSheet.create({
@@ -44,10 +46,11 @@ const styles=StyleSheet.create({
     },
     Txt:{
         height:16,
-        color:'#233972',
-        fontWeight:"500",
+        color:Colors.sailBlue,
+        fontFamily:fonts.type.medium,
         fontSize:14,
-        lineHeight:16,
-    }
+        
+    },
+    img:{ height: 16, width: 16,resizeMode:'contain'}
 });
 export default styles;

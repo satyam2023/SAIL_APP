@@ -1,0 +1,56 @@
+
+import Glyphs from "assets/Glyphs";
+import commonStyles from "commonStyles/CommonStyle";
+import { Colors } from "commonStyles/RNColor.style";
+import TextWrapper from "components/TextWrapper";
+import {  Image, Modal, StyleSheet, View } from "react-native";
+import StringConstants from "shared/localization";
+
+
+const PleaseWaitLoader=()=>{
+
+    return (
+        <Modal 
+        animationType='fade'
+        transparent={true}
+        visible={true}
+       
+        >
+            <View
+             style={[styles.modalConatiner,commonStyles.center]}
+            >
+            <View style={[styles.loaderContainer,commonStyles.center]}>
+               <Image source={Glyphs.Loader} style={styles.img}/>
+                <TextWrapper color={Colors.darkGrey}>
+                    {StringConstants.PLEASE_WAIT}
+                </TextWrapper>
+            </View>
+            </View>
+            
+        </Modal>
+
+    );
+};
+
+export default PleaseWaitLoader;
+
+const styles=StyleSheet.create({
+    modalConatiner:{
+        flex:1,
+    },
+    loaderContainer:{
+        height:160,
+        width:160,
+        backgroundColor:Colors.white,
+        padding:16,
+        alignSelf:'center',
+        
+    },
+    img:{
+        height:80,
+        width:80,
+        resizeMode:'contain'
+    }
+    
+
+});

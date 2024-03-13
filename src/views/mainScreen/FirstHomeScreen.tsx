@@ -6,11 +6,8 @@ import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native-gesture-handler";
 import VisitCard from "components/VisitCard/VisitCard";
 import {
-  SkyBlue,
-  lightgreen,
-  whitegreenish,
-  green,
-  blue,
+
+  Colors,
 } from "commonStyles/RNColor.style";
 import { SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
@@ -60,22 +57,22 @@ const FirstHomeScreen = () => {
           count={11}
           title={StringConstants.UPCOMING_VISIT}
           image={Glyphs.Visit}
-          backgroundcolor={whitegreenish}
-          textColor={SkyBlue}
+          backgroundcolor={Colors.whitegreenish}
+          textColor={Colors.sailBlue}
         />
         <VisitCard
           count={12}
           title={StringConstants.PLANNED_VISIT}
           image={Glyphs.Planned}
           backgroundcolor={"#EEF4FF"}
-          textColor={blue}
+          textColor={Colors.sailBlue}
         />
         <VisitCard
           count={26}
           title={StringConstants.EXECUTED_VISIT}
           image={Glyphs.Executed}
-          backgroundcolor={lightgreen}
-          textColor={green}
+          backgroundcolor={Colors.tealishGreen}
+          textColor={Colors.green}
         />
       </View>
       <View style={{ position: "relative", bottom: 70 }}>

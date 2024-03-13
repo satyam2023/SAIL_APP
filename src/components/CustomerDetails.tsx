@@ -1,35 +1,43 @@
-
 import SafeAreaContainer from "./SafeAreaContainer";
 import { Colors } from "commonStyles/RNColor.style";
-import { FlatList } from "react-native-gesture-handler";
-import CustomerDetailColumn from "./CustomerDetailColumn";
-import CustomerBox from "./CustomerBox";
+import CustomerBox from "./RectangularBox";
+import Glyphs from "assets/Glyphs";
+import StringConstants from "shared/localization";
 
 interface ICustomerDetails {
   CustomerData: Array<object>;
-  onPress:()=>void
+  onPress: () => void;
+  iSBreakeddetails?:boolean
 }
 
 const CustomerDetails = (props: ICustomerDetails) => {
-  const renderItem = (item: any) => {
+  const renderItem = (item: any,index:number) => {
+  
     return (
-      <CustomerDetailColumn
-        headingText={item.item.uppertext}
-        detailText={item.item.lowertext}
-        image={item.item.imagepath}
+      <CustomerBox
+        key={index}
+        heading={item.uppertext}
+        subHeading={item.lowertext}
+        leftIcon={item.imagepath}
+        isCustomerColumn={true}
       />
     );
   };
 
   return (
-    <>
-    <CustomerBox handleCustomerClick={props.onPress} isCustomerDetailVisible={true} style={{marginBottom:0}}/>
-    <SafeAreaContainer backgroundColor={Colors.white}>
-      <FlatList data={props.CustomerData} renderItem={renderItem} />
+    <SafeAreaContainer >
+     { !props.iSBreakeddetails && <CustomerBox
+        onPress={props.onPress}
+        isCustomerDetailVisible={true}
+        style={{ marginBottom: 0 }}
+        leftIcon={Glyphs.Profile2userClicked}
+        heading={StringConstants.CUSTOMER_VISIT_1}
+        subHeading={StringConstants.XYZ_STEELWORKS}
+        isClosable
+      />}
+      {props.CustomerData.map(renderItem)}
     </SafeAreaContainer>
-    </>
   );
 };
 
 export default CustomerDetails;
-

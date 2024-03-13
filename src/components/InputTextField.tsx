@@ -5,9 +5,11 @@ import {
   ImageURISource,
   InputModeOptions,
   Pressable,
+  StyleProp,
   StyleSheet,
   Text,
   TextInput,
+  TextStyle,
   View,
   ViewStyle,
 } from "react-native";
@@ -30,6 +32,8 @@ interface ITextField {
   eyeIcon?: ImageURISource;
   onRighIconPress?: () => void;
   defaultValue?: string;
+  textStyle?:StyleProp<TextStyle>;
+  multiline?:boolean
 }
 
 const InputTextField = ({maxlength=20,...props}: ITextField) => {
@@ -74,6 +78,8 @@ const InputTextField = ({maxlength=20,...props}: ITextField) => {
             maxLength={maxlength}
             secureTextEntry={secureText}
             defaultValue={props?.defaultValue} 
+            style={props.textStyle}
+            multiline={props.multiline}
           />
         </View>
         {props.eyeIcon && (

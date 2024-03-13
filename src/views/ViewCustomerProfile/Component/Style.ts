@@ -1,4 +1,5 @@
-import React from "react";
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 
 const styles=StyleSheet.create({
@@ -8,28 +9,24 @@ const styles=StyleSheet.create({
         left:0,
         right:0,
         width:'100%'
-      
     },
 header:{
-    // height:121,
-    backgroundColor:'#F9F9FC',
+    backgroundColor:Colors.background2,
     width:'100%',
-   
-   
 },
 insideHeader:{
     height:48,
-    width:321,
-    marginLeft:34,
-    marginTop:26,
-    flexDirection:'row'
+     width:'100%',
+     paddingHorizontal:20,
+    justifyContent:'space-between',
+     marginTop:26,
+    flexDirection:'row',
 },
-firstCircle:{
+circle:{
     width:48,
     height:48,
-   borderRadius:24,
-    backgroundColor:'#E67437',
-    marginLeft:6
+    borderRadius:24,
+    backgroundColor:Colors.orange,
 },
 numberstyle:{
     fontWeight:'500',
@@ -43,19 +40,15 @@ numberstyle:{
     textAlign:'center'
 },
 emptyLine:{
-    width:75,
     height:2,
     backgroundColor:'#65C000',
     marginTop:22,
-    marginLeft:4
-
+     width:'25%'
 },
 circleBottomText:{
-    fontWeight:'500',
+    fontFamily:fonts.type.medium,
     fontSize:10,
-    lineHeight:15,
-    color:'#110F24',
-    height:15,
+    color:Colors.blackPeral,
     marginTop:7
 },
 footerContainer:{
@@ -123,7 +116,30 @@ updateTxt:{
     lineHeight:20,
     marginTop:6
     
-}
+},
+plsText:{
+         color: Colors.red,
+         fontFamily:fonts.type.regular,
+              fontSize: 14,
+              marginLeft: 16,
+              marginBottom: 5,
+},
+sapCodeContainer:{
+    flexDirection: "row",
+    borderRadius: 33,
+    justifyContent: "center",
+    alignItems: "center",
+    width:'100%',
+    paddingHorizontal:16,
+    backgroundColor: Colors.white,
+  },
+  inputContainer:{
+    backgroundColor: Colors.white,
+    marginTop: 16,
+    borderRadius: 0,
+    width: "70%",
+    height: 30,
+  }
 });
 
 export default styles;

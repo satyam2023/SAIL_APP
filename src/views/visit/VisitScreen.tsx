@@ -108,6 +108,7 @@ const VisitScreen = () => {
         {currentVisit == 1 && <UpcomingVisit />}
         {currentVisit == 2 && <Planned footerVisibility={footerVisibility} />}
         {currentVisit == 3 && <Executed />}
+       
       </ScrollView>
       {currentVisit == 2 && FooterVisibility && (
         <CustomFooter

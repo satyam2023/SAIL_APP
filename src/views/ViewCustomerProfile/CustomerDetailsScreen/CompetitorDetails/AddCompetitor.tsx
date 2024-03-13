@@ -1,56 +1,40 @@
-import React from 'react'
-import { SafeAreaView, Text, View } from 'react-native';
-import styles from '../Style';
-import InputTextWithoutIcon from 'components/InputTextWithoutIcon/InputText';
-import CompetitorFooter from './CompetitorFooter';
-interface CompetitorProps{
-  
-}
+import React from "react";
+import { SafeAreaView, Text, View } from "react-native";
+import styles from "../Style";
+import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
+import InputTextField from "components/InputTextField";
+import StringConstants from "shared/localization";
+import { Colors } from "commonStyles/RNColor.style";
+import commonStyles from "commonStyles/CommonStyle";
+import TextWrapper from "components/TextWrapper";
 
-const AddCompetitor:React.FC<CompetitorProps> = ({}:CompetitorProps) => {
- 
+const AddCompetitor = () => {
   return (
-  <SafeAreaView style={{flex:1,}}>
-    <Text style={{color:'#110F24',marginLeft:20,fontWeight:'500',fontSize:16,lineHeight:36,marginTop:20}}>Add Competitor Details</Text>
-<View style={{paddingHorizontal:20}}>
-      <View style={ [styles.inputbox,{marginTop:8}]} >
-            <InputTextWithoutIcon
-                placeholder="Enter Company Name"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="default"
-                secureText={false}
-                maxLength={10}
-            />
-        </View>
-        <View style={ [styles.inputbox]} >
-            <InputTextWithoutIcon
-                placeholder="Enter Address"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="default"
-                secureText={false}
-                maxLength={10}
-            />
-        </View>
-        <View style={ [styles.inputbox,]} >
-            <InputTextWithoutIcon
-                placeholder="Enter Comment"
-                ChangeText={(text: any) => {
-                   
-                }}
-                keyboardType="default"
-                secureText={false}
-                maxLength={1000}
-            />
-        </View>
-        </View>
-        <CompetitorFooter />
-    
-  </SafeAreaView>
-  )
-}
+    <SafeAreaView style={{ flex: 1 }}>
+      <TextWrapper
+        style={[commonStyles.font14MediumBlackpearl,{margin:16,}]}
+      >
+        {StringConstants.ADD_COMPETITOR_DETAILS}
+      </TextWrapper>
+      <View style={{ paddingHorizontal: 20 }}>
+        <InputTextField
+          onChangeText={() => {}}
+          placeholder={StringConstants.ENTER_COMPANY_NAME}
+          containerStyle={{ backgroundColor: Colors.white }}
+        />
+        <InputTextField
+          onChangeText={() => {}}
+          placeholder={StringConstants.ENTER_ADDRESS}
+          containerStyle={{ backgroundColor: Colors.white }}
+        />
+        <InputTextField
+          onChangeText={() => {}}
+          placeholder={StringConstants.ENTER_COMMENTS}
+          containerStyle={{ backgroundColor: Colors.white }}
+        />
+      </View>
+    </SafeAreaView>
+  );
+};
 
 export default AddCompetitor;

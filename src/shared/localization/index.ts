@@ -220,6 +220,7 @@ const StringConstants = {
   RESOLUTION_CMNT: "Resolution Comment",
   RESOLUTION_CMNT_HERE: "Resolution comment comes here ",
   ADD_CUSTOMER_REP: "Add Customer Representative",
+  PLUS__CUSTOMER_REP: "+   Add Customer Representative",
   ADD_COMPETITOR_DETAILS: "Add Competitor Details",
   0: "0",
   3: "/03",
@@ -408,7 +409,24 @@ const StringConstants = {
   ENTER_NAME_NUMBER:'Enter Name Followed by 10 digits number',
   SELECT_CUSTOMER_CONTACT_DETAILS:'Select Customer Contact Details',
   CUSTOMER_NUMBERIC_CODE:"Customer Code: 123678",
-  CUSTOMER_PROFILE_UPDATED_SUCCESSFULLY:'Customer Profile Successfully Updated'
+  CUSTOMER_PROFILE_UPDATED_SUCCESSFULLY:'Customer Profile Successfully Updated',
+  CUSTOMER_SEG:'Customer Segment',
+  CUSTOMER_SUB_SEG:'Customer Sub Segment',
+  CUSTOMER_SUB_TYPE:'Customer Sub Type',
+  VIEW_CUSTOMER_PROFILE:'View Customer Profile',
+  PLS_ENTER_GST_PAN:'Please enter GST and PAN number',
+  ONE:'1',
+  TWO:'2',
+  THREE:'3',
+  CUSTOMER_REPRESENTATIVE:'Customer Representative',
+  COMPETITOR_1:'Competitor 1',
+  ADD_TAG_LOCATION:"Add Tag Name to Selected Location",
+  PNG_MP4 :'(including png, mp4, mov max 2 mb)',
+  SOMETHING_WRONG:'Something went wrong',
+  WE_ENCOUNTER:`We encountered an error while trying to connect with our server.\n Please try again after sometime.`,
+  RELOAD:'Reload',
+  OOPS:'Ooops!',
+  NO_INTERNET_MSG:'No Internet Connection found \n Check your connection'
 
 };
 

@@ -5,10 +5,10 @@ import fonts from "@fonts";
 
 interface ICustomFooter {
   firstButtonText: string;
-  secondButtonText: string;
+  secondButtonText?: string;
   singleButtonOnFooter?: boolean;
   firstButtonPress: () => void;
-  secondButtonPress: () => void;
+  secondButtonPress?: () => void;
   isMovable?: boolean;
   isTracker?: DimensionValue;
   style?:ViewStyle
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: Colors.white,
     width: "100%",
-    position: "absolute",
     bottom: 0,
     right:0,
     left:0,

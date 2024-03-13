@@ -23,8 +23,8 @@ const CreateVisitPlan = () => {
     <SafeAreaView style={{ flex: 1 }}>
       {!isVisitDetailFilled ? (
         <>
-          <ScrollView style={{ backgroundColor: "#F9F9FC" }}>
-            <Header topheading="Create Visit Plan" />
+          <ScrollView style={{ backgroundColor: Colors.background2 }}>
+            <Header topheading={StringConstants.CREATE_VISIT_PLAN} />
             <View style={{ marginVertical: 23, paddingHorizontal: 20 }}>
               <InputTextField
                 onChangeText={() => {}}

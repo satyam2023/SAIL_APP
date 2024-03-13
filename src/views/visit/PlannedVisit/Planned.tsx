@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
-import CustomerBox from "components/CustomerBox";
+import CustomerBox from "components/RectangularBox";
 import Data from "../UpComingVisit/mockData/DATA";
 import CustomerDetails from "components/CustomerDetails";
+import StringConstants from "shared/localization";
+import Glyphs from "assets/Glyphs";
 
 interface PlannedProps {
   footerVisibility: Function;
@@ -19,9 +21,9 @@ const Planned = ({ footerVisibility }: PlannedProps) => {
     <ScrollView style={{ paddingHorizontal: 20,paddingBottom:'25%' }}>
       {!customerDetails ? (
         <>
-          <CustomerBox handleCustomerClick={handleCustomerClick} />
-          <CustomerBox handleCustomerClick={handleCustomerClick} />
-          <CustomerBox handleCustomerClick={handleCustomerClick} />
+          <CustomerBox onPress={handleCustomerClick} leftIcon={Glyphs.Profile2userClicked}  heading={StringConstants.CUSTOMER_VISIT_1} subHeading={StringConstants.XYZ_STEELWORKS}/>
+          <CustomerBox onPress={handleCustomerClick} leftIcon={Glyphs.Profile2userClicked}  heading={StringConstants.CUSTOMER_VISIT_1} subHeading={StringConstants.XYZ_STEELWORKS}/>
+          <CustomerBox onPress={handleCustomerClick} leftIcon={Glyphs.Profile2userClicked}  heading={StringConstants.CUSTOMER_VISIT_1} subHeading={StringConstants.XYZ_STEELWORKS}/>
         </>
       ) : (
         <>

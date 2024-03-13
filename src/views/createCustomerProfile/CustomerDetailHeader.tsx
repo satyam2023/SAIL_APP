@@ -1,45 +1,35 @@
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
 import Header from "components/HeaderForMainScreen/HeaderMain";
+import TextWrapper from "components/TextWrapper";
 import React from "react";
-import {
-  SafeAreaView,
-  StatusBar,
-  Text,
-  View,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import StringConstants from "shared/localization";
 interface IheaderProps {
   heading: string;
   CurrentScreen: number;
   topheading: string;
 }
-const CustomerDetailHeader= ({heading,topheading,CurrentScreen}:IheaderProps) => {
+const CustomerDetailHeader = ({
+  heading,
+  topheading,
+  CurrentScreen,
+}: IheaderProps) => {
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={"#233972"} barStyle={"light-content"} />
       <Header topheading={topheading} />
-      {topheading != "Add Customer Representative" ? (
-        <View style={{ flexDirection: "row",justifyContent:'space-between',paddingHorizontal:20}}>
-          <Text
-            style={{
-              height: 36,
-              color: "#000000",
-              fontWeight: "500",
-              fontSize: 16,
-              marginTop: 20,
-            }}
-          >
-            {heading}
-          </Text>
-          <Text
-            style={{
-              marginTop: 20,
-              height: 36,
-              color: "#000000",
-              fontWeight: "500",
-              fontSize: 16,
-            }}
-          >
-            0{CurrentScreen}/<Text style={{ fontWeight: "400" }}>03</Text>
-          </Text>
+      {topheading != StringConstants.ADD_CUSTOMER_REP ? (
+        <View
+          style={styles.container}
+        >
+          <TextWrapper style={styles.screenTracker}>{heading}</TextWrapper>
+          <TextWrapper style={styles.screenNumber}>
+            {StringConstants[0]}
+            {CurrentScreen}
+            <TextWrapper style={{ fontFamily: fonts.type.regular }}>
+              {StringConstants[3]}
+            </TextWrapper>
+          </TextWrapper>
         </View>
       ) : (
         <></>
@@ -49,3 +39,24 @@ const CustomerDetailHeader= ({heading,topheading,CurrentScreen}:IheaderProps) =>
 };
 
 export default CustomerDetailHeader;
+
+const styles = StyleSheet.create({
+  container:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+  },
+  screenTracker: {
+    height: 36,
+    color: Colors.black,
+    fontFamily: fonts.type.medium,
+    fontSize: 16,
+    marginTop: 20,
+  },
+  screenNumber: {
+    marginTop: 20,
+    color: Colors.black,
+    fontFamily: fonts.type.medium,
+    fontSize: 16,
+  },
+});

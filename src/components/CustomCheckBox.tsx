@@ -2,16 +2,18 @@ import Glyphs from "assets/Glyphs";
 import { Colors } from "commonStyles/RNColor.style";
 import { debounceHOC } from "hocs/debounceHOC";
 import { useState } from "react";
-import { Image, Pressable } from "react-native";
+import { Image, Pressable, ViewStyle } from "react-native";
 import { StyleSheet, View } from "react-native";
 
 interface ICustomSwitch {
   isRectangular?: boolean;
   onPress: () => void;
   status: boolean;
+  style?:ViewStyle
+  
 }
 
-const CustomSwitch = (props: ICustomSwitch) => {
+const CustomCheckBox = (props: ICustomSwitch) => {
   const [status, setStatus] = useState<boolean>(false);
   const Press = debounceHOC(Pressable);
   const handlePress = () => {
@@ -24,6 +26,7 @@ const CustomSwitch = (props: ICustomSwitch) => {
     onPress={handlePress}
       style={[
         styles.switchContainer,
+        props.style,
         { borderRadius: props.isRectangular ? 3 : 10 },
       ]}
     >
@@ -44,7 +47,7 @@ const CustomSwitch = (props: ICustomSwitch) => {
   );
 };
 
-export default CustomSwitch;
+export default CustomCheckBox;
 const styles = StyleSheet.create({
   switchContainer: {
     height: 17,

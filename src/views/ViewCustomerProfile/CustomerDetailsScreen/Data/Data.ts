@@ -1,53 +1,53 @@
 const CustomerSegment=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
     
 ];
 
 const CustomerSubSegment=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
     
 ];
 
 const CustomerSubType=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
     
 ];
 const CustomerType=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
     
 ];
 const CustomerStatus=[
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
-    {segment:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
+    {value:'A'},
     
 ];
 

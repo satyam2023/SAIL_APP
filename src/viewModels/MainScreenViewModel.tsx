@@ -1,12 +1,11 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native";
 import FirstHomeScreen from "../views/mainScreen/FirstHomeScreen";
+import { Colors } from "commonStyles/RNColor.style";
 
 
 const MainScreenViewModel=()=>{
-    return (<SafeAreaView  style={{backgroundColor:'#F9F9FC', flex: 1}}>
+    return (<SafeAreaView  style={{backgroundColor:Colors.sailBlue, flex: 1}}>
        <FirstHomeScreen/>
     </SafeAreaView>);
 }

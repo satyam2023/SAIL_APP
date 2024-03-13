@@ -17,7 +17,7 @@ import { Colors } from "commonStyles/RNColor.style";
 import StringConstants from "shared/localization";
 import InputTextField from "components/InputTextField";
 import SafeAreaContainer from "components/SafeAreaContainer";
-import CustomerBox from "components/CustomerBox";
+import CustomerBox from "components/RectangularBox";
 
 const Meeting = () => {
   const [click, setClicked] = useState<string>("For Planned Visit");
