@@ -395,7 +395,7 @@ const StringConstants = {
   MANAGEMENT_TEAM:"Management Team",
   CONTACT:'Contact',
   WEBSITE:'Website',
-  NEARBY_CUSTOMERS:'NearBy Customer',
+  NEARBY_CUSTOMERS:'Nearby Customer',
   ENTER_TEXT_TO_SEARCH:'Enter Text To Search',
   UPCOMING:'Upcoming',
   PLANNED:'Planned',
@@ -426,7 +426,8 @@ const StringConstants = {
   WE_ENCOUNTER:`We encountered an error while trying to connect with our server.\n Please try again after sometime.`,
   RELOAD:'Reload',
   OOPS:'Ooops!',
-  NO_INTERNET_MSG:'No Internet Connection found \n Check your connection'
+  NO_INTERNET_MSG:'No Internet Connection found \n Check your connection',
+  PLUS_COMPETITOR:'+   Add Competitor'
 
 };
 

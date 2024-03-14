@@ -25,7 +25,58 @@ import StringConstants from "shared/localization";
 import TextWrapper from "components/TextWrapper";
 import commonStyles from "commonStyles/CommonStyle";
 import SafeAreaContainer from "components/SafeAreaContainer";
+import HorizontalSlider from "components/HorizontalSlider";
 const VisitScreen = () => {
+ 
+
+
+
+  const Data=[
+    
+    {
+     heading: StringConstants.UPCOMING,
+     number:23,
+     backgroundColor:{
+      focus:Colors.darkMilkWhite ,
+      notfocus: Colors.milkWhite
+
+     },
+
+     textColor:{
+      notfocus:Colors.darkMilkWhite ,
+      focus: Colors.milkWhite
+     }
+    }
+
+    ,
+    {
+      heading: StringConstants.PLANNED,
+      number:23,
+      backgroundColor:{
+        focus:Colors.sailBlue,
+        notfocus:Colors.aquaHaze
+      },
+      textColor:{
+      notfocus:Colors.sailBlue ,
+      focus: Colors.white
+      }
+    }
+   
+    ,
+    {
+       heading: StringConstants.EXECUTED,
+      number:23,
+      backgroundColor:{
+        focus:Colors.green,
+        notfocus:Colors.tealishGreen
+      },
+      textColor:{
+        focus:Colors.white,
+        notfocus:Colors.green
+      }
+    }
+  ]
+
   const dispatch = useDispatch();
   useFocusEffect(() => {
     dispatch(BottomTabVisibility(false));
@@ -39,8 +90,12 @@ const VisitScreen = () => {
     setCurrentVisit(visitType);
   }, [visitType]);
   const handleVisitType = (visitType: number) => {
+  console.log("Visit NUmber:::",visitType)
     setCurrentVisit(visitType);
   };
+
+  console.log("Current Screen::",currentVisit)
+
   const footerVisibility = (param: boolean) => {
     setFooterVisibility(param);
   };
@@ -52,7 +107,15 @@ const VisitScreen = () => {
         nestedScrollEnabled
         showsVerticalScrollIndicator={false}
       >
-        <ScrollView
+        <HorizontalSlider sliderData={Data} 
+         currentScreen={currentVisit}   
+         selectedTab={(index:number)=>{
+     setCurrentVisit(index);
+     console.log("Index inisde=>>>",index)
+
+         }}
+        />
+        {/* <ScrollView
           horizontal
           style={styles.tagContainer}
           showsHorizontalScrollIndicator={false}
@@ -84,7 +147,7 @@ const VisitScreen = () => {
             visitnumber={99}
             handleVisitType={handleVisitType}
           />
-        </ScrollView>
+        </ScrollView> */}
         <TextWrapper style={[commonStyles.font12RegularGrey, styles.txt]}>
           {StringConstants.ENTER_CUST_CODE_OR_NAME}
         </TextWrapper>
@@ -112,10 +175,10 @@ const VisitScreen = () => {
       </ScrollView>
       {currentVisit == 2 && FooterVisibility && (
         <CustomFooter
-          firstButtonText={StringConstants.CANCEL_VISIT}
-          secondButtonText={StringConstants.EDIT_VISIT}
-          firstButtonPress={() => {}}
-          secondButtonPress={() => {}}
+          leftButtonText={StringConstants.CANCEL_VISIT}
+           rightButtonText={StringConstants.EDIT_VISIT}
+          leftButtonPress={() => {}}
+          rightButtonPress={() => {}}
           isMovable={true}
         />
       )}

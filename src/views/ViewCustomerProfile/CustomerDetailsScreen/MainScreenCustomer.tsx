@@ -79,18 +79,18 @@ const MainScreenCustomer = () => {
                 )}
               </ScrollView>
               <CustomFooter
-                firstButtonText={
+                leftButtonText={
                   CurrentScreen == 1
                     ? StringConstants.EDT
                     : StringConstants.BACK
                 }
-                secondButtonText={
+                rightButtonText={
                   CurrentScreen == 3
                     ? StringConstants.SUBMIT
                     : StringConstants.PROCEED
                 }
-                firstButtonPress={handleBackClick}
-                secondButtonPress={handleForwardClick}
+                leftButtonPress={handleBackClick}
+                rightButtonPress={handleForwardClick}
                 style={{ backgroundColor: Colors.white }}
               />
             </SafeAreaView>
@@ -106,8 +106,8 @@ const MainScreenCustomer = () => {
           
           <AddCompetitor/>
           <CustomFooter
-        firstButtonText={StringConstants.ADD_COMPETITOR}
-        firstButtonPress={() => {
+        leftButtonText={StringConstants.ADD_COMPETITOR}
+        leftButtonPress={() => {
           dispatch(setCompetitorButtonStatus(false));
         }}
         singleButtonOnFooter
@@ -120,8 +120,8 @@ const MainScreenCustomer = () => {
             <>
               <RepresentativeDetails />
               <CustomFooter
-                firstButtonText={StringConstants.ADD_CUSTOMER_REP}
-                firstButtonPress={() => {
+                leftButtonText={StringConstants.ADD_CUSTOMER_REP}
+                leftButtonPress={() => {
                   dispatch(setCompetitorButtonStatus(false));
                   RepresentativeScreen(false);
                 }}

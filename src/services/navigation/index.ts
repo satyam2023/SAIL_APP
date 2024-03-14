@@ -47,8 +47,6 @@ export const addNavigationListener = (
 export const isReadyRef: RefObject<boolean> = React.createRef<boolean>();
 export const navigationRef = createNavigationContainerRef();
 
-
-
 export const navigationListenerProps = {
   onTransitionEnd: (...args: any) =>
     executeNavigationListeners("transitionEnd", ...args),

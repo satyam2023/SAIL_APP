@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import {View, Image, } from "react-native";
 import styles from "./Style";
-import Splash from "views/Splash/Splash";
 import Glyphs from "assets/Glyphs";
 import { SCREENS } from "@shared-constants";
 import CustomButton from "components/CustomButton";
@@ -11,10 +10,11 @@ import SafeAreaContainer from "components/SafeAreaContainer";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import commonStyles from "commonStyles/CommonStyle";
-import PleaseWaitLoader from "views/emptyState/PleaseWaitLoader";
+import GradientBackground from "components/GradientHOC";
 
 const HomeScreen = () => {
   return (
+    <GradientBackground>
     <SafeAreaContainer backgroundColor={Colors.white}>
       <View style={[{ flex: 0.4 },commonStyles.center]}>
         <Image source={Glyphs.Sail} style={styles.imgsail} />
@@ -45,6 +45,7 @@ const HomeScreen = () => {
         />
       </View>
     </SafeAreaContainer>
+    </GradientBackground>
   )  ;
 };
 

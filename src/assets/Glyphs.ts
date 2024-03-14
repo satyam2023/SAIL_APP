@@ -86,6 +86,9 @@ const Glyphs = {
   BottomTabBar:require('../assets/images/bottom_nav_bg.png'),
   OOPS:require('../assets/images/OOPS.png'),
   SomethingWrong:require('../assets/images/SomethingWrong.png'),
-  Loader:require('../assets/images/Loader.png')
+  Loader:require('../assets/images/loader.gif'),
+  CustomerProfile:require('../assets/images/CustomerProfile.png'),
+  CreateVisit:require('../assets/images/CreateVisit.png'),
+  CreateMeeting:require('../assets/images/CreateMeeting.png')
 };
 export default Glyphs;

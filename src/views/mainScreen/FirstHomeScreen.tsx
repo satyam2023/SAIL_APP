@@ -28,7 +28,7 @@ const FirstHomeScreen = () => {
               navigate(SCREENS.MESSAGE);
             }}
           >
-            <Image source={Glyphs.Mail} style={{ marginTop: 21 }} />
+            <Image source={Glyphs.Mail} style={styles.img} />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -37,7 +37,7 @@ const FirstHomeScreen = () => {
           >
             <Image
               source={Glyphs.Notification}
-              style={{ marginTop: 21, marginLeft: 16 }}
+              style={[styles.img,{marginLeft:16}]}
             />
           </TouchableOpacity>
           <TouchableOpacity

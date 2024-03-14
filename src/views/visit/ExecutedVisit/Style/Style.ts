@@ -1,16 +1,15 @@
 import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 
-const styles=StyleSheet.create({
-container:{
-        backgroundColor: Colors.white,
-        width: '100%',
-        marginTop: 16,
-        borderRadius: 10,
-        flex: 1,
-      
-},
-customerContainer:{
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.white,
+    width: "100%",
+    marginTop: 16,
+    borderRadius: 10,
+    flex: 1,
+  },
+  customerContainer: {
     width: "100%",
     height: 70,
     backgroundColor: "#FFFFFF",
@@ -25,7 +24,8 @@ customerContainer:{
     color: "#110F2480",
     fontWeight: "400",
     fontSize: 14,
-    lineHeight: 14,},
+    lineHeight: 14,
+  },
   companytext: {
     fontWeight: "500",
     fontSize: 14,
@@ -33,29 +33,25 @@ customerContainer:{
     marginTop: 8,
     color: "#110F24",
   },
-  img:{
+  img: {
     // marginLeft:16
   },
-  submitBtn:{
-
+  submitBtn: {
     alignSelf: "center",
     marginTop: 17,
     fontWeight: "500",
     fontSize: 16,
     width: 58,
     color: "#FFFFFF",
-  
   },
-  submitBtnContainer:{
+  submitBtnContainer: {
     width: 320,
     height: 56,
     borderRadius: 100,
     backgroundColor: "#233972",
     marginVertical: 24,
     marginHorizontal: 15,
-  }
-
-
+  },
 });
 
 export default styles;

@@ -4,11 +4,11 @@ import CustomButton from "./CustomButton";
 import fonts from "@fonts";
 
 interface ICustomFooter {
-  firstButtonText: string;
-  secondButtonText?: string;
+  leftButtonText: string;
+  rightButtonText?: string;
   singleButtonOnFooter?: boolean;
-  firstButtonPress: () => void;
-  secondButtonPress?: () => void;
+  leftButtonPress: () => void;
+  rightButtonPress?: () => void;
   isMovable?: boolean;
   isTracker?: DimensionValue;
   style?:ViewStyle
@@ -29,7 +29,7 @@ const CustomFooter = (props: ICustomFooter) => {
         style={styles.footer}
       >
         <CustomButton
-          text={props.firstButtonText}
+          text={props.leftButtonText}
           buttonStyle={[
             styles.firstButtonStyle,
             props.singleButtonOnFooter
@@ -40,19 +40,19 @@ const CustomFooter = (props: ICustomFooter) => {
             styles.buttonText,
             { color: props.singleButtonOnFooter ? Colors.darkGrey : "" },
           ]}
-          onPress={props.firstButtonPress}
+          onPress={props.leftButtonPress}
         />
         <>
           {!props.singleButtonOnFooter && (
             <CustomButton
-              text={props.secondButtonText}
+              text={props.rightButtonText}
               buttonStyle={[
                 {
                   backgroundColor: props.isMovable ? Colors.sailBlue : Colors.background2,
                 },
                 { width: "45%" },
               ]}
-              onPress={props.secondButtonPress}
+              onPress={props.rightButtonPress}
               textStyle={[
                 styles.buttonText,
                 { color: props.isMovable ? Colors.white : Colors.darkGrey },

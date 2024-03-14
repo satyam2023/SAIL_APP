@@ -1,9 +1,10 @@
 import commonStyles from "commonStyles/CommonStyle";
 import { blue } from "commonStyles/RNColor.style";
 import { debounceHOC } from "hocs/debounceHOC";
-import { ImageURISource, ViewStyle } from "react-native";
+import React from "react";
+import { ImageURISource, Pressable, ViewStyle } from "react-native";
 import { Image } from "react-native";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 interface Ibutton {
   onPress?: () => void;
@@ -16,18 +17,18 @@ interface Ibutton {
 
 const CustomButton = (props: Ibutton) => {
   return (
-    <TouchableOpacity
+    <Pressable
       disabled={props.isDisabled}
       style={[styles.btnContainer, props.buttonStyle]}
       onPress={props.onPress}
     >
       {props.image && <Image style={[commonStyles.leftIcon]} source={props.image} />}
       <Text style={[styles.text, props.textStyle]}>{props.text}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
-export default debounceHOC(CustomButton);
+export default React.memo(debounceHOC(CustomButton));
 
 const styles = StyleSheet.create({
   btnContainer: {

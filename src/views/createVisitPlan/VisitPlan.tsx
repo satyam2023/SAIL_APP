@@ -60,10 +60,10 @@ const CreateVisitPlan = () => {
             </View>
           </ScrollView>
           <CustomFooter
-            firstButtonText={StringConstants.CANCEL}
-            secondButtonText={StringConstants.SUBMIT}
-            firstButtonPress={() => {}}
-            secondButtonPress={() => {
+            leftButtonText={StringConstants.CANCEL}
+            rightButtonText={StringConstants.SUBMIT}
+            leftButtonPress={() => {}}
+            rightButtonPress={() => {
               setIsVisitDetailFilled(true);
             }}
           />

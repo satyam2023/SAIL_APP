@@ -1,3 +1,4 @@
+
 export const blue ='#233972';
 export const orange='#E67437';
 export const black ='#000000';
@@ -10,6 +11,7 @@ export const darkgrey ='#82818C';
 export const grey ='#BBBBC0';
 export const lightgrey ='#DFDFE1';
 export const lightWhite="#F9F9FC";
+
 
 export const Colors = {
     transparent: "transparent",
@@ -54,6 +56,7 @@ export const Colors = {
     dashed: "#E9EBF1",
     blueish: "rgba(17, 15, 36, 1)",
     whitegreenish :'#EEFDFF',
+    statusBarColor:'#233972'
   };
   
 

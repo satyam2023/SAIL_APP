@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StatusBar, useColorScheme, LogBox, View } from "react-native";
+import { StatusBar, useColorScheme, LogBox, View, Platform, SafeAreaView } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import { Provider } from "react-redux";
 
@@ -12,6 +12,8 @@ import { isAndroid } from "libs";
 import StatusCode from "core/StatusCode";
 import OOPS from "views/emptyState/OOPS";
 import PleaseWaitLoader from "views/emptyState/PleaseWaitLoader";
+import { Colors } from "commonStyles/RNColor.style";
+import HorizontalSlider from "components/HorizontalSlider";
 LogBox.ignoreAllLogs();
 
 const App = () => {
@@ -30,12 +32,11 @@ const App = () => {
   });
   console.log(netInfo);
   React.useEffect(() => {
-
-    StatusBar.setBarStyle(isDarkMode ? "light-content" : "dark-content");
-    if (isAndroid) {
-      StatusBar.setBackgroundColor("rgba(0,0,0,0)");
-      StatusBar.setTranslucent(true);
-    }
+    StatusBar.setBarStyle('dark-content')
+  if(isAndroid){
+    StatusBar.setBackgroundColor(Colors.sailBlue);
+  }
+  
     setTimeout(() => {
       SplashScreen.hide();
     }, 2000);
@@ -47,6 +48,8 @@ const App = () => {
         <Navigation />
       </PersistGate>
     </Provider>
+
+    // <HorizontalSlider  sliderData={['USerEnquiry','jfjf','fjjfj','USerEnquiry','jfjf','fjjfj',]}/>
 
     
    

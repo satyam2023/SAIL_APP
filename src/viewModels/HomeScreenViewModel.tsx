@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { SafeAreaView } from "react-native";
+import GradientBackground from "components/GradientHOC";
+import React from "react";
 
 // import { SCREENS } from "@shared-constants";
 // import { useDispatch, useSelector } from "react-redux";
@@ -15,27 +15,15 @@ import  HomeScreen from "views/homes/Home";
 
 
 const HomeScreenViewModel = () => {
-  // const dispatch = useDispatch();
-  // const userData = useSelector((state: RootState) => state.userAccount);
- 
-  // useEffect(() => {
-  //   getUserData();
-  // },[]);
-  // const getUserData = async () => {
-  //   const res: IApiResponse<User> = await getUserDetail();
-  //   if (res.isSuccess) dispatch(setAllUsers(res.data));
-  // };
-  // const handleItemPress = () => {
-  //   push(SCREENS.DETAIL);
-  // };
 
   return (
     
 
-    <HomeScreen/>
+   <HomeScreen/>
  
     
   );
 };
+
 
 export default HomeScreenViewModel;

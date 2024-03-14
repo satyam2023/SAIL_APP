@@ -1,3 +1,4 @@
+import StringConstants from "shared/localization";
 
 export const Regex = {
   INITIALS_REPLACE: /[^a-zA-Z- ]/g,
@@ -17,4 +18,45 @@ export const Regex = {
   NUMBER_MAX: /^\d{10}$/,
   SLASHNAME: /^[A-Za-z.&/() ]+(?:[ -']+[A-Za-z.&/() ]+)*$/,
 };
+
+
+// const validationFunction=(dataToBeValidated:string,whatToValidate:string)=>{
+//   return Regex.whatToValidate.test()
+
+// }
+
+
+// export const validateContactNumber=(uniqueNumber:string)=>{
+//     return Regex.UPN.test()
+
+// }
+
+// export const personalANDuniqueNumber=(uniqueNo:string,contactNo:string)=>{
+//    Regex.CONTACT.test(uniqueNo);
+//    Regex.CONTACT.test(contactNo);
+   
+// }
+
+// export const personalValidationRules = {
+//   uniqueNo: [
+//     {
+//       regex: Regex.REQUIRED,
+//       message: StringConstants.REQUIRED,
+//     },
+//     {
+//       regex: Regex.UPN,
+//       message: StringConstants.INVALID_UPN,
+//     },
+//   ],
+//   contactNo: [
+//     {
+//       regex: Regex.REQUIRED,
+//       message: StringConstants.REQUIRED,
+//     },
+//     {
+//       regex: Regex.CONTACT,
+//       message: StringConstants.INVALID_CN,
+//     },
+//   ],
+// };
 

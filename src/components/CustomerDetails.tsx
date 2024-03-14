@@ -1,5 +1,4 @@
 import SafeAreaContainer from "./SafeAreaContainer";
-import { Colors } from "commonStyles/RNColor.style";
 import CustomerBox from "./RectangularBox";
 import Glyphs from "assets/Glyphs";
 import StringConstants from "shared/localization";

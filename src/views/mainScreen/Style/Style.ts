@@ -2,28 +2,28 @@ import fonts from "@fonts";
 import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  visitContainer:{
+  visitContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 16,
     position: "relative",
     bottom: 68,
-    paddingHorizontal:20
+    paddingHorizontal: 20,
   },
   topContainer: {
     height: 128,
     borderBottomLeftRadius: 20,
     width: "100%",
     backgroundColor: Colors.sailBlue,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    paddingHorizontal:20
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
   },
   welcometext: {
-    fontFamily:fonts.type.regular,
+    fontFamily: fonts.type.regular,
     fontSize: 16,
     color: "#FFFFFF",
-    marginTop:12
+    marginTop: 12,
   },
   circle: {
     marginTop: 15,
@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
 
   circleTxt: {
     alignSelf: "center",
-    color:Colors.white,
+    color: Colors.white,
     height: 15,
     width: 19,
-    fontFamily:fonts.type.medium,
+    fontFamily: fonts.type.medium,
     fontSize: 14,
     lineHeight: 14,
     marginVertical: 11,
@@ -53,6 +53,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F9F9FC",
     flex: 1,
+  },
+  img: {
+    marginTop: 21,
+    height: 20,
+    width: 20,
+    resizeMode: "contain",
   },
 });
 export default styles;

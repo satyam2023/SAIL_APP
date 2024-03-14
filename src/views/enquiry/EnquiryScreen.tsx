@@ -2,6 +2,7 @@ import fonts from "@fonts";
 import { Colors} from "commonStyles/RNColor.style";
 import EnquiryButton from "components/EnquiryButton/EnquiryButton";
 import Header from "components/HeaderForMainScreen/HeaderMain";
+import HorizontalSlider from "components/HorizontalSlider";
 import SafeAreaContainer from "components/SafeAreaContainer";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
@@ -14,8 +15,19 @@ import UserEnquiry from "views/enquiry/UserEnquiry Screen/UserEnquiry";
 
 const EnquiryScreen = () => {
   const [enquiryType, setEnquiryType] = useState<string>(
-    StringConstants.USER_ENQUIRY,
+    StringConstants.USER_ENQUIRY
   );
+
+  const Data=[{
+   heading:StringConstants.USER_ENQUIRY
+  },
+{
+  heading:StringConstants.ISSUE_ENQUIRY
+},
+{
+   heading:StringConstants.NEARBY_CUSTOMERS
+
+}]
   const handleEnquiryType = (param: string) => setEnquiryType(param);
   const enquirType = useSelector((state: any) => state.UIReducer.enquiryType);
 
@@ -24,8 +36,9 @@ const EnquiryScreen = () => {
   }, [enquirType]);
 
   return (
-    <SafeAreaContainer >
+    <SafeAreaContainer  style={{paddingHorizontal:0}}>
       <Header topheading={StringConstants.ENQUIRY} />
+      {/* <HorizontalSlider sliderData={Data} onPress={(param)=>{handleEnquiryType(param)}} /> */}
       <ScrollView style={{ flex: 1 }}>
         <ScrollView
           horizontal

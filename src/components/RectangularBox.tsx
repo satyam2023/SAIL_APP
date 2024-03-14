@@ -25,6 +25,8 @@ interface IcustomerBox {
 }
 
 const RectangularBox = (props: IcustomerBox) => {
+
+  const isDetailVisible=props.isCustomerColumn || props.isClosable;
   return (
     <View
       style={[
@@ -33,8 +35,8 @@ const RectangularBox = (props: IcustomerBox) => {
           props?.style,
           { height: props.isCustomerColumn ? 56 : 70 },
           {
-            paddingHorizontal:
-              props.isCustomerColumn || props.isClosable ? 0 : 16,
+            marginBottom: isDetailVisible? 0 : 16,
+
           },
         ],
       ]}
@@ -83,12 +85,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 70,
     backgroundColor: Colors.white,
-    borderRadius: 10,
+    // borderRadius: 10,
     flexDirection: "row",
-    // paddingHorizontal: 16,
+    paddingHorizontal: 16,
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 16,
+    // marginBottom: 16,
   },
   img: {
     transform: [{ rotate: "90deg" }],

@@ -17,7 +17,6 @@ interface AddProps {
 const AddUnplannedVisit: React.FC<AddProps> = ({
   setVisitSuccess,
 }: AddProps) => {
-  const [reason, setreason] = useState<boolean>(false);
   const details = {
     customerCode: useRef(""),
     companyName: useRef(""),
@@ -29,10 +28,7 @@ const AddUnplannedVisit: React.FC<AddProps> = ({
     reason: useRef(""),
   };
 
-  function setReason(param: boolean) {
-    setVisitSuccess(param);
-  }
-
+ 
   function setSuccess() {
     setVisitSuccess(true);
   }
@@ -108,10 +104,10 @@ const AddUnplannedVisit: React.FC<AddProps> = ({
         <UploadDocumnet uploadType={StringConstants.UPLOAD_VISITING_CARD} style={{marginBottom:'80%'}} />
       </ScrollView>
       <CustomFooter
-        firstButtonText={StringConstants.CANCEL}
-        secondButtonText={StringConstants.SUBMIT}
-        firstButtonPress={() => {}}
-        secondButtonPress={setSuccess}
+        leftButtonText={StringConstants.CANCEL}
+        rightButtonText={StringConstants.SUBMIT}
+        leftButtonPress={() => {}}
+        rightButtonPress={setSuccess}
         style={{bottom:'15%'}}
         
       />
