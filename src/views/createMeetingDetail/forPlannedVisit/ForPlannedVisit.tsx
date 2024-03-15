@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { View, Image, Text, TouchableOpacity, FlatList } from "react-native";
+import React from "react";
+import { View, Image, Text, TouchableOpacity} from "react-native";
 import styles from "../Style";
 import Glyphs from "assets/Glyphs";
-const ForPlannedVisit:React.FC<{}>=()=>{
-    const[details,setDetails]=useState<boolean>(false)
+const ForPlannedVisit=()=>{
+    
     
     return(
         <View style={{width:353,height:70,backgroundColor:'#FFFFFF',borderRadius:10,flexDirection:'row',marginTop:16,marginLeft:19}}>

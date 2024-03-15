@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react";
 import CustomerDetails from "./CustomerDetails";
 import { ScrollView } from "react-native";
-import CustomerRepresentative from "./CustomerRepresentative";
+import CustomerRepresentative from "./CustomerRepresentative/CustomerRepresentative";
 import RegistrationCompleted from "./RegistrationCompleted/RegistrationCompleted";
-import CustomFooter from "components/CustomFooter";
 import StringConstants from "shared/localization";
-import Competitor from "./Competitor";
+import Competitor from "./Competitor/Competitor";
 import { Colors } from "commonStyles/RNColor.style";
+import { CustomFooter, SafeAreaContainer } from "components";
+
 const CreateCustomerScreen = () => {
   const [CurrentScreen, setCurrentScreen] = useState<number>(1);
   const [adddetails, setAddDetails] = useState<boolean>(false);
@@ -15,13 +16,10 @@ const CreateCustomerScreen = () => {
       setCurrentScreen(CurrentScreen + 1);
   };
 
-  // solid = single responsiblty
-  const setBackWardScreen = () => { 
+  const setBackWardScreen = () => {
     if (CurrentScreen > 1 && CurrentScreen <= 3)
       setCurrentScreen(CurrentScreen - 1);
   };
-
-
 
   const addDetails = (param: boolean) => {
     setAddDetails(param);
@@ -30,9 +28,9 @@ const CreateCustomerScreen = () => {
   const CustomerRepresentativeRef = useRef<any>(null);
 
   return (
-    <>
-      <ScrollView style={{ backgroundColor:Colors.background, flex: 1 }}>
-        {CurrentScreen == 1 && <CustomerDetails />}
+    <SafeAreaContainer backgroundColor={Colors.background2}>
+      <ScrollView style={{ backgroundColor: Colors.background, flex: 1 }}>
+        {CurrentScreen == 1 && <CustomerDetails/>}
         {CurrentScreen == 2 && (
           <CustomerRepresentative
             addDetails={addDetails}
@@ -45,30 +43,33 @@ const CreateCustomerScreen = () => {
         {CurrentScreen == 4 && <RegistrationCompleted />}
       </ScrollView>
 
-      
-      { CurrentScreen<=3 && <>
-        {!adddetails ? (
-          <CustomFooter
-            leftButtonText={StringConstants.CANCEL}
-            rightButtonText={StringConstants.SAVE_PROCEED}
-            leftButtonPress={setBackWardScreen}
-            rightButtonPress={setForwardScreen}
-            isTracker={`${CurrentScreen * 34}%`}
-          />
-        ) : (
-          <CustomFooter
-              leftButtonText={CurrentScreen == 2
-                ? StringConstants.ADD_CUSTOMER_REP
-                : StringConstants.ADD_COMPETITOR}
+      {CurrentScreen <= 3 && (
+        <>
+          {!adddetails ? (
+            <CustomFooter
+              leftButtonText={StringConstants.CANCEL}
+              rightButtonText={StringConstants.SAVE_PROCEED}
+              leftButtonPress={setBackWardScreen}
+              rightButtonPress={setForwardScreen}
+              isTracker={`${CurrentScreen * 34}%`}
+            />
+          ) : (
+            <CustomFooter
+              leftButtonText={
+                CurrentScreen == 2
+                  ? StringConstants.ADD_CUSTOMER_REP
+                  : StringConstants.ADD_COMPETITOR
+              }
               leftButtonPress={() => {
                 addDetails(false);
                 CustomerRepresentativeRef.current?.setDetails();
-              } }
-              singleButtonOnFooter        />
-        )}
-      </>
-}
-    </>
+              }}
+              singleButtonOnFooter
+            />
+          )}
+        </>
+      )}
+    </SafeAreaContainer>
   );
 };
 export default CreateCustomerScreen;

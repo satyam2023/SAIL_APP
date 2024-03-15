@@ -1,15 +1,7 @@
-import {
-  darkgrey,
-  Colors,
-} from "commonStyles/RNColor.style";
-import Header from "components/HeaderForMainScreen/HeaderMain";
-import VisitButton from "components/VisitNavigateButton/VisitButton";
+import { darkgrey, Colors } from "commonStyles/RNColor.style";
+import Header from "components/AppHeader";
 import React, { useEffect, useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import Executed from "views/visit/ExecutedVisit/Executed";
 import Planned from "views/visit/PlannedVisit/Planned";
@@ -25,57 +17,49 @@ import StringConstants from "shared/localization";
 import TextWrapper from "components/TextWrapper";
 import commonStyles from "commonStyles/CommonStyle";
 import SafeAreaContainer from "components/SafeAreaContainer";
-import HorizontalSlider from "components/HorizontalSlider";
+import HorizontalSlider from "components/HorizontalSliderTab";
 const VisitScreen = () => {
- 
-
-
-
-  const Data=[
-    
+  const Data = [
     {
-     heading: StringConstants.UPCOMING,
-     number:23,
-     backgroundColor:{
-      focus:Colors.darkMilkWhite ,
-      notfocus: Colors.milkWhite
+      heading: StringConstants.UPCOMING,
+      number: 23,
+      backgroundColor: {
+        focus: Colors.darkMilkWhite,
+        notfocus: Colors.milkWhite,
+      },
 
-     },
+      textColor: {
+        notfocus: Colors.darkMilkWhite,
+        focus: Colors.milkWhite,
+      },
+    },
 
-     textColor:{
-      notfocus:Colors.darkMilkWhite ,
-      focus: Colors.milkWhite
-     }
-    }
-
-    ,
     {
       heading: StringConstants.PLANNED,
-      number:23,
-      backgroundColor:{
-        focus:Colors.sailBlue,
-        notfocus:Colors.aquaHaze
+      number: 23,
+      backgroundColor: {
+        focus: Colors.sailBlue,
+        notfocus: Colors.aquaHaze,
       },
-      textColor:{
-      notfocus:Colors.sailBlue ,
-      focus: Colors.white
-      }
-    }
-   
-    ,
+      textColor: {
+        notfocus: Colors.sailBlue,
+        focus: Colors.white,
+      },
+    },
+
     {
-       heading: StringConstants.EXECUTED,
-      number:23,
-      backgroundColor:{
-        focus:Colors.green,
-        notfocus:Colors.tealishGreen
+      heading: StringConstants.EXECUTED,
+      number: 23,
+      backgroundColor: {
+        focus: Colors.green,
+        notfocus: Colors.tealishGreen,
       },
-      textColor:{
-        focus:Colors.white,
-        notfocus:Colors.green
-      }
-    }
-  ]
+      textColor: {
+        focus: Colors.white,
+        notfocus: Colors.green,
+      },
+    },
+  ];
 
   const dispatch = useDispatch();
   useFocusEffect(() => {
@@ -89,65 +73,25 @@ const VisitScreen = () => {
   useEffect(() => {
     setCurrentVisit(visitType);
   }, [visitType]);
-  const handleVisitType = (visitType: number) => {
-  console.log("Visit NUmber:::",visitType)
-    setCurrentVisit(visitType);
-  };
-
-  console.log("Current Screen::",currentVisit)
 
   const footerVisibility = (param: boolean) => {
     setFooterVisibility(param);
   };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 ,backgroundColor:Colors.background2}}>
       <Header topheading={StringConstants.VISITS} />
       <ScrollView
         style={{ flex: 1 }}
         nestedScrollEnabled
         showsVerticalScrollIndicator={false}
       >
-        <HorizontalSlider sliderData={Data} 
-         currentScreen={currentVisit}   
-         selectedTab={(index:number)=>{
-     setCurrentVisit(index);
-     console.log("Index inisde=>>>",index)
-
-         }}
+        <HorizontalSlider
+          sliderData={Data}
+          currentScreen={currentVisit}
+          selectedTab={(index: number) => {
+            setCurrentVisit(index);
+          }}
         />
-        {/* <ScrollView
-          horizontal
-          style={styles.tagContainer}
-          showsHorizontalScrollIndicator={false}
-        >
-          <VisitButton
-            backgrouncolor={
-              currentVisit == 1 ? Colors.darkMilkWhite : Colors.milkWhite
-            }
-            textColor={currentVisit == 1 ? Colors.white : Colors.darkMilkWhite}
-            tag={StringConstants.UPCOMING}
-            visitnumber={16}
-            handleVisitType={handleVisitType}
-          />
-          <VisitButton
-            backgrouncolor={
-              currentVisit == 2 ? Colors.sailBlue : Colors.aquaHaze
-            }
-            textColor={currentVisit == 2 ? Colors.white : Colors.sailBlue}
-            tag={StringConstants.PLANNED}
-            visitnumber={12}
-            handleVisitType={handleVisitType}
-          />
-          <VisitButton
-            backgrouncolor={
-              currentVisit == 3 ? Colors.green : Colors.tealishGreen
-            }
-            textColor={currentVisit == 3 ? Colors.white : Colors.green}
-            tag={StringConstants.EXECUTED}
-            visitnumber={99}
-            handleVisitType={handleVisitType}
-          />
-        </ScrollView> */}
         <TextWrapper style={[commonStyles.font12RegularGrey, styles.txt]}>
           {StringConstants.ENTER_CUST_CODE_OR_NAME}
         </TextWrapper>
@@ -171,12 +115,11 @@ const VisitScreen = () => {
         {currentVisit == 1 && <UpcomingVisit />}
         {currentVisit == 2 && <Planned footerVisibility={footerVisibility} />}
         {currentVisit == 3 && <Executed />}
-       
       </ScrollView>
       {currentVisit == 2 && FooterVisibility && (
         <CustomFooter
           leftButtonText={StringConstants.CANCEL_VISIT}
-           rightButtonText={StringConstants.EDIT_VISIT}
+          rightButtonText={StringConstants.EDIT_VISIT}
           leftButtonPress={() => {}}
           rightButtonPress={() => {}}
           isMovable={true}

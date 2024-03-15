@@ -9,14 +9,12 @@ import {
   CustomerSubSegment,
   CustomerSubType,
   CustomerType,
-} from "./Data/Data";
-import UploadDocumnet from "components/UploadDocument";
+} from "./mockData/Data";
+
 import CustomerDetailHeader from "./CustomerDetailHeader";
-import LocateMe from "components/LocateMe";
-import CustomDropDown from "components/CustomDropDown";
 import StringConstants from "shared/localization";
-import InputTextField from "components/InputTextField";
 import { Colors } from "commonStyles/RNColor.style";
+import { CustomDropDown, InputTextField, LocateMe, UploadDocumnet } from "components";
 
 const CreateCustomerDetails = () => {
   return (

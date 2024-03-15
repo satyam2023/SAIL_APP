@@ -7,67 +7,67 @@ export interface Idata{
 
 const Data = [
   {  
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },
   {
-    image:Glyphs.Profile2User ,
+    image:Glyphs.Profile2userClicked ,
     name: "Zia Sharma",
     location: "Sector 11, Noida",
   },

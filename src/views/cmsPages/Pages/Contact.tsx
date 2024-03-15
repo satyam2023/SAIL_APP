@@ -1,14 +1,9 @@
 import React from "react";
 import {
-  Image,
-  SafeAreaView,
-  StatusBar,
-  Text,
-  TouchableOpacity,
-  View,
+ View,
 } from "react-native";
 
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
 interface Props {
   setScreen: Function;
@@ -17,9 +12,9 @@ interface Props {
 const Contact = ({ setScreen }: Props) => {
   return (
     
-      <SafeAreaView>
+      <View>
         <Header topheading={StringConstants.CONTACT_US} onPress={()=>{setScreen(StringConstants.CMS)}}/>
-      </SafeAreaView>
+      </View>
  
   );
 };

@@ -16,7 +16,7 @@ const Glyphs = {
   Contact:require('../assets/images/contact.png'),
   ContactDetails:require('../assets/images/ContactDetails.png'),
   CreateCustomerLast:require('../assets/images/CreateCustomerLast.png'),
-  Customer:require('../assets/images/Customer.png'),
+  Customer:require('../assets/images/CreateVisit.png'),
   date:require('../assets/images/date.png'),
   DiscussionIcon:require('../assets/images/DiscussionIcon.png'),
   Download:require('../assets/images/download.png'),
@@ -89,6 +89,12 @@ const Glyphs = {
   Loader:require('../assets/images/loader.gif'),
   CustomerProfile:require('../assets/images/CustomerProfile.png'),
   CreateVisit:require('../assets/images/CreateVisit.png'),
-  CreateMeeting:require('../assets/images/CreateMeeting.png')
+  CreateMeeting:require('../assets/images/CreateMeeting.png'),
+  HeaderArrow:require('../assets/images/headerArrow.png'),
+  DullInfoButton:require('../assets/images/fadeInfo.png'),
+  ClickedInfoButton:require('../assets/images/info.png'),
+  UncheckBox:require('../assets/images/uncheck_box.png'),
+  PigIron:require('../assets/images/PigIron.png'),
+  Semis:require('../assets/images/Semis.png'),
 };
 export default Glyphs;

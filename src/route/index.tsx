@@ -1,17 +1,15 @@
 import React, {  } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
-  NavigationContainer, useRoute,
+  NavigationContainer, 
 } from "@react-navigation/native";
 import {
-  createBottomTabNavigator, useBottomTabBarHeight,
+  createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
 
 import { SCREENS } from "@shared-constants";
-import { LightTheme, DarkTheme, palette } from "@theme/themes";
 import HomeScreenViewModel from "../viewModels/HomeScreenViewModel";
 import { useSelector } from "react-redux";
-import { RootState } from "redux/store/Store";
 import SignInViewModel from "viewModels/SignInViewModel";
 import { isReadyRef, navigationRef } from "@navigation";
 import SignUpScreenViewMOdel from "viewModels/SignUpViewModel";
@@ -23,7 +21,7 @@ import VisitScreenViewModel from "viewModels/VisitScreenViewModel";
 import EnquiryViewModel from "viewModels/EnquiryViewModel";
 import ProductCatalougeViewModel from "viewModels/ProductCatalougeViewModel";
 import TabButton from "components/TabButton/TabButton";
-import { Colors, blue } from "commonStyles/RNColor.style";
+import { Colors } from "commonStyles/RNColor.style";
 import MoreOptionsViewModel from "viewModels/MoreOptionsViewModel";
 import CMSViewModel from "viewModels/CMSViewModel";
 import NotificationViewModel from "viewModels/NotificationViewModel";
@@ -34,6 +32,7 @@ import CreateMetingDetailsViewModel from "viewModels/CreateMeetingDetailsViewMod
 import ViewCustomerProfileViewModel from "viewModels/ViewCustomerProfileViewModel";
 import CreateCustomerViewModel from "viewModels/CreateCustomerViewModel";
 import { Image, View } from "react-native";
+import StringConstants from "shared/localization";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const HomeStack = createStackNavigator();
@@ -44,23 +43,26 @@ const TabIcon = (route: any, focused: boolean) => {
     switch (tabRoute) {
       case SCREENS.MAINSTACK:
         return (
-          <BottomTabIcon image={focused ? Glyphs.Home : Glyphs.HomeDull} />
+          <BottomTabIcon image={focused ? Glyphs.Home : Glyphs.HomeDull} 
+          tintColor={focused? StringConstants.EMPTY:Colors.darkGrey}/>
         );
       case SCREENS.PRODUCTCATALOUGE:
         return (
-          <BottomTabIcon image={focused ? Glyphs.ShopClicked : Glyphs.Shop} />
+          <BottomTabIcon image={focused ? Glyphs.ShopClicked : Glyphs.Shop} 
+          tintColor={focused? Colors.sailBlue:Colors.darkGrey}/>
         );
       case SCREENS.ENQUIRY:
         return (
           <BottomTabIcon
             image={focused ? Glyphs.Profile2userClicked : Glyphs.Profile2User}
+            tintColor={focused?Colors.sailBlue:Colors.darkGrey}
           />
         );
       case SCREENS.CMS:
         return (
           <BottomTabIcon
-            image={focused ? Glyphs.Setting2Clicked : Glyphs.Setting2}
-          />
+            image={focused ? Glyphs.ClickedInfoButton : Glyphs.DullInfoButton}
+            tintColor={focused? Colors.sailBlue:Colors.darkGrey}/>
         );
       case SCREENS.MOREOPTIONS:
         return focused ? <View /> : <View />;
@@ -99,9 +101,9 @@ const HomeStackNavigator = () => {
 
 const RenderTabNavigation = () => {
   // const bottomTabheight=useBottomTabBarHeight();
-  const isDarkMode = useSelector(
-    (state: RootState) => state.themeReducer.isDarkMode,
-  );
+  // const isDarkMode = useSelector(
+  //   (state: RootState) => state.themeReducer.isDarkMode,
+  // );
   const isModalVisible=useSelector((state: any) => state.UIReducer.modalVisibility);
   const isTabVisible=useSelector((state: any) => state.UIReducer.tabVisibiity);
   return (
@@ -155,9 +157,9 @@ const RenderTabNavigation = () => {
 };
 
 const Navigation = () => {
-  const isDarkMode = useSelector(
-    (state: RootState) => state.themeReducer.isDarkMode,
-  );
+  // const isDarkMode = useSelector(
+  //   (state: RootState) => state.themeReducer.isDarkMode,
+  // );
   React.useEffect((): any => {
     return () => (isReadyRef.current = false);
   }, []);
@@ -168,7 +170,7 @@ const Navigation = () => {
       onReady={() => {
         isReadyRef.current = true;
       }}
-      theme={isDarkMode ? DarkTheme : LightTheme}
+      // theme={isDarkMode ? DarkTheme : LightTheme}
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={SCREENS.HOME} component={HomeScreenViewModel} />

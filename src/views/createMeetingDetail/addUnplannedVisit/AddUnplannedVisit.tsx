@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import {
   ScrollView,
 } from "react-native";
 import {
   CustomerType,
-} from "../dataForDropDown/data";
+} from "../mockData/data";
 import CustomDropDown from "components/CustomDropDown";
 import StringConstants from "shared/localization";
 import InputTextField from "components/InputTextField";

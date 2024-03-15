@@ -1,16 +1,16 @@
-import { WindowHeight } from "libs";
-import React from "react";
+import fonts from "@fonts";
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   txt: {
     width: "50%",
     height: 60,
-    fontWeight: "500",
+    fontFamily:fonts.type.medium,
     fontSize: 20,
     lineHeight: 30,
     textAlign: "center",
-    color: "#233972",
+    color: Colors.sailBlue,
   },
   container: {
     height:'100%',
@@ -22,15 +22,15 @@ const styles = StyleSheet.create({
     height: 56,
     padding: 16,
     gap: 10,
-    backgroundColor: "#233972",
+    backgroundColor: Colors.sailBlue,
     marginTop: 32,
     borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
   },
   btnText: {
-    color: "#FFFFFF",
-    fontWeight: "500",
+    color: Colors.white,
+    fontFamily: fonts.type.medium,
     fontSize: 16,
     lineHeight: 20,
   },

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import {View } from "react-native";
 import styles from "./Style";
 import StringConstants from "shared/localization";

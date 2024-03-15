@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.type.medium,
     fontSize: 16,
     color: Colors.white,
+    marginLeft:30
   },
   circleContent: {
     color: Colors.white,

@@ -1,8 +1,8 @@
 import fonts from "@fonts";
 import { Colors} from "commonStyles/RNColor.style";
-import EnquiryButton from "components/EnquiryButton/EnquiryButton";
-import Header from "components/HeaderForMainScreen/HeaderMain";
-import HorizontalSlider from "components/HorizontalSlider";
+import EnquiryButton from "views/enquiry/component/EnquiryButton/EnquiryButton";
+import Header from "components/AppHeader";
+import HorizontalSlider from "components/HorizontalSliderTab";
 import SafeAreaContainer from "components/SafeAreaContainer";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
@@ -36,10 +36,9 @@ const EnquiryScreen = () => {
   }, [enquirType]);
 
   return (
-    <SafeAreaContainer  style={{paddingHorizontal:0}}>
+    <SafeAreaContainer  style={{paddingHorizontal:0,}}>
       <Header topheading={StringConstants.ENQUIRY} />
-      {/* <HorizontalSlider sliderData={Data} onPress={(param)=>{handleEnquiryType(param)}} /> */}
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 ,backgroundColor:Colors.background2}}>
         <ScrollView
           horizontal
           style={styles.tagContainer}

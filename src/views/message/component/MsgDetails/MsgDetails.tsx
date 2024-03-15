@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, ScrollView, TextInput, View } from "react-native";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import MsgField from "./MsgField";
 import ForwardCard from "./ForwarnCard";
 import styles from "views/message/Style/Style";

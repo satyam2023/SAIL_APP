@@ -1,9 +1,6 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import {
-  Image,
   SafeAreaView,
-  Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 import InputTextField from "components/InputTextField";
@@ -12,7 +9,7 @@ import styles from "./Style/Style";
 import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native";
 import { Colors } from "commonStyles/RNColor.style";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
 import TextWrapper from "components/TextWrapper";
 import fonts from "@fonts";
@@ -22,6 +19,7 @@ const SettingScreen = () => {
   function renderItem(item: ITextFieldData) {
     return (
       <InputTextField
+        key={item.id}
         onChangeText={() => {}}
         containerStyle={{ backgroundColor: Colors.lightGray }}
         placeholder={item.placeholder}
@@ -32,7 +30,7 @@ const SettingScreen = () => {
   }
   return (
     <SafeAreaView style={{ backgroundColor: Colors.background, flex: 1 }}>
-      <Header topheading={StringConstants.SETTINGS} isLogout={true} />
+      <Header topheading={StringConstants.SETTINGS} isLogoutButton={true} />
       <ScrollView style={{ paddingHorizontal: 20 }}>
         <View style={styles.detailContainer}>
           <View style={styles.circle}>
@@ -56,8 +54,9 @@ const SettingScreen = () => {
             <CustomButton
               image={Glyphs.Editing}
               text={StringConstants.EDIT_PROFILE}
-              buttonStyle={{ width: "auto", backgroundColor: Colors.sailBlue }}
+              buttonStyle={{ width: "50%", backgroundColor: Colors.sailBlue ,}}
               textStyle={styles.editTxt}
+              imageStyle={{width:16,height:16}}
             />
           </View>
         </View>

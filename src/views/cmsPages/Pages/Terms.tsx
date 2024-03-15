@@ -4,10 +4,12 @@ import {
   ScrollView,
   StatusBar,
   Text,
+  View,
 } from "react-native";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
 import SafeAreaContainer from "components/SafeAreaContainer";
+import { Colors } from "commonStyles/RNColor.style";
 
 interface Props {
   setScreen: Function;
@@ -15,10 +17,9 @@ interface Props {
 
 const Terms: React.FC<Props> = ({ setScreen }: Props) => {
   return (
-    <ScrollView style={{ backgroundColor: "#F9F9FC", }}>
-      <StatusBar backgroundColor={"#233972"} barStyle={"light-content"} />
+    <ScrollView style={{ backgroundColor: Colors.background, }}>
       <Header topheading={StringConstants.TERMS_AND_CONDITIONS} onPress={()=>setScreen(StringConstants.CMS)}/>
-      <SafeAreaContainer>
+      <View style={{paddingHorizontal:20}}>
 
       <Text style={styles.privacytext}>
         Thank you for choosing our online sales meeting app! To ensure a smooth
@@ -89,7 +90,7 @@ const Terms: React.FC<Props> = ({ setScreen }: Props) => {
           not agree to these terms and conditions, please do not use our app.
         </Text>
       </Text>
-      </SafeAreaContainer>
+      </View>
     </ScrollView>
   );
 };

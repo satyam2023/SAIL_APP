@@ -1,9 +1,13 @@
 import React from "react";
-import CMSPagesScreen from "views/cmsPages/CMS";
+import StringConstants from "shared/localization";
+import CMSPagesScreen from "views/cmsPages/CMSScreen";
 
 const CMSViewModel = () => {
+
   return (
-      <CMSPagesScreen/>
+    
+      <CMSPagesScreen />
+ 
   );
 };
 export default CMSViewModel;

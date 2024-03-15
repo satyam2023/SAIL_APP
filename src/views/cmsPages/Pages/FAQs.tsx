@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList } from "react-native";
 
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
 import CustomToggleBox from "components/CustomToggleBox";
 import SafeAreaContainer from "components/SafeAreaContainer";
@@ -11,21 +11,31 @@ interface Props {
   setScreen: (arg: string) => void;
 }
 
+interface IFaqsDataField{
+  tag:string
+
+}
+
 const FAQs = ({ setScreen }: Props) => {
+
+
+
   const Data = [
-    { tag: "How do i get Enlisted" },
-    { tag: "What are 'Third Parties'?" },
-    { tag: "What does information mean?" },
-    { tag: "Who are 'Third Parties'?" },
-    { tag: "What does information mean?" },
-    { tag: "How do i get Enlisted?" },
-    { tag: "What is not open to disclosure?" },
-    { tag: "What does information mean?" },
+    { tag: StringConstants.HOW_I_GET_ENLISTED},
+    { tag: StringConstants.THIRD_PARTIES },
+    { tag: StringConstants.INFORMATION_MEANS},
+    { tag: StringConstants.THIRD_PARTIES },
+    { tag: StringConstants.INFORMATION_MEANS},
+    { tag: StringConstants.HOW_I_GET_ENLISTED },
+    { tag: StringConstants.NOT_DISCOSURE},
+    { tag: StringConstants.INFORMATION_MEANS },
   ];
-  function renderItem(item: any) {
+
+  
+  function renderItem(item: IFaqsDataField,index:number) {
     return (
       <CustomToggleBox
-        heading={item.item.tag}
+        heading={item.tag}
         toggleContent={StringConstants.LOREM_TEXT}
         rightIconisPlus={true}
       />
@@ -37,13 +47,12 @@ const FAQs = ({ setScreen }: Props) => {
         topheading={StringConstants.FAQS}
         onPress={() => setScreen(StringConstants.CMS)}
       />
-      <SafeAreaContainer backgroundColor={Colors.background2}>
         <FlatList
           data={Data}
-          renderItem={renderItem}
-          style={{ marginTop: 16 }}
+          renderItem={({item,index})=>renderItem(item,index)}
+          style={{ marginTop: 16 ,paddingHorizontal:20}}
         />
-      </SafeAreaContainer>
+      
     </>
   );
 };

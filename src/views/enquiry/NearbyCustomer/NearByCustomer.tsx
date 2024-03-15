@@ -4,8 +4,8 @@ import {
 } from "react-native";
 import Data from "./Data";
 import { Idata } from "./Data";
-import CustomerList from "./component/cutomerlist/CustomerList";
 import SafeAreaContainer from "components/SafeAreaContainer";
+import { RectangularBox } from "components";
 
 interface Iuser {
   item: Idata;
@@ -14,7 +14,7 @@ interface Iuser {
 
 const NearbyCustomer = () => {
   function renderitem({ item, index }: Iuser) {
-    return (<CustomerList image={item.image} index={index} name={item.name} location={item.location}/>);
+    return (<RectangularBox heading={item.name} subHeading={item.location} leftIcon={item.image}  isRightNotIconRequired/>);
   }
 
   return (

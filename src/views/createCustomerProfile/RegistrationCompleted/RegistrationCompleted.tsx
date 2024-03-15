@@ -1,41 +1,34 @@
 import React from "react";
-import Header from "components/HeaderForMainScreen/HeaderMain";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import Header from "components/AppHeader";
+import { Image, View } from "react-native";
 import { SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
 import Glyphs from "assets/Glyphs";
 import styles from "./Style";
-import { SafeAreaView } from "react-native";
+import StringConstants from "shared/localization";
+import { PressableButton, TextWrapper } from "components";
 
 const RegistrationCompleted = () => {
   return (
-    <SafeAreaView>
-      <Header
-        topheading="Create Customer Profile"
-      />
+    <>
+      <Header topheading={StringConstants.CREATE_CUSTOMER_PROFILE} />
       <View style={styles.container}>
-      <Image
-        source={Glyphs.Frame}
-      />
-      <Text
-        style={styles.txt}
-      >
-        Customer profile created successfully.
-      </Text>
-      <TouchableOpacity
-        onPress={() => {
-          navigate(SCREENS.MAIN);
-        }}
-        style={styles.btn}
-      >
-        <Text
-          style={styles.btnText}
+        <Image source={Glyphs.Frame} />
+        <TextWrapper style={styles.txt}>
+          {StringConstants.CUSTOMER_PROFILE_CREATED_SUCCESSFULLY}
+        </TextWrapper>
+        <PressableButton
+          onPress={() => {
+            navigate(SCREENS.MAIN);
+          }}
+          style={styles.btn}
         >
-          Back To Home
-        </Text>
-      </TouchableOpacity>
+          <TextWrapper style={styles.btnText}>
+            {StringConstants.BACK_TO_HOME}
+          </TextWrapper>
+        </PressableButton>
       </View>
-    </SafeAreaView>
+    </>
   );
 };
 export default RegistrationCompleted;

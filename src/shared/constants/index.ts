@@ -1,4 +1,3 @@
-// ? Screens
 export const SCREENS = {
   HOME:'Home',
   DASHBOARD: "Dashboard",

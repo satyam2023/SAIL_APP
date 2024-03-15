@@ -41,6 +41,11 @@ const commonStyles = StyleSheet.create({
     fontFamily:fonts.type.medium, 
     color: Colors.blackPeral,
   },
+  font16MediumBlackpearl:{
+    fontSize: 16,
+    fontFamily:fonts.type.medium, 
+    color: Colors.blackPeral,
+  },
   font12RegularGrey: {
     fontSize: 12,
     fontFamily:fonts.type.regular, 

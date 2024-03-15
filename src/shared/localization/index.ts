@@ -427,7 +427,19 @@ const StringConstants = {
   RELOAD:'Reload',
   OOPS:'Ooops!',
   NO_INTERNET_MSG:'No Internet Connection found \n Check your connection',
-  PLUS_COMPETITOR:'+   Add Competitor'
+  PLUS_COMPETITOR:'+   Add Competitor',
+  FOR_PLANNED_VISIT:'For Planned Visit',
+  FOR_UNPLANNED_VISIT:'For Unplanned Visit',
+  EXISTING_CUSTOMER:'Existing \n Customer',
+  NEW_CUSTOMER:'New \n Customer',
+  HOW_I_GET_ENLISTED:"How do i get Enlisted" ,
+  THIRD_PARTIES:"What are 'Third Parties'?",
+  INFORMATION_MEANS:"What does information mean?" ,
+  NOT_DISCOSURE:"What is not open to disclosure?",
+  CUSTOMER_PROFILE_CREATED_SUCCESSFULLY:'Customer Profile Created Successfully',
+  CUSTOMER_CODE_NUMBER:'Customer Code-4773787',
+  PLEASE_ENTER_INFORMATION:'Please enter details to sign in'
+  
 
 };
 

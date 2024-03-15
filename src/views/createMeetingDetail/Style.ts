@@ -1,18 +1,7 @@
-import React from "react";
+
 import { StyleSheet } from "react-native";
 const styles=StyleSheet.create({
-heading:{
-    width:131,
-    height:35,
-    borderRadius:100,
-    paddingHorizontal:16,
-    paddingVertical:10,
-    gap:10,
-    backgroundColor:'#5CC7D7',
-    flexDirection:'row',
-    marginTop:32,
-    marginLeft:10,
-},
+
 notheading:{
     width:131,
     height:35,
@@ -90,8 +79,6 @@ lineHeight:14
     img:{
         marginLeft:22.5,
         marginTop:22.5,
-       
-        //tintColor:'#233972'
     },
     FooterContainer:{
         backgroundColor:'#FFFFFF',
@@ -102,26 +89,7 @@ lineHeight:14
         position:'absolute',
         bottom:120,
     },
-    btn:{
-        marginLeft:20,
-        height:56,
-        width:168,
-      borderWidth:1,
-      borderColor:'#233972',
-      borderRadius:100,
-      marginTop:16
-    },
-    probtn:{
-    marginLeft:14,
-    height:56,
-    width:168,
-      borderWidth:1,
-      borderColor:'#F9F9FC',
-      borderRadius:100,
-      marginTop:16
     
-
-    },
     topHeaderContainer:{
         flexDirection: "row",
         paddingHorizontal:20,

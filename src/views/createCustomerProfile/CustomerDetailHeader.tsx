@@ -1,6 +1,6 @@
 import fonts from "@fonts";
 import { Colors } from "commonStyles/RNColor.style";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import TextWrapper from "components/TextWrapper";
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";

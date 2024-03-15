@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import MessageBoxClickable from "./component/MessageBoxClickable";
 import MsgDetails from "./component/MsgDetails/MsgDetails";
 import SafeAreaContainer from "components/SafeAreaContainer";

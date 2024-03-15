@@ -2,12 +2,12 @@ import React, { useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import QR from "./QR";
 import Glyphs from "assets/Glyphs";
-import SafeAreaContainer from "components/SafeAreaContainer";
 import StringConstants from "shared/localization";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import InputTextField from "components/InputTextField";
+
 import { SafeAreaView, View } from "react-native";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import { Header, InputTextField } from "components";
+
 
 const ProductCatalogScreen = () => {
   const [qrStatus, setQrStatus] = useState<boolean>(false);
@@ -24,10 +24,10 @@ const ProductCatalogScreen = () => {
     ProductRef.current.handleClicked();
   }
   return (
-    <SafeAreaView style={{flex:1}}>
-      <Header  topheading={StringConstants.PRODUCT_CATALOGUE}/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Header topheading={StringConstants.PRODUCT_CATALOGUE} />
       {!qrStatus ? (
-        <SafeAreaContainer >
+        <View style={{paddingHorizontal:20,flex:1,}}> 
           <InputTextField
             onChangeText={(text: string) => {
               details.searchDetails.current = text;
@@ -38,11 +38,10 @@ const ProductCatalogScreen = () => {
             onRighIconPress={SearchClicked}
           />
           <ProductCard setQr={setQr} searchData={dataToSend} ref={ProductRef} />
-        </SafeAreaContainer>
+        </View>
       ) : (
         <QR />
       )}
-
     </SafeAreaView>
   );
 };

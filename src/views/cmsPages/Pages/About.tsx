@@ -1,16 +1,14 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native-gesture-handler";
 import CustomToggleBox from "components/CustomToggleBox";
 import StringConstants from "shared/localization";
 import commonStyles from "commonStyles/CommonStyle";
-import TextWrapper from "components/TextWrapper";
-import Header from "components/HeaderForMainScreen/HeaderMain";
-import SafeAreaContainer from "components/SafeAreaContainer";
 import styles from "../Style";
 import { Colors } from "commonStyles/RNColor.style";
 import fonts from "@fonts";
+import { Header, TextWrapper } from "components";
 
 interface IAboutProps {
   setScreen: (arg: string) => void;
@@ -23,7 +21,7 @@ const About = ({ setScreen }: IAboutProps) => {
         topheading={StringConstants.ABOUT_US}
         onPress={() => setScreen(StringConstants.CMS)}
       />
-      <SafeAreaContainer>
+      <View style={{ paddingHorizontal: 20 }}>
         <Image source={Glyphs.Sail} style={styles.img} />
         <TextWrapper
           style={[commonStyles.font14RegularBlack, { marginTop: 20 }]}
@@ -61,7 +59,7 @@ const About = ({ setScreen }: IAboutProps) => {
         <TextWrapper style={[commonStyles.font14RegularBlack]}>
           {StringConstants.SAIL_WEBSITE_LINK}
         </TextWrapper>
-      </SafeAreaContainer>
+      </View>
     </ScrollView>
   );
 };

@@ -1,12 +1,11 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import styles from "./Style/Style";
-import Product from "components/Product/Product";
+import Product from "views/mainScreen/component/ProductList";
 import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native-gesture-handler";
-import VisitCard from "components/VisitCard/VisitCard";
+import VisitCard from "views/visit/component/VisitCard/VisitCard";
 import {
-
   Colors,
 } from "commonStyles/RNColor.style";
 import { SCREENS } from "@shared-constants";
@@ -14,11 +13,14 @@ import { navigate } from "@navigation";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 const FirstHomeScreen = () => {
+
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container}
+    showsVerticalScrollIndicator={false}
+    >
       <View style={styles.topContainer}>
         <TextWrapper style={styles.welcometext}>
-          {StringConstants.WELCOME} {`\n`}
+          {StringConstants.WELCOME} 
           {StringConstants.SARANSH}
         </TextWrapper>
 
@@ -46,7 +48,7 @@ const FirstHomeScreen = () => {
             }}
           >
             <View style={styles.circle}>
-              <Text style={styles.circleTxt}>SV</Text>
+              <TextWrapper style={styles.circleTxt}>{StringConstants.SV}</TextWrapper>
             </View>
           </TouchableOpacity>
         </View>
@@ -64,7 +66,7 @@ const FirstHomeScreen = () => {
           count={12}
           title={StringConstants.PLANNED_VISIT}
           image={Glyphs.Planned}
-          backgroundcolor={"#EEF4FF"}
+          backgroundcolor={Colors.aquaHaze}
           textColor={Colors.sailBlue}
         />
         <VisitCard
@@ -95,7 +97,7 @@ const FirstHomeScreen = () => {
         <Product
           category={StringConstants.CATEGORY}
           imagefirst={Glyphs.Customer}
-          imagesecond={Glyphs.Setting2}
+          imagesecond={Glyphs.Setting2Clicked}
           imagefirstinfo={StringConstants.USER_ENQUIRY}
           imagesecondinfo={StringConstants.ISSUE_ENQUIRY}
           text={StringConstants.VIEW_ALL}

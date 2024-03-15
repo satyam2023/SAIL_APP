@@ -1,5 +1,10 @@
 import React, { forwardRef, useImperativeHandle, useState } from "react";
-import { FlatList, Image,SafeAreaView,TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import styles from "./style/style";
 import Glyphs from "assets/Glyphs";
 import Data from "./mockData/Data";
@@ -28,17 +33,26 @@ const ProductCard = forwardRef(({ setQr, searchData }: CardProps, ref: any) => {
     return (
       <View style={styles.card}>
         <Image
-          source={Glyphs.StainlessSteel}
-          style={{ alignSelf: "center"}}
+          source={item.item.image}
+          style={{
+            alignSelf: "center",
+            height: 88,
+            width: 117,
+            resizeMode: "contain",
+          }}
         />
         <TextWrapper style={styles.txt}>{item.item.heading}</TextWrapper>
-        <TextWrapper style={styles.dwd}>{StringConstants.DOWNLOAD_CATALOGUE}</TextWrapper>
+        <TextWrapper style={styles.dwd}>
+          {StringConstants.DOWNLOAD_CATALOGUE}
+        </TextWrapper>
         <TouchableOpacity
           onPress={() => {
             setQr(true);
           }}
         >
-          <TextWrapper style={[styles.dwd, { marginTop: 0 }]}>{StringConstants.SHOW_QR}</TextWrapper>
+          <TextWrapper style={[styles.dwd, { marginTop: 0 }]}>
+            {StringConstants.SHOW_QR}
+          </TextWrapper>
         </TouchableOpacity>
       </View>
     );
@@ -47,15 +61,14 @@ const ProductCard = forwardRef(({ setQr, searchData }: CardProps, ref: any) => {
   return (
     <>
       {!searchResult ? (
-  
         <FlatList
           data={Data}
           renderItem={renderitem}
           numColumns={2}
           showsVerticalScrollIndicator={false}
-          columnWrapperStyle={{justifyContent:'space-between'}}
+          columnWrapperStyle={{ justifyContent: "space-between" }}
+          style={{ marginBottom: 20, flex: 1 }}
         />
-   
       ) : (
         <View style={styles.card}>
           <Image

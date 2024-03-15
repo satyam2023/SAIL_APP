@@ -1,20 +1,21 @@
-import React from "react";
+import { Colors } from "commonStyles/RNColor.style";
 import { StyleSheet } from "react-native";
 const styles=StyleSheet.create({
     container:{
         height: 62,
         width:'100%',
         borderRadius: 4,
-        backgroundColor: "#FFFFFF",
+        backgroundColor: Colors.white,
         marginBottom: 16,
         flexDirection: "row",
         justifyContent:'space-between',
+        alignItems:'center',
         paddingHorizontal:16
       },
      privacytext:{lineHeight:24,
         fontWeight:'400',
         fontSize:12,
-        color:'#000000',
+        color:Colors.blackPeral,
         marginTop:24,
         marginBottom:20,
         },

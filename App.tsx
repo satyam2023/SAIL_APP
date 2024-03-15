@@ -13,7 +13,10 @@ import StatusCode from "core/StatusCode";
 import OOPS from "views/emptyState/OOPS";
 import PleaseWaitLoader from "views/emptyState/PleaseWaitLoader";
 import { Colors } from "commonStyles/RNColor.style";
-import HorizontalSlider from "components/HorizontalSlider";
+import HorizontalSlider from "components/HorizontalSliderTab";
+import DescriptionCard from "components/DescriptionCard";
+import Glyphs from "assets/Glyphs";
+import StringConstants from "shared/localization";
 LogBox.ignoreAllLogs();
 
 const App = () => {
@@ -45,11 +48,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
+        <SafeAreaView style={{flex:0,backgroundColor:Colors.sailBlue}}/>
         <Navigation />
       </PersistGate>
     </Provider>
 
-    // <HorizontalSlider  sliderData={['USerEnquiry','jfjf','fjjfj','USerEnquiry','jfjf','fjjfj',]}/>
+    
 
     
    

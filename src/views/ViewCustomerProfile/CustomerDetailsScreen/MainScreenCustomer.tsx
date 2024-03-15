@@ -5,7 +5,7 @@ import First from "./First";
 import Second from "./Second";
 import Third from "./Third";
 import LastScreen from "./LastScreen";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import AddCompetitor from "./CompetitorDetails/AddCompetitor";
 import { useDispatch, useSelector } from "react-redux";
 import RepresentativeDetails from "./RepresentativeDetails/RepresentativeDetails";

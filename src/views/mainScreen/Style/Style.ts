@@ -18,32 +18,33 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
+
   },
   welcometext: {
     fontFamily: fonts.type.regular,
     fontSize: 16,
-    color: "#FFFFFF",
+    color: Colors.white,
     marginTop: 12,
+    textAlign:'left',
+    lineHeight:24
   },
   circle: {
     marginTop: 15,
     marginLeft: 17,
     width: 36,
     height: 36,
-    backgroundColor: "#E67437",
+    backgroundColor: Colors.orange,
     borderRadius: 18,
+    alignItems:'center',
+    justifyContent:'center',
   },
 
   circleTxt: {
-    alignSelf: "center",
+     textAlign:'center',
     color: Colors.white,
-    height: 15,
-    width: 19,
     fontFamily: fonts.type.medium,
     fontSize: 14,
-    lineHeight: 14,
-    marginVertical: 11,
-    marginHorizontal: 18,
+  
   },
   topTxt: {
     flexDirection: "row",
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   container: {
-    backgroundColor: "#F9F9FC",
+    backgroundColor: Colors.background2,
     flex: 1,
   },
   img: {

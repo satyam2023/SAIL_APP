@@ -1,18 +1,26 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, ImageStyle, ImageURISource, StyleProp } from "react-native";
 
+interface IbottomTabIcon {
+  image: ImageURISource;
+  tintColor?:string;
 
-
-interface IbottomTabIcon{
-    image:string
 }
 
-const BottomTabIcon=({image}:IbottomTabIcon)=>{
-
-
-    return(
-
-        <Image source={image}  style={{height:20,width:20,resizeMode:'contain'}}/>
-    )
+const BottomTabIcon = (props: IbottomTabIcon) => {
+  return (
+    
+    <Image
+      source={props.image}
+      style={{ height: 20, width: 20, resizeMode: "contain",bottom:5, 
+       
+      tintColor:props?.tintColor
+    
+    }}
+      
+    
+    />
+   
+  );
 };
 export default BottomTabIcon;

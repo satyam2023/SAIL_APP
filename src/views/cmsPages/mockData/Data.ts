@@ -1,4 +1,7 @@
 import StringConstants from "shared/localization";
+export interface ICMSPageData{
+  tag:string
+}
 
 export const Data = [
     { tag: StringConstants.ABOUT_US },

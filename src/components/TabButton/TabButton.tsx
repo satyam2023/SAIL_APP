@@ -1,23 +1,36 @@
 import Glyphs from "assets/Glyphs";
-import React, { useDebugValue } from "react";
-import { Image} from "react-native";
+import React from "react";
+import { Image, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
-import styles from "./Style/Style";
 import { useDispatch } from "react-redux";
-import { MODAL_TYPE } from "redux/actionConstants";
 import { BottomModal } from "redux/actions/UIAction";
+import { Colors } from "commonStyles/RNColor.style";
 
-const TabButton = () => { 
-    const dispatch=useDispatch();
-    function handleBottom(){
-        dispatch(BottomModal(true))
-    }
-
-    return (
-        <TouchableOpacity style={styles.conatiner} onPress={handleBottom}>
-        <Image source={Glyphs.Add} tintColor={"#FFF"} />
-        </TouchableOpacity>
-    );
+const TabButton = () => {
+  const dispatch = useDispatch();
+  return (
+    <TouchableOpacity
+      style={styles.conatiner}
+      onPress={() => {
+        dispatch(BottomModal(true));
+      }}
+    >
+      <Image source={Glyphs.Add} tintColor={Colors.white} />
+    </TouchableOpacity>
+  );
 };
 
 export default TabButton;
+
+const styles = StyleSheet.create({
+  conatiner: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 56,
+    width: 56,
+    backgroundColor: Colors.orange,
+    borderRadius: 28,
+    position: "relative",
+    bottom: "17%",
+  },
+});

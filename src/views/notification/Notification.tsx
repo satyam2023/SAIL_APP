@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, ScrollView,} from "react-native";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import TextWrapper from "components/TextWrapper";
 import fonts from "@fonts";
 import { Colors } from "commonStyles/RNColor.style";

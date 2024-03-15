@@ -4,8 +4,9 @@ import {
   ScrollView,
   Text,
 } from "react-native";
-import Header from "components/HeaderForMainScreen/HeaderMain";
+import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
+import { Colors } from "commonStyles/RNColor.style";
 
 interface Props {
   setScreen: Function;
@@ -13,7 +14,7 @@ interface Props {
 
 const Privacy: React.FC<Props> = ({ setScreen }: Props) => {
   return (
-    <ScrollView style={{ backgroundColor: "#FAFAFA", height: "auto" }}>
+    <ScrollView style={{ backgroundColor: Colors.background2,  }}>
       <SafeAreaView>
        <Header topheading={StringConstants.PRIVACY} onPress={()=>setScreen(StringConstants.CMS)}/>
       </SafeAreaView>

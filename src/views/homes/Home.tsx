@@ -10,11 +10,11 @@ import SafeAreaContainer from "components/SafeAreaContainer";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import commonStyles from "commonStyles/CommonStyle";
-import GradientBackground from "components/GradientHOC";
+
 
 const HomeScreen = () => {
   return (
-    <GradientBackground>
+    
     <SafeAreaContainer backgroundColor={Colors.white}>
       <View style={[{ flex: 0.4 },commonStyles.center]}>
         <Image source={Glyphs.Sail} style={styles.imgsail} />
@@ -45,7 +45,7 @@ const HomeScreen = () => {
         />
       </View>
     </SafeAreaContainer>
-    </GradientBackground>
+  
   )  ;
 };
 
