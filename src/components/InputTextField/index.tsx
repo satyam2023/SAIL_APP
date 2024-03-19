@@ -1,10 +1,9 @@
 import { Colors} from "commonStyles/RNColor.style";
-import React, { StrictMode, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import {
   Image,
   ImageURISource,
   InputModeOptions,
-  Pressable,
   StyleProp,
   StyleSheet,
   Text,
@@ -15,7 +14,6 @@ import {
 } from "react-native";
 import fonts from "@fonts";
 import Glyphs from "assets/Glyphs";
-import { debounceHOC } from "hocs/debounceHOC";
 import commonStyles from "commonStyles/CommonStyle";
 import PressableButton from "components/DeBouncePressable";
 import StringConstants from "shared/localization";
@@ -35,7 +33,8 @@ interface ITextField {
   onRighIconPress?: () => void;
   defaultValue?: string;
   textStyle?:StyleProp<TextStyle>;
-  multiline?:boolean
+  multiline?:boolean;
+  
 }
 
 const InputTextField = ({maxlength=20,...props}: ITextField) => {
@@ -51,11 +50,11 @@ const InputTextField = ({maxlength=20,...props}: ITextField) => {
         style={[
           styles.inputContainer,
           props.containerStyle,
-          props.error ? styles.errorBox : {},
+          props.error?.length ? styles.errorBox : {},
         ]}
       >
         {props.leftIcon && (
-          <Image source={props.leftIcon} style={commonStyles.leftIcon} />
+          <Image source={props.leftIcon} style={commonStyles.leftIcon}  />
         )}
 
         <View>
@@ -81,6 +80,8 @@ const InputTextField = ({maxlength=20,...props}: ITextField) => {
             defaultValue={props?.defaultValue} 
             style={props.textStyle}
             multiline={props.multiline}
+            contextMenuHidden={true}
+            removeClippedSubviews={true} 
           />
         </View>
         {props.eyeIcon && (
@@ -106,6 +107,7 @@ const InputTextField = ({maxlength=20,...props}: ITextField) => {
         )}
       </View>
       {props.error && (
+        
         <View style={{ bottom: 12 }}>
           <Text style={styles.errorMsg}>{props.error}</Text>
         </View>
@@ -153,9 +155,10 @@ const styles = StyleSheet.create({
   },
   lable: {
     color: Colors.darkGrey,
-    bottom: 5,
+    bottom:5,
     fontFamily: fonts.type.regular,
     fontSize: 12,
+    
   },
   errorBox: {
     borderWidth: 1,

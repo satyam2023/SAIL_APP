@@ -24,7 +24,7 @@ const Header = (props: HeaderProps) => {
             else goBack();
           }}
         >
-          <Image source={Glyphs.HeaderArrow} style={styles.img} />
+          <Image source={Glyphs.Arrow} style={styles.img} />
         </PressableButton>
         <TextWrapper style={styles.headingContent}>
           {props.topheading}
@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
     width: 9,
     height: 15,
     resizeMode: "contain",
+    tintColor:Colors.white,
+    transform:[{rotate:'90deg'}]
   },
   headingContent: {
     color: Colors.white,

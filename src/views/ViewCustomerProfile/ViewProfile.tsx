@@ -4,7 +4,7 @@ import Profile from "./CustomerProfile/Profile";
 import MainScreenCustomer from "./CustomerDetailsScreen/MainScreenCustomer";
 import {  useSelector } from "react-redux";
 import { Colors } from "commonStyles/RNColor.style";
-const ViewProfile= () => {
+const ViewProfileScreen= () => {
   const ClickStatus = useSelector(
     (state: any) => state.UIReducer.CustomerProfileButton,
   );
@@ -19,4 +19,4 @@ const ViewProfile= () => {
     </SafeAreaView>
   );
 };
-export default ViewProfile;
+export default ViewProfileScreen;

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import CustomerDetails from "./CustomerDetails";
 import { ScrollView } from "react-native";
 import CustomerRepresentative from "./CustomerRepresentative/CustomerRepresentative";
@@ -8,25 +8,16 @@ import Competitor from "./Competitor/Competitor";
 import { Colors } from "commonStyles/RNColor.style";
 import { CustomFooter, SafeAreaContainer } from "components";
 
-const CreateCustomerScreen = () => {
-  const [CurrentScreen, setCurrentScreen] = useState<number>(1);
-  const [adddetails, setAddDetails] = useState<boolean>(false);
-  const setForwardScreen = () => {
-    if (CurrentScreen >= 1 && CurrentScreen <= 3)
-      setCurrentScreen(CurrentScreen + 1);
-  };
+interface ICreateCustomer{
+  CurrentScreen:number;
+  addDetails:(addDetailStatus:boolean)=>void;
+  handleScreenChange:(direction:string)=>void;
+  addDetailStatus:boolean;
 
-  const setBackWardScreen = () => {
-    if (CurrentScreen > 1 && CurrentScreen <= 3)
-      setCurrentScreen(CurrentScreen - 1);
-  };
+}
 
-  const addDetails = (param: boolean) => {
-    setAddDetails(param);
-  };
-
+const CreateCustomerScreen = ({CurrentScreen,addDetails,handleScreenChange,addDetailStatus}:ICreateCustomer) => {
   const CustomerRepresentativeRef = useRef<any>(null);
-
   return (
     <SafeAreaContainer backgroundColor={Colors.background2}>
       <ScrollView style={{ backgroundColor: Colors.background, flex: 1 }}>
@@ -45,12 +36,12 @@ const CreateCustomerScreen = () => {
 
       {CurrentScreen <= 3 && (
         <>
-          {!adddetails ? (
+          {!addDetailStatus ? (
             <CustomFooter
               leftButtonText={StringConstants.CANCEL}
               rightButtonText={StringConstants.SAVE_PROCEED}
-              leftButtonPress={setBackWardScreen}
-              rightButtonPress={setForwardScreen}
+              leftButtonPress={()=>handleScreenChange(StringConstants.BACKWARD)}
+              rightButtonPress={()=>handleScreenChange(StringConstants.FORWARD)}
               isTracker={`${CurrentScreen * 34}%`}
             />
           ) : (

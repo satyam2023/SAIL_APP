@@ -1,9 +1,9 @@
 import React from "react";
-import ViewProfile from "views/ViewCustomerProfile/ViewProfile";
+import ViewProfileScreen from "views/viewCustomerProfile/ViewProfile";
 
 const ViewCustomerProfileViewModel=()=>{
 
-    return <ViewProfile/>;
+    return <ViewProfileScreen/>;
 }
 
 export default ViewCustomerProfileViewModel;

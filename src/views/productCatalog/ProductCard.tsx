@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import styles from "./style/style";
 import Glyphs from "assets/Glyphs";
-import Data from "./mockData/Data";
+import { IProductData, ProductData } from "./mockData/Data";
 import StringConstants from "shared/localization";
 import TextWrapper from "components/TextWrapper";
 interface CardProps {
@@ -16,32 +16,25 @@ interface CardProps {
 }
 const ProductCard = forwardRef(({ setQr, searchData }: CardProps, ref: any) => {
   const [searchResult, setSearchResult] = useState<boolean>(false);
-
   function handleSearch() {
-    Data.filter((Data) => {
-      if (Data.heading == searchData) {
+    ProductData.filter((data) => {
+      if (data.heading == searchData) {
         setSearchResult(true);
       }
     });
   }
-
   useImperativeHandle(ref, () => ({
     handleClicked: handleSearch,
   }));
 
-  function renderitem(item: any) {
+  function renderProductList(item:IProductData,_:number) {
     return (
       <View style={styles.card}>
         <Image
-          source={item.item.image}
-          style={{
-            alignSelf: "center",
-            height: 88,
-            width: 117,
-            resizeMode: "contain",
-          }}
+          source={item.image}
+          style={styles.productImage}
         />
-        <TextWrapper style={styles.txt}>{item.item.heading}</TextWrapper>
+        <TextWrapper style={styles.txt}>{item.heading}</TextWrapper>
         <TextWrapper style={styles.dwd}>
           {StringConstants.DOWNLOAD_CATALOGUE}
         </TextWrapper>
@@ -62,8 +55,8 @@ const ProductCard = forwardRef(({ setQr, searchData }: CardProps, ref: any) => {
     <>
       {!searchResult ? (
         <FlatList
-          data={Data}
-          renderItem={renderitem}
+          data={ProductData}
+          renderItem={({item,index})=>renderProductList(item,index)}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           columnWrapperStyle={{ justifyContent: "space-between" }}

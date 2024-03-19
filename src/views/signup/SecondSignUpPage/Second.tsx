@@ -1,152 +1,66 @@
 import React, {
   forwardRef,
-  useEffect,
   useImperativeHandle,
-  useRef,
-  useState,
 } from "react";
-import styles from "./Style";
-import {
-  ScrollView,
-} from "react-native";
+
 import CustomHeader from "../Component/CustomHeader/CustomHeader";
 import Glyphs from "assets/Glyphs";
 import RoleData from "../Component/Data/RoleData";
 import LocationData from "../Component/Data/LocationData";
 import InputTextField from "components/InputTextField";
 import CustomDropDown from "components/CustomDropDown";
-import { Colors, grey, lightgrey } from "commonStyles/RNColor.style";
+import { Colors} from "commonStyles/RNColor.style";
 import SafeAreaContainer from "components/SafeAreaContainer";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setSecondscreen } from '../../Redux/Slice2';
-// import { setUserName } from "../../Redux/Slice";
+import StringConstants from "shared/localization";
+
 
 interface SecondProps {
-  setScreen: Function;
+  userDetail:any;
+  error:any
 }
-const Second = forwardRef(({ setScreen }: SecondProps, ref) => {
-  const Data = [{ segment: "A" }, { segment: "B" }, { segment: "C" }];
-  const [toggle, settoggle] = useState<boolean>(false);
-  const [roletoggle, settogglerole] = useState<boolean>(false);
-  const [Tag, setTag] = useState<String>("Location");
-  const [TagRole, setTagRole] = useState<String>("Your Role");
-  const [dropstatus, setdropstatus] = useState<boolean>(false);
-  const [dropstatusrole, setdropstatusrole] = useState<boolean>(false);
-  const [name, setname] = useState<boolean>(true);
-  const [email, setemail] = useState<boolean>(true);
-  const [validname, setvalidname] = useState<boolean>(false);
-  const [validemail, setvalidemail] = useState<boolean>(false);
-  const [validlocation, setvalidlocation] = useState<boolean>(true);
-  const [validrole, setvalidrole] = useState<boolean>(true);
-  // const dispatch = useDispatch();
-  // var iconstatus=useSelector((state:any)=>state.button.SecondScreenButtonStatus);
-  const details = {
-    name: useRef(""),
-    email: useRef(""),
-  };
-
-  function handleUserName(txt: any) {
-    const regexPattern =
-      /^[a-zA-Z]{3,20}( )[a-zA-Z]{3,20}(( )[a-zA-Z]{3,20})?$/;
-    if (!regexPattern.test(txt)) {
-      setname(false);
-    } else {
-      setname(true);
-      setvalidname(true);
-    }
-  }
-
-  function emailHandler(txt: any) {
-    const regexPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!regexPattern.test(txt)) {
-      setemail(false);
-    } else {
-      setemail(true);
-      setvalidemail(true);
-    }
-  }
-
-  function locationhandler() {
-    if (Tag != "Location") {
-      setvalidlocation(true);
-    }
-  }
-  function rolehandler() {
-    if (TagRole != "Your Role") {
-      setvalidrole(true);
-    }
-  }
-  useEffect(() => {
-    if (
-      Tag != "Location" &&
-      TagRole != "Your Role" &&
-      validemail &&
-      validname
-    ) {
-    } else if (
-      Tag == "Location" ||
-      TagRole == "Your Role" ||
-      !validemail ||
-      !validname
-    ) {
-    }
-  }, [validemail, validname, Tag != "Location", TagRole != "Your Role"]);
-
-  function validationcheck() {
-    if (
-      Tag != "Location" &&
-      TagRole != "Your Role" &&
-      validemail &&
-      validname
-    ) {
-      setScreen(3);
-    } else {
-      if (!validname) setname(false);
-
-      if (!validemail) setemail(false);
-
-      if (Tag == "Location") setvalidlocation(false);
-
-      if (TagRole == "Your Role") setvalidrole(false);
-    }
-  }
-
+const Second = forwardRef(({ userDetail ,error}: SecondProps, ref) => {
+ 
   useImperativeHandle(ref, () => ({
-    handleSubmit: validationcheck,
+    // handleSubmit: validationcheck,
   }));
 
   return (
     <SafeAreaContainer backgroundColor={Colors.white}>
-      <CustomHeader details="Enter your personal information" />
+      <CustomHeader details={StringConstants.ENTER_YOUR_PERSONAL_INFO} />
       <InputTextField
         onChangeText={(text: string) => {
-          details.name.current = text;
+          userDetail.Name.current = text;
         }}
-        placeholder={"Your Name"}
+        placeholder={StringConstants.YOUR_NAME}
         maxlength={20}
         leftIcon={Glyphs.Contact}
+        error={error.Name?StringConstants.NAME_ERROR_MSG:undefined}
       />
       <InputTextField
         onChangeText={(text: string) => {
-          details.email.current = text;
+          userDetail.Email.current = text;
         }}
-        placeholder={"Your Email Id"}
+        placeholder={StringConstants.YOUR_EMAIL_ID}
         maxlength={20}
         leftIcon={Glyphs.Email}
+        error={error.Email?StringConstants.EMAIL_ERROR_MSG:undefined}
       />
       <CustomDropDown
         ArrayOfData={LocationData}
-        topheading={"Location"}
+        topheading={StringConstants.LOCATION}
         leftIcon={Glyphs.Location}
         style={{ backgroundColor: Colors.inputBG }}
+        onPress={(selectedvalue:string)=>userDetail.Location.current=selectedvalue}
+        error={error.Location?StringConstants.LOCATION_ERROR_MSG:undefined}
       />
 
       <CustomDropDown
         ArrayOfData={RoleData}
-        topheading={"Your Role"}
+        topheading={StringConstants.YOUR_ROLE}
         leftIcon={Glyphs.Role}
         style={{ backgroundColor: Colors.inputBG }}
+        onPress={(selectedvalue:string)=>userDetail.Role.current=selectedvalue}
+        error={error.Role?StringConstants.ROLE_ERROR_MSG:undefined}
       />
     </SafeAreaContainer>
   );

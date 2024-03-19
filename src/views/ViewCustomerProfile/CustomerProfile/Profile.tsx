@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import {  View } from "react-native";
 import styles from "../Style";
 import Header from "components/AppHeader";
-import InputTextWithoutIcon from "components/InputTextWithoutIcon/InputText";
 import CustomerProfile from "./CustomerProfile";
 import StringConstants from "shared/localization";
 import SafeAreaContainer from "components/SafeAreaContainer";

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { ICMSPageData } from "./mockData/Data";
+import React from "react";
+
 import styles from "./Style";
 import { FlatList, Image, SafeAreaView, View } from "react-native";
 import Header from "components/AppHeader";
-import { Data } from "./mockData/Data";
 import About from "./Pages/About";
 import FAQs from "./Pages/FAQs";
 import Privacy from "./Pages/Privacy";
@@ -14,66 +13,62 @@ import StringConstants from "shared/localization";
 import { PressableButton, TextWrapper } from "components";
 import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
-const CMSPagesScreen = () => {
-  const [pages, setpages] = useState<string>(StringConstants.CMS);
-  const setScreen = (param: string) => {
-    setpages(param);
-  };
+import { CMSPageResponse, CMSRoot } from "models/CMSPageResponse";
 
-  function renderItem(item: ICMSPageData, index: number) {
-    function Pagescontrol() {
-      switch (item.tag) {
-        case StringConstants.ABOUT_US:
-          setpages(StringConstants.ABOUT_US);
-          break;
-        case StringConstants.CONTACT_US:
-          setpages(StringConstants.CONTACT_US);
-          break;
-        case StringConstants.PRIVACY:
-          setpages(StringConstants.PRIVACY);
-          break;
-        case StringConstants.FAQS:
-          setpages(StringConstants.FAQS);
-          break;
-        case StringConstants.TERMS_AND_CONDITIONS:
-          setpages(StringConstants.TERMS_AND_CONDITIONS);
-          break;
-      }
-    }
+interface ICmsPageScreen {
+  pagesRenderingController: (arg: string) => void;
+  pages: string;
+  cmsPageData: CMSPageResponse;
+}
 
+const CMSPagesScreen = ({
+  pagesRenderingController,
+  pages,
+  cmsPageData,
+}: ICmsPageScreen) => {
+  function renderItem(item: CMSRoot, _: number) {
+    console.log("CMS PAGE::::",item);
     return (
       <View style={styles.container}>
         <TextWrapper style={commonStyles.font14MediumBlackpearl}>
-          {item.tag}
+          {item.page}
         </TextWrapper>
-        <PressableButton onPress={Pagescontrol}>
-          <Image source={Glyphs.Arrow} />
+        <PressableButton
+          onPress={() => pagesRenderingController(item.page)}
+        >
+          <Image source={Glyphs.Arrow} style={commonStyles.icon} />
         </PressableButton>
       </View>
     );
   }
   return (
-    <SafeAreaView style={{ backgroundColor: Colors.background, flex: 1 }}>
+    <SafeAreaView style={{ backgroundColor: Colors.background2, flex: 1 }}>
       <>
         {pages == StringConstants.CMS && (
           <>
             <Header topheading={StringConstants.CMS_PAGES} />
             <FlatList
-              data={Data}
+              data={cmsPageData}
               renderItem={({ item, index }) => renderItem(item, index)}
               showsVerticalScrollIndicator={false}
               style={{ paddingHorizontal: 20, marginTop: 20 }}
             />
           </>
         )}
-        {pages == StringConstants.ABOUT_US && <About setScreen={setScreen} />}
-        {pages == StringConstants.FAQS && <FAQs setScreen={setScreen} />}
-        {pages == StringConstants.PRIVACY && <Privacy setScreen={setScreen} />}
+        {pages == StringConstants.ABOUT_US && (
+          <About {...{ pagesRenderingController, cmsPageData }} />
+        )}
+        {pages == StringConstants.FAQS && (
+          <FAQs {...{ pagesRenderingController, cmsPageData }} />
+        )}
+        {pages == StringConstants.PRIVACY && (
+          <Privacy {...{ pagesRenderingController, cmsPageData }} />
+        )}
         {pages == StringConstants.TERMS_AND_CONDITIONS && (
-          <Terms setScreen={setScreen} />
+          <Terms {...{ pagesRenderingController, cmsPageData }} />
         )}
         {pages == StringConstants.CONTACT_US && (
-          <Contact setScreen={setScreen} />
+          <Contact {...{ pagesRenderingController, cmsPageData }} />
         )}
       </>
     </SafeAreaView>

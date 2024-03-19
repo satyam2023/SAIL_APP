@@ -13,22 +13,20 @@ import TextWrapper from "../TextWrapper";
 import commonStyles from "commonStyles/CommonStyle";
 import { PressableButton } from "components";
 
-
 interface IcustomerBox {
   onPress?: Function;
   isCustomerDetailVisible?: boolean;
   style?: ViewStyle;
   heading: string;
   subHeading: string;
-  leftIcon: ImageURISource;
+  leftIcon?: ImageURISource;
   isCustomerColumn?: boolean;
   isClosable?: boolean;
-  isRightNotIconRequired?:boolean
+  isRightNotIconRequired?: boolean;
 }
 
 const RectangularBox = (props: IcustomerBox) => {
-
-  const isDetailVisible=props.isCustomerColumn || props.isClosable;
+  const isDetailVisible = props.isCustomerColumn || props.isClosable;
   return (
     <View
       style={[
@@ -37,44 +35,49 @@ const RectangularBox = (props: IcustomerBox) => {
           props?.style,
           { height: props.isCustomerColumn ? 56 : 70 },
           {
-            marginBottom: isDetailVisible? 0 : 16,
-
+            marginBottom: isDetailVisible ? 0 : 16,
           },
         ],
       ]}
     >
       <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Image source={props.leftIcon} style={commonStyles.leftIcon} />
+        {props.leftIcon && (
+          <Image source={props.leftIcon} style={commonStyles.leftIcon} />
+        )}
         <View>
           <TextWrapper style={commonStyles.font14RegularDarkGray}>
             {props.heading ? props.heading : StringConstants.CUSTOMER_VISIT_1}
           </TextWrapper>
-          <TextWrapper
-            style={[commonStyles.font14MediumBlackpearl, { marginTop: 8 }]}
-          >
+          <TextWrapper style={[commonStyles.font14MediumBlackpearl]}>
             {props.subHeading
               ? props.subHeading
               : StringConstants.XYZ_STEELWORKS}
           </TextWrapper>
         </View>
       </View>
-      {!props.isCustomerColumn || props.isRightNotIconRequired && (
-        <PressableButton
-          onPress={() => {
-            {
-              props.onPress && props.onPress();
-            }
-          }}
-        >
-          <Image
-            source={Glyphs.Arrow}
-            style={
-              props.isCustomerDetailVisible
-                ? { transform: [{ rotate: "270deg" }] }
-                : { transform: [{ rotate: "90deg" }] }
-            }
-          />
-        </PressableButton>
+      {!props.isRightNotIconRequired && (
+        <>
+          {!props.isCustomerColumn && (
+            <PressableButton
+              onPress={() => {
+                {
+                  props.onPress && props.onPress();
+                }
+              }}
+            >
+              <Image
+                source={Glyphs.Arrow}
+                style={[
+                  props.isCustomerDetailVisible
+                    ? { transform: [{ rotate: "180deg" }] }
+                    : { transform: [{ rotate: "0deg" }] },
+                  commonStyles.icon,
+                  { bottom: props.isClosable ? 10 : 0 },
+                ]}
+              />
+            </PressableButton>
+          )}
+        </>
       )}
     </View>
   );

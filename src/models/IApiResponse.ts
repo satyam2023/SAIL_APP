@@ -1,5 +1,6 @@
 export interface IApiResponse<T> extends ApiResponse {
   data?: T;
+  content?:T;
 }
 
 interface ApiResponse {

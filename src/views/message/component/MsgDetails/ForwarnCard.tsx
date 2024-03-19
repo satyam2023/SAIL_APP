@@ -2,13 +2,13 @@ import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
 import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { StyleSheet,View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import StringConstants from "shared/localization";
 const ForwardCard = () => {
   return (
     <View style={styles.forwardCardContainer}>
       <View style={{ flexDirection: "row" }}>
-        <TextWrapper style={[{}, commonStyles.font14RegularGray]}>
+        <TextWrapper style={[ commonStyles.font14RegularGray]}>
           {StringConstants.FWD_BY}
         </TextWrapper>
         <TextWrapper

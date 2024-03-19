@@ -96,5 +96,6 @@ const Glyphs = {
   UncheckBox:require('../assets/images/uncheck_box.png'),
   PigIron:require('../assets/images/PigIron.png'),
   Semis:require('../assets/images/Semis.png'),
+  multiProfile:require('../assets/images/multiProfile.png'),
 };
 export default Glyphs;

@@ -30,6 +30,12 @@ dwd:{
     lineHeight:24,
     textDecorationLine: 'underline',
     marginTop:14,
-}
+},
+productImage:{
+    alignSelf: "center",
+    height: 88,
+    width: 117,
+    resizeMode: "contain",
+  }
 });
 export default styles;

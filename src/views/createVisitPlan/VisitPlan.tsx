@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { SafeAreaView, ScrollView, View } from "react-native";
+import React from "react";
+import { FlatList, SafeAreaView, View } from "react-native";
 import Header from "components/AppHeader";
 import PlanCompleted from "./PlanCompleted";
 import InputTextField from "components/InputTextField";
@@ -7,65 +7,55 @@ import StringConstants from "shared/localization";
 import { Colors } from "commonStyles/RNColor.style";
 import CustomDropDown from "components/CustomDropDown";
 import CustomFooter from "components/CustomFooter";
+import { CustomerType } from "views/createMeetingDetail/mockData/data";
+import { CreateVisitPlanField } from "@shared-constants";
 
-const CreateVisitPlan = () => {
-  const [isVisitDetailFilled, setIsVisitDetailFilled] =
-    useState<boolean>(false);
-  const Data = [
-    { key: 1, value: "A" },
-    { key: 2, value: "A" },
-    { key: 3, value: "A" },
-    { key: 4, value: "A" },
-    { key: 5, value: "A" },
-    { key: 6, value: "A" },
-  ];
+interface ICreateVisitPlanScreen {
+  isVisitDetailFilled: boolean;
+  setIsVisitDetailFilled: (isVisitDetailFilled: boolean) => void;
+}
+
+const CreateVisitPlanScreen = ({
+  isVisitDetailFilled,
+  setIsVisitDetailFilled,
+}: ICreateVisitPlanScreen) => {
+  const renderCreateVisitPlanField = (item: string, index: number) => {
+    return (
+      <>
+        {index < 3 ? (
+          <InputTextField
+            onChangeText={() => {}}
+            placeholder={item}
+            containerStyle={{ backgroundColor: Colors.white }}
+          />
+        ) : (
+          <CustomDropDown ArrayOfData={CustomerType} topheading={item} />
+        )}
+      </>
+    );
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {!isVisitDetailFilled ? (
         <>
-          <ScrollView style={{ backgroundColor: Colors.background2 }}>
+          <View style={{ backgroundColor: Colors.background2, flex: 1 }}>
             <Header topheading={StringConstants.CREATE_VISIT_PLAN} />
             <View style={{ marginVertical: 23, paddingHorizontal: 20 }}>
-              <InputTextField
-                onChangeText={() => {}}
-                placeholder={StringConstants.ENTER_CUSTOMER_CODE}
-                containerStyle={{ backgroundColor: Colors.white }}
-              />
-              <InputTextField
-                onChangeText={() => {}}
-                placeholder={StringConstants.ENTER_NAME}
-                containerStyle={{ backgroundColor: Colors.white }}
-              />
-              <InputTextField
-                onChangeText={() => {}}
-                placeholder={StringConstants.ENTER_NICK_NAME}
-                containerStyle={{ backgroundColor: Colors.white }}
-              />
-              <CustomDropDown
-                ArrayOfData={Data}
-                topheading={StringConstants.CUSTOMER_REGION}
-              />
-              <CustomDropDown
-                ArrayOfData={Data}
-                topheading={StringConstants.SELECT_VISITING_EXECUTIVE}
-              />
-              <CustomDropDown
-                ArrayOfData={Data}
-                topheading={StringConstants.SELECT_REASON}
-              />
-              <CustomDropDown
-                ArrayOfData={Data}
-                topheading={StringConstants.SELECT_MODE_OF_CONTACT}
+              <FlatList
+                data={CreateVisitPlanField}
+                renderItem={({ item, index }) =>
+                  renderCreateVisitPlanField(item, index)
+                }
               />
             </View>
-          </ScrollView>
+          </View>
           <CustomFooter
             leftButtonText={StringConstants.CANCEL}
             rightButtonText={StringConstants.SUBMIT}
             leftButtonPress={() => {}}
-            rightButtonPress={() => {
-              setIsVisitDetailFilled(true);
-            }}
+            rightButtonPress={() => 
+              setIsVisitDetailFilled(true)
+            }
           />
         </>
       ) : (
@@ -77,4 +67,4 @@ const CreateVisitPlan = () => {
     </SafeAreaView>
   );
 };
-export default CreateVisitPlan;
+export default CreateVisitPlanScreen;

@@ -7,7 +7,7 @@ import InputTextField from "components/InputTextField";
 
 interface RepProps {}
 
-const RepresentativeDetails: React.FC<RepProps> = ({}: RepProps) => {
+const RepresentativeDetails = ({}: RepProps) => {
   return (
     <ScrollView style={{ flex: 1, paddingHorizontal: 20 }}>
       <UploadDocumnet

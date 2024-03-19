@@ -90,6 +90,11 @@ const commonStyles = StyleSheet.create({
   center:{
     justifyContent:'center',
     alignItems:'center',
+  },
+  icon:{
+    height:15,
+    width:15,
+    resizeMode:'contain'
   }
   
 });

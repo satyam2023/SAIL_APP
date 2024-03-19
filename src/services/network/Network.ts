@@ -3,6 +3,8 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 import { IApiResponse } from "models/IApiResponse";
 import APIConstants from "core/ApiConstants";
+import { store } from "redux/store/Store";
+
 
 const token = () => {
   return "";
@@ -15,6 +17,10 @@ const instance: AxiosInstance = axios.create({
     Accept: "*/*",
   },
 });
+
+const baseURL = () => {
+  return `${store.getState()?.updatedBaseURL.baseURL}/`;
+};
 interface RetryConfig extends AxiosRequestConfig {
   retry: number;
   retryDelay: number;
@@ -43,10 +49,10 @@ instance.interceptors.response.use(
   },
 );
 export function sendGetRequest<T>(url: string) {
-  // console.log("Intamec Details::",instance);
   instance.defaults.headers.common.Authorization = token();
+  const updatedUrl = baseURL() + url;
   return instance
-    .get(url, globalConfig)
+    .get(updatedUrl, globalConfig)
     .then((response: any) => {
       console.log("Response Details::",response);
       return handleResponse<T>(response.data);
@@ -61,9 +67,11 @@ export function sendGetRequest<T>(url: string) {
 }
 
 export function sendPostRequest<T>(url: string, body: any): any {
+  const updatedUrl=baseURL()+url;
+  console.log("Updated URL::",updatedUrl);
   instance.defaults.headers.common.Authorization = token();
   return instance
-    .post(url, body, globalConfig)
+    .post(updatedUrl, body, globalConfig)
     .then((response: any) => {
       console.log("Post Response ::",response.data);
       return handleResponse<T>(response.data);
@@ -74,13 +82,16 @@ export function sendPostRequest<T>(url: string, body: any): any {
       }
       return handleError<T>(err.response.data);
     })
-    .finally(() => {});
+    .finally(() => {
+      console.log("Finally of Send Post")
+    });
 }
 
 export function sendPutRequest<T>(url: string, body: any): any {
+  const updatedUrl = baseURL() + url;
   instance.defaults.headers.common.Authorization = token();
   return instance
-    .put(url, body, globalConfig)
+    .put(updatedUrl, body, globalConfig)
     .then((response: any) => handleResponse<T>(response.data))
     .catch((err: any) => {
       if (err.response === undefined) {
@@ -92,9 +103,10 @@ export function sendPutRequest<T>(url: string, body: any): any {
 }
 
 export function sendPatchRequest<T>(url: string): any {
+  const updatedUrl = baseURL() + url;
   instance.defaults.headers.common.Authorization = token();
   return instance
-    .patch(url, globalConfig)
+    .patch(updatedUrl, globalConfig)
     .then((response: any) => handleResponse<T>(response.data))
     .catch((err: any) => {
       if (err.response === undefined) {
@@ -108,8 +120,9 @@ export function sendPatchRequest<T>(url: string): any {
 }
 
 export function deleteRequest<T>(url: string): any {
+  const updatedUrl = baseURL() + url;
   return instance
-    .delete(url, globalConfig)
+    .delete(updatedUrl, globalConfig)
     .then((response: any) => handleResponse<T>(response.data))
     .catch((err: any) => {
       if (err.response === undefined) {

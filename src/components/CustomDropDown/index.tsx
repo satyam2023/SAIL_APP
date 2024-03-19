@@ -15,13 +15,14 @@ import commonStyles from "commonStyles/CommonStyle";
 import fonts from "@fonts";
 import { PressableButton } from "components";
 
-
 interface ICustomDropDown<T> {
   ArrayOfData: Array<T>;
   leftIcon?: ImageURISource;
   getData?: (value: string) => void;
   topheading: string;
   style?: ViewStyle;
+  onPress?: (selectedvalue: string) => void;
+  error?: string;
 }
 
 const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
@@ -38,6 +39,9 @@ const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
       <Press
         style={styles.listContainer}
         onPress={() => {
+          {
+            props.onPress && props.onPress(item.value);
+          }
           handleItemClick(item.value);
         }}
         key={item.key}
@@ -52,7 +56,11 @@ const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
   return (
     <>
       <PressableButton
-        style={[styles.dropContainer, props?.style]}
+        style={[
+          styles.dropContainer,
+          props?.style,
+          props?.error ? styles.errorBox : {},
+        ]}
         onPress={() => {
           setIsListVisible(!isListVisible);
         }}
@@ -75,9 +83,14 @@ const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
         <Image
           source={Glyphs.Arrow}
           tintColor={Colors.jetGray}
-          style={{ transform: [{ rotate: "90deg" }] }}
+          style={commonStyles.icon}
         />
       </PressableButton>
+      {props.error && (
+        <View style={{ bottom: 12 }}>
+          <TextWrapper style={styles.errorMsg}>{props.error}</TextWrapper>
+        </View>
+      )}
       {isListVisible && props?.ArrayOfData.map(renderItem)}
     </>
   );
@@ -113,5 +126,15 @@ const styles = StyleSheet.create({
     bottom: 5,
     fontFamily: fonts.type.regular,
     fontSize: 12,
+  },
+  errorMsg: {
+    color: Colors.red,
+    fontSize: 14,
+    marginLeft: 16,
+    fontFamily: fonts.type.regular,
+  },
+  errorBox: {
+    borderWidth: 1,
+    borderColor: Colors.red,
   },
 });

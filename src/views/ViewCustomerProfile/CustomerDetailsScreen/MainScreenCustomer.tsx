@@ -5,7 +5,7 @@ import First from "./First";
 import Second from "./Second";
 import Third from "./Third";
 import LastScreen from "./LastScreen";
-import Header from "components/AppHeader";
+
 import AddCompetitor from "./CompetitorDetails/AddCompetitor";
 import { useDispatch, useSelector } from "react-redux";
 import RepresentativeDetails from "./RepresentativeDetails/RepresentativeDetails";
@@ -17,6 +17,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import StringConstants from "shared/localization";
 import { Colors } from "commonStyles/RNColor.style";
 import CustomFooter from "components/CustomFooter";
+import { Header } from "components";
 
 const MainScreenCustomer = () => {
   const dispatch = useDispatch();
@@ -101,21 +102,20 @@ const MainScreenCustomer = () => {
       ) : (
         <>
           <Header topheading={StringConstants.CUSTOMER_VIEW_PROFILE} />
-          {Competitor &&
-          <>
-          
-          <AddCompetitor/>
-          <CustomFooter
-        leftButtonText={StringConstants.ADD_COMPETITOR}
-        leftButtonPress={() => {
-          dispatch(setCompetitorButtonStatus(false));
-        }}
-        singleButtonOnFooter
-        isMovable
-        isTracker={"33%"}
-      />
-          </>
-          }
+          {Competitor && (
+            <>
+              <AddCompetitor />
+              <CustomFooter
+                leftButtonText={StringConstants.ADD_COMPETITOR}
+                leftButtonPress={() => {
+                  dispatch(setCompetitorButtonStatus(false));
+                }}
+                singleButtonOnFooter
+                isMovable
+                isTracker={"33%"}
+              />
+            </>
+          )}
           {Reprsentative && (
             <>
               <RepresentativeDetails />

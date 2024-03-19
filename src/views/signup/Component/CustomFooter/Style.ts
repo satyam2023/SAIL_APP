@@ -79,11 +79,11 @@ txte:{
 color:'#110F2480'
 },
 imgArrow:{
-  width: 24,
-  height: 24,
+  width: 15,
+  height: 15,
   resizeMode:'contain',
   gap: 10,
-  transform: [{ rotate: "180deg" }],
+  transform: [{ rotate: "90deg" }],
 },
 
 circle:{

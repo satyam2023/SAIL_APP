@@ -4,7 +4,7 @@ const Data = [
   { 
     uppertext: "Customer Code",
     lowertext: "987654321",
-    imagepath: Glyphs.Profile2userClicked,
+    imagepath: Glyphs.multiProfile
   },
   {
     uppertext: "Customer Type",

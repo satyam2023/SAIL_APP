@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
   backgroundColor: Colors.background,
   flex: 1,
   paddingHorizontal: 20,
-  marginTop: 16,
 },
 issueType:{
   flexDirection: "row",

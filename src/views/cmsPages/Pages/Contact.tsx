@@ -5,15 +5,20 @@ import {
 
 import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
-interface Props {
-  setScreen: Function;
-}
+import { FilterContent } from "helper/DataFilteration";
+import { ICmsProps } from "./FAQs";
+import { TextWrapper } from "components";
 
-const Contact = ({ setScreen }: Props) => {
+
+const Contact = ({ cmsPageData,pagesRenderingController }: ICmsProps) => {
+  const filterData=FilterContent(cmsPageData as [],4);
   return (
     
       <View>
-        <Header topheading={StringConstants.CONTACT_US} onPress={()=>{setScreen(StringConstants.CMS)}}/>
+        <Header topheading={StringConstants.CONTACT_US} onPress={()=>{pagesRenderingController(StringConstants.CMS)}}/>
+        <TextWrapper>
+          {filterData}
+        </TextWrapper>
       </View>
  
   );

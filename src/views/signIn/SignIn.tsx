@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native";
 import { Image, TouchableOpacity, View } from "react-native";
 import styles from "./Style/Style";
 import Glyphs from "assets/Glyphs";
 import { SCREENS } from "@shared-constants";
-import { navigate } from "@navigation";
 import {
   white,
   darkgrey,
@@ -19,13 +18,14 @@ import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import commonStyles from "commonStyles/CommonStyle";
 import { PressableButton } from "components";
+import { navigate } from "@navigation";
 
-const SignIn = () => {
-  const details = {
-    passOne: useRef(""),
-    phoneNumber: useRef(""),
-  };
+interface ISignInScreen{
+  signInUser:any,
+  onSubmit:()=>void
+}
 
+const SignInScreen = ({signInUser,onSubmit}:ISignInScreen) => {
   return (
     <SafeAreaView style={{ backgroundColor: Colors.white, flex: 1 }}>
       <View style={{ flex: 0.7, paddingHorizontal: 20 }}>
@@ -38,13 +38,16 @@ const SignIn = () => {
         <InputTextField
           leftIcon={Glyphs.Contact}
           placeholder={StringConstants.YOUR_UNIQUE}
-          onChangeText={(text: string) => (details.phoneNumber.current = text)}
+          onChangeText={(text: string) => {signInUser.upn.current = text;
+          }}
         />
         <InputTextField
           eyeIcon={Glyphs.Eye}
           leftIcon={Glyphs.Key}
           placeholder={StringConstants.YOUR_PASSWOD}
-          onChangeText={(text: string) => (details.passOne.current = text)}
+          onChangeText={(text: string) => {
+            signInUser.password.current = text
+          }}
         />
         <View
           style={{
@@ -55,7 +58,9 @@ const SignIn = () => {
         >
           <View style={{ flexDirection: "row" }}>
             <CustomSwitch
-              onPress={(value: boolean) => {}}
+              onPress={(value: boolean) => {
+                signInUser.rememberMe.current = value;
+              }}
               isRectangular
               status={true}
             />
@@ -73,7 +78,7 @@ const SignIn = () => {
         <CustomButton
           textStyle={{ color: darkgrey }}
           buttonStyle={{ backgroundColor: lightWhite }}
-          onPress={() => navigate(SCREENS.TAB)}
+          onPress={() => onSubmit()}
           text={StringConstants.SIGN_IN}
         />
         <View
@@ -106,7 +111,7 @@ const SignIn = () => {
             borderColor: grey,
             borderWidth: 1,
           }}
-          onPress={() => navigate(SCREENS.MAIN)}
+          onPress={() =>{}}
           text={StringConstants.SIGNIN_FINGERPRINT}
           image={Glyphs.FaceScan}
         />
@@ -118,7 +123,7 @@ const SignIn = () => {
             borderColor: grey,
             borderWidth: 1,
           }}
-          onPress={() => navigate(SCREENS.MAIN)}
+          onPress={() => {}}
           text={StringConstants.SIGNIN_FACE_RECOGNITION}
           image={Glyphs.FingerScan}
         />
@@ -127,4 +132,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInScreen;

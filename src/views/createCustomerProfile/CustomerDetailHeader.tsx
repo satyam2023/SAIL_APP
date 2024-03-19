@@ -3,7 +3,7 @@ import { Colors } from "commonStyles/RNColor.style";
 import Header from "components/AppHeader";
 import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet,View } from "react-native";
 import StringConstants from "shared/localization";
 interface IheaderProps {
   heading: string;

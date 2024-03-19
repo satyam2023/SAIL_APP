@@ -1,35 +1,35 @@
 import React from "react";
-import { SafeAreaView,View } from "react-native";
-import InputTextField from "components/InputTextField";
+import { FlatList, SafeAreaView, View } from "react-native";
 import StringConstants from "shared/localization";
-import { Colors } from "commonStyles/RNColor.style";
 import commonStyles from "commonStyles/CommonStyle";
-import TextWrapper from "components/TextWrapper";
+import { CompetitorDetailData } from "@shared-constants";
+import { InputTextField, TextWrapper } from "components";
+import { Colors } from "commonStyles/RNColor.style";
 
 const CompetitorDetail = () => {
+  const renderCompettorInputField = (item: string, _: number) => {
+    return (
+      <InputTextField
+        onChangeText={() => {}}
+        placeholder={item}
+        containerStyle={{ backgroundColor: Colors.white }}
+      />
+    );
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TextWrapper
-        style={[commonStyles.font14MediumBlackpearl,{margin:16,}]}
+        style={[commonStyles.font14MediumBlackpearl, { margin: 16 }]}
       >
         {StringConstants.ADD_COMPETITOR_DETAILS}
       </TextWrapper>
+
       <View style={{ paddingHorizontal: 20 }}>
-        <InputTextField
-          onChangeText={() => {}}
-          placeholder={StringConstants.ENTER_COMPANY_NAME}
-          containerStyle={{ backgroundColor: Colors.white }}
-        />
-        <InputTextField
-          onChangeText={() => {}}
-          placeholder={StringConstants.ENTER_ADDRESS}
-          containerStyle={{ backgroundColor: Colors.white }}
-        />
-        <InputTextField
-          onChangeText={() => {}}
-          placeholder={StringConstants.ENTER_COMMENTS}
-          containerStyle={{ backgroundColor: Colors.white }}
-        />
+       <FlatList
+       data={CompetitorDetailData}
+       renderItem={({item, index}) =>
+        renderCompettorInputField(item, index)}
+       />
       </View>
     </SafeAreaView>
   );

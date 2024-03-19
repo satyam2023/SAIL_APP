@@ -1,6 +1,12 @@
 import Glyphs from "assets/Glyphs";
+import { ImageURISource } from "react-native";
 
-const Data = [
+export interface IProductData {
+  heading: string;
+  image: ImageURISource;
+}
+
+export const ProductData = [
   { heading: "Pig Iron", image: Glyphs.PigIron },
   {
     heading: "Cold Rolled Product",
@@ -43,5 +49,3 @@ const Data = [
     image: Glyphs.StainlessSteel,
   },
 ];
-
-export default Data;

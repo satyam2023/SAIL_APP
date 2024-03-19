@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  SafeAreaView,
-  View,
-} from "react-native";
+import { SafeAreaView, View } from "react-native";
 import InputTextField from "components/InputTextField";
 import { ITextFieldData, TextFieldData } from "./mockData/TextFieldData";
 import styles from "./Style/Style";
@@ -54,9 +51,9 @@ const SettingScreen = () => {
             <CustomButton
               image={Glyphs.Editing}
               text={StringConstants.EDIT_PROFILE}
-              buttonStyle={{ width: "50%", backgroundColor: Colors.sailBlue ,}}
+              buttonStyle={{ width: "50%", backgroundColor: Colors.sailBlue }}
               textStyle={styles.editTxt}
-              imageStyle={{width:16,height:16}}
+              imageStyle={{ width: 16, height: 16 }}
             />
           </View>
         </View>

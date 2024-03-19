@@ -7,18 +7,22 @@ import {
 import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
 import { Colors } from "commonStyles/RNColor.style";
+import { FilterContent } from "helper/DataFilteration";
+import { ICmsProps } from "./FAQs";
+import { TextWrapper } from "components";
 
-interface Props {
-  setScreen: Function;
-}
-
-const Privacy: React.FC<Props> = ({ setScreen }: Props) => {
+const Privacy = ({ cmsPageData,pagesRenderingController }: ICmsProps) => {
+  const filterData=FilterContent(cmsPageData as [],3);
+  console.log("filtered Data inside Privacy::::::",filterData);
   return (
     <ScrollView style={{ backgroundColor: Colors.background2,  }}>
       <SafeAreaView>
-       <Header topheading={StringConstants.PRIVACY} onPress={()=>setScreen(StringConstants.CMS)}/>
+       <Header topheading={StringConstants.PRIVACY} onPress={()=>pagesRenderingController(StringConstants.CMS)}/>
       </SafeAreaView>
-      <Text
+      <TextWrapper>
+        {filterData}
+      </TextWrapper>
+      {/* <Text
         style={{
           marginHorizontal: 20,
           marginTop: 20,
@@ -115,7 +119,7 @@ const Privacy: React.FC<Props> = ({ setScreen }: Props) => {
         doloribus eaque dolores impedit earum fuga doloremque temporibus?
         Recusandae ea molestiae suscipit earum veniam voluptatum reiciendis
         natus sint possimus facere!{`\n`}
-      </Text>
+      </Text> */}
     </ScrollView>
   );
 };

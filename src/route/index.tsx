@@ -8,12 +8,10 @@ import {
 } from "@react-navigation/bottom-tabs";
 
 import { SCREENS } from "@shared-constants";
-import HomeScreenViewModel from "../viewModels/HomeScreenViewModel";
 import { useSelector } from "react-redux";
 import SignInViewModel from "viewModels/SignInViewModel";
 import { isReadyRef, navigationRef } from "@navigation";
 import SignUpScreenViewMOdel from "viewModels/SignUpViewModel";
-import MainScreenViewModel from "viewModels/MainScreenViewModel";
 import Glyphs from "assets/Glyphs";
 import BottomTabIcon from "components/BottomTabIcons/BottomTabIcon";
 import MessageScreenViewModel from "viewModels/MessageScreenViewModel";
@@ -26,13 +24,14 @@ import MoreOptionsViewModel from "viewModels/MoreOptionsViewModel";
 import CMSViewModel from "viewModels/CMSViewModel";
 import NotificationViewModel from "viewModels/NotificationViewModel";
 import SettingViewModel from "viewModels/SettingViewModel";
-import BottomDrawer from "views/moreOptions/BottomDrawer/BottomDrawer";
+import BottomDrawer from "views/moreOptions/BottomDrawer";
 import CreateVisitPlanViewModel from "viewModels/CreateVisitPlanModel";
 import CreateMetingDetailsViewModel from "viewModels/CreateMeetingDetailsViewModel";
 import ViewCustomerProfileViewModel from "viewModels/ViewCustomerProfileViewModel";
 import CreateCustomerViewModel from "viewModels/CreateCustomerViewModel";
 import { Image, View } from "react-native";
-import StringConstants from "shared/localization";
+import OnBoardingScreenViewModel from "../viewModels/OnBoardingScreenViewModel";
+import HomeScreenViewModel from "viewModels/HomeViewModel";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const HomeStack = createStackNavigator();
@@ -44,7 +43,7 @@ const TabIcon = (route: any, focused: boolean) => {
       case SCREENS.MAINSTACK:
         return (
           <BottomTabIcon image={focused ? Glyphs.Home : Glyphs.HomeDull} 
-          tintColor={focused? StringConstants.EMPTY:Colors.darkGrey}/>
+          tintColor={focused? Colors.sailBlue:Colors.darkGrey}/>
         );
       case SCREENS.PRODUCTCATALOUGE:
         return (
@@ -80,7 +79,7 @@ const TabIcon = (route: any, focused: boolean) => {
 const HomeStackNavigator = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name={SCREENS.MAIN} component={MainScreenViewModel} />
+      <HomeStack.Screen name={SCREENS.MAIN} component={HomeScreenViewModel} />
       <HomeStack.Screen
         name={SCREENS.MESSAGE}
         component={MessageScreenViewModel}
@@ -173,7 +172,7 @@ const Navigation = () => {
       // theme={isDarkMode ? DarkTheme : LightTheme}
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name={SCREENS.HOME} component={HomeScreenViewModel} />
+        <Stack.Screen name={SCREENS.ONBOARDING} component={OnBoardingScreenViewModel} />
         <Stack.Screen name={SCREENS.SIGNUP} component={SignUpScreenViewMOdel} />
         <Stack.Screen name={SCREENS.SIGNIN} component={SignInViewModel} />
         <Stack.Screen name={SCREENS.TAB} component={RenderTabNavigation} />

@@ -9,22 +9,24 @@ import styles from "../Style";
 import { Colors } from "commonStyles/RNColor.style";
 import fonts from "@fonts";
 import { Header, TextWrapper } from "components";
+import { ICmsProps } from "./FAQs";
+import { FilterContent } from "helper/DataFilteration";
 
-interface IAboutProps {
-  setScreen: (arg: string) => void;
-}
 
-const About = ({ setScreen }: IAboutProps) => {
+
+const About = ({ cmsPageData,pagesRenderingController }: ICmsProps) => {
+  const filterData=FilterContent(cmsPageData as [],1);
   return (
     <ScrollView>
       <Header
         topheading={StringConstants.ABOUT_US}
-        onPress={() => setScreen(StringConstants.CMS)}
+        onPress={() => pagesRenderingController(StringConstants.CMS)}
       />
+      {filterData!=null?
       <View style={{ paddingHorizontal: 20 }}>
         <Image source={Glyphs.Sail} style={styles.img} />
         <TextWrapper
-          style={[commonStyles.font14RegularBlack, { marginTop: 20 }]}
+          style={[commonStyles.font14RegularBlack, { marginVertical: 20 }]}
         >
           {StringConstants.LOREM_LARGE}
         </TextWrapper>
@@ -60,6 +62,11 @@ const About = ({ setScreen }: IAboutProps) => {
           {StringConstants.SAIL_WEBSITE_LINK}
         </TextWrapper>
       </View>
+      :
+      <TextWrapper>
+        {StringConstants.NOT_AVAILABLE}
+      </TextWrapper>
+      }
     </ScrollView>
   );
 };

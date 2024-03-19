@@ -29,7 +29,6 @@ export const Colors = {
     lightGray: "#D8DADC",
     lightGray2: "#DADADA",
     greyishBlue: "#65749c",
-    
     disabledGrey: "#D1D1D1",
     jetGray: "#646C76",
     background: "#F5F5F5",

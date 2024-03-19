@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 24,
     borderRadius: 10,
-    paddingHorizontal:16,  
+    // paddingHorizontal:16,  
   },
   img: {
     transform: [{ rotate: "0deg" }],
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal:16,
     alignItems:'center',
-    justifyContent:"space-between"
+    justifyContent:"space-between",
   },
   commentBox: {
     marginTop: 16,

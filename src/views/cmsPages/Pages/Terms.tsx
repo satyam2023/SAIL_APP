@@ -8,18 +8,21 @@ import {
 } from "react-native";
 import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
-import SafeAreaContainer from "components/SafeAreaContainer";
 import { Colors } from "commonStyles/RNColor.style";
+import { FilterContent } from "helper/DataFilteration";
+import { ICmsProps } from "./FAQs";
+import { TextWrapper } from "components";
 
-interface Props {
-  setScreen: Function;
-}
 
-const Terms: React.FC<Props> = ({ setScreen }: Props) => {
+const Terms = ({ cmsPageData,pagesRenderingController }: ICmsProps) => {
+  const filterData=FilterContent(cmsPageData as [],5);
   return (
     <ScrollView style={{ backgroundColor: Colors.background, }}>
-      <Header topheading={StringConstants.TERMS_AND_CONDITIONS} onPress={()=>setScreen(StringConstants.CMS)}/>
-      <View style={{paddingHorizontal:20}}>
+      <Header topheading={StringConstants.TERMS_AND_CONDITIONS} onPress={()=>pagesRenderingController(StringConstants.CMS)}/>
+      <TextWrapper>
+        {filterData}
+      </TextWrapper>
+      {/* <View style={{paddingHorizontal:20}}>
 
       <Text style={styles.privacytext}>
         Thank you for choosing our online sales meeting app! To ensure a smooth
@@ -90,7 +93,7 @@ const Terms: React.FC<Props> = ({ setScreen }: Props) => {
           not agree to these terms and conditions, please do not use our app.
         </Text>
       </Text>
-      </View>
+      </View> */}
     </ScrollView>
   );
 };

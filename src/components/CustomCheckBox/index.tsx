@@ -30,7 +30,6 @@ const CustomCheckBox = (props: ICustomSwitch) => {
         { borderRadius: props.isRectangular ? 3 : 10 },
       ]}
       
-      hitSlop={100}
     >
       <PressableButton>
         {!props.isRectangular ? 

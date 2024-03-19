@@ -35,9 +35,7 @@ const UserEnquiry = () => {
     }
   }
 
-  const getData = (data: string) => {
-    // setCurrentLocation(data);
-  };
+
 
   return (
     <SafeAreaContainer >

@@ -139,11 +139,11 @@ const StringConstants = {
   UPDATE_PROFILE: "Update Profile",
   UPDATE: "Update",
   CMS_PAGES: "CMS Pages",
-  ABOUT_US: "About us",
+  ABOUT_US: "About Us",
   CONTACT_US: "Contact Us",
   PRIVACY: "Privacy",
-  FAQS: "FAQs",
-  TERMS_AND_CONDITIONS: "Terms and conditions",
+  FAQS:"FAQs",
+  TERMS_AND_CONDITIONS: "Terms & Conditions",
   INVALID_CONTACT: "Invalid Contact Number",
   INVALID_PASSWORD: "Invalid Password!",
   INVALID_USER: "Invalid User",
@@ -438,7 +438,21 @@ const StringConstants = {
   NOT_DISCOSURE:"What is not open to disclosure?",
   CUSTOMER_PROFILE_CREATED_SUCCESSFULLY:'Customer Profile Created Successfully',
   CUSTOMER_CODE_NUMBER:'Customer Code-4773787',
-  PLEASE_ENTER_INFORMATION:'Please enter details to sign in'
+  PLEASE_ENTER_INFORMATION:'Please enter details to sign in',
+  FORWARD:'Forward',
+  BACKWARD:'Backward',
+  APR_24:'24 Apr',
+  YOUR_EMAIL_ID:'Your Email Id',
+  ENTER_YOUR_PERSONAL_INFO:'Enter Your Personal Information',
+  UPN_ERROR_MSG:'Enter Valid UPN Number',
+  CONTACT_ERROR_MSG:'Enter Valid Contact Number',
+  NAME_ERROR_MSG:'Enter a Valid Name',
+  EMAIL_ERROR_MSG:'Enter a Valid Email Address',
+  LOCATION_ERROR_MSG:'Select a Valid Location',
+  ROLE_ERROR_MSG:'Select a Valid Role',
+  NOT_AVL:'N/A'
+
+  
   
 
 };

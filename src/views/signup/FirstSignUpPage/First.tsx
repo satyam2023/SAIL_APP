@@ -1,26 +1,19 @@
 import React, {
   forwardRef,
   useImperativeHandle,
-  useRef,
 } from "react";
 import CustomHeader from "../Component/CustomHeader/CustomHeader";
 import Glyphs from "assets/Glyphs";
 import InputTextField from "components/InputTextField";
 import SafeAreaContainer from "components/SafeAreaContainer";
 import StringConstants from "shared/localization";
+import { ISignUp } from "../SignUpScreen";
 
-interface FirstProps {
-  CurrentScreen: any;
-  setScreen: any;
-  totalvalidation: any;
-}
 
-const First = forwardRef(({}: FirstProps, ref) => {
+
+
+const First = forwardRef(({userDetail,error}: ISignUp, ref) => {
  
-  const details={
-    contactNumber:useRef(''),
-    uniqueNumber:useRef('')
-  }
   useImperativeHandle(ref, () => ({
     // handleSubmit: validationcheck,
   }));
@@ -29,16 +22,19 @@ const First = forwardRef(({}: FirstProps, ref) => {
     <SafeAreaContainer >
       <CustomHeader details={StringConstants.ENTER_PERSONAL_INFO}/>
       <InputTextField
-        leftIcon={Glyphs.Mic}
-        onChangeText={(text: string) => details.uniqueNumber.current = text}
+        leftIcon={Glyphs.Mic}  
+        onChangeText={(text: string) => {userDetail.Upn.current = text;
+        }}
         placeholder={StringConstants.YOUR_UNIQUE} 
-        maxlength={7}      
+        maxlength={7}
+        error={error.upn?StringConstants.UPN_ERROR_MSG:undefined}
       />
        <InputTextField
         leftIcon={Glyphs.Phone}
-        onChangeText={(text: string) => details.contactNumber.current = text}
+        onChangeText={(text: string) => userDetail.Contact.current = text}
         placeholder={StringConstants.CONTACT_NUMBER}
         maxlength={10}
+        error={error.Contact?StringConstants.CONTACT_ERROR_MSG:undefined}
       />
     </SafeAreaContainer>
   );

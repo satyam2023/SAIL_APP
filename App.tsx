@@ -1,6 +1,13 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StatusBar, useColorScheme, LogBox, View, Platform, SafeAreaView } from "react-native";
+import {
+  StatusBar,
+  useColorScheme,
+  LogBox,
+  View,
+  Platform,
+  SafeAreaView,
+} from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import { Provider } from "react-redux";
 
@@ -19,6 +26,10 @@ import Glyphs from "assets/Glyphs";
 import StringConstants from "shared/localization";
 LogBox.ignoreAllLogs();
 
+if (__DEV__) {
+  import("./ReactoronConfig").then(() => console.log("Reactotron Configured"));
+}
+
 const App = () => {
   const scheme = useColorScheme();
   const isDarkMode = scheme === "dark";
@@ -35,11 +46,11 @@ const App = () => {
   });
   console.log(netInfo);
   React.useEffect(() => {
-    StatusBar.setBarStyle('dark-content')
-  if(isAndroid){
-    StatusBar.setBackgroundColor(Colors.sailBlue);
-  }
-  
+    StatusBar.setBarStyle("dark-content");
+    if (isAndroid) {
+      StatusBar.setBackgroundColor(Colors.sailBlue);
+    }
+
     setTimeout(() => {
       SplashScreen.hide();
     }, 2000);
@@ -48,16 +59,11 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <SafeAreaView style={{flex:0,backgroundColor:Colors.sailBlue}}/>
+        <SafeAreaView style={{ flex: 0, backgroundColor: Colors.sailBlue }} />
+        <PleaseWaitLoader />
         <Navigation />
       </PersistGate>
     </Provider>
-
-    
-
-    
-   
- 
   );
 };
 

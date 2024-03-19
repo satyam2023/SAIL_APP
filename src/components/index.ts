@@ -12,7 +12,6 @@ export {default as EnquiryButton } from "../views/enquiry/component/EnquiryButto
 export {default as HorizontalSlider } from "./HorizontalSliderTab";
 export {default as InputTextField } from "./InputTextField";
 export {default as LocateMe } from "./LocateMe";
-export {default as Product } from "../views/mainScreen/component/ProductList";
 export {default as RectangularBox } from "./RectangularBox";
 export {default as SafeAreaContainer } from "./SafeAreaContainer";
 export {default as TextWrapper } from "./TextWrapper";

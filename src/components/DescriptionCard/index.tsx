@@ -1,19 +1,25 @@
 import commonStyles from "commonStyles/CommonStyle";
 import React from "react";
-import { Image, ImageURISource,StyleSheet } from "react-native";
+import { Image, ImageURISource, StyleSheet, ViewStyle } from "react-native";
 import TextWrapper from "../TextWrapper";
 import PressableButton from "components/DeBouncePressable";
 
 interface IDescriptionCard {
   image: ImageURISource;
   description: string;
-  onPress?:()=>void
+  onPress?: (selectedValue: string) => void;
+  style?: ViewStyle;
 }
 
 const DescriptionCard = (props: IDescriptionCard) => {
   return (
-    <PressableButton style={[styles.cardContainer, commonStyles.center]}
-    onPress={props.onPress}
+    <PressableButton
+      style={[styles.cardContainer, commonStyles.center, props.style]}
+      onPress={() => {
+        {
+          props.onPress && props.onPress(props.description);
+        }
+      }}
     >
       <Image source={props.image} style={styles.img} />
       <TextWrapper
@@ -29,7 +35,7 @@ export default DescriptionCard;
 
 const styles = StyleSheet.create({
   cardContainer: {
-    width: "50%",
+    width: "45%",
     padding: 20,
   },
   img: {

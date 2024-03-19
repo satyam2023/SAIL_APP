@@ -2,6 +2,7 @@ import SafeAreaContainer from "./SafeAreaContainer";
 import CustomerBox from "./RectangularBox";
 import Glyphs from "assets/Glyphs";
 import StringConstants from "shared/localization";
+import { View } from "react-native";
 
 interface ICustomerDetails {
   CustomerData: Array<object>;
@@ -24,18 +25,18 @@ const CustomerDetails = (props: ICustomerDetails) => {
   };
 
   return (
-    <SafeAreaContainer >
+    <View >
      { !props.iSBreakeddetails && <CustomerBox
         onPress={props.onPress}
         isCustomerDetailVisible={true}
         style={{ marginBottom: 0 }}
-        leftIcon={Glyphs.Profile2userClicked}
+        leftIcon={Glyphs.multiProfile}
         heading={StringConstants.CUSTOMER_VISIT_1}
         subHeading={StringConstants.XYZ_STEELWORKS}
         isClosable
       />}
       {props.CustomerData.map(renderItem)}
-    </SafeAreaContainer>
+    </View>
   );
 };
 
