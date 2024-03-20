@@ -10,6 +10,7 @@ const APIConstants = {
   SIGNIN:'login',
   SAVE_TOKEN: "save-token",
   CMS_PAGE: "get-cms-details",
+  HOME:"get-home-screen",
 };
 
 export default APIConstants;

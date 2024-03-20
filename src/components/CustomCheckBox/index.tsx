@@ -16,7 +16,6 @@ interface ICustomSwitch {
 const CustomCheckBox = (props: ICustomSwitch) => {
   const [status, setStatus] = useState<boolean>(false);
   const handlePress = () => {
-    console.log("Switch Clicked",status);
     setStatus(!status);
     props.onPress(status);
   };
@@ -31,7 +30,8 @@ const CustomCheckBox = (props: ICustomSwitch) => {
       ]}
       
     >
-      <PressableButton>
+      <PressableButton 
+      onPress={handlePress}>
         {!props.isRectangular ? 
           <View
             style={
@@ -65,8 +65,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.sailBlue,
   },
   img: {
-    height: 10,
-    width: 10,
-    resizeMode: "contain",
+    height: 17,
+    width: 17,
+    borderWidth: 1,
+    borderColor: Colors.darkGrey,
+    resizeMode: 'contain',
   },
 });

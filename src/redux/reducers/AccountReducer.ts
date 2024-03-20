@@ -5,20 +5,14 @@ import { IBaseReducerInterface } from "./IBaseReducerInterface";
 
 const INITIAL_STATE = {
   data: {
-    user: {
-    },
+    user: {},
   },
 };
 
-interface IAccountReducer{
-  email: string;
-  user_location: string;
-  user_role: string;
-  user_role_name:string;
-}
 
 
-const accountReducer = (state = INITIAL_STATE, action: IBaseReducerInterface<IAccountReducer>) => {
+
+const accountReducer = (state = INITIAL_STATE, action:any) => {
   switch (action.type) {
     case SET_USER_DATA: {
       return {

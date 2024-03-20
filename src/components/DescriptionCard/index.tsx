@@ -3,6 +3,7 @@ import React from "react";
 import { Image, ImageURISource, StyleSheet, ViewStyle } from "react-native";
 import TextWrapper from "../TextWrapper";
 import PressableButton from "components/DeBouncePressable";
+import { WindowWidth } from "libs";
 
 interface IDescriptionCard {
   image: ImageURISource;
@@ -35,8 +36,9 @@ export default DescriptionCard;
 
 const styles = StyleSheet.create({
   cardContainer: {
-    width: "45%",
+    width:WindowWidth/2,
     padding: 20,
+   
   },
   img: {
     width: 36,

@@ -1,12 +1,7 @@
 import React, {
   forwardRef,
-  useImperativeHandle,
 } from "react";
 import CustomHeader from "../Component/CustomHeader/CustomHeader";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setThirdscreen } from '../../Redux/Slice2';
-// import { setPassword, setSignUp } from '../../Redux/Slice';
-// const sign = require('jwt-encode');
 
 
 import Glyphs from "assets/Glyphs";
@@ -14,19 +9,16 @@ import InputTextField from "components/InputTextField";
 import SafeAreaContainer from "components/SafeAreaContainer";
 import StringConstants from "shared/localization";
 
-//import DropdownList from './DropDownList';
 interface ThirdProps {
   userDetail:any;
   error:any
 }
 
-const Third = forwardRef(({ userDetail,error}: ThirdProps, ref) => {
+const Third = forwardRef(({ userDetail,error}: ThirdProps, _) => {
 
 
 
-  useImperativeHandle(ref, () => ({
-    // handleSubmit: validationcheck,
-  }));
+ 
 
   return (
     <SafeAreaContainer >

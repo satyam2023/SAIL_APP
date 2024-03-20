@@ -1,4 +1,26 @@
-import StringConstants from "shared/localization";
+import { MutableRefObject } from "react";
+
+interface Ierror{
+  upn: boolean,
+  Contact: boolean,
+  Name: boolean,
+  Email: boolean,
+  Location: boolean,
+  Role: boolean,
+  Password: boolean,
+  Confirm_Password: boolean,
+}
+
+interface IUserDetails{
+  Upn: MutableRefObject<string>,
+  Contact: MutableRefObject<string>,
+  Name: MutableRefObject<string>,
+  Email: MutableRefObject<string>,
+  Location: MutableRefObject<string>,
+  Role: MutableRefObject<string>,
+  Password: MutableRefObject<string>,
+  Confirm_Password: MutableRefObject<string>,
+}
 
 export const Regex = {
   INITIALS_REPLACE: /[^a-zA-Z- ]/g,
@@ -19,103 +41,93 @@ export const Regex = {
   SLASHNAME: /^[A-Za-z.&/() ]+(?:[ -']+[A-Za-z.&/() ]+)*$/,
 };
 
-
-export const validateUpnNumber=(uniqueNumber:string)=>{
-  if(uniqueNumber.length==0){
+ const validateUpnNumber = (uniqueNumber: string) => {
+  if (uniqueNumber.length == 0) {
     return false;
+  } else {
+    return Regex.UPN.test(uniqueNumber) ? true : false;
   }
-  else {
-    return Regex.UPN.test(uniqueNumber)?true:false
-  }
-
-
-    // if(Regex.UPN.test(uniqueNumber)){
-    //   return true;
-    // }
-    // else if(uniqueNumber.length==0){
-    //   return StringConstants.REQUIRED;
-    // }
-    // else {
-    //   StringConstants.ERROR_MESSAGE
-    // }
-
-}
-export const validateContactNumber=(contactNumber:string)=>{
-
-  if(contactNumber.length==0){
+};
+ const validateContactNumber = (contactNumber: string) => {
+  if (contactNumber.length == 0) {
     return false;
-  }
-  else{
+  } else {
     return Regex.CONTACT.test(contactNumber);
-  }
-
-  // if(Regex.CONTACT.test(contactNumber)){
-  //   return true;
-  // }
-  // else if(contactNumber.length==0){
-  //   return false
-  // }
-  // else {
-  //   StringConstants.ERROR_MESSAGE;
-  // }
-}
-
-export const validateName=(name:string)=>{
-  
-   if(name.length==0){
-    return false
-  }
-  else {
-    return Regex.NAME.test(name);
-  }
-}
-
-export const validateEmail=(email:string)=>{
-
-
-// return Regex.EMAIL.test(email)?StringConstants.EMPTY:StringConstants.ERROR_MESSAGE;
-
-  if(email.length==0){
-    return false
-  }
-  else {
-   return Regex.EMAIL.test(email);
   }
 };
 
-export const validateDropDown=(selectedValue:string)=>{
-   if(selectedValue.length==0){
+ const validateName = (name: string) => {
+  if (name.length == 0) {
     return false;
+  } else {
+    return Regex.NAME.test(name);
   }
-  else {
-   return true
-  }
-}
+};
 
-export const validatePassword=(password:string)=>{
-  if(Regex.PASSWORD.test(password)){
-   
+ const validateEmail = (email: string) => {
+  if (email.length == 0) {
+    return false;
+  } else {
+    return Regex.EMAIL.test(email);
+  }
+};
+
+ const validateDropDown = (selectedValue: string) => {
+  if (selectedValue.length == 0) {
+    return false;
+  } else {
     return true;
   }
-  else if(password.length==0){
-    return false;
-  }
-  else {
-    StringConstants.ERROR_MESSAGE;
-  }
-}
+};
 
-export const validateConfirmPassword=(password:string)=>{
-  if(Regex.PASSWORD.test(password)){
+ const validatePassword = (password: string) => {
+  if (Regex.PASSWORD.test(password)) {
     return true;
   }
-  else if(password.length==0){
-    return false;
-  }
-  else {
-    StringConstants.ERROR_MESSAGE;
-  }
-}
+  return false;
+};
 
 
+export const validateUpnAndContact = (userDetail: IUserDetails, setError: Function) => {
+  setError((prev: Ierror) => ({
+    ...prev,
+    upn: !validateUpnNumber(userDetail.Upn.current),
+  }));
+  setError((error: Ierror) => ({
+    ...error,
+    Contact: !validateContactNumber(userDetail.Contact.current),
+  }));
+};
 
+export const validateNameEmailLocation = (userDetail: IUserDetails, setError: Function) => {
+  setError((prev: Ierror) => ({
+    ...prev,
+    Name: !validateName(userDetail.Name.current),
+  }));
+  setError((prev: Ierror) => ({
+    ...prev,
+    Email: !validateEmail(userDetail.Email.current),
+  }));
+  setError((prev: Ierror) => ({
+    ...prev,
+    Location: !validateDropDown(userDetail.Location.current),
+  }));
+  setError((prev: Ierror) => ({
+    ...prev,
+    Role: !validateDropDown(userDetail.Role.current),
+  }));
+};
+
+export const validatePasswordAndCpassword = (
+  userDetail: IUserDetails,
+  setError: Function,
+) => {
+  setError((prev: Ierror) => ({
+    ...prev,
+    Password: !validatePassword(userDetail.Password.current),
+  }));
+  setError((prev: Ierror) => ({
+    ...prev,
+    Confirm_Password: !validatePassword(userDetail.Confirm_Password.current),
+  }));
+};

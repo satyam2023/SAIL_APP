@@ -18,67 +18,20 @@ import TextWrapper from "components/TextWrapper";
 import commonStyles from "commonStyles/CommonStyle";
 import SafeAreaContainer from "components/SafeAreaContainer";
 import HorizontalSlider from "components/HorizontalSliderTab";
-const VisitScreen = () => {
-  const Data = [
-    {
-      heading: StringConstants.UPCOMING,
-      number: 23,
-      backgroundColor: {
-        focus: Colors.darkMilkWhite,
-        notfocus: Colors.milkWhite,
-      },
+import { VisitHeaderData } from "@shared-constants";
 
-      textColor: {
-        notfocus: Colors.darkMilkWhite,
-        focus: Colors.milkWhite,
-      },
-    },
 
-    {
-      heading: StringConstants.PLANNED,
-      number: 23,
-      backgroundColor: {
-        focus: Colors.sailBlue,
-        notfocus: Colors.aquaHaze,
-      },
-      textColor: {
-        notfocus: Colors.sailBlue,
-        focus: Colors.white,
-      },
-    },
+interface IVisitScreen{
+  currentVisit:number,
+    setCurrentVisit:(currentVisit:number)=>void,
+    setFooterVisibility:(FooterVisibility:boolean)=>void,
+    FooterVisibility:boolean
+}
 
-    {
-      heading: StringConstants.EXECUTED,
-      number: 23,
-      backgroundColor: {
-        focus: Colors.green,
-        notfocus: Colors.tealishGreen,
-      },
-      textColor: {
-        focus: Colors.white,
-        notfocus: Colors.green,
-      },
-    },
-  ];
+const VisitScreen = ({currentVisit,setCurrentVisit,setFooterVisibility,FooterVisibility}:IVisitScreen) => {
 
-  const dispatch = useDispatch();
-  useFocusEffect(() => {
-    dispatch(BottomTabVisibility(false));
-    return () => dispatch(BottomTabVisibility(true));
-  });
-  const [currentVisit, setCurrentVisit] = useState<number>(1);
-  const [FooterVisibility, setFooterVisibility] = useState<boolean>(false);
-
-  const visitType = useSelector((state: any) => state.UIReducer.visitType);
-  useEffect(() => {
-    setCurrentVisit(visitType);
-  }, [visitType]);
-
-  const footerVisibility = (param: boolean) => {
-    setFooterVisibility(param);
-  };
   return (
-    <SafeAreaView style={{ flex: 1 ,backgroundColor:Colors.background2}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background2 }}>
       <Header topheading={StringConstants.VISITS} />
       <ScrollView
         style={{ flex: 1 }}
@@ -86,7 +39,7 @@ const VisitScreen = () => {
         showsVerticalScrollIndicator={false}
       >
         <HorizontalSlider
-          sliderData={Data}
+          sliderData={VisitHeaderData}
           currentScreen={currentVisit}
           selectedTab={(index: number) => {
             setCurrentVisit(index);
@@ -113,7 +66,7 @@ const VisitScreen = () => {
           </TouchableOpacity>
         </SafeAreaContainer>
         {currentVisit == 1 && <UpcomingVisit />}
-        {currentVisit == 2 && <Planned footerVisibility={footerVisibility} />}
+        {currentVisit == 2 && <Planned footerVisibility={(footerVisibility:boolean)=>setFooterVisibility(footerVisibility)} />}
         {currentVisit == 3 && <Executed />}
       </ScrollView>
       {currentVisit == 2 && FooterVisibility && (

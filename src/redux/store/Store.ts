@@ -15,6 +15,7 @@ import signupReducer from "redux/reducers/SignUpReducer";
 import loaderReducer from "redux/reducers/LoaderReducer";
 import updatedBaseURLReducer from "redux/reducers/UpdatedBaseURLReducer";
 import cmsReducer from "redux/reducers/CmsReducer";
+import homeReducer from "redux/reducers/HomeReducer";
 const middleware = applyMiddleware(thunk);
 
 const reducers = combineReducers({
@@ -24,7 +25,8 @@ const reducers = combineReducers({
   signUpReducer:signupReducer,
   LoaderReducer:loaderReducer,
   updatedBaseURL: updatedBaseURLReducer,
-  cmsPages:cmsReducer
+  cmsPages:cmsReducer,
+  home:homeReducer,
   
 });
 
@@ -32,7 +34,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: "@boiler",
   storage: reduxStorage,
-  whitelist: ["themeReducer"],
+  whitelist: ["userAccount","updatedURL"],
 };
 
 const rootReducer = (state:any, action:any) => {

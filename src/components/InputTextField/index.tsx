@@ -94,6 +94,7 @@ const InputTextField = ({maxlength=20,...props}: ITextField) => {
             <Image
               source={!secureText ? Glyphs.Eye : Glyphs.EyeCut}
               style={styles.rightIcon}
+              // tintColor={Colors.darkGrey}
             />
           </PressableButton>
         )}
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     height: 56,
     backgroundColor: Colors.inputBG,
     alignItems: "center",
-    paddingHorizontal: 16,
+    paddingHorizontal: 24,
     borderRadius: 33,
     marginBottom: 16,
   },

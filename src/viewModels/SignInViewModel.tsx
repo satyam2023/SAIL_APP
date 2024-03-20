@@ -43,8 +43,10 @@ const SignInViewModel = () => {
         password: signInUser.password.current,
         rememberMe: signInUser.rememberMe.current,
       }
-    // loginAPICAllingHandler(values)
-    navigate(SCREENS.TAB);
+      console.log("SignIn Clicked:::");
+    loginAPICAllingHandler(values)
+  
+    // navigate(SCREENS.TAB);
   };
 
   return (

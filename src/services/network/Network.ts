@@ -5,8 +5,8 @@ import { IApiResponse } from "models/IApiResponse";
 import APIConstants from "core/ApiConstants";
 import { store } from "redux/store/Store";
 
-
 const token = () => {
+  // return  `Bearer ${store.getState()?.userAccount.data.data.token.access_token}`;
   return "";
 };
 const instance: AxiosInstance = axios.create({
@@ -50,6 +50,7 @@ instance.interceptors.response.use(
 );
 export function sendGetRequest<T>(url: string) {
   instance.defaults.headers.common.Authorization = token();
+  console.log("Token:::",token());
   const updatedUrl = baseURL() + url;
   return instance
     .get(updatedUrl, globalConfig)

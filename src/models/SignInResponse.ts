@@ -12,6 +12,7 @@ export interface SignInResponse {
     email: string;
     user_location: string;
     user_role: number;
+    user_role_name:string;
     password: string;
     c_password: string;
     autologin: string;

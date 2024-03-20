@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, View } from "react-native";
+import { FlatList, SafeAreaView, View } from "react-native";
 import InputTextField from "components/InputTextField";
 import { ITextFieldData, TextFieldData } from "./mockData/TextFieldData";
 import styles from "./Style/Style";
@@ -12,16 +12,25 @@ import TextWrapper from "components/TextWrapper";
 import fonts from "@fonts";
 import commonStyles from "commonStyles/CommonStyle";
 import CustomButton from "components/CustomButton";
-const SettingScreen = () => {
-  function renderItem(item: ITextFieldData) {
+import { SignInResponse } from "models/SignInResponse";
+import { ExtarctTwoLetterName } from "helper/ExtractFirstandLast";
+
+interface ISetting {
+  userData: SignInResponse;
+}
+
+const SettingScreen = ({ userData }: ISetting) => {
+  const twoLettername = ExtarctTwoLetterName(userData.user.user_name);
+
+
+  function renderItem(item: ITextFieldData, index: number) {
     return (
       <InputTextField
-        key={item.id}
         onChangeText={() => {}}
         containerStyle={{ backgroundColor: Colors.lightGray }}
         placeholder={item.placeholder}
         maxlength={20}
-        defaultValue={item.value}
+        defaultValue={userData.user.user_role_name}
       />
     );
   }
@@ -36,16 +45,16 @@ const SettingScreen = () => {
               fontFamily={fonts.type.medium}
               style={{ fontSize: 20 }}
             >
-              {StringConstants.SV}
+              {twoLettername}
             </TextWrapper>
           </View>
           <View style={styles.infoContainer}>
             <View style={{ marginLeft: 16 }}>
               <TextWrapper style={commonStyles.font14RegularBlack}>
-                {StringConstants.SARANSH}
+                {userData.user.user_name}
               </TextWrapper>
               <TextWrapper style={styles.userPost}>
-                {StringConstants.BRANCH_MANAGER}
+                {userData.user.user_role_name}
               </TextWrapper>
             </View>
             <CustomButton
@@ -57,7 +66,11 @@ const SettingScreen = () => {
             />
           </View>
         </View>
-        {TextFieldData.map(renderItem)}
+        <FlatList
+          data={TextFieldData}
+          renderItem={({ item, index }) => renderItem(item, index)}
+          scrollEnabled={false}
+        />
       </ScrollView>
     </SafeAreaView>
   );

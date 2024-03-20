@@ -27,7 +27,7 @@ const CMSPagesScreen = ({
   cmsPageData,
 }: ICmsPageScreen) => {
   function renderItem(item: CMSRoot, _: number) {
-    console.log("CMS PAGE::::",item);
+    
     return (
       <View style={styles.container}>
         <TextWrapper style={commonStyles.font14MediumBlackpearl}>

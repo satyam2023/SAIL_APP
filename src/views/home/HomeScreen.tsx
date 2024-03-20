@@ -12,7 +12,12 @@ import { navigate } from "@navigation";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import Product from "./component/ProductList";
-const HomeScreen = () => {
+import { SignInResponse } from "models/SignInResponse";
+interface IHomeScreen{
+  userData:SignInResponse
+}
+
+const HomeScreen = ({userData}:IHomeScreen) => {
 
   return (
     <ScrollView style={styles.container}
@@ -21,7 +26,9 @@ const HomeScreen = () => {
       <View style={styles.topContainer}>
         <TextWrapper style={styles.welcometext}>
           {StringConstants.WELCOME} 
-          {StringConstants.SARANSH}
+          {userData.user.user_name }
+          {"\n"}
+         { `(${userData.user.user_role_name})`}
         </TextWrapper>
 
         <View style={{ flexDirection: "row" }}>
@@ -77,7 +84,7 @@ const HomeScreen = () => {
           textColor={Colors.green}
         />
       </View>
-      <View style={{ position: "relative", bottom: 70 }}>
+      <View style={{ position: "relative", bottom: 60 }}>
         <Product
           category={StringConstants.PRODUCT_CATALOGUE}
           imagefirst={Glyphs.Steel}
@@ -86,6 +93,9 @@ const HomeScreen = () => {
           imagesecondinfo={StringConstants.COLD_ROLLED}
           text={StringConstants.SEE_ALL}
         />
+        {/* <HorizontalScrollableList/>
+        <HorizontalScrollableList/>
+        <HorizontalScrollableList/> */}
         <Product
           category={StringConstants.CUSTOMER_INFORMATION}
           imagefirst={Glyphs.Customer}

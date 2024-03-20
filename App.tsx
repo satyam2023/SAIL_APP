@@ -24,6 +24,7 @@ import HorizontalSlider from "components/HorizontalSliderTab";
 import DescriptionCard from "components/DescriptionCard";
 import Glyphs from "assets/Glyphs";
 import StringConstants from "shared/localization";
+import HorizontalScrollableList from "components/HorizontalScrollableList";
 LogBox.ignoreAllLogs();
 
 if (__DEV__) {
@@ -64,6 +65,7 @@ const App = () => {
         <Navigation />
       </PersistGate>
     </Provider>
+   
   );
 };
 

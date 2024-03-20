@@ -8,12 +8,12 @@ import { useDispatch } from "react-redux";
 
 const CMSViewModel = () => {
   const [pages, setpages] = useState<string>(StringConstants.CMS);
- const dispatch=useDispatch();
-  const cmsPageData=useSelector((state:any)=>state.cmsPages.data).data;
- 
-  function pagesRenderingController(pageType:string) {
+  const dispatch = useDispatch();
+  const cmsPageData = useSelector((state: any) => state.cmsPages.data).data;
+
+  function pagesRenderingController(pageType: string) {
     switch (pageType) {
-       case StringConstants.CMS:
+      case StringConstants.CMS:
         setpages(StringConstants.CMS);
         break;
       case StringConstants.ABOUT_US:
@@ -32,39 +32,28 @@ const CMSViewModel = () => {
         setpages(StringConstants.TERMS_AND_CONDITIONS);
         break;
     }
-  };
+  }
   useEffect(() => {
     const cmsPage = async () => {
       dispatch(setLoaderVisibility(true));
       try {
         await getCMSPage(dispatch);
       } catch (error) {
-        
+      } finally {
+        dispatch(setLoaderVisibility(false));
       }
-      finally{
-        
-      }
-      dispatch(setLoaderVisibility(false));
     };
     cmsPage();
   }, []);
 
-
   return (
-    
-      <CMSPagesScreen
-
+    <CMSPagesScreen
       {...{
-
         pagesRenderingController,
         pages,
-        cmsPageData
+        cmsPageData,
       }}
-     
-      />
- 
+    />
   );
 };
 export default CMSViewModel;
-
-

@@ -4,18 +4,16 @@ import { signupAction } from "redux/actions/SignUpAction";
 import { IApiResponse } from "models/IApiResponse";
 import { setLoaderVisibility } from "redux/actions/LoaderAction";
 import {
-  validateContactNumber,
-  validateDropDown,
-  validateEmail,
-  validateName,
-  validatePassword,
-  validateUpnNumber,
+  validateNameEmailLocation,
+  validatePasswordAndCpassword,
+  validateUpnAndContact,
 } from "helper/ValidationRegex";
 import { ISignupBody } from "models/SignUpResponse";
 import SignUpScreen from "views/signup/SignUpScreen";
+import { saveUserdata } from "redux/actions/AccountAction";
 import { navigate } from "@navigation";
+import { Screen } from "react-native-screens";
 import { SCREENS } from "@shared-constants";
-
 
 const SignUpScreenViewMOdel = () => {
   const [CurrentScreen, setCurrentScreen] = useState(1);
@@ -39,7 +37,7 @@ const SignUpScreenViewMOdel = () => {
     Password: useRef<string>(""),
     Confirm_Password: useRef<string>(""),
   };
-  
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (
@@ -61,9 +59,10 @@ const SignUpScreenViewMOdel = () => {
       !error.Password &&
       !error.Confirm_Password &&
       userDetail.Password.current == userDetail.Confirm_Password.current &&
-      userDetail.Password.current.length > 0
+      userDetail.Password.current.length > 0 &&
+      CurrentScreen == 3
     ) {
-      navigate(SCREENS.SIGNIN);
+      setCurrentScreen(1);
       signup();
     }
   }, [error]);
@@ -84,11 +83,10 @@ const SignUpScreenViewMOdel = () => {
 
     try {
       const res: IApiResponse<ISignupBody> = await signupAction(body);
-      console.log("SignUp Result ::::", res);
       if (res.isSuccess) {
-        console.log("signUp is successful::", res);
+        dispatch(saveUserdata(res.data));
+        navigate(SCREENS.TAB);
       } else {
-        console.log("signUp is Notsuccessful::", res);
       }
     } catch (error) {
       console.error(error);
@@ -103,42 +101,11 @@ const SignUpScreenViewMOdel = () => {
 
   const Submit = () => {
     if (CurrentScreen == 1) {
-      setError((prev) => ({
-        ...prev,
-        upn: !validateUpnNumber(userDetail.Upn.current),
-      }));
-      setError((prev) => ({
-        ...prev,
-        Contact: !validateContactNumber(userDetail.Contact.current),
-      }));
+      validateUpnAndContact(userDetail, setError);
     } else if (CurrentScreen == 2) {
-      setError((prev) => ({
-        ...prev,
-        Name: !validateName(userDetail.Name.current),
-      }));
-      setError((prev) => ({
-        ...prev,
-        Email: !validateEmail(userDetail.Email.current),
-      }));
-      setError((prev) => ({
-        ...prev,
-        Location: !validateDropDown(userDetail.Location.current),
-      }));
-      setError((prev) => ({
-        ...prev,
-        Role: !validateDropDown(userDetail.Role.current),
-      }));
+      validateNameEmailLocation(userDetail, setError);
     } else if (CurrentScreen == 3) {
-      setError((prev) => ({
-        ...prev,
-        Password: !validatePassword(userDetail.Password.current),
-      }));
-      setError((prev) => ({
-        ...prev,
-        Confirm_Password: !validatePassword(
-          userDetail.Confirm_Password.current,
-        ),
-      }));
+      validatePasswordAndCpassword(userDetail, setError);
     }
   };
 

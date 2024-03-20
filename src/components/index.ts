@@ -18,6 +18,7 @@ export {default as TextWrapper } from "./TextWrapper";
 export {default as UploadDocumnet } from "./UploadDocument";
 export {default as CustomerDetails } from "./CustomerDetails";
 export {default as VisitCard } from "../views/visit/component/VisitCard/VisitCard";
+export {default as HorizontalScrollableList} from "./HorizontalScrollableList";
 
 
 

@@ -195,3 +195,45 @@ export const BottomModalTab = [
     image: Glyphs.CreateVisit,
   },
 ];
+
+export const VisitHeaderData = [
+  {
+    heading: StringConstants.UPCOMING,
+    number: 23,
+    backgroundColor: {
+      focus: Colors.darkMilkWhite,
+      notfocus: Colors.milkWhite,
+    },
+
+    textColor: {
+      notfocus: Colors.darkMilkWhite,
+      focus: Colors.milkWhite,
+    },
+  },
+
+  {
+    heading: StringConstants.PLANNED,
+    number: 23,
+    backgroundColor: {
+      focus: Colors.sailBlue,
+      notfocus: Colors.aquaHaze,
+    },
+    textColor: {
+      notfocus: Colors.sailBlue,
+      focus: Colors.white,
+    },
+  },
+
+  {
+    heading: StringConstants.EXECUTED,
+    number: 23,
+    backgroundColor: {
+      focus: Colors.green,
+      notfocus: Colors.tealishGreen,
+    },
+    textColor: {
+      focus: Colors.white,
+      notfocus: Colors.green,
+    },
+  },
+];

@@ -7,7 +7,7 @@ import StringConstants from "shared/localization";
 import Glyphs from "assets/Glyphs";
 
 interface PlannedProps {
-  footerVisibility: Function;
+  footerVisibility: (footerVisibility: boolean) => void;
 }
 
 const Planned = ({ footerVisibility }: PlannedProps) => {
@@ -15,20 +15,34 @@ const Planned = ({ footerVisibility }: PlannedProps) => {
   useEffect(() => {
     footerVisibility(customerDetails);
   }, [customerDetails]);
-  const handleCustomerClick=()=>setCustomerDetails(!customerDetails);
+  const handleCustomerClick = () => setCustomerDetails(!customerDetails);
 
   return (
-    <ScrollView style={{ paddingHorizontal: 20,paddingBottom:'25%' }}>
+    <ScrollView style={{ paddingHorizontal: 20, paddingBottom: "25%" }}>
       {!customerDetails ? (
         <>
-          <CustomerBox onPress={handleCustomerClick} leftIcon={Glyphs.Profile2userClicked}  heading={StringConstants.CUSTOMER_VISIT_1} subHeading={StringConstants.XYZ_STEELWORKS}/>
-          <CustomerBox onPress={handleCustomerClick} leftIcon={Glyphs.Profile2userClicked}  heading={StringConstants.CUSTOMER_VISIT_1} subHeading={StringConstants.XYZ_STEELWORKS}/>
-          <CustomerBox onPress={handleCustomerClick} leftIcon={Glyphs.Profile2userClicked}  heading={StringConstants.CUSTOMER_VISIT_1} subHeading={StringConstants.XYZ_STEELWORKS}/>
+          <CustomerBox
+            onPress={handleCustomerClick}
+            leftIcon={Glyphs.Profile2userClicked}
+            heading={StringConstants.CUSTOMER_VISIT_1}
+            subHeading={StringConstants.XYZ_STEELWORKS}
+          />
+          <CustomerBox
+            onPress={handleCustomerClick}
+            leftIcon={Glyphs.Profile2userClicked}
+            heading={StringConstants.CUSTOMER_VISIT_1}
+            subHeading={StringConstants.XYZ_STEELWORKS}
+          />
+          <CustomerBox
+            onPress={handleCustomerClick}
+            leftIcon={Glyphs.Profile2userClicked}
+            heading={StringConstants.CUSTOMER_VISIT_1}
+            subHeading={StringConstants.XYZ_STEELWORKS}
+          />
         </>
       ) : (
         <>
-         <CustomerDetails CustomerData={Data} onPress={handleCustomerClick}/>
-         
+          <CustomerDetails CustomerData={Data} onPress={handleCustomerClick} />
         </>
       )}
     </ScrollView>
