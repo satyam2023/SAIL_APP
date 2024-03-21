@@ -13,9 +13,13 @@ export function ExtarctTwoLetterName(name: string) {
 }
 
 export const convertToArray=(userData:SignInResponse)=>{
-  let arr;
-  var result = Object.values(userData.user)
-  console.log("Result::",result);
-    
-
+  let arr=[];
+  arr.length=6;
+  arr[0]=userData?.user?.user_upn;
+  arr[1]=userData?.user?.user_name;
+  arr[2]=userData?.user?.user_number;
+  arr[3]=userData?.user?.email;
+  arr[4]=userData?.user?.user_location;
+  arr[5]=userData?.user?.user_role_name;
+    return arr;
 }

@@ -13,7 +13,6 @@ const CustomerCommon= ({
   lowertext,
   imagepath,
 }: CommonProps) => {
-  //console.log("type of image",typeof(imagepath))
   return (
     <View
       style={{

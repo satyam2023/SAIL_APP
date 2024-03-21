@@ -25,7 +25,7 @@ interface ICustomToggleBox {
 }
 
 const CustomToggleBox = (props: ICustomToggleBox) => {
-  console.log("itm:::",props.heading);
+ 
   
   const [isToggleContentVisible, setIsToggleCOntentVisible] =
     useState<boolean>(false);

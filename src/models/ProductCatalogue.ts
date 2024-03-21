@@ -5,5 +5,6 @@ export interface IProductCatalogue {
     img_url: string;
     created_at: string;
     updated_at: string;
+    
   }
   

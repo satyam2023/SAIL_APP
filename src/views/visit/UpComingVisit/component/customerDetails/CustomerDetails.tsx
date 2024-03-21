@@ -18,7 +18,7 @@ interface CustomerProps {
 }
 const CustomerDetails = ({ handleCustomerClick }: CustomerProps) => {
   const renderItem = (item: any) => {
-    console.log("item details::", item.item);
+  
     return (
       <CustomerCommon
         uppertext={item.item.uppertext}

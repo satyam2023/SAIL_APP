@@ -1,18 +1,25 @@
 import commonStyles from "commonStyles/CommonStyle";
 import React from "react";
-import { Image, ImageURISource, StyleSheet, ViewStyle } from "react-native";
+import {
+  Image,
+  ImageURISource,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 import TextWrapper from "../TextWrapper";
 import PressableButton from "components/DeBouncePressable";
-import { WindowWidth } from "libs";
+import { WindowHeight, WindowWidth } from "libs";
 
 interface IDescriptionCard {
-  image: ImageURISource;
+  image?: ImageURISource;
   description: string;
   onPress?: (selectedValue: string) => void;
   style?: ViewStyle;
+  imageUri?: string;
 }
 
 const DescriptionCard = (props: IDescriptionCard) => {
+  console.log("ImageURl:::", typeof props.imageUri);
   return (
     <PressableButton
       style={[styles.cardContainer, commonStyles.center, props.style]}
@@ -22,7 +29,10 @@ const DescriptionCard = (props: IDescriptionCard) => {
         }
       }}
     >
-      <Image source={props.image} style={styles.img} />
+      {props?.image && <Image source={props?.image} style={styles.img} />}
+      {props?.imageUri && (
+        <Image source={{ uri: props.imageUri }} style={styles.img} />
+      )}
       <TextWrapper
         style={[commonStyles.font14MediumBlackpearl, { textAlign: "center" }]}
       >
@@ -36,9 +46,9 @@ export default DescriptionCard;
 
 const styles = StyleSheet.create({
   cardContainer: {
-    width:WindowWidth/2,
+    width: WindowWidth / 2,
     padding: 20,
-   
+    height: WindowHeight / 5.5,
   },
   img: {
     width: 36,

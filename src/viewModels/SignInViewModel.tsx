@@ -6,12 +6,13 @@ import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { userSignIn } from "redux/actions/AccountAction";
 import { setLoaderVisibility } from "redux/actions/LoaderAction";
+import { setRememberMe } from "shared/constants/accountService";
 import SignInScreen from "views/signIn/SignIn";
 const SignInViewModel = () => {
   const signInUser = {
     upn: useRef<string>(""),
     password: useRef<string>(""),
-    rememberMe: useRef<string>(""),
+    rememberMe: useRef<boolean>(true),
   };
 
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const SignInViewModel = () => {
         values,
       );
       if (res.isSuccess) {
+        setRememberMe(signInUser?.rememberMe?.current)
         navigate(SCREENS.TAB)
       } 
       else {
@@ -41,12 +43,11 @@ const SignInViewModel = () => {
     const values={
         upn: signInUser.upn.current,
         password: signInUser.password.current,
-        rememberMe: signInUser.rememberMe.current,
       }
-      console.log("SignIn Clicked:::");
+    
     loginAPICAllingHandler(values)
   
-    // navigate(SCREENS.TAB);
+   
   };
 
   return (

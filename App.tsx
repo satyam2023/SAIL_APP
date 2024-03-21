@@ -17,14 +17,8 @@ import { persistor, store } from "redux/store/Store";
 import { PersistGate } from "redux-persist/integration/react";
 import { isAndroid } from "libs";
 import StatusCode from "core/StatusCode";
-import OOPS from "views/emptyState/OOPS";
 import PleaseWaitLoader from "views/emptyState/PleaseWaitLoader";
 import { Colors } from "commonStyles/RNColor.style";
-import HorizontalSlider from "components/HorizontalSliderTab";
-import DescriptionCard from "components/DescriptionCard";
-import Glyphs from "assets/Glyphs";
-import StringConstants from "shared/localization";
-import HorizontalScrollableList from "components/HorizontalScrollableList";
 LogBox.ignoreAllLogs();
 
 if (__DEV__) {
@@ -46,12 +40,14 @@ const App = () => {
     useNativeReachability: false,
   });
   console.log(netInfo);
+
+
   React.useEffect(() => {
+
     StatusBar.setBarStyle("dark-content");
     if (isAndroid) {
       StatusBar.setBackgroundColor(Colors.sailBlue);
     }
-
     setTimeout(() => {
       SplashScreen.hide();
     }, 2000);

@@ -6,7 +6,6 @@ const INITIAL_STATE={
 
 
 const cmsReducer=(state=INITIAL_STATE,action:any)=>{
-console.log("CMS REducer:::",action.payload)
     switch (action.type) {
         case SET_CMS_PAGE: {
           return {

@@ -11,6 +11,10 @@ const APIConstants = {
   SAVE_TOKEN: "save-token",
   CMS_PAGE: "get-cms-details",
   HOME:"get-home-screen",
+  LOGOUT:"logout",
+  UPCOMING_VISITS: "upcoming-visit",
+  PLANNED_VISITS: "planned-visit",
+  EXECUTED_VISITS: "executed-visit"
 };
 
 export default APIConstants;

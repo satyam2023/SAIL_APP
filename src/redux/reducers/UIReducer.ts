@@ -48,14 +48,14 @@ const UIReducer = (
       };
     }
     case COMPEITITOR_BUTTON_TYPE: {
-      console.log("inside Compeititor",action.payload);
+     
       return {
         ...state,
         CompetitorButtonStatus:action.payload
       };
     }
     case PROFILE_BUTTON_TYPE: {
-      console.log("inside Compeititor",action.payload);
+     ;
       return {
         ...state,
         CustomerProfileButton:action.payload

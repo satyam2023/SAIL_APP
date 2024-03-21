@@ -53,7 +53,7 @@ const FilterData: React.FC<FilterProps> = ({}: FilterProps) => {
   const ModalOpeningStatus = useSelector(
     (state: any) => state.button.FilterModalStatus,
   );
-  console.log("Modal opening Status::", ModalOpeningStatus);
+
 
   return (
     <Modal visible={ModalOpeningStatus} transparent={true}>

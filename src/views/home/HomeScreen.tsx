@@ -4,31 +4,36 @@ import styles from "./Style/Style";
 import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native-gesture-handler";
 import VisitCard from "views/visit/component/VisitCard/VisitCard";
-import {
-  Colors,
-} from "commonStyles/RNColor.style";
-import { SCREENS } from "@shared-constants";
+import { Colors } from "commonStyles/RNColor.style";
+import { CustomerInformation, SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import Product from "./component/ProductList";
 import { SignInResponse } from "models/SignInResponse";
-interface IHomeScreen{
-  userData:SignInResponse
+import { ExtarctTwoLetterName } from "helper/ExtractFirstandLast";
+import { HomeResponse } from "models/HomeResponse";
+import { HorizontalScrollableList } from "components";
+interface IHomeScreen {
+  userData: SignInResponse;
+  homeScreenData: HomeResponse;
+  handleListClick: () => void;
 }
 
-const HomeScreen = ({userData}:IHomeScreen) => {
-
+const HomeScreen = ({
+  userData,
+  homeScreenData,
+  handleListClick,
+}: IHomeScreen) => {
+  const twolettername = ExtarctTwoLetterName(userData.user.user_name);
   return (
-    <ScrollView style={styles.container}
-    showsVerticalScrollIndicator={false}
-    >
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.topContainer}>
         <TextWrapper style={styles.welcometext}>
-          {StringConstants.WELCOME} 
-          {userData.user.user_name }
+          {StringConstants.WELCOME}
+          {userData.user.user_name}
           {"\n"}
-         { `(${userData.user.user_role_name})`}
+          {`(${userData.user.user_role_name})`}
         </TextWrapper>
 
         <View style={{ flexDirection: "row" }}>
@@ -46,7 +51,7 @@ const HomeScreen = ({userData}:IHomeScreen) => {
           >
             <Image
               source={Glyphs.Notification}
-              style={[styles.img,{marginLeft:16}]}
+              style={[styles.img, { marginLeft: 16 }]}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -55,7 +60,9 @@ const HomeScreen = ({userData}:IHomeScreen) => {
             }}
           >
             <View style={styles.circle}>
-              <TextWrapper style={styles.circleTxt}>{StringConstants.SV}</TextWrapper>
+              <TextWrapper style={styles.circleTxt}>
+                {twolettername}
+              </TextWrapper>
             </View>
           </TouchableOpacity>
         </View>
@@ -63,21 +70,21 @@ const HomeScreen = ({userData}:IHomeScreen) => {
 
       <View style={styles.visitContainer}>
         <VisitCard
-          count={11}
+          count={homeScreenData?.AllVisttsCount?.upComingVisitCount}
           title={StringConstants.UPCOMING_VISIT}
           image={Glyphs.Visit}
           backgroundcolor={Colors.whitegreenish}
           textColor={Colors.sailBlue}
         />
         <VisitCard
-          count={12}
+          count={homeScreenData?.AllVisttsCount?.plannedVisitCounts}
           title={StringConstants.PLANNED_VISIT}
           image={Glyphs.Planned}
           backgroundcolor={Colors.aquaHaze}
           textColor={Colors.sailBlue}
         />
         <VisitCard
-          count={26}
+          count={homeScreenData?.AllVisttsCount?.executedVisitCounts}
           title={StringConstants.EXECUTED_VISIT}
           image={Glyphs.Executed}
           backgroundcolor={Colors.tealishGreen}
@@ -85,17 +92,13 @@ const HomeScreen = ({userData}:IHomeScreen) => {
         />
       </View>
       <View style={{ position: "relative", bottom: 60 }}>
-        <Product
-          category={StringConstants.PRODUCT_CATALOGUE}
-          imagefirst={Glyphs.Steel}
-          imagesecond={Glyphs.Rolled}
-          imagefirstinfo={StringConstants.STAINLESS}
-          imagesecondinfo={StringConstants.COLD_ROLLED}
-          text={StringConstants.SEE_ALL}
+        <HorizontalScrollableList
+          Data={homeScreenData?.ProductData}
+          onPress={() => {}}
+          heading={StringConstants.PRODUCT_CATALOGUE}
+          subHeading={StringConstants.VIEW_ALL}
         />
-        {/* <HorizontalScrollableList/>
-        <HorizontalScrollableList/>
-        <HorizontalScrollableList/> */}
+        
         <Product
           category={StringConstants.CUSTOMER_INFORMATION}
           imagefirst={Glyphs.Customer}

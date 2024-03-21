@@ -27,7 +27,6 @@ const CustomFooter = ({ CurrentScreen, setScreen, Submit }: Footerprops) => {
               }
               onPress={() => {
                 setScreen(CurrentScreen - 1);
-                console.log("back button clicked::");
               }}
             >
               <Image style={styles.imgArrow} source={Glyphs.Arrow} />

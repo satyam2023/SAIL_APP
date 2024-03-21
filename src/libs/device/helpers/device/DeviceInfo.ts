@@ -31,7 +31,7 @@ const vw = ScreenWidth / 100;
 const vmin = Math.min(vh, vw) || vh;
 const vmax = Math.max(vh, vw) || vw;
 
-console.log("Vertical Scale",vw);
+
 
 
 export {

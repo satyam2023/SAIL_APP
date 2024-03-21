@@ -1,9 +1,8 @@
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import Glyphs from "assets/Glyphs";
-import { goBack, navigate } from "@navigation";
+import { goBack } from "@navigation";
 import TextWrapper from "components/TextWrapper";
-import { SCREENS } from "@shared-constants";
 import StringConstants from "shared/localization";
 import fonts from "@fonts";
 import { Colors } from "commonStyles/RNColor.style";
@@ -12,7 +11,8 @@ import { PressableButton } from "components";
 interface HeaderProps {
   topheading: string;
   isLogoutButton?: boolean;
-  onPress?: () => void | undefined;
+  onPress?: () => void;
+  rightButtonPress?: () => void;
 }
 const Header = (props: HeaderProps) => {
   return (
@@ -33,15 +33,13 @@ const Header = (props: HeaderProps) => {
 
       {props?.isLogoutButton && (
         <View style={{ flexDirection: "row" }}>
-          <Image source={Glyphs.Logout}  style={styles.logoutBtn}/>
+          <Image source={Glyphs.Logout} style={styles.logoutBtn} />
           <TouchableOpacity
             onPress={() => {
-              navigate(SCREENS.SIGNIN);
+              if (props.rightButtonPress) props.rightButtonPress();
             }}
           >
-            <TextWrapper
-              style={styles.headingContent}
-            >
+            <TextWrapper style={styles.headingContent}>
               {StringConstants.LOGOUT}
             </TextWrapper>
           </TouchableOpacity>
@@ -67,8 +65,8 @@ const styles = StyleSheet.create({
     width: 9,
     height: 15,
     resizeMode: "contain",
-    tintColor:Colors.white,
-    transform:[{rotate:'90deg'}]
+    tintColor: Colors.white,
+    transform: [{ rotate: "90deg" }],
   },
   headingContent: {
     color: Colors.white,
@@ -76,9 +74,9 @@ const styles = StyleSheet.create({
     fontFamily: fonts.type.bold,
     fontSize: 16,
   },
-  logoutBtn:{
-    height:20,
-    width:20,
-    resizeMode:'contain'
-  }
+  logoutBtn: {
+    height: 20,
+    width: 20,
+    resizeMode: "contain",
+  },
 });

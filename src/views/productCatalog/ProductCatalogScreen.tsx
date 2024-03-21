@@ -7,9 +7,14 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 import { SafeAreaView, View } from "react-native";
 import { Header, InputTextField } from "components";
+import { IProductCatalogue } from "models/ProductCatalogue";
+
+interface IProductScreen{
+  productData:IProductCatalogue[]
+}
 
 
-const ProductCatalogScreen = () => {
+const ProductCatalogScreen = (props:IProductScreen) => {
   const [qrStatus, setQrStatus] = useState<boolean>(false);
   const [dataToSend, setDataToSend] = useState("");
   const setQr = (param: boolean) => {
@@ -37,7 +42,7 @@ const ProductCatalogScreen = () => {
             containerStyle={{ backgroundColor: Colors.white, marginTop: 16 }}
             onRighIconPress={SearchClicked}
           />
-          <ProductCard setQr={setQr} searchData={dataToSend} ref={ProductRef} />
+          <ProductCard setQr={setQr} searchData={dataToSend} ref={ProductRef} productData={props.productData} />
         </View>
       ) : (
         <QR />

@@ -6,8 +6,9 @@ import APIConstants from "core/ApiConstants";
 import { store } from "redux/store/Store";
 
 const token = () => {
-  // return  `Bearer ${store.getState()?.userAccount.data.data.token.access_token}`;
-  return "";
+
+  return  `Bearer ${store.getState()?.userAccount?.data?.data?.tokens?.access_token}`;
+
 };
 const instance: AxiosInstance = axios.create({
   baseURL: APIConstants.BaseURL,
@@ -49,8 +50,8 @@ instance.interceptors.response.use(
   },
 );
 export function sendGetRequest<T>(url: string) {
+  console.log("token====>",token())
   instance.defaults.headers.common.Authorization = token();
-  console.log("Token:::",token());
   const updatedUrl = baseURL() + url;
   return instance
     .get(updatedUrl, globalConfig)
@@ -69,8 +70,14 @@ export function sendGetRequest<T>(url: string) {
 
 export function sendPostRequest<T>(url: string, body: any): any {
   const updatedUrl=baseURL()+url;
-  console.log("Updated URL::",updatedUrl);
+
+  console.log("updatedUrl====>",updatedUrl)
+  console.log("token====>",token())
+  console.log("token====>",body)
+ 
   instance.defaults.headers.common.Authorization = token();
+
+  
   return instance
     .post(updatedUrl, body, globalConfig)
     .then((response: any) => {

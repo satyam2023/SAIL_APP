@@ -7,19 +7,34 @@ import { fetchHomeData } from "redux/actions/HomeAction";
 import { useDispatch } from "react-redux";
 import { IApiResponse } from "models/IApiResponse";
 import { HomeResponse } from "models/HomeResponse";
+import { setLoaderVisibility } from "redux/actions/LoaderAction";
+import { RootState } from "redux/store/Store";
 
 const HomeScreenViewModel = () => {
   const dispatch = useDispatch();
-  let userData = useSelector((state: any) => state.userAccount.data.data);
-  useEffect(handleHomeApiCall, []);
+  const userData = useSelector(
+    (state: RootState) => state.userAccount.data.data,
+  );
+  const homeScreenData = useSelector(
+    (state: RootState) => state?.home?.data?.data,
+  );
+
+  const handleListClick=()=>{
+
+  }
+
+  useEffect(() => handleHomeApiCall(), []);
 
   function handleHomeApiCall() {
     const fetchHome = async () => {
+      dispatch(setLoaderVisibility(true));
       try {
         const res: IApiResponse<HomeResponse> = await fetchHomeData(dispatch);
-        console.log("Response in HomeDataAPI::::", res);
+        if (res?.isSuccess) {
+        }
       } catch (error) {
       } finally {
+        dispatch(setLoaderVisibility(false));
       }
     };
 
@@ -31,6 +46,8 @@ const HomeScreenViewModel = () => {
       <HomeScreen
         {...{
           userData,
+          homeScreenData,
+          handleListClick,
         }}
       />
     </SafeAreaView>
@@ -38,7 +55,3 @@ const HomeScreenViewModel = () => {
 };
 
 export default HomeScreenViewModel;
-
-function useFocusEffect(handleHomeApiCall: () => void, arg1: never[]) {
-  throw new Error("Function not implemented.");
-}

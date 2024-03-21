@@ -13,7 +13,7 @@ import { TextWrapper } from "components";
 
 const Privacy = ({ cmsPageData,pagesRenderingController }: ICmsProps) => {
   const filterData=FilterContent(cmsPageData as [],3);
-  console.log("filtered Data inside Privacy::::::",filterData);
+
   return (
     <ScrollView style={{ backgroundColor: Colors.background2,  }}>
       <SafeAreaView>

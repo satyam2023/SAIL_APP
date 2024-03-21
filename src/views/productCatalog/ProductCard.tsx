@@ -7,14 +7,17 @@ import {
 } from "react-native";
 import styles from "./style/style";
 import Glyphs from "assets/Glyphs";
-import { IProductData, ProductData } from "./mockData/Data";
+import {  ProductData } from "./mockData/Data";
 import StringConstants from "shared/localization";
 import TextWrapper from "components/TextWrapper";
+import { IProductCatalogue } from "models/ProductCatalogue";
+import { Colors } from "commonStyles/RNColor.style";
 interface CardProps {
   setQr: (arg: boolean) => void;
   searchData: string;
+  productData:IProductCatalogue[];
 }
-const ProductCard = forwardRef(({ setQr, searchData }: CardProps, ref: any) => {
+const ProductCard = forwardRef(({ setQr, searchData,productData }: CardProps, ref: any) => {
   const [searchResult, setSearchResult] = useState<boolean>(false);
   function handleSearch() {
     ProductData.filter((data) => {
@@ -27,14 +30,14 @@ const ProductCard = forwardRef(({ setQr, searchData }: CardProps, ref: any) => {
     handleClicked: handleSearch,
   }));
 
-  function renderProductList(item:IProductData,_:number) {
+  function renderProductList(item:IProductCatalogue,_:number) {
     return (
       <View style={styles.card}>
         <Image
-          source={item.image}
+          source={{uri:item.img_url}}
           style={styles.productImage}
         />
-        <TextWrapper style={styles.txt}>{item.heading}</TextWrapper>
+        <TextWrapper style={styles.txt}>{item.name}</TextWrapper>
         <TextWrapper style={styles.dwd}>
           {StringConstants.DOWNLOAD_CATALOGUE}
         </TextWrapper>
@@ -55,12 +58,12 @@ const ProductCard = forwardRef(({ setQr, searchData }: CardProps, ref: any) => {
     <>
       {!searchResult ? (
         <FlatList
-          data={ProductData}
+          data={productData}
           renderItem={({item,index})=>renderProductList(item,index)}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           columnWrapperStyle={{ justifyContent: "space-between" }}
-          style={{ marginBottom: 20, flex: 1 }}
+          style={{ marginBottom: 15, flex: 1 ,backgroundColor:Colors.transparent}}
         />
       ) : (
         <View style={styles.card}>

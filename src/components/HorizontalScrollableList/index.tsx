@@ -1,57 +1,26 @@
-import Glyphs from "assets/Glyphs";
 import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
 import DescriptionCard from "components/DescriptionCard";
 import TextWrapper from "components/TextWrapper";
-import { FlatList, ImageURISource, StyleSheet, View } from "react-native";
-import StringConstants from "shared/localization";
-
-interface IData {
-  image: ImageURISource;
-  description: string;
-}
+import { IProductCatalogue } from "models/ProductCatalogue";
+import { FlatList, StyleSheet, View } from "react-native";
 
 interface IHorizontalScrollableList {
-     arrayOfProduct:[ImageURISource];
-    heading:string;
-    subheading:string;
+  Data: IProductCatalogue[] ;
+  onPress: () => void;
+  heading: string;
+  subHeading?: string;
 }
 
-const Data = [
-  {
-    image: Glyphs.CreateVisit,
-    description: StringConstants.ABOUT_US,
-  },
-  {
-    image: Glyphs.CreateVisit,
-    description: StringConstants.ABOUT_US,
-  },
-  {
-    image: Glyphs.CreateVisit,
-    description: StringConstants.ABOUT_US,
-  },
-  {
-    image: Glyphs.CreateVisit,
-    description: StringConstants.ABOUT_US,
-  },
-  {
-    image: Glyphs.CreateVisit,
-    description: StringConstants.ABOUT_US,
-  },
-  {
-    image: Glyphs.CreateVisit,
-    description: StringConstants.ABOUT_US,
-  },
-  {
-    image: Glyphs.CreateVisit,
-    description: StringConstants.ABOUT_US,
-  },
-];
-
-const HorizontalScrollableList = (props:IHorizontalScrollableList) => {
-  const renderHorizontalList = (item: IData, _: number) => {
-    return (
-      <DescriptionCard image={item.image} description={item.description} />
+const HorizontalScrollableList = (props: IHorizontalScrollableList) => {
+  const renderHorizontalList = (
+    item: IProductCatalogue ,_: number,
+  ) => {
+    return(
+      
+ <DescriptionCard imageUri={item.img_url}  description={item.name} />
+      
+      
     );
   };
 
@@ -59,21 +28,20 @@ const HorizontalScrollableList = (props:IHorizontalScrollableList) => {
     <View style={styles.horizontalListContainer}>
       <View style={styles.headingContainer}>
         <TextWrapper style={commonStyles.font16MediumBlackpearl}>
-          {StringConstants.CUSTOMER_CODE}
+          {props.heading}
         </TextWrapper>
         <TextWrapper style={commonStyles.font16MediumBlackpearl}>
-          {StringConstants.VIEW_ALL}
+          {props.subHeading}
         </TextWrapper>
       </View>
       <FlatList
         horizontal
-        data={Data}
+        data={props.Data}
         renderItem={({ item, index }) => renderHorizontalList(item, index)}
         ItemSeparatorComponent={() => (
           <View style={{ width: 2, backgroundColor: Colors.background2 }} />
         )}
         showsHorizontalScrollIndicator={false}
-       
       />
     </View>
   );
@@ -86,7 +54,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     backgroundColor: Colors.white,
-    marginTop:20,
+    marginTop: 20,
   },
   headingContainer: {
     justifyContent: "space-between",

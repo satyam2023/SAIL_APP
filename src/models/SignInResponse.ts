@@ -28,6 +28,6 @@ export interface SignInResponse {
   export interface ISignInUserData {
     upn:string;
     password:string;
-    rememberMe:string;
+    rememberMe?:boolean;
   }
   

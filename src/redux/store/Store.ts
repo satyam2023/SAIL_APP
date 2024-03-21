@@ -16,28 +16,31 @@ import loaderReducer from "redux/reducers/LoaderReducer";
 import updatedBaseURLReducer from "redux/reducers/UpdatedBaseURLReducer";
 import cmsReducer from "redux/reducers/CmsReducer";
 import homeReducer from "redux/reducers/HomeReducer";
+import logoutReducer from "redux/reducers/LogOutReducer";
+import visitsReducer from "redux/reducers/VisitReducer";
 const middleware = applyMiddleware(thunk);
 
 const reducers = combineReducers({
   userAccount: accountReducer,
   themeReducer: themeReducer,
-  UIReducer:UIReducer,
-  signUpReducer:signupReducer,
-  LoaderReducer:loaderReducer,
+  UIReducer: UIReducer,
+  signUpReducer: signupReducer,
+  LoaderReducer: loaderReducer,
   updatedBaseURL: updatedBaseURLReducer,
-  cmsPages:cmsReducer,
-  home:homeReducer,
-  
+  cmsPages: cmsReducer,
+  logout:logoutReducer,
+  home: homeReducer,
+  visitDetail:visitsReducer,
 });
 
 //* white list only those reducers which needs to be stored locally.
 const persistConfig = {
   key: "@boiler",
   storage: reduxStorage,
-  whitelist: ["userAccount","updatedURL"],
+  whitelist: ["userAccount", "updatedURL"],
 };
 
-const rootReducer = (state:any, action:any) => {
+const rootReducer = (state: any, action: any) => {
   if (action.type === DESTROY_SESSION) state = undefined;
   return reducers(state, action);
 };

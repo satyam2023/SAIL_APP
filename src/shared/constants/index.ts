@@ -237,3 +237,53 @@ export const VisitHeaderData = [
     },
   },
 ];
+
+export interface IInformationList
+{
+   image_url:ImageURISource,
+   name:string
+}
+
+export const CustomerInformation=[
+  {
+      image_url:Glyphs.Customer,
+      name:StringConstants.SALES_ORDER
+  },
+  {
+    image_url:Glyphs.Customer,
+    name:StringConstants.DIRECT_DISPATCH
+  },
+  {
+    image_url:Glyphs.Customer,
+    name:StringConstants.MOU_STATUS
+  },
+  {
+    image_url:Glyphs.Customer,
+    name:StringConstants.DUE_AND_OVERDUE
+  },
+  {
+    image_url:Glyphs.Customer,
+    name:StringConstants.LAST_VISIT_DETAIL
+  },
+  {
+    image_url:Glyphs.Customer,
+    name:StringConstants.OFF_TAKE_REPORT
+  },
+  {
+    image_url:Glyphs.Customer,
+    name:StringConstants.LC_BG
+  },
+  {
+    image_url:Glyphs.Customer,
+    name:StringConstants.QUALITY_COMPLAIN
+  }
+];
+
+export const Category=[
+  {
+
+  },
+  {
+
+  }
+];

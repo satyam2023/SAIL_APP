@@ -450,7 +450,15 @@ const StringConstants = {
   EMAIL_ERROR_MSG:'Enter a Valid Email Address',
   LOCATION_ERROR_MSG:'Select a Valid Location',
   ROLE_ERROR_MSG:'Select a Valid Role',
-  NOT_AVL:'N/A'
+  NOT_AVL:'N/A',
+  SALES_ORDER_STATUS:'Sales Order Sttaus',
+  DIRECT_DISPATCH:'Direct Dispatch Order Status',
+  DUE_AND_OVERDUE:'Due and Overdue position (Outstanding summary)',
+  LAST_VISIT_DETAIL:'Last Visit Details of the Customer',
+  OFF_TAKE_REPORT:'Off take report',
+  LC_BG:'LC/BG utilization report',
+  QUALITY_COMPLAIN:'Quality Complain Status'
+
 
   
   
