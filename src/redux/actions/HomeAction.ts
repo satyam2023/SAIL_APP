@@ -1,6 +1,6 @@
 import APIConstants from "core/ApiConstants";
-import { HomeResponse } from "models/HomeResponse";
-import { IApiResponse } from "models/IApiResponse";
+import { HomeResponse } from "models/ApiResponses/HomeResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
 import { SET_DASHBOARD_DATA } from "redux/actionConstants";
 import { sendGetRequest } from "services/network/Network";
 

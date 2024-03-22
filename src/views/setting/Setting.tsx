@@ -12,7 +12,7 @@ import TextWrapper from "components/TextWrapper";
 import fonts from "@fonts";
 import commonStyles from "commonStyles/CommonStyle";
 import CustomButton from "components/CustomButton";
-import { SignInResponse } from "models/SignInResponse";
+import { SignInResponse } from "models/ApiResponses/SignInResponse";
 import { ExtarctTwoLetterName } from "helper/ExtractFirstandLast";
 
 interface ISetting {

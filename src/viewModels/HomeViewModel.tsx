@@ -5,8 +5,8 @@ import { Colors } from "commonStyles/RNColor.style";
 import { useSelector } from "react-redux";
 import { fetchHomeData } from "redux/actions/HomeAction";
 import { useDispatch } from "react-redux";
-import { IApiResponse } from "models/IApiResponse";
-import { HomeResponse } from "models/HomeResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
+import { HomeResponse } from "models/ApiResponses/HomeResponse";
 import { setLoaderVisibility } from "redux/actions/LoaderAction";
 import { RootState } from "redux/store/Store";
 

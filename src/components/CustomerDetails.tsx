@@ -1,41 +1,50 @@
-import SafeAreaContainer from "./SafeAreaContainer";
-import CustomerBox from "./RectangularBox";
+import RectangularBox from "./RectangularBox";
 import Glyphs from "assets/Glyphs";
 import StringConstants from "shared/localization";
-import { View } from "react-native";
+import { FlatList, View } from "react-native";
 
 interface ICustomerDetails {
-  CustomerData: Array<object>;
+  CustomerData: Array<object> | string[];
   onPress: () => void;
-  iSBreakeddetails?:boolean
+  iSBreakeddetails?: boolean;
+  indexofSelectedVisit?: number;
+  placeholderData?:any;
+
 }
 
 const CustomerDetails = (props: ICustomerDetails) => {
-  const renderItem = (item: any,index:number) => {
-  
+ 
+  const renderItem = (item: string, index: number) => {
+    console.log("PLACEHOLDER DATA:::::",props.placeholderData[index]);
     return (
-      <CustomerBox
+      <RectangularBox
         key={index}
-        heading={item.uppertext}
-        subHeading={item.lowertext}
-        leftIcon={item.imagepath}
+        heading={props.placeholderData[index]?.heading}
+        subHeading={item}
+        leftIcon={props.placeholderData[index]?.imagepath}
         isCustomerColumn={true}
       />
     );
   };
 
   return (
-    <View >
-     { !props.iSBreakeddetails && <CustomerBox
-        onPress={props.onPress}
-        isCustomerDetailVisible={true}
-        style={{ marginBottom: 0 }}
-        leftIcon={Glyphs.multiProfile}
-        heading={StringConstants.CUSTOMER_VISIT_1}
-        subHeading={StringConstants.XYZ_STEELWORKS}
-        isClosable
-      />}
-      {props.CustomerData.map(renderItem)}
+    <View>
+      {!props.iSBreakeddetails && (
+        <RectangularBox
+          onPress={props.onPress}
+          isCustomerDetailVisible={true}
+          style={{ marginBottom: 0 }}
+          leftIcon={Glyphs.multiProfile}
+          heading={StringConstants.CUSTOMER_VISIT_1}
+          subHeading={StringConstants.XYZ_STEELWORKS}
+          isClosable
+        />
+      )}
+      <FlatList
+        data={props.CustomerData}
+        renderItem={({ item, index }) => renderItem(item, index)}
+        scrollEnabled={false}
+      />
     </View>
   );
 };

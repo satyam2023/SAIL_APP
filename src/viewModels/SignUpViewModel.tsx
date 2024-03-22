@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { signupAction } from "redux/actions/SignUpAction";
-import { IApiResponse } from "models/IApiResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
 import { setLoaderVisibility } from "redux/actions/LoaderAction";
 import {
   validateNameEmailLocation,
   validatePasswordAndCpassword,
   validateUpnAndContact,
 } from "helper/ValidationRegex";
-import { ISignupBody } from "models/SignUpResponse";
+import { ISignupBody } from "models/ApiResponses/SignUpResponse";
 import SignUpScreen from "views/signup/SignUpScreen";
 import { saveUserdata } from "redux/actions/AccountAction";
 import { navigate } from "@navigation";

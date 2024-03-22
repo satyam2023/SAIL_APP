@@ -2,14 +2,23 @@ import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
 import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import StringConstants from "shared/localization";
-const ForwardCard = () => {
+
+interface IForwardCard{
+  escalated_by:string ,
+  escalated_to:string 
+  escalation_comment:string 
+  resolving_comment:string
+}
+
+const ForwardCard = (props:IForwardCard) => {
+  
   return (
     <View style={styles.forwardCardContainer}>
       <View style={{ flexDirection: "row" }}>
         <TextWrapper style={[ commonStyles.font14RegularGray]}>
-          {StringConstants.FWD_BY}
+          {StringConstants.ESCALATED_BY}
         </TextWrapper>
         <TextWrapper
           style={[
@@ -19,7 +28,7 @@ const ForwardCard = () => {
             commonStyles.font14MediumBlack,
           ]}
         >
-          {StringConstants.USER_NAME}
+          {props.escalated_by}
         </TextWrapper>
       </View>
       <View style={{ flexDirection: "row" }}>
@@ -42,7 +51,7 @@ const ForwardCard = () => {
             commonStyles.font14MediumBlack,
           ]}
         >
-          {StringConstants.KIARA_SHARMA}
+          {props.escalated_to}
         </TextWrapper>
       </View>
       <TextWrapper
@@ -53,12 +62,26 @@ const ForwardCard = () => {
           commonStyles.font14RegularGray,
         ]}
       >
-        {StringConstants.COMMENT}
+        {StringConstants.ESCALATED_COMMENT}
       </TextWrapper>
       <TextWrapper style={commonStyles.font14MediumBlack}>
-        {StringConstants.LOREM_TEXT}
+      {props.escalation_comment}
+      </TextWrapper>
+      <TextWrapper
+        style={[
+          {
+            marginTop: 17,
+          },
+          commonStyles.font14RegularGray,
+        ]}
+      >
+        {StringConstants.RESOLUTION_CMNT}
+      </TextWrapper>
+      <TextWrapper style={commonStyles.font14MediumBlack}>
+      {props.resolving_comment}
       </TextWrapper>
     </View>
+    
   );
 };
 export default ForwardCard;

@@ -18,6 +18,7 @@ import cmsReducer from "redux/reducers/CmsReducer";
 import homeReducer from "redux/reducers/HomeReducer";
 import logoutReducer from "redux/reducers/LogOutReducer";
 import visitsReducer from "redux/reducers/VisitReducer";
+import messageReducer from "redux/reducers/MessageReducer";
 const middleware = applyMiddleware(thunk);
 
 const reducers = combineReducers({
@@ -31,6 +32,8 @@ const reducers = combineReducers({
   logout:logoutReducer,
   home: homeReducer,
   visitDetail:visitsReducer,
+  message:messageReducer,
+
 });
 
 //* white list only those reducers which needs to be stored locally.

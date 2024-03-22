@@ -1,6 +1,6 @@
 import APIConstants from "core/ApiConstants";
-import { IApiResponse } from "models/IApiResponse";
-import { ISignInUserData, SignInResponse } from "models/SignInResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
+import { ISignInUserData, SignInResponse } from "models/ApiResponses/SignInResponse";
 import { Dispatch } from "react";
 import { SET_USER_DATA, UPDATE_USER_DATA } from "redux/actionConstants";
 import { sendPostRequest } from "services/network/Network";

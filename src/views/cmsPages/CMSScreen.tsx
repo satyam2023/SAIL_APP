@@ -13,7 +13,7 @@ import StringConstants from "shared/localization";
 import { PressableButton, TextWrapper } from "components";
 import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
-import { CMSPageResponse, CMSRoot } from "models/CMSPageResponse";
+import { CMSPageResponse, CMSRoot } from "models/ApiResponses/CMSPageResponse";
 
 interface ICmsPageScreen {
   pagesRenderingController: (arg: string) => void;

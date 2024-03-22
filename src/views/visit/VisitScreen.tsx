@@ -1,14 +1,11 @@
 import { darkgrey, Colors } from "commonStyles/RNColor.style";
 import Header from "components/AppHeader";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import Executed from "views/visit/ExecutedVisit/Executed";
 import Planned from "views/visit/PlannedVisit/Planned";
 import UpcomingVisit from "views/visit/UpComingVisit/Upcoming";
-import { useDispatch, useSelector } from "react-redux";
-import { BottomTabVisibility } from "redux/actions/UIAction";
-import { useFocusEffect } from "@react-navigation/native";
 import InputTextField from "components/InputTextField";
 import Glyphs from "assets/Glyphs";
 import { Image } from "react-native";
@@ -18,17 +15,24 @@ import TextWrapper from "components/TextWrapper";
 import commonStyles from "commonStyles/CommonStyle";
 import SafeAreaContainer from "components/SafeAreaContainer";
 import HorizontalSlider from "components/HorizontalSliderTab";
-import { VisitHeaderData } from "@shared-constants";
+import { IupcomingVisitField, VisitHeaderData } from "@shared-constants";
+import { VisitResponse } from "models/ApiResponses/VisitResponse";
 
 
 interface IVisitScreen{
   currentVisit:number,
     setCurrentVisit:(currentVisit:number)=>void,
     setFooterVisibility:(FooterVisibility:boolean)=>void,
-    FooterVisibility:boolean
+    FooterVisibility:boolean,
+    upcomingVisitList:VisitResponse[],
+    upcomingVisitDetails:IupcomingVisitField,
+    setSelectedIndexValue:Function,
+    selectedIndexValue:number,
+    upcomingFieldData:string[],
+    
 }
 
-const VisitScreen = ({currentVisit,setCurrentVisit,setFooterVisibility,FooterVisibility}:IVisitScreen) => {
+const VisitScreen = ({currentVisit,setCurrentVisit,setFooterVisibility,FooterVisibility,upcomingVisitList,upcomingVisitDetails,setSelectedIndexValue,upcomingFieldData,selectedIndexValue}:IVisitScreen) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background2 }}>
@@ -65,7 +69,7 @@ const VisitScreen = ({currentVisit,setCurrentVisit,setFooterVisibility,FooterVis
             <Image source={Glyphs.Filter} style={styles.imgContainer} />
           </TouchableOpacity>
         </SafeAreaContainer>
-        {currentVisit == 1 && <UpcomingVisit />}
+        {currentVisit == 1 && <UpcomingVisit {...{upcomingVisitList,upcomingVisitDetails,setSelectedIndexValue,upcomingFieldData,selectedIndexValue}}/>}
         {currentVisit == 2 && <Planned footerVisibility={(footerVisibility:boolean)=>setFooterVisibility(footerVisibility)} />}
         {currentVisit == 3 && <Executed />}
       </ScrollView>

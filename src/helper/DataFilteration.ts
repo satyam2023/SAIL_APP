@@ -1,4 +1,4 @@
-import { CMSRoot } from "models/CMSPageResponse";
+import { CMSRoot } from "models/ApiResponses/CMSPageResponse";
 
 export const FilterContent = (Data: [], id: number) => {
   const ContentOutput = Data.filter(handleContentFilter);

@@ -2,7 +2,7 @@ import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
 import DescriptionCard from "components/DescriptionCard";
 import TextWrapper from "components/TextWrapper";
-import { IProductCatalogue } from "models/ProductCatalogue";
+import { IProductCatalogue } from "models/ApiResponses/ProductCatalogue";
 import { FlatList, StyleSheet, View } from "react-native";
 
 interface IHorizontalScrollableList {

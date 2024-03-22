@@ -1,7 +1,7 @@
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
 import { convertToArray } from "helper/ExtractFirstandLast";
-import { IApiResponse } from "models/IApiResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
 import { SettingsResponse } from "models/SettingResponse";
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";

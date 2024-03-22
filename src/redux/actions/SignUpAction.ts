@@ -1,5 +1,5 @@
 import APIConstants from "core/ApiConstants";
-import { ISignupBody } from "models/SignUpResponse";
+import { ISignupBody } from "models/ApiResponses/SignUpResponse";
 import { sendPostRequest } from "services/network/Network";
 
 export const signupAction = async (body: ISignupBody) => {

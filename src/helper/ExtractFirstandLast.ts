@@ -1,4 +1,4 @@
-import { SignInResponse } from "models/SignInResponse";
+import { SignInResponse } from "models/ApiResponses/SignInResponse";
 
 export function ExtarctTwoLetterName(name: string) {
   let ans = name[0];

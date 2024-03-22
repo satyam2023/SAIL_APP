@@ -3,6 +3,7 @@ import { Colors } from "commonStyles/RNColor.style";
 import { ImageURISource } from "react-native";
 import StringConstants from "shared/localization";
 
+
 export const SCREENS = {
   ONBOARDING: "OnBoarding",
   DASHBOARD: "Dashboard",
@@ -287,3 +288,49 @@ export const Category=[
 
   }
 ];
+
+
+export interface IupcomingVisitField{
+  heading:string,
+  imagepath:ImageURISource
+}
+
+export const upcomingVisitDetails = [
+  { 
+    heading: "Customer Code",
+    imagepath: Glyphs.Code,
+  },
+  { 
+    heading: "Visit Date",
+    imagepath: Glyphs.VisitDate,
+  },
+  { 
+    heading: "Contact Number",
+    imagepath: Glyphs.BluePhone,
+  },
+  { 
+    heading: "Reason of Visit",
+    imagepath: Glyphs.VisitDateIcon,
+  },
+  { 
+    heading: "Mode of Meeting",
+    imagepath: Glyphs.Note,
+  },
+  { 
+    heading: "Visiting Executive",
+    imagepath: Glyphs.SignleUser,
+  },
+  { 
+    heading: "Location",
+    imagepath: Glyphs.blueLocation,
+  },
+  { 
+    heading: "Email ID",
+    imagepath: Glyphs.BlueEmail,
+  },
+  { 
+    heading: "Planned by",
+    imagepath: Glyphs.SignleUser,
+  },
+]
+

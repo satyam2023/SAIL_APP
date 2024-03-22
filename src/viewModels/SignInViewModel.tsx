@@ -1,7 +1,7 @@
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
-import { IApiResponse } from "models/IApiResponse";
-import { ISignInUserData, SignInResponse } from "models/SignInResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
+import { ISignInUserData, SignInResponse } from "models/ApiResponses/SignInResponse";
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { userSignIn } from "redux/actions/AccountAction";

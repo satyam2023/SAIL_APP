@@ -10,7 +10,7 @@ import Glyphs from "assets/Glyphs";
 import {  ProductData } from "./mockData/Data";
 import StringConstants from "shared/localization";
 import TextWrapper from "components/TextWrapper";
-import { IProductCatalogue } from "models/ProductCatalogue";
+import { IProductCatalogue } from "models/ApiResponses/ProductCatalogue";
 import { Colors } from "commonStyles/RNColor.style";
 interface CardProps {
   setQr: (arg: boolean) => void;

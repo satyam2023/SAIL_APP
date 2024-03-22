@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import Glyphs from "assets/Glyphs";
 import { Colors } from "commonStyles/RNColor.style";
-import StringConstants from "shared/localization";
 import TextWrapper from "../TextWrapper";
 import commonStyles from "commonStyles/CommonStyle";
 import { PressableButton } from "components";
@@ -44,14 +43,12 @@ const RectangularBox = (props: IcustomerBox) => {
         {props.leftIcon && (
           <Image source={props.leftIcon} style={commonStyles.leftIcon} />
         )}
-        <View>
+        <View >
           <TextWrapper style={commonStyles.font14RegularDarkGray}>
-            {props.heading ? props.heading : StringConstants.CUSTOMER_VISIT_1}
+            {props.heading }
           </TextWrapper>
           <TextWrapper style={[commonStyles.font14MediumBlackpearl]}>
-            {props.subHeading
-              ? props.subHeading
-              : StringConstants.XYZ_STEELWORKS}
+            {props.subHeading}
           </TextWrapper>
         </View>
       </View>

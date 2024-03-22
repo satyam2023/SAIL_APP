@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-import { IApiResponse } from "models/IApiResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
 import APIConstants from "core/ApiConstants";
 import { store } from "redux/store/Store";
 

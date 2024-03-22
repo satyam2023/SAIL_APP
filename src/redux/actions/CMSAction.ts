@@ -1,6 +1,6 @@
 import APIConstants from "core/ApiConstants";
-import { CMSPageResponse, ICmsdispatch } from "models/CMSPageResponse";
-import { IApiResponse } from "models/IApiResponse";
+import { CMSPageResponse, ICmsdispatch } from "models/ApiResponses/CMSPageResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
 import { Dispatch } from "react";
 import { SET_CMS_PAGE } from "redux/actionConstants";
 import { sendGetRequest } from "services/network/Network";

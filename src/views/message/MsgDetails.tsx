@@ -1,27 +1,43 @@
 import React from "react";
-import { Image, ScrollView, TextInput, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import ForwardCard from "./component/MsgDetails/ForwarnCard";
 import styles from "views/message/Style/Style";
-import Glyphs from "assets/Glyphs";
 import StringConstants from "shared/localization";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import commonStyles from "commonStyles/CommonStyle";
-import { CustomButton, Header, RectangularBox, SafeAreaContainer, TextWrapper } from "components";
-import { IMessageDetailField, MessageDetailField } from "views/message/mockData/Data";
 
-const MsgDetails = () => {
+import { Header, RectangularBox, SafeAreaContainer } from "components";
+import {
+  MessageDetailField,
+} from "views/message/mockData/Data";
+import { AllEscalation } from "models/ApiResponses/MessageResponse";
+import { FlatList } from "react-native-gesture-handler";
 
-const renderMessageDetail=(item:IMessageDetailField,index:number)=>{
-return(
-<RectangularBox
-key={index}
-heading={item.heading}
-subHeading={item.subheading}
-isRightNotIconRequired
-isCustomerColumn
-/>
-);
+interface IMsg {
+  msgData: any;
 }
+
+const MsgDetails = (props: IMsg) => {
+
+  const renderMessageDetail = (item: any, index: number) => {
+    return (
+      <RectangularBox
+        heading={MessageDetailField[index]}
+        subHeading={item}
+        isRightNotIconRequired
+        isCustomerColumn
+      />
+    );
+  };
+
+  const renderEscalatedCard = (item: AllEscalation, index: number) => {
+    return (
+      <ForwardCard
+        escalated_by={item?.escalated_by?.user_name}
+        escalated_to={item?.escalated_to?.user_name}
+        escalation_comment={item?.escalation_comment}
+        resolving_comment={item?.resolving_comment}
+      />
+    );
+  };
 
   return (
     <>
@@ -31,50 +47,24 @@ isCustomerColumn
           showsVerticalScrollIndicator={false}
           style={styles.container}
         >
-          {
-            MessageDetailField.map((item:IMessageDetailField,index:number)=>renderMessageDetail(item,index))
-          }
-       <View style={{paddingHorizontal:20}}>
-          <ForwardCard />
-          <ForwardCard />
-          <ForwardCard />
-          <View style={styles.escalateBox}>
-            <View>
-              <TextWrapper style={commonStyles.font14RegularGray}>
-                {StringConstants.ESCALATED_TO}
-              </TextWrapper>
-              <TextWrapper
-                style={[commonStyles.font14RegularBlack, { marginTop: 5 }]}
-              >
-                {StringConstants.TITLE}
-              </TextWrapper>
-            </View>
-
-            <Image
-              source={Glyphs.Arrow}
-              style={[{
-                tintColor: Colors.darkGrey,
-              },commonStyles.icon]}
-            />
-          </View>
-
-          <View style={styles.commentBox}>
-            <TextWrapper
-              style={[{ marginTop: 8 }, commonStyles.font14RegularBlack]}
-            >
-              {StringConstants.ADD_COMMENT}
-            </TextWrapper>
-            <TextInput
-              multiline={true}
-              placeholder={StringConstants.REMARKS}
-              placeholderTextColor={Colors.black}
-            />
-          </View>
-          <CustomButton
-            text={StringConstants.SUBMIT}
-            buttonStyle={{ backgroundColor: Colors.sailBlue }}
-            textStyle={{ color: Colors.white }}
+          <FlatList
+            data={[
+              props?.msgData?.customer_data?.customer_code,
+              props?.msgData?.customer_data?.company_name,
+              props?.msgData?.customer_data?.type?.type_name,
+              props?.msgData?.visit_data?.reason.name,
+              props?.msgData?.issue_name?.name,
+              props?.msgData?.comment,
+            ]}
+            renderItem={({ item, index }) => renderMessageDetail(item, index)}
+            scrollEnabled={false}
           />
+          <View style={{ paddingHorizontal: 20 }}>
+            <FlatList
+              data={props?.msgData?.allEscalations}
+              renderItem={({ item, index }) => renderEscalatedCard(item, index)}
+              scrollEnabled={false}
+            />
           </View>
         </ScrollView>
       </SafeAreaContainer>

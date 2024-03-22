@@ -4,7 +4,7 @@ import Header from "components/AppHeader";
 import StringConstants from "shared/localization";
 import CustomToggleBox from "components/CustomToggleBox";
 import { FAQSData, IFaqData } from "@shared-constants";
-import { CMSPageResponse } from "models/CMSPageResponse";
+import { CMSPageResponse } from "models/ApiResponses/CMSPageResponse";
 import { TextWrapper } from "components";
 import commonStyles from "commonStyles/CommonStyle";
 import { FilterContent } from "helper/DataFilteration";

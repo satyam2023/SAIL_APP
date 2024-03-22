@@ -5,14 +5,41 @@ import SafeAreaContainer from "components/SafeAreaContainer";
 import { Colors } from "commonStyles/RNColor.style";
 import StringConstants from "shared/localization";
 import { RectangularBox } from "components";
-import { View } from "react-native";
+import { FlatList, View } from "react-native";
+import {
+  IMessageDetail,
+} from "models/ApiResponses/MessageResponse";
 
 interface IMessageScreen {
   msgOpenStatus: boolean;
   setMsgOpenStatus: (openMsgStatus: boolean) => void;
+  messagedata: IMessageDetail[];
+  selectedMsgIndex: number;
+  setSelectedMessageIndex: Function;
+  
 }
 
-const MessageScreen = ({ msgOpenStatus, setMsgOpenStatus }: IMessageScreen) => {
+const MessageScreen = ({
+  msgOpenStatus,
+  setMsgOpenStatus,
+  messagedata,
+  selectedMsgIndex,
+  setSelectedMessageIndex,
+ 
+}: IMessageScreen) => {
+  console.log("Customer Data:::::::", messagedata);
+  const renderMessageBox = (item: IMessageDetail, index: number) => {
+    return (
+      <RectangularBox
+        heading={item?.customer_data?.customer_code}
+        subHeading={item?.customer_data?.company_name}
+        onPress={() => {
+          setMsgOpenStatus(true);
+          setSelectedMessageIndex(index);
+        }}
+      />
+    );
+  };
   return (
     <SafeAreaContainer backgroundColor={Colors.background2}>
       {!msgOpenStatus ? (
@@ -20,20 +47,16 @@ const MessageScreen = ({ msgOpenStatus, setMsgOpenStatus }: IMessageScreen) => {
           <Header topheading={StringConstants.INBOX} />
 
           <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
-            <RectangularBox
-              heading={StringConstants.CUSTOMER_CODE}
-              subHeading={StringConstants.CUSTOMER_NAME}
-              onPress={() => setMsgOpenStatus(true)}
-            />
-              <RectangularBox
-              heading={StringConstants.CUSTOMER_CODE}
-              subHeading={StringConstants.CUSTOMER_NAME}
-              onPress={() => setMsgOpenStatus(true)}
+            <FlatList
+              data={messagedata}
+              renderItem={({ item, index }) => renderMessageBox(item, index)}
             />
           </View>
         </>
+      ) : selectedMsgIndex >= 0 ? (
+        <MsgDetails msgData={messagedata[selectedMsgIndex]} />
       ) : (
-        <MsgDetails />
+        <></>
       )}
     </SafeAreaContainer>
   );

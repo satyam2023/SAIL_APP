@@ -14,7 +14,10 @@ const APIConstants = {
   LOGOUT:"logout",
   UPCOMING_VISITS: "upcoming-visit",
   PLANNED_VISITS: "planned-visit",
-  EXECUTED_VISITS: "executed-visit"
+  EXECUTED_VISITS: "executed-visit",
+  GET_MESSAGE_DATA:"inbox-messages",
+  GET_ESCALTED_DROPDOWN_DATA: "escalate-to-dropdown-list",
+  ESCALATE_TO_ANOTHER: "escalate-to-another",
 };
 
 export default APIConstants;

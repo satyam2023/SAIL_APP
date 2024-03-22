@@ -7,7 +7,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 import { SafeAreaView, View } from "react-native";
 import { Header, InputTextField } from "components";
-import { IProductCatalogue } from "models/ProductCatalogue";
+import { IProductCatalogue } from "models/ApiResponses/ProductCatalogue";
 
 interface IProductScreen{
   productData:IProductCatalogue[]

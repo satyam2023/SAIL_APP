@@ -1,7 +1,7 @@
 import APIConstants from "core/ApiConstants";
-import { IApiResponse } from "models/IApiResponse";
-import { IPaginations } from "models/IPagination";
-import { VisitResponse } from "models/VisitResponse";
+import { IApiResponse } from "models/ApiResponses/IApiResponse";
+import { IPaginations } from "models/ApiResponses/IPagination";
+import { VisitResponse } from "models/ApiResponses/VisitResponse";
 import { sendGetRequest } from "services/network/Network";
 import { SET_UPCOMING_VISITS } from "redux/actionConstants";
 

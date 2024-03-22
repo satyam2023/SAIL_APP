@@ -457,7 +457,8 @@ const StringConstants = {
   LAST_VISIT_DETAIL:'Last Visit Details of the Customer',
   OFF_TAKE_REPORT:'Off take report',
   LC_BG:'LC/BG utilization report',
-  QUALITY_COMPLAIN:'Quality Complain Status'
+  QUALITY_COMPLAIN:'Quality Complain Status',
+  ESCALATED_BY:'Escalated by',
 
 
   

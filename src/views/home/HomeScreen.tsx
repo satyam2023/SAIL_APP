@@ -10,9 +10,9 @@ import { navigate } from "@navigation";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import Product from "./component/ProductList";
-import { SignInResponse } from "models/SignInResponse";
+import { SignInResponse } from "models/ApiResponses/SignInResponse";
 import { ExtarctTwoLetterName } from "helper/ExtractFirstandLast";
-import { HomeResponse } from "models/HomeResponse";
+import { HomeResponse } from "models/ApiResponses/HomeResponse";
 import { HorizontalScrollableList } from "components";
 interface IHomeScreen {
   userData: SignInResponse;

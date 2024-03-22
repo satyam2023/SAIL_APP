@@ -1,5 +1,5 @@
 import APIConstants from "core/ApiConstants";
-import { User } from "models/UserModel";
+import { User } from "models/ApiResponses/UserModel";
 import { sendGetRequest } from "services/network/Network";
 
 export const getUserDetail = async () => {
