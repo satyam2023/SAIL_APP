@@ -50,6 +50,7 @@ const InputTextField = ({maxlength=20,...props}: ITextField) => {
         style={[
           styles.inputContainer,
           props.containerStyle,
+          {paddingHorizontal:props.leftIcon?16:24},
           props.error?.length ? styles.errorBox : {},
         ]}
       >
@@ -126,7 +127,6 @@ const styles = StyleSheet.create({
     height: 56,
     backgroundColor: Colors.inputBG,
     alignItems: "center",
-    paddingHorizontal: 24,
     borderRadius: 33,
     marginBottom: 16,
   },
@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
     color: Colors.greyDark,
   },
   rightIcon: {
-    height: 15,
-    width: 15,
+    height: 24,
+    width: 24,
     resizeMode: "contain",
   },
   rightIconContainer: {

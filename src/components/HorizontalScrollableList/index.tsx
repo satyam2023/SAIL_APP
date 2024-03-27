@@ -1,3 +1,4 @@
+import { ICustomerInformationList } from "@shared-constants";
 import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
 import DescriptionCard from "components/DescriptionCard";
@@ -6,7 +7,7 @@ import { IProductCatalogue } from "models/ApiResponses/ProductCatalogue";
 import { FlatList, StyleSheet, View } from "react-native";
 
 interface IHorizontalScrollableList {
-  Data: IProductCatalogue[] ;
+  Data: IProductCatalogue[] | ICustomerInformationList[];
   onPress: () => void;
   heading: string;
   subHeading?: string;
@@ -14,13 +15,17 @@ interface IHorizontalScrollableList {
 
 const HorizontalScrollableList = (props: IHorizontalScrollableList) => {
   const renderHorizontalList = (
-    item: IProductCatalogue ,_: number,
+    item: IProductCatalogue | ICustomerInformationList,
+    _: number,
   ) => {
-    return(
-      
- <DescriptionCard imageUri={item.img_url}  description={item.name} />
-      
-      
+    return (
+      <>
+        {item.image ? (
+          <DescriptionCard image={item.image} description={item.name} />
+        ) : (
+          <DescriptionCard imageUri={item.img_url} description={item.name} />
+        )}
+      </>
     );
   };
 
@@ -39,7 +44,14 @@ const HorizontalScrollableList = (props: IHorizontalScrollableList) => {
         data={props.Data}
         renderItem={({ item, index }) => renderHorizontalList(item, index)}
         ItemSeparatorComponent={() => (
-          <View style={{ width: 2, backgroundColor: Colors.background2 }} />
+          <View
+            style={{
+              width: 3,
+              backgroundColor: Colors.background,
+              height: "70%",
+              alignSelf: "center",
+            }}
+          />
         )}
         showsHorizontalScrollIndicator={false}
       />

@@ -2,53 +2,53 @@ import Glyphs from "assets/Glyphs";
 
 const Data = [
   { 
-    uppertext: "Customer Code",
+    heading: "Customer Code",
     lowertext: "987654321",
     imagepath: Glyphs.multiProfile
   },
   {
-    uppertext: "Customer Type",
+    heading: "Customer Type",
     lowertext: "John Doe",
     imagepath: Glyphs.SignleUser,
   },
   {
-    uppertext: "Status of Customer",
+    heading: "Status of Customer",
     lowertext: "Registered",
     imagepath: Glyphs.ContactDetails,
   },
   {
-    uppertext: "Visiting Executive",
+    heading: "Visiting Executive",
     lowertext: "Title",
     imagepath: Glyphs.ContactDetails,
   },
   {
-    uppertext: "Location",
+    heading: "Location",
     lowertext: "Sector 11, Noida",
     imagepath: Glyphs.blueLocation,
   },
   {
-    uppertext: "Contact Number",
+    heading: "Contact Number",
     lowertext: "+91-9999-123-456",
     imagepath: Glyphs.BluePhone,
   },
   {
-    uppertext: "Email ID",
+    heading: "Email ID",
     lowertext: "john.doe@sail.in",
     imagepath: Glyphs.BlueEmail,
   },
   {
-    uppertext: "Discussion Points",
+    heading: "Discussion Points",
     lowertext: "Share last order details",
     imagepath: Glyphs.DiscussionIcon,
   },
   {
-    uppertext: "Visit Date and Time",
+    heading: "Visit Date and Time",
     lowertext: "03/03/2023, 9:00 A.M.",
     imagepath: Glyphs.VisitDateandTime,
   },
 
   {
-    uppertext: "Reason",
+    heading: "Reason",
     lowertext: "General Inquiry",
     imagepath: Glyphs.VisitDateIcon,
   },

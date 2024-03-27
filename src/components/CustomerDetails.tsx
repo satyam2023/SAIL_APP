@@ -9,12 +9,13 @@ interface ICustomerDetails {
   iSBreakeddetails?: boolean;
   indexofSelectedVisit?: number;
   placeholderData?:any;
+  companyName?:string;
 
 }
 
 const CustomerDetails = (props: ICustomerDetails) => {
  
-  const renderItem = (item: string, index: number) => {
+  const renderItem = (item: string|object, index: number) => {
     console.log("PLACEHOLDER DATA:::::",props.placeholderData[index]);
     return (
       <RectangularBox
@@ -33,10 +34,9 @@ const CustomerDetails = (props: ICustomerDetails) => {
         <RectangularBox
           onPress={props.onPress}
           isCustomerDetailVisible={true}
-          style={{ marginBottom: 0 }}
           leftIcon={Glyphs.multiProfile}
-          heading={StringConstants.CUSTOMER_VISIT_1}
-          subHeading={StringConstants.XYZ_STEELWORKS}
+          heading={`${StringConstants.CUSTOMER_VISIT}  ${props.indexofSelectedVisit?props.indexofSelectedVisit+1:""}`}
+          subHeading={props.companyName ?props.companyName:""}
           isClosable
         />
       )}
@@ -44,6 +44,7 @@ const CustomerDetails = (props: ICustomerDetails) => {
         data={props.CustomerData}
         renderItem={({ item, index }) => renderItem(item, index)}
         scrollEnabled={false}
+        style={{marginTop:-10}}
       />
     </View>
   );

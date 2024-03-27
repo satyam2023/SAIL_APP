@@ -2,7 +2,7 @@ import commonStyles from "commonStyles/CommonStyle";
 import { Colors } from "commonStyles/RNColor.style";
 import TextWrapper from "components/TextWrapper";
 import React from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import {  StyleSheet, View } from "react-native";
 import StringConstants from "shared/localization";
 
 interface IForwardCard{

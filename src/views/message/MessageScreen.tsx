@@ -15,7 +15,7 @@ interface IMessageScreen {
   setMsgOpenStatus: (openMsgStatus: boolean) => void;
   messagedata: IMessageDetail[];
   selectedMsgIndex: number;
-  setSelectedMessageIndex: Function;
+  setSelectedMessageIndex: (selectedIndexValue:number)=>void;
   
 }
 
@@ -27,7 +27,6 @@ const MessageScreen = ({
   setSelectedMessageIndex,
  
 }: IMessageScreen) => {
-  console.log("Customer Data:::::::", messagedata);
   const renderMessageBox = (item: IMessageDetail, index: number) => {
     return (
       <RectangularBox
@@ -50,6 +49,7 @@ const MessageScreen = ({
             <FlatList
               data={messagedata}
               renderItem={({ item, index }) => renderMessageBox(item, index)}
+              showsVerticalScrollIndicator={false}
             />
           </View>
         </>

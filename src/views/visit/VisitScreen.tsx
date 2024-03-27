@@ -1,6 +1,6 @@
 import { darkgrey, Colors } from "commonStyles/RNColor.style";
 import Header from "components/AppHeader";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import Executed from "views/visit/ExecutedVisit/Executed";
@@ -18,22 +18,39 @@ import HorizontalSlider from "components/HorizontalSliderTab";
 import { IupcomingVisitField, VisitHeaderData } from "@shared-constants";
 import { VisitResponse } from "models/ApiResponses/VisitResponse";
 
-
-interface IVisitScreen{
-  currentVisit:number,
-    setCurrentVisit:(currentVisit:number)=>void,
-    setFooterVisibility:(FooterVisibility:boolean)=>void,
-    FooterVisibility:boolean,
-    upcomingVisitList:VisitResponse[],
-    upcomingVisitDetails:IupcomingVisitField,
-    setSelectedIndexValue:Function,
-    selectedIndexValue:number,
-    upcomingFieldData:string[],
-    
+interface IVisitScreen {
+  currentVisit: number;
+  setCurrentVisit: Dispatch<SetStateAction<number>>;
+  setFooterVisibility: Dispatch<SetStateAction<boolean>>;
+  FooterVisibility: boolean;
+  upcomingVisitList: VisitResponse[];
+  upcomingVisitDetails: IupcomingVisitField[];
+  setSelectedIndexValue: Dispatch<SetStateAction<number>>;
+  selectedIndexValue: number;
+  upcomingFieldData: string[];
+  executedVisitFieldData: string[];
+  executedVisitList: VisitResponse[];
+  visitCountArray: string[];
+  plannedVisitList: VisitResponse[];
+  plannedVisitFieldData :string[];
 }
 
-const VisitScreen = ({currentVisit,setCurrentVisit,setFooterVisibility,FooterVisibility,upcomingVisitList,upcomingVisitDetails,setSelectedIndexValue,upcomingFieldData,selectedIndexValue}:IVisitScreen) => {
-
+const VisitScreen = ({
+  currentVisit,
+  setCurrentVisit,
+  setFooterVisibility,
+  FooterVisibility,
+  upcomingVisitList,
+  upcomingVisitDetails,
+  executedVisitFieldData,
+  setSelectedIndexValue,
+  upcomingFieldData,
+  selectedIndexValue,
+  executedVisitList,
+  visitCountArray,
+  plannedVisitList,
+  plannedVisitFieldData 
+}: IVisitScreen) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background2 }}>
       <Header topheading={StringConstants.VISITS} />
@@ -48,6 +65,7 @@ const VisitScreen = ({currentVisit,setCurrentVisit,setFooterVisibility,FooterVis
           selectedTab={(index: number) => {
             setCurrentVisit(index);
           }}
+          countArray={visitCountArray}
         />
         <TextWrapper style={[commonStyles.font12RegularGrey, styles.txt]}>
           {StringConstants.ENTER_CUST_CODE_OR_NAME}
@@ -69,9 +87,35 @@ const VisitScreen = ({currentVisit,setCurrentVisit,setFooterVisibility,FooterVis
             <Image source={Glyphs.Filter} style={styles.imgContainer} />
           </TouchableOpacity>
         </SafeAreaContainer>
-        {currentVisit == 1 && <UpcomingVisit {...{upcomingVisitList,upcomingVisitDetails,setSelectedIndexValue,upcomingFieldData,selectedIndexValue}}/>}
-        {currentVisit == 2 && <Planned footerVisibility={(footerVisibility:boolean)=>setFooterVisibility(footerVisibility)} />}
-        {currentVisit == 3 && <Executed />}
+        {currentVisit == 1 && (
+          <UpcomingVisit
+            {...{
+              upcomingVisitList,
+              upcomingVisitDetails,
+              setSelectedIndexValue,
+              upcomingFieldData,
+              selectedIndexValue,
+            }}
+          />
+        )}
+        {currentVisit == 2 && (
+          <Planned
+           {...{setFooterVisibility,
+            plannedVisitList,
+            setSelectedIndexValue,
+            selectedIndexValue,
+            plannedVisitFieldData,
+          }}
+          />
+        )}
+        {currentVisit == 3 && (
+          <Executed
+            executedVisitFieldData={executedVisitFieldData}
+            setSelectedIndexValue={setSelectedIndexValue}
+            executedVisitList={executedVisitList}
+            selectedIndexValue={selectedIndexValue}
+          />
+        )}
       </ScrollView>
       {currentVisit == 2 && FooterVisibility && (
         <CustomFooter

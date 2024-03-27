@@ -10,7 +10,6 @@ const MessageScreenViewModel = () => {
   const dispatch = useDispatch();
   const [msgOpenStatus, setmsgOpenStatus] = useState<boolean>(false);
   const [selectedMsgIndex, setSelectedMessageIndex] = useState<number>(-1);
-  console.log("SELECTED MESSAGE INDEX:::", selectedMsgIndex);
   useFocusEffect(() => {
     dispatch(BottomTabVisibility(false));
     return () => dispatch(BottomTabVisibility(true));

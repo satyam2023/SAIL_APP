@@ -37,8 +37,9 @@ const MoreOptionScreen = forwardRef(() => {
       <DescriptionCard
         image={item.image}
         description={item.heading}
-        style={{ backgroundColor: Colors.white }}
+        style={{ backgroundColor: Colors.white ,width:'48%'}}
         onPress={(selectedValue: string) => handleMoreOptions(selectedValue)}
+        
       />
     );
   };

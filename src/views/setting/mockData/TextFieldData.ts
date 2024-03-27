@@ -26,14 +26,5 @@ export const TextFieldData = [
     placeholder: "Email Id",
     value:"saransh.verma@abc.com"
   },
-  {
-    id: 5,
-    placeholder: "Location",
-    value:"Sector 11, Noida"
-  },
-  {
-    id: 6,
-    placeholder: "Role",
-    value:"Designer"
-  },
 ];
+

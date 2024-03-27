@@ -3,21 +3,27 @@ import { View } from "react-native";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
 import commonStyles from "commonStyles/CommonStyle";
+import { NotificationDeatils, NotificationResponse } from "models/ApiResponses/NotificationResponse";
 
-const NotificationToggleBoxContent = () => {
+interface INotificationContent{
+notificationContentDetail:NotificationDeatils
+
+}
+
+const NotificationToggleBoxContent = ({notificationContentDetail}:INotificationContent) => {
   return (
     <View>
       <View style={{ flexDirection: "row", width: "100%" }}>
         <TextWrapper style={[commonStyles.font14MediumBlack, { width: "50%" }]}>
           {StringConstants.CUSTOMER_CODE}
           {`\n`}
-          {StringConstants.NUMBER}
+          {notificationContentDetail.customerCode}
         </TextWrapper>
 
         <TextWrapper style={[commonStyles.font14MediumBlack, { width: "50%" }]}>
           {StringConstants.VISITING_EXE}
           {`\n`}
-          {StringConstants.USER_NAME}
+          {notificationContentDetail.visitingExecutive}
         </TextWrapper>
       </View>
       <View
@@ -30,19 +36,19 @@ const NotificationToggleBoxContent = () => {
         <TextWrapper style={[commonStyles.font14MediumBlack, { width: "50%" }]}>
           {StringConstants.MODE_OF_CONDUCT}
           {`\n`}
-          {StringConstants.ONLINE}
+          {notificationContentDetail.modeOfContact}
         </TextWrapper>
         <TextWrapper style={[commonStyles.font14MediumBlack, { width: "50%" }]}>
           {StringConstants.REMARKS}
           {`\n`}
-          {StringConstants.MEETING_SUCCESS}
+          {notificationContentDetail.remarks}
         </TextWrapper>
       </View>
       <View style={{ flexDirection: "row", marginTop: 16 }}>
         <TextWrapper style={commonStyles.font14MediumBlack}>
           {StringConstants.ONLY_REASON}
           {`\n`}
-          {StringConstants.VISIT_FOR_FINAL_AGGRE}
+          {notificationContentDetail.reason}
         </TextWrapper>
       </View>
     </View>

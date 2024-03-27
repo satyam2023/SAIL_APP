@@ -12,11 +12,10 @@ import { ISignupBody } from "models/ApiResponses/SignUpResponse";
 import SignUpScreen from "views/signup/SignUpScreen";
 import { saveUserdata } from "redux/actions/AccountAction";
 import { navigate } from "@navigation";
-import { Screen } from "react-native-screens";
 import { SCREENS } from "@shared-constants";
 
 const SignUpScreenViewMOdel = () => {
-  const [CurrentScreen, setCurrentScreen] = useState(1);
+  const [CurrentScreen, setCurrentScreen] = useState<number>(1);
   const [error, setError] = useState({
     upn: false,
     Contact: false,

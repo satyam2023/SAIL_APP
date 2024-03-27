@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, SafeAreaView,View } from "react-native";
+import { FlatList, Image, SafeAreaView, View } from "react-native";
 import styles from "./Style/Style";
 import Data from "./Data/Data";
 import Glyphs from "assets/Glyphs";
@@ -14,16 +14,50 @@ import InputTextField from "components/InputTextField";
 import fonts from "@fonts";
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
+import { RectangularBox } from "components";
 interface executedCustomerProps {
   handleCustomerClick: Function;
+  executedVisitFieldData: string[];
+  setSelectedIndexValue: Function;
+  executedVisitList: any;
+  selectedIndexValue: number;
 }
-const ExecutedCustomer = ({ handleCustomerClick }: executedCustomerProps) => {
-
+const ExecutedCustomer = ({
+  handleCustomerClick,
+  executedVisitFieldData,
+  executedVisitList,
+  selectedIndexValue,
+}: executedCustomerProps) => {
+  const renderIssues = (item: any, index: number) => {
+    return (
+      <>
+        <RectangularBox
+          heading={StringConstants.ISSUE}
+          subHeading={item?.issue_name?.name}
+          leftIcon={Glyphs.Calender}
+          isRightNotIconRequired
+          isCustomerColumn
+        />
+        <RectangularBox
+          heading={StringConstants.ISSUE_CMNT}
+          subHeading={item?.comment}
+          leftIcon={Glyphs.Calender}
+          isRightNotIconRequired
+          isCustomerColumn
+        />
+      </>
+    );
+  };
   return (
     <SafeAreaView style={styles.container}>
       <CustomerDetails
-        CustomerData={Data.filter((_, index) => index < 14)}
+        CustomerData={executedVisitFieldData.filter((_, index) => index < 14)}
         onPress={() => handleCustomerClick()}
+        placeholderData={Data}
+      />
+      <FlatList
+        data={executedVisitList[selectedIndexValue]?.myissues}
+        renderItem={({ item, index }) => renderIssues(item, index)}
       />
       <View style={{ flexDirection: "row", marginLeft: 16 }}>
         <TextWrapper style={commonStyles.font14MediumBlackpearl}>
@@ -73,15 +107,20 @@ const ExecutedCustomer = ({ handleCustomerClick }: executedCustomerProps) => {
         />
       </View>
       <CustomerDetails
-        CustomerData={Data.filter((_, index) => index >= 14)}
+        CustomerData={executedVisitFieldData.filter((_, index) => index >= 14)}
         onPress={() => {}}
         iSBreakeddetails={true}
+        placeholderData={Data}
       />
 
       <View style={{ flexDirection: "row", marginVertical: 12 }}>
         <Image source={Glyphs.Download} style={{ marginHorizontal: 16 }} />
         <TextWrapper
-         style={{fontFamily:fonts.type.medium,color:Colors.sailBlue,textDecorationLine:"underline"}}
+          style={{
+            fontFamily: fonts.type.medium,
+            color: Colors.sailBlue,
+            textDecorationLine: "underline",
+          }}
         >
           {StringConstants.DOWNLOAD_PDF_REPORT}
         </TextWrapper>
@@ -91,7 +130,7 @@ const ExecutedCustomer = ({ handleCustomerClick }: executedCustomerProps) => {
         text={StringConstants.SUBMIT}
         buttonStyle={{ backgroundColor: Colors.sailBlue }}
         textStyle={{ color: Colors.white }}
-        onPress={()=>navigate(SCREENS.MAIN)}
+        onPress={() => navigate(SCREENS.MAIN)}
       />
     </SafeAreaView>
   );

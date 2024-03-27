@@ -5,7 +5,7 @@ import Glyphs from "assets/Glyphs";
 import { ScrollView } from "react-native-gesture-handler";
 import VisitCard from "views/visit/component/VisitCard/VisitCard";
 import { Colors } from "commonStyles/RNColor.style";
-import { CustomerInformation, SCREENS } from "@shared-constants";
+import { Category, CustomerInformation, SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
@@ -98,22 +98,18 @@ const HomeScreen = ({
           heading={StringConstants.PRODUCT_CATALOGUE}
           subHeading={StringConstants.VIEW_ALL}
         />
-        
-        <Product
-          category={StringConstants.CUSTOMER_INFORMATION}
-          imagefirst={Glyphs.Customer}
-          imagesecond={Glyphs.Customer}
-          imagefirstinfo={StringConstants.SALES_ORDER}
-          imagesecondinfo={StringConstants.MOU_STATUS}
-          text={StringConstants.EMPTY}
+
+        <HorizontalScrollableList
+          Data={CustomerInformation}
+          onPress={() => {}}
+          heading={StringConstants.CUSTOMER_INFORMATION}
         />
-        <Product
-          category={StringConstants.CATEGORY}
-          imagefirst={Glyphs.Customer}
-          imagesecond={Glyphs.Setting2Clicked}
-          imagefirstinfo={StringConstants.USER_ENQUIRY}
-          imagesecondinfo={StringConstants.ISSUE_ENQUIRY}
-          text={StringConstants.VIEW_ALL}
+
+        <HorizontalScrollableList
+          Data={Category}
+          onPress={() => {}}
+          heading={StringConstants.CATEGORY}
+          subHeading={StringConstants.VIEW_ALL}
         />
       </View>
     </ScrollView>

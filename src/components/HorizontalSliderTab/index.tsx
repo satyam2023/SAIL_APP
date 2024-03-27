@@ -21,13 +21,15 @@ interface ITabArray {
     notfocus: string;
     focus: string;
   };
+
 }
 
 interface IHorizontalSlider {
   sliderData: ITabArray[];
   currentScreen: number;
   selectedTab: (index: number) => void;
-  onlyTwoColor?:boolean
+  onlyTwoColor?:boolean;
+  countArray?:string[];
 }
 
 const HorizontalSlider = (props: IHorizontalSlider) => {
@@ -61,7 +63,7 @@ const HorizontalSlider = (props: IHorizontalSlider) => {
           >
             {item.heading}
           </TextWrapper>
-          {item.number && (
+          {props.countArray && (
             <View
               style={[
                 styles().circle,
@@ -84,7 +86,7 @@ const HorizontalSlider = (props: IHorizontalSlider) => {
                   },
                 ]}
               >
-                {item.number}
+                {props.countArray[index]}
               </TextWrapper>
             </View>
           )}
@@ -133,8 +135,9 @@ const styles = (visitNumber?: number) => {
     },
 
     circle: {
-      borderRadius: 20,
-      padding: 5,
+      borderRadius: 100,
+      paddingHorizontal:10,
+      paddingVertical:3,
       marginLeft:20,
       backgroundColor: Colors.white,
     },

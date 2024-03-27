@@ -1,14 +1,11 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import ForwardCard from "./component/MsgDetails/ForwarnCard";
+import ForwardCard from "./component/ForwarnCard";
 import styles from "views/message/Style/Style";
 import StringConstants from "shared/localization";
-
 import { Header, RectangularBox, SafeAreaContainer } from "components";
-import {
-  MessageDetailField,
-} from "views/message/mockData/Data";
-import { AllEscalation } from "models/ApiResponses/MessageResponse";
+import { MessageDetailField } from "@shared-constants";
+import { AllEscalation} from "models/ApiResponses/MessageResponse";
 import { FlatList } from "react-native-gesture-handler";
 
 interface IMsg {
@@ -16,7 +13,6 @@ interface IMsg {
 }
 
 const MsgDetails = (props: IMsg) => {
-
   const renderMessageDetail = (item: any, index: number) => {
     return (
       <RectangularBox
@@ -28,7 +24,7 @@ const MsgDetails = (props: IMsg) => {
     );
   };
 
-  const renderEscalatedCard = (item: AllEscalation, index: number) => {
+  const renderEscalatedCard = (item: AllEscalation, _: number) => {
     return (
       <ForwardCard
         escalated_by={item?.escalated_by?.user_name}
@@ -39,6 +35,7 @@ const MsgDetails = (props: IMsg) => {
     );
   };
 
+  
   return (
     <>
       <Header topheading={StringConstants.MESSAGE_DETAILS} />

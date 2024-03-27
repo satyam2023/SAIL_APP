@@ -2,46 +2,67 @@ import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
 import { convertToArray } from "helper/ExtractFirstandLast";
 import { IApiResponse } from "models/ApiResponses/IApiResponse";
-import { SettingsResponse } from "models/SettingResponse";
-import React, { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { SettingsResponse } from "models/ApiResponses/SettingResponse";
+import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { setLoaderVisibility } from "redux/actions/LoaderAction";
 import { logOutUserAction } from "redux/actions/LogOut";
+import { settingsAction } from "redux/actions/SettingsAction";
+import { store } from "redux/store/Store";
 import SettingScreen from "views/setting/Setting";
 
 const SettingViewModel = () => {
   const dispatch = useDispatch();
-  let userData = useSelector((state: any) => state.userAccount.data.data);
+  const [isDetailsUpdating, setDetailsUpdating] = useState<boolean>(false);
+  let userData = store?.getState()?.userAccount?.data?.data;
+
+  const updatedDetails = {
+    email: useRef(userData?.user?.email),
+    Location: useRef(userData?.user?.user_location),
+    Role: useRef(userData?.user?.user_role_name),
+  };
   const dataofInputField = convertToArray(userData);
-
-  const updatedDetails={
-    email:useRef(""),
-    Location:useRef(""),
-    Role:useRef(""),
-    
-  }
-
   async function logOutApiCalling() {
     dispatch(setLoaderVisibility(true));
     const data = {};
     try {
       const res: IApiResponse<SettingsResponse> = await logOutUserAction(data);
-      console.log("RESPONSE IN SETTING MODEL::::",res);
       if (res.isSuccess) {
         navigate(SCREENS.SIGNIN);
       }
-    } catch (error){
-      
+    } catch (error) {
     } finally {
-      
       dispatch(setLoaderVisibility(false));
     }
   }
 
+  async function updateApiCalling() {
+    dispatch(setLoaderVisibility(true));
+    const body = {
+      id: userData?.user?.id,
+      user_location: updatedDetails.Location.current,
+      email: updatedDetails.Location.current,
+      user_role: updatedDetails.Role.current,
+    };
+    try {
+      const res: IApiResponse<SettingsResponse> = await settingsAction(body);
+      if (res.isSuccess) {
 
-  async function editDetails(){
+      }
+    } catch (error) {}
+    dispatch(setLoaderVisibility(false));
+  }
 
-
+  function editDetails(text: string, index: number) {
+    if (index == -1) setDetailsUpdating(true);
+    else if  (index == -2) {
+      setDetailsUpdating(false);
+    if(userData?.user?.user_location!=updatedDetails.Location.current||
+      userData?.user?.user_role!=updatedDetails.Role.current ||
+      userData?.user?.email!=updatedDetails.email.current)
+      // updateApiCalling();
+      {}
+    }
   }
 
   return (
@@ -51,6 +72,9 @@ const SettingViewModel = () => {
         logOutApiCalling,
         dataofInputField,
         editDetails,
+        updatedDetails,
+        updateApiCalling,
+        isDetailsUpdating,
       }}
     />
   );

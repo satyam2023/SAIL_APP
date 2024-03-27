@@ -2,9 +2,9 @@ import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./Style";
 interface Footerprops {
-  setScreen: Function;
+  setScreen: (currentScreen:number)=>void;
   CurrentScreen: number;
-  Submit: Function;
+  Submit: ()=>void;
 }
 
 import Glyphs from "assets/Glyphs";

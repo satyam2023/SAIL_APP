@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   img: {
-    width: 9,
-    height: 15,
+    width: 12,
+    height: 18,
     resizeMode: "contain",
     tintColor: Colors.white,
     transform: [{ rotate: "90deg" }],

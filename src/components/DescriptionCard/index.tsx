@@ -31,7 +31,7 @@ const DescriptionCard = (props: IDescriptionCard) => {
     >
       {props?.image && <Image source={props?.image} style={styles.img} />}
       {props?.imageUri && (
-        <Image source={{ uri: props.imageUri }} style={styles.img} />
+        <Image source={{ uri: props?.imageUri }} style={styles.img} />
       )}
       <TextWrapper
         style={[commonStyles.font14MediumBlackpearl, { textAlign: "center" }]}

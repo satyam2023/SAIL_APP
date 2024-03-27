@@ -18,6 +18,9 @@ const APIConstants = {
   GET_MESSAGE_DATA:"inbox-messages",
   GET_ESCALTED_DROPDOWN_DATA: "escalate-to-dropdown-list",
   ESCALATE_TO_ANOTHER: "escalate-to-another",
+  NOTIFICATION: "notification-listing",
+  SETTINGS: "update-details",
+  NEAREST_CUSTOMER: "find-nearest-customer",
 };
 
 export default APIConstants;

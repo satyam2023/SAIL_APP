@@ -23,11 +23,13 @@ interface ICustomDropDown<T> {
   style?: ViewStyle;
   onPress?: (selectedvalue: string) => void;
   error?: string;
+  defaultValue?:string;
+  isRightDropDownVisible?:boolean
 }
 
 const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
   const Press = debounceHOC(TouchableOpacity);
-  const [selectedListItem, setSelectedListItem] = useState<string>();
+  const [selectedListItem, setSelectedListItem] = useState<string>(props.defaultValue?props.defaultValue:"");
   const [isListVisible, setIsListVisible] = useState<boolean>(false);
 
   const handleItemClick = (data: string) => {
@@ -80,11 +82,13 @@ const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
             </TextWrapper>
           </View>
         </View>
+        {!props.isRightDropDownVisible?
         <Image
           source={Glyphs.Arrow}
           tintColor={Colors.jetGray}
           style={commonStyles.icon}
-        />
+        />:<></>
+        }
       </PressableButton>
       {props.error && (
         <View style={{ bottom: 12 }}>
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 56,
     backgroundColor: Colors.white,
-    paddingHorizontal: 16,
+    paddingHorizontal: 24,
     borderRadius: 33,
     marginBottom: 16,
     flexDirection: "row",
@@ -115,6 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     paddingLeft: 24,
     justifyContent: "center",
+
   },
   itemSeparator: {
     height: 1,

@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   orLine: {
     marginTop: "5%",
     width: "100%",
-    height: "2%",
+    height: "3%",
     resizeMode: "cover",
   },
 });

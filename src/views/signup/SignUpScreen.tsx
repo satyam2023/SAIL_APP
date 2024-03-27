@@ -5,13 +5,14 @@ import Second from "./SecondSignUpPage/Second";
 import Third from "./ThirdSignUpPage/Third";
 import { ScrollView } from "react-native";
 import { Colors } from "commonStyles/RNColor.style";
+import { Iuserdetail } from "models/interface/ISignUp";
 
 export interface ISignUp {
   CurrentScreen: number;
-  setScreen: Function;
-  Submit: Function;
-  userDetail: any;
-  error: any;
+  setScreen: (currentScreen:number)=>void;
+  Submit: ()=>void;
+  userDetail: Iuserdetail;
+  error: boolean;
 }
 
 const SignUpScreen = ({

@@ -1,6 +1,7 @@
 import Glyphs from "assets/Glyphs";
 import { Colors } from "commonStyles/RNColor.style";
 import { ImageURISource } from "react-native";
+
 import StringConstants from "shared/localization";
 
 
@@ -174,10 +175,9 @@ export const CreateVisitPlanField = [
   StringConstants.SELECT_MODE_OF_CONTACT,
 ];
 
-export interface IBottomModalTab{
-heading:string,
-image:ImageURISource
-
+export interface IBottomModalTab {
+  heading: string;
+  image: ImageURISource;
 }
 
 export const BottomModalTab = [
@@ -200,7 +200,7 @@ export const BottomModalTab = [
 export const VisitHeaderData = [
   {
     heading: StringConstants.UPCOMING,
-    number: 23,
+    number: 10,
     backgroundColor: {
       focus: Colors.darkMilkWhite,
       notfocus: Colors.milkWhite,
@@ -239,98 +239,120 @@ export const VisitHeaderData = [
   },
 ];
 
-export interface IInformationList
-{
-   image_url:ImageURISource,
-   name:string
+export interface ICustomerInformationList {
+  image: ImageURISource;
+  name: string;
+  img_url?:string;
 }
 
-export const CustomerInformation=[
+export const CustomerInformation = [
   {
-      image_url:Glyphs.Customer,
-      name:StringConstants.SALES_ORDER
+    image: Glyphs.Customer,
+    name: StringConstants.SALES_ORDER,
   },
   {
-    image_url:Glyphs.Customer,
-    name:StringConstants.DIRECT_DISPATCH
+    image: Glyphs.Customer,
+    name: StringConstants.DIRECT_DISPATCH,
   },
   {
-    image_url:Glyphs.Customer,
-    name:StringConstants.MOU_STATUS
+    image: Glyphs.Customer,
+    name: StringConstants.MOU_STATUS,
   },
   {
-    image_url:Glyphs.Customer,
-    name:StringConstants.DUE_AND_OVERDUE
+    image: Glyphs.Customer,
+    name: StringConstants.DUE_AND_OVERDUE,
   },
   {
-    image_url:Glyphs.Customer,
-    name:StringConstants.LAST_VISIT_DETAIL
+    image: Glyphs.Customer,
+    name: StringConstants.LAST_VISIT_DETAIL,
   },
   {
-    image_url:Glyphs.Customer,
-    name:StringConstants.OFF_TAKE_REPORT
+    image: Glyphs.Customer,
+    name: StringConstants.OFF_TAKE_REPORT,
   },
   {
-    image_url:Glyphs.Customer,
-    name:StringConstants.LC_BG
+    image: Glyphs.Customer,
+    name: StringConstants.LC_BG,
   },
   {
-    image_url:Glyphs.Customer,
-    name:StringConstants.QUALITY_COMPLAIN
-  }
-];
-
-export const Category=[
-  {
-
+    image: Glyphs.Customer,
+    name: StringConstants.QUALITY_COMPLAIN,
   },
-  {
-
-  }
 ];
 
 
-export interface IupcomingVisitField{
-  heading:string,
-  imagepath:ImageURISource
+
+export const Category = [  {
+  image: Glyphs.Customer,
+  name: StringConstants.USER_ENQUIRY
+}, {
+  image: Glyphs.Setting2Clicked,
+  name: StringConstants.ISSUE_ENQUIRY
+}];
+
+export interface IupcomingVisitField {
+  heading: string;
+  imagepath: ImageURISource;
 }
 
 export const upcomingVisitDetails = [
-  { 
+  {
     heading: "Customer Code",
     imagepath: Glyphs.Code,
   },
-  { 
+  {
     heading: "Visit Date",
     imagepath: Glyphs.VisitDate,
   },
-  { 
+  {
     heading: "Contact Number",
     imagepath: Glyphs.BluePhone,
   },
-  { 
+  {
     heading: "Reason of Visit",
     imagepath: Glyphs.VisitDateIcon,
   },
-  { 
+  {
     heading: "Mode of Meeting",
     imagepath: Glyphs.Note,
   },
-  { 
+  {
     heading: "Visiting Executive",
     imagepath: Glyphs.SignleUser,
   },
-  { 
+  {
     heading: "Location",
     imagepath: Glyphs.blueLocation,
   },
-  { 
+  {
     heading: "Email ID",
     imagepath: Glyphs.BlueEmail,
   },
-  { 
+  {
     heading: "Planned by",
     imagepath: Glyphs.SignleUser,
   },
-]
+];
 
+export const MessageDetailField = [
+  StringConstants.CUSTOMER_CODE,
+  StringConstants.CUSTOMER_NAME,
+  StringConstants.CUSTOMER_TYPE,
+  StringConstants.REASON,
+  StringConstants.ISSUE,
+  StringConstants.ISSUE_CMNT,
+];
+
+export const LocationData = [
+  { value: "Agra" },
+  { value: "Ahmedabad" },
+  { value: "Banglore" },
+  { value: "Baroda" },
+];
+
+export const RoleData = [
+  { value: "A" },
+  { value: "B" },
+  { value: "C" },
+  { value: "D" },
+];

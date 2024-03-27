@@ -69,15 +69,8 @@ export function sendGetRequest<T>(url: string) {
 }
 
 export function sendPostRequest<T>(url: string, body: any): any {
-  const updatedUrl=baseURL()+url;
-
-  console.log("updatedUrl====>",updatedUrl)
-  console.log("token====>",token())
-  console.log("token====>",body)
- 
+  const updatedUrl=baseURL()+url; 
   instance.defaults.headers.common.Authorization = token();
-
-  
   return instance
     .post(updatedUrl, body, globalConfig)
     .then((response: any) => {
@@ -110,11 +103,11 @@ export function sendPutRequest<T>(url: string, body: any): any {
     .finally(() => {});
 }
 
-export function sendPatchRequest<T>(url: string): any {
+export function sendPatchRequest<T>(url: string,body:any): any {
   const updatedUrl = baseURL() + url;
   instance.defaults.headers.common.Authorization = token();
   return instance
-    .patch(updatedUrl, globalConfig)
+    .patch(updatedUrl, body,globalConfig)
     .then((response: any) => handleResponse<T>(response.data))
     .catch((err: any) => {
       if (err.response === undefined) {
