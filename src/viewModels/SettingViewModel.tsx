@@ -1,6 +1,6 @@
 import { navigate } from "@navigation";
 import { SCREENS } from "@shared-constants";
-import { convertToArray } from "helper/ExtractFirstandLast";
+import { convertToArray } from "helper/helperFunctions";
 import { IApiResponse } from "models/ApiResponses/IApiResponse";
 import { SettingsResponse } from "models/ApiResponses/SettingResponse";
 import React, { useRef, useState } from "react";
@@ -15,11 +15,11 @@ const SettingViewModel = () => {
   const dispatch = useDispatch();
   const [isDetailsUpdating, setDetailsUpdating] = useState<boolean>(false);
   let userData = store?.getState()?.userAccount?.data?.data;
-
+  let roleLocationDropDownList = store?.getState()?.masterData?.masterData?.data;
   const updatedDetails = {
     email: useRef(userData?.user?.email),
     Location: useRef(userData?.user?.user_location),
-    Role: useRef(userData?.user?.user_role_name),
+    Role: useRef(userData?.user?.user_role),
   };
   const dataofInputField = convertToArray(userData);
   async function logOutApiCalling() {
@@ -61,7 +61,9 @@ const SettingViewModel = () => {
       userData?.user?.user_role!=updatedDetails.Role.current ||
       userData?.user?.email!=updatedDetails.email.current)
       // updateApiCalling();
-      {}
+    {
+
+    }
     }
   }
 
@@ -75,6 +77,8 @@ const SettingViewModel = () => {
         updatedDetails,
         updateApiCalling,
         isDetailsUpdating,
+        roleLocationDropDownList
+        
       }}
     />
   );

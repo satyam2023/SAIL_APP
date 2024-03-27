@@ -21,6 +21,7 @@ import visitsReducer from "redux/reducers/VisitReducer";
 import messageReducer from "redux/reducers/MessageReducer";
 import notificationReducer from "redux/reducers/NotificationReducer";
 import settingsReducer from "redux/reducers/SettingsReducer";
+import masterDataReducer from "redux/reducers/MasterDataReducer";
 const middleware = applyMiddleware(thunk);
 
 const reducers = combineReducers({
@@ -37,6 +38,8 @@ const reducers = combineReducers({
   message:messageReducer,
   notification:notificationReducer,
   setting:settingsReducer,
+  masterData:masterDataReducer,
+  
 
 });
 

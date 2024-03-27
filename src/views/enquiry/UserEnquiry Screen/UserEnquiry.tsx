@@ -1,65 +1,97 @@
-import React, { useRef, useState } from "react";
-import { LocationData, DataOfPerson } from "./Data/LocationData";
-import SearchResult from "./component/SearchResultBox/Searchresult";
+import React from "react";
+import SearchResult from "./component/Searchresult";
 import { lightgrey, darkgrey, Colors } from "commonStyles/RNColor.style";
-import CustomButton from "components/CustomButton";
-import CustomDropDown from "components/CustomDropDown";
-import InputTextField from "components/InputTextField";
-import SafeAreaContainer from "components/SafeAreaContainer";
 import StringConstants from "shared/localization";
+import { MasterDataResponse } from "models/ApiResponses/MasterDataResponse";
+import { IuserEnquiryEnteredData } from "models/interface/IEnquiry";
+import { IdropDown } from "models/interface/ISetting";
+import commonStyles from "commonStyles/CommonStyle";
+import {
+  CustomButton,
+  CustomDropDown,
+  InputTextField,
+  SafeAreaContainer,
+} from "components";
+import {
+  IUserEnquiry,
+  UserEnquiryResponse,
+} from "models/ApiResponses/IEnquiryResponses";
+import { FlatList } from "react-native-gesture-handler";
+import Glyphs from "assets/Glyphs";
 
-const UserEnquiry = () => {
-  const [searchresult, setsearchresult] = useState<boolean>(false);
+interface IEnquiryScreen {
+  roleLocationDropDownList: MasterDataResponse;
+  userEnquiryEnteredDetail: IuserEnquiryEnteredData;
+  searchresult: UserEnquiryResponse | undefined;
+  onSearch: () => void;
+  setsearchresult:Function;
+}
 
-  const [data, setdata] = useState({
-    name: "",
-    phone: "",
-    place: "",
-  });
-  const details = {
-    name: useRef(""),
+const UserEnquiry = ({
+  roleLocationDropDownList,
+  userEnquiryEnteredDetail,
+  searchresult,
+  onSearch,
+  setsearchresult,
+}: IEnquiryScreen) => {
+  const renderSearchResult = (item: IUserEnquiry, _: number) => {
+    return (
+      <SearchResult
+        name={item.user_name}
+        place={item.user_location}
+        phone={item.user_number}
+      />
+    );
   };
- 
-
-  function SearchingData() {
-    for (let i = 0; i < DataOfPerson.length; i++) {
-      if (DataOfPerson[i].name == details.name.current) {
-        setdata({
-          name: DataOfPerson[i].name,
-          phone: DataOfPerson[i].phonenumber,
-          place: DataOfPerson[i].location,
-        });
-        setsearchresult(true);
-        break;
-      }
-    }
-  }
-
-
-
   return (
-    <SafeAreaContainer >
+    <SafeAreaContainer>
       <InputTextField
         onChangeText={(text: string) => {
-          details.name.current = text;
+          userEnquiryEnteredDetail.name.current = text;
         }}
         placeholder={StringConstants.ENTER_NAME}
         maxlength={20}
-        containerStyle={{ backgroundColor: Colors.white }}
+        containerStyle={{ backgroundColor: !searchresult? Colors.white :Colors.lightGray }}
+        rightIcon={searchresult?Glyphs.Close:undefined}
+        isEditable={!searchresult}
+        onRighIconPress={()=>{setsearchresult()}}
+        defaultValue={userEnquiryEnteredDetail.name.current}
       />
       <CustomDropDown
-        ArrayOfData={LocationData}
+        ArrayOfData={!searchresult?roleLocationDropDownList.LocationData:undefined}
         topheading={StringConstants.LOCATION}
+        onPress={(item: IdropDown) =>
+          (userEnquiryEnteredDetail.location.current = item.name)
+        }
+        isRightDropDownVisible={!(!searchresult)}
+        style={{backgroundColor:!searchresult? Colors.white :Colors.lightGray}}
+        defaultValue={userEnquiryEnteredDetail.location.current}
+        rightIcon={Glyphs.Close}
+        onRightIconPress={()=>{setsearchresult()}}
       />
       {!searchresult ? (
         <CustomButton
-          onPress={SearchingData}
+          onPress={() => {
+            onSearch();
+          }}
           text={StringConstants.SEARCH}
-          buttonStyle={{ backgroundColor: lightgrey }}
-          textStyle={{ color: darkgrey }}
+          buttonStyle={
+            userEnquiryEnteredDetail.name.current.length > 2
+              ? commonStyles.searchButtonStyle
+              : { backgroundColor: lightgrey }
+          }
+          textStyle={
+            userEnquiryEnteredDetail.name.current.length > 2
+              ? commonStyles.seachButtonTextStyle
+              : { color: darkgrey }
+          }
         />
       ) : (
-        <SearchResult name={data.name} place={data.place} phone={data.phone} />
+        <FlatList
+          data={searchresult}
+          renderItem={({ item, index }) => renderSearchResult(item, index)}
+          scrollEnabled={false}
+        />
       )}
     </SafeAreaContainer>
   );

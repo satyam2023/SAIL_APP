@@ -5,7 +5,6 @@ const APIConstants = {
   axiosCallRetryCount: 2,
   axiosCallRetryTimeout: 5000,
   BaseURL: BASE_URL,
-  GetUser: "users",
   SIGNUP:'register',
   SIGNIN:'login',
   SAVE_TOKEN: "save-token",
@@ -21,6 +20,9 @@ const APIConstants = {
   NOTIFICATION: "notification-listing",
   SETTINGS: "update-details",
   NEAREST_CUSTOMER: "find-nearest-customer",
+  MASTER_DATA:"get-master-data",
+  USER_ENQUIRY: "user-enquiry",
+  ISSUE_ENQUIRY: "issue-enquiry",
 };
 
 export default APIConstants;

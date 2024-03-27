@@ -459,6 +459,7 @@ const StringConstants = {
   LC_BG:'LC/BG utilization report',
   QUALITY_COMPLAIN:'Quality Complain Status',
   ESCALATED_BY:'Escalated by',
+  CUSTOMER:'Customer :',
 
 
   

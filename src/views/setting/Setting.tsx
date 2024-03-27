@@ -13,10 +13,11 @@ import fonts from "@fonts";
 import commonStyles from "commonStyles/CommonStyle";
 import CustomButton from "components/CustomButton";
 import { SignInResponse } from "models/ApiResponses/SignInResponse";
-import { ExtarctTwoLetterName } from "helper/ExtractFirstandLast";
-import { IUpdatedetails } from "models/interface/ISetting";
+import { ExtarctTwoLetterName } from "helper/helperFunctions";
+import { IUpdatedetails, IdropDown } from "models/interface/ISetting";
 import { CustomDropDown } from "components";
 import { LocationData, RoleData } from "@shared-constants";
+import { MasterDataResponse } from "models/ApiResponses/MasterDataResponse";
 
 interface ISetting {
   userData: SignInResponse;
@@ -26,7 +27,9 @@ interface ISetting {
   updatedDetails: IUpdatedetails;
   updateApiCalling: () => void;
   isDetailsUpdating: boolean;
+  roleLocationDropDownList:MasterDataResponse;
 }
+
 
 const SettingScreen = ({
   editDetails,
@@ -35,6 +38,7 @@ const SettingScreen = ({
   dataofInputField,
   updatedDetails,
   isDetailsUpdating,
+  roleLocationDropDownList,
 }: ISetting) => {
   function renderItem(item: ITextFieldData, index: number) {
     return (
@@ -69,6 +73,7 @@ const SettingScreen = ({
       <ScrollView
         style={{ paddingHorizontal: 20, flex: 1 }}
         showsVerticalScrollIndicator={false}
+        nestedScrollEnabled
       >
         <View style={styles.detailContainer}>
           <View style={styles.circle}>
@@ -107,7 +112,7 @@ const SettingScreen = ({
           scrollEnabled={false}
         />
         <CustomDropDown
-          ArrayOfData={!isDetailsUpdating ? [] : LocationData}
+          ArrayOfData={!isDetailsUpdating ? [] : roleLocationDropDownList.LocationData}
           topheading={StringConstants.LOCATION}
           style={{
             backgroundColor: !isDetailsUpdating
@@ -116,10 +121,10 @@ const SettingScreen = ({
           }}
           defaultValue={dataofInputField[4]}
           isRightDropDownVisible={!isDetailsUpdating}
-          getData={(value: string) => (updatedDetails.Role.current = value)}
+          onPress={(item: IdropDown) => (updatedDetails.Location.current = item.name)}
         />
         <CustomDropDown
-          ArrayOfData={!isDetailsUpdating ? [] : RoleData}
+          ArrayOfData={!isDetailsUpdating ? [] : roleLocationDropDownList.RolesData}
           topheading={StringConstants.ROLE}
           style={{
             backgroundColor: !isDetailsUpdating
@@ -128,7 +133,7 @@ const SettingScreen = ({
           }}
           defaultValue={dataofInputField[5]}
           isRightDropDownVisible={!isDetailsUpdating}
-          getData={(value: string) => (updatedDetails.Location.current = value)}
+          onPress={(item: IdropDown) => (updatedDetails.Role.current = item.id)}
         />
         {isDetailsUpdating && (
           <CustomButton

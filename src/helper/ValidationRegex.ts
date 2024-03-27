@@ -131,3 +131,7 @@ export const validatePasswordAndCpassword = (
     Confirm_Password: !validatePassword(userDetail.Confirm_Password.current),
   }));
 };
+
+export const checkOnlyNumber = (text: string) => {
+  return Regex.ONLY_NUMBER.test(text);
+};

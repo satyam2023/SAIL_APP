@@ -40,7 +40,7 @@ const OnboardingScreen = () => {
             color: Colors.blackPeral,
           }}
           buttonStyle={{ backgroundColor: lightWhite }}
-          onPress={() => navigate(SCREENS.SIGNIN)}
+          onPress={() =>navigate(SCREENS.SIGNIN)}
           text={StringConstants.SIGN_IN}
         />
       </View>
@@ -50,3 +50,9 @@ const OnboardingScreen = () => {
 };
 
 export default OnboardingScreen;
+
+
+
+/*
+<key>NSAllowsArbitraryLoads</key>
+		<true/>*/

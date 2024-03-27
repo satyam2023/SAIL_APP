@@ -1,6 +1,7 @@
 import { Colors } from "commonStyles/RNColor.style";
 import { debounceHOC } from "hocs/debounceHOC";
 import {
+  FlatList,
   Image,
   ImageURISource,
   StyleSheet,
@@ -14,42 +15,47 @@ import { useState } from "react";
 import commonStyles from "commonStyles/CommonStyle";
 import fonts from "@fonts";
 import { PressableButton } from "components";
+import { IdropDown } from "models/interface/ISetting";
+import { WindowHeight } from "libs";
 
-interface ICustomDropDown<T> {
-  ArrayOfData: Array<T>;
+interface ICustomDropDown {
+  ArrayOfData: Array<IdropDown> | undefined;
   leftIcon?: ImageURISource;
   getData?: (value: string) => void;
   topheading: string;
   style?: ViewStyle;
-  onPress?: (selectedvalue: string) => void;
+  onPress?: (item: IdropDown) => void;
   error?: string;
-  defaultValue?:string;
-  isRightDropDownVisible?:boolean
+  defaultValue?: string;
+  isRightDropDownVisible?: boolean;
+  rightIcon?: ImageURISource;
+  onRightIconPress?: () => void;
 }
 
-const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
+const CustomDropDown = (props: ICustomDropDown) => {
   const Press = debounceHOC(TouchableOpacity);
-  const [selectedListItem, setSelectedListItem] = useState<string>(props.defaultValue?props.defaultValue:"");
+  const [selectedListItem, setSelectedListItem] = useState<string>(
+    props.defaultValue ? props.defaultValue : "",
+  );
   const [isListVisible, setIsListVisible] = useState<boolean>(false);
-
+  console.warn("||||||||||||||||",props.defaultValue);
   const handleItemClick = (data: string) => {
     setIsListVisible(false);
     setSelectedListItem(data);
   };
-  const renderItem = (item: any) => {
+  const renderItem = (item: IdropDown, _: number) => {
     return (
       <Press
         style={styles.listContainer}
         onPress={() => {
           {
-            props.onPress && props.onPress(item.value);
+            props.onPress && props.onPress(item);
           }
-          handleItemClick(item.value);
+          handleItemClick(item.name);
         }}
-        key={item.key}
       >
         <TextWrapper style={commonStyles.font14RegularBlack}>
-          {item.value}
+          {item.name}
         </TextWrapper>
       </Press>
     );
@@ -82,20 +88,53 @@ const CustomDropDown = <T,>(props: ICustomDropDown<T>) => {
             </TextWrapper>
           </View>
         </View>
-        {!props.isRightDropDownVisible?
-        <Image
-          source={Glyphs.Arrow}
-          tintColor={Colors.jetGray}
-          style={commonStyles.icon}
-        />:<></>
-        }
+        {!props.isRightDropDownVisible ? (
+          <Image
+            source={Glyphs.Arrow}
+            tintColor={Colors.jetGray}
+            style={commonStyles.icon}
+          />
+        ) : (
+          <Press
+           style={styles.rightIconContainer}
+            onPress={() => {
+              if (props.onRightIconPress) {
+                props.onRightIconPress();
+              }
+            }}
+          >
+            {props.rightIcon ? (
+              <Image source={props.rightIcon} style={styles.rightIcon} />
+            ) : null}
+          </Press>
+        )}
       </PressableButton>
       {props.error && (
         <View style={{ bottom: 12 }}>
           <TextWrapper style={styles.errorMsg}>{props.error}</TextWrapper>
         </View>
       )}
-      {isListVisible && props?.ArrayOfData.map(renderItem)}
+      {isListVisible && (
+        <FlatList
+          data={props.ArrayOfData}
+          renderItem={({ item, index }) => renderItem(item, index)}
+          style={
+            props.ArrayOfData
+              ? { height: WindowHeight / 4, marginBottom: 10 }
+              : {}
+          }
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => (
+            <View
+              style={{
+                width: "100%",
+                height: 1,
+                backgroundColor: Colors.background2,
+              }}
+            />
+          )}
+        />
+      )}
     </>
   );
 };
@@ -119,7 +158,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     paddingLeft: 24,
     justifyContent: "center",
-
   },
   itemSeparator: {
     height: 1,
@@ -141,5 +179,14 @@ const styles = StyleSheet.create({
   errorBox: {
     borderWidth: 1,
     borderColor: Colors.red,
+  },
+  rightIcon: {
+    height: 24,
+    width: 24,
+    resizeMode: "contain",
+  },
+  rightIconContainer: {
+    position: "absolute",
+    right: 16,
   },
 });

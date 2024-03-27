@@ -9,9 +9,8 @@ import { Category, CustomerInformation, SCREENS } from "@shared-constants";
 import { navigate } from "@navigation";
 import TextWrapper from "components/TextWrapper";
 import StringConstants from "shared/localization";
-import Product from "./component/ProductList";
 import { SignInResponse } from "models/ApiResponses/SignInResponse";
-import { ExtarctTwoLetterName } from "helper/ExtractFirstandLast";
+import { ExtarctTwoLetterName } from "helper/helperFunctions";
 import { HomeResponse } from "models/ApiResponses/HomeResponse";
 import { HorizontalScrollableList } from "components";
 interface IHomeScreen {

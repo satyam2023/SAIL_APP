@@ -95,7 +95,16 @@ const commonStyles = StyleSheet.create({
     height:15,
     width:15,
     resizeMode:'contain'
+  },
+  searchButtonStyle:{
+    backgroundColor:Colors.white,
+    borderWidth:1,
+    borderColor:Colors.sailBlue,
+  },
+  seachButtonTextStyle:{
+    color:Colors.sailBlue
   }
+
   
 });
 

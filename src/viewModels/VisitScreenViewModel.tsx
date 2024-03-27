@@ -141,7 +141,7 @@ const VisitScreenViewModel = () => {
     const setExecutedVisits = async () => {
       try {
         const res: IApiResponse<IPaginations<VisitResponse>> =
-          await getExecutedVisits(dispatch, userID,pageNumber);
+          await getExecutedVisits(dispatch, userID);
         if (res.isSuccess) {
             
         }

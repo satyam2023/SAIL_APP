@@ -21,7 +21,7 @@ import StringConstants from "shared/localization";
 interface ITextField {
   onChangeText: (text: string) => void;
   leftIcon?: ImageURISource;
-  rightIcon?: ImageURISource;
+  rightIcon?: ImageURISource | undefined;
   placeholder: string;
   error?: string;
   containerStyle?: ViewStyle;

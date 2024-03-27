@@ -1,20 +1,50 @@
-
 import { Colors } from "commonStyles/RNColor.style";
-
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { ScrollView } from "react-native";
 import StringConstants from "shared/localization";
-import IssueEnquiry from "views/enquiry/Issue Enquiry/IssueEnquiry";
-import NearbyCustomer from "views/enquiry/NearbyCustomer/NearByCustomer";
-import UserEnquiry from "views/enquiry/UserEnquiry Screen/UserEnquiry";
+import NearbyCustomer from "./nearbyCustomer/NearByCustomer";
+import UserEnquiry from "./userEnquiry Screen/UserEnquiry";
 import { EnquiryHeaderData } from "@shared-constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Header, HorizontalSlider } from "components";
+import { MasterDataResponse } from "models/ApiResponses/MasterDataResponse";
+import {
+  IissueEnquiryEnteredData,
+  IuserEnquiryEnteredData,
+} from "models/interface/IEnquiry";
+import {
+  IIssueEnquiry,
+  UserEnquiryResponse,
+} from "models/ApiResponses/IEnquiryResponses";
+import IssueEnquiry from "./issueEnquiry/IssueEnquiry";
 
-const EnquiryScreen = () => {
-  const [currentScreen, setCurrentScreen] = useState<number>(1);
+interface IEnquiryScreen {
+  currentScreen: number;
+  setCurrentScreen: Dispatch<SetStateAction<number>>;
+  roleLocationDropDownList: MasterDataResponse;
+  userEnquiryEnteredDetail: IuserEnquiryEnteredData;
+  searchresult: UserEnquiryResponse | undefined;
+  onSearch: () => void;
+  issueSearchresult: IIssueEnquiry[] | undefined;
+  issueEnquiryEnteredDetail: IissueEnquiryEnteredData;
+  setIssueSearchResult: Function;
+  setsearchresult:Function;
+}
+
+const EnquiryScreen = ({
+  setIssueSearchResult,
+  currentScreen,
+  setCurrentScreen,
+  roleLocationDropDownList,
+  userEnquiryEnteredDetail,
+  searchresult,
+  onSearch,
+  issueSearchresult,
+  issueEnquiryEnteredDetail,
+  setsearchresult
+}: IEnquiryScreen) => {
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <Header topheading={StringConstants.ENQUIRY} />
       <ScrollView style={{ flex: 1, backgroundColor: Colors.background2 }}>
         <HorizontalSlider
@@ -23,12 +53,31 @@ const EnquiryScreen = () => {
           selectedTab={(index: number) => setCurrentScreen(index)}
         />
 
-        {currentScreen == 1 && <UserEnquiry />}
-        {currentScreen == 2 && <IssueEnquiry />}
+        {currentScreen == 1 && (
+          <UserEnquiry
+            {...{
+              roleLocationDropDownList,
+              userEnquiryEnteredDetail,
+              searchresult,
+              onSearch,
+              setsearchresult
+            }}
+          />
+        )}
+        {currentScreen == 2 && (
+          <IssueEnquiry
+            {...{
+              roleLocationDropDownList,
+              issueSearchresult,
+              issueEnquiryEnteredDetail,
+              setIssueSearchResult,
+              onSearch,
+            }}
+          />
+        )}
         {currentScreen == 3 && <NearbyCustomer />}
       </ScrollView>
     </SafeAreaView>
   );
 };
 export default EnquiryScreen;
-

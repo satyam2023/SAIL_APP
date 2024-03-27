@@ -22,4 +22,11 @@ export const convertToArray=(userData:SignInResponse)=>{
   arr[4]=userData?.user?.user_location;
   arr[5]=userData?.user?.user_role_name;
     return arr;
+};
+
+export const extractOnlyDate=(data:string)=>{
+
+  return data.slice(0,10);
+  
 }
+
